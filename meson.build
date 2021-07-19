@@ -9,7 +9,8 @@ gtkmm_dep = dependency('gtkmm-3.0')
 src = [
   'src/main.cpp',
   'src/gui/MainWindow.cpp',
-  'src/gui/StackPage.cpp'
+  'src/gui/StackPage.cpp',
+	'src/handler.cpp'
 ]
 includes = include_directories(
   'include',

@@ -13,7 +13,7 @@ class MainWindow : public Gtk::Window{
 	protected:
 		Glib::RefPtr<Gtk::Builder> m_refGlade;
     StackPage *pStackPage;
-    Gtk::Button *pExitBtn;
+    Gtk::Button *pExitBtn, *pGameBtn;
 
 };
 

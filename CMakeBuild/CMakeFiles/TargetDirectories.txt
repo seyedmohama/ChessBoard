@@ -1,0 +1,3 @@
+/home/mmotahari5/Programming/Advanced_Programming/sheigaraii/ChessAP/CMakeBuild/CMakeFiles/rebuild_cache.dir
+/home/mmotahari5/Programming/Advanced_Programming/sheigaraii/ChessAP/CMakeBuild/CMakeFiles/edit_cache.dir
+/home/mmotahari5/Programming/Advanced_Programming/sheigaraii/ChessAP/CMakeBuild/CMakeFiles/ChessAP.dir
