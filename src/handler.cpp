@@ -18,3 +18,7 @@ void Handler::set_playerFirstName(std::string pfn){
 void Handler::set_playerSecondName(std::string psn){
 	playerSecondName = psn;
 }
+
+std::string Handler::get_gameName(){ return gameName; }
+std::string Handler::get_playerFirstName(){ return playerFirstName; }
+std::string Handler::get_playerSecondName(){ return playerSecondName; }

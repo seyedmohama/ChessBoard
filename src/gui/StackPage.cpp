@@ -25,10 +25,15 @@ void StackPage::startGameBtn_clicked(){
 	m_refGlade->get_widget("gameNameEntry", pGameNameEnt);
 	m_refGlade->get_widget("playerFirstNameEntry", pPlayerFirstNameEnt);
 	m_refGlade->get_widget("playerSecondNameEntry", pPlayerSecondNameEnt);
+
 	handler = new Handler ( pGameNameEnt->get_text(), pPlayerFirstNameEnt->get_text(), pPlayerSecondNameEnt->get_text());
 	
 	set_visible_child("game_page", Gtk::STACK_TRANSITION_TYPE_NONE);
 	m_refGlade->get_widget("boardGameID", pBoardGame);
+	m_refGlade->get_widget("overlayGameBoardID", pGameBoardOverlay);
+	m_refGlade->get_widget("boardGameImageID", pGameBoardImage);
+	m_refGlade->get_widget("gameNameLabelID", pGameNameLabel);
 
-//	pBoardGame->get_style_property("background-image","url('images/chessboard.png')");
+	pGameBoardOverlay->add_overlay(*pBoardGame);
+	pGameNameLabel->set_label(handler->get_gameName());
 }

@@ -6,6 +6,9 @@
 #include <gtkmm/builder.h>
 #include <gtkmm/entry.h>
 #include <gtkmm/grid.h>
+#include <gtkmm/overlay.h>
+#include <gtkmm/image.h>
+#include <gtkmm/label.h>
 
 class Handler;
 class StackPage : public Gtk::Stack{
@@ -16,6 +19,9 @@ class StackPage : public Gtk::Stack{
 		Gtk::Button *pGameBtn, *pExitBtn, *pSettingBtn, *pStartGameBtn;
 		Gtk::Entry *pGameNameEnt, *pPlayerFirstNameEnt, *pPlayerSecondNameEnt;
 		Gtk::Grid *pBoardGame;
+		Gtk::Overlay *pGameBoardOverlay;
+		Gtk::Image *pGameBoardImage;
+		Gtk::Label *pGameNameLabel;
 		Handler *handler ;
 		Glib::RefPtr<Gtk::Builder> m_refGlade;
 
