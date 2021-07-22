@@ -353,9 +353,6 @@
                     <property name="margin_left">15</property>
                     <property name="margin_right">15</property>
                     <property name="margin_bottom">5</property>
-                    <style>
-                      <class name="class"/>
-                    </style>
                   </object>
                   <packing>
                     <property name="left_attach">0</property>

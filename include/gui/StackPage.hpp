@@ -24,6 +24,7 @@ class StackPage : public Gtk::Stack{
 		Gtk::Label *pGameNameLabel;
 		Handler *handler ;
 		Glib::RefPtr<Gtk::Builder> m_refGlade;
+		Gtk::Button *pWBLBtn;
 
 		void startGameBtn_clicked();
 };
