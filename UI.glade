@@ -2,7 +2,121 @@
 <!-- Generated with glade 3.22.2 -->
 <interface>
   <requires lib="gtk+" version="3.20"/>
-  <object class="GtkImage" id="image1">
+  <!-- interface-css-provider-path res/style.css -->
+  <object class="GtkImage" id="bblImg">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="margin_top">1</property>
+    <property name="margin_bottom">1</property>
+    <property name="pixbuf">images/bb.png</property>
+  </object>
+  <object class="GtkImage" id="bbrImg">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="margin_top">1</property>
+    <property name="margin_bottom">1</property>
+    <property name="pixbuf">images/bb.png</property>
+  </object>
+  <object class="GtkImage" id="bkImg">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="margin_top">1</property>
+    <property name="margin_bottom">1</property>
+    <property name="pixbuf">images/bk.png</property>
+  </object>
+  <object class="GtkImage" id="bnlImg">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="margin_top">1</property>
+    <property name="margin_bottom">1</property>
+    <property name="pixbuf">images/bn.png</property>
+  </object>
+  <object class="GtkImage" id="bnrImg">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="margin_top">1</property>
+    <property name="margin_bottom">1</property>
+    <property name="pixbuf">images/bn.png</property>
+  </object>
+  <object class="GtkImage" id="bp1Img">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="margin_top">1</property>
+    <property name="margin_bottom">1</property>
+    <property name="pixbuf">images/bp.png</property>
+  </object>
+  <object class="GtkImage" id="bp2Img">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="margin_top">1</property>
+    <property name="margin_bottom">1</property>
+    <property name="pixbuf">images/bp.png</property>
+  </object>
+  <object class="GtkImage" id="bp3Img">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="margin_top">1</property>
+    <property name="margin_bottom">1</property>
+    <property name="pixbuf">images/bp.png</property>
+  </object>
+  <object class="GtkImage" id="bp4Img">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="margin_top">1</property>
+    <property name="margin_bottom">1</property>
+    <property name="pixbuf">images/bp.png</property>
+  </object>
+  <object class="GtkImage" id="bp5Img">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="margin_top">1</property>
+    <property name="margin_bottom">1</property>
+    <property name="pixbuf">images/bp.png</property>
+  </object>
+  <object class="GtkImage" id="bp6Img">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="margin_top">1</property>
+    <property name="margin_bottom">1</property>
+    <property name="pixbuf">images/bp.png</property>
+  </object>
+  <object class="GtkImage" id="bp7Img">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="margin_top">1</property>
+    <property name="margin_bottom">1</property>
+    <property name="pixbuf">images/bp.png</property>
+  </object>
+  <object class="GtkImage" id="bp8Img">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="margin_top">1</property>
+    <property name="margin_bottom">1</property>
+    <property name="pixbuf">images/bp.png</property>
+  </object>
+  <object class="GtkImage" id="bqImg">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="margin_top">1</property>
+    <property name="margin_bottom">1</property>
+    <property name="pixbuf">images/bq.png</property>
+  </object>
+  <object class="GtkImage" id="brlImg">
+    <property name="name">brlImgName</property>
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="margin_top">1</property>
+    <property name="margin_bottom">1</property>
+    <property name="pixbuf">images/br.png</property>
+  </object>
+  <object class="GtkImage" id="brrImg">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="margin_top">1</property>
+    <property name="margin_bottom">1</property>
+    <property name="pixbuf">images/br.png</property>
+  </object>
+  <object class="GtkImage" id="undoImg">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="pixel_size">24</property>
@@ -335,7 +449,7 @@
                     <property name="halign">center</property>
                     <property name="valign">center</property>
                     <property name="vexpand">True</property>
-                    <property name="image">image1</property>
+                    <property name="image">undoImg</property>
                     <property name="image_position">right</property>
                     <property name="always_show_image">True</property>
                   </object>
@@ -845,355 +959,125 @@
       </object>
     </child>
   </object>
-  <object class="GtkSizeGroup">
-    <widgets>
-      <widget name="overlayGameBoardID"/>
-    </widgets>
-  </object>
-  <object class="GtkImage" id="image2">
-    <property name="width_request">0</property>
-    <property name="height_request">0</property>
+  <object class="GtkImage" id="wblImg">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="halign">center</property>
-    <property name="valign">center</property>
+    <property name="margin_top">1</property>
+    <property name="margin_bottom">1</property>
     <property name="pixbuf">images/wb.png</property>
+  </object>
+  <object class="GtkImage" id="wbrImg">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="margin_top">1</property>
+    <property name="margin_bottom">1</property>
+    <property name="pixbuf">images/wb.png</property>
+  </object>
+  <object class="GtkImage" id="wkImg">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="margin_top">1</property>
+    <property name="margin_bottom">1</property>
+    <property name="pixbuf">images/wk.png</property>
+  </object>
+  <object class="GtkImage" id="wnlImg">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="margin_top">1</property>
+    <property name="margin_bottom">1</property>
+    <property name="pixbuf">images/wn.png</property>
+  </object>
+  <object class="GtkImage" id="wnrImg">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="margin_top">1</property>
+    <property name="margin_bottom">1</property>
+    <property name="pixbuf">images/wn.png</property>
+  </object>
+  <object class="GtkImage" id="wp1Img">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="margin_top">1</property>
+    <property name="margin_bottom">1</property>
+    <property name="pixbuf">images/wp.png</property>
+  </object>
+  <object class="GtkImage" id="wp2Img">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="margin_top">1</property>
+    <property name="margin_bottom">1</property>
+    <property name="pixbuf">images/wp.png</property>
+  </object>
+  <object class="GtkImage" id="wp3Img">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="margin_top">1</property>
+    <property name="margin_bottom">1</property>
+    <property name="pixbuf">images/wp.png</property>
+  </object>
+  <object class="GtkImage" id="wp4Img">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="margin_top">1</property>
+    <property name="margin_bottom">1</property>
+    <property name="pixbuf">images/wp.png</property>
+  </object>
+  <object class="GtkImage" id="wp5Img">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="margin_top">1</property>
+    <property name="margin_bottom">1</property>
+    <property name="pixbuf">images/wp.png</property>
+  </object>
+  <object class="GtkImage" id="wp6Img">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="is_focus">True</property>
+    <property name="margin_top">1</property>
+    <property name="margin_bottom">1</property>
+    <property name="pixbuf">images/wp.png</property>
+  </object>
+  <object class="GtkImage" id="wp7Img">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="margin_top">1</property>
+    <property name="margin_bottom">1</property>
+    <property name="pixbuf">images/wp.png</property>
+  </object>
+  <object class="GtkImage" id="wp8Img">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="margin_top">1</property>
+    <property name="margin_bottom">1</property>
+    <property name="pixbuf">images/wp.png</property>
+  </object>
+  <object class="GtkImage" id="wqImg">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="margin_top">1</property>
+    <property name="margin_bottom">1</property>
+    <property name="pixbuf">images/wq.png</property>
+  </object>
+  <object class="GtkImage" id="wrlImg">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="margin_top">1</property>
+    <property name="margin_bottom">1</property>
+    <property name="pixbuf">images/wr.png</property>
+  </object>
+  <object class="GtkImage" id="wrrImg">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="margin_top">1</property>
+    <property name="margin_bottom">1</property>
+    <property name="pixbuf">images/wr.png</property>
   </object>
   <object class="GtkGrid" id="boardGameID">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
+    <property name="margin_top">5</property>
     <child>
-      <object class="GtkImage">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="pixbuf">images/wn.png</property>
-      </object>
-      <packing>
-        <property name="left_attach">2</property>
-        <property name="top_attach">7</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkImage">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="pixbuf">images/wq.png</property>
-      </object>
-      <packing>
-        <property name="left_attach">3</property>
-        <property name="top_attach">7</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkImage">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="pixbuf">images/wk.png</property>
-      </object>
-      <packing>
-        <property name="left_attach">4</property>
-        <property name="top_attach">7</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkImage">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="pixbuf">images/wn.png</property>
-      </object>
-      <packing>
-        <property name="left_attach">5</property>
-        <property name="top_attach">7</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkImage">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="pixbuf">images/wb.png</property>
-      </object>
-      <packing>
-        <property name="left_attach">6</property>
-        <property name="top_attach">7</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkImage">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="pixbuf">images/wr.png</property>
-      </object>
-      <packing>
-        <property name="left_attach">7</property>
-        <property name="top_attach">7</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkImage">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="pixbuf">images/wr.png</property>
-      </object>
-      <packing>
-        <property name="left_attach">0</property>
-        <property name="top_attach">7</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkImage">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="pixbuf">images/br.png</property>
-      </object>
-      <packing>
-        <property name="left_attach">0</property>
-        <property name="top_attach">0</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkImage">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="pixbuf">images/bb.png</property>
-      </object>
-      <packing>
-        <property name="left_attach">1</property>
-        <property name="top_attach">0</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkImage">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="pixbuf">images/bn.png</property>
-      </object>
-      <packing>
-        <property name="left_attach">2</property>
-        <property name="top_attach">0</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkImage">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="pixbuf">images/bk.png</property>
-      </object>
-      <packing>
-        <property name="left_attach">4</property>
-        <property name="top_attach">0</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkImage">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="pixbuf">images/bn.png</property>
-      </object>
-      <packing>
-        <property name="left_attach">5</property>
-        <property name="top_attach">0</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkImage">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="pixbuf">images/bb.png</property>
-      </object>
-      <packing>
-        <property name="left_attach">6</property>
-        <property name="top_attach">0</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkImage">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="pixbuf">images/br.png</property>
-      </object>
-      <packing>
-        <property name="left_attach">7</property>
-        <property name="top_attach">0</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkImage">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="pixbuf">images/bp.png</property>
-      </object>
-      <packing>
-        <property name="left_attach">0</property>
-        <property name="top_attach">1</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkImage">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="pixbuf">images/wp.png</property>
-      </object>
-      <packing>
-        <property name="left_attach">0</property>
-        <property name="top_attach">6</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkImage">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="pixbuf">images/wp.png</property>
-      </object>
-      <packing>
-        <property name="left_attach">1</property>
-        <property name="top_attach">6</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkImage">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="pixbuf">images/wp.png</property>
-      </object>
-      <packing>
-        <property name="left_attach">2</property>
-        <property name="top_attach">6</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkImage">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="pixbuf">images/wp.png</property>
-      </object>
-      <packing>
-        <property name="left_attach">3</property>
-        <property name="top_attach">6</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkImage">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="pixbuf">images/wp.png</property>
-      </object>
-      <packing>
-        <property name="left_attach">4</property>
-        <property name="top_attach">6</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkImage">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="pixbuf">images/wp.png</property>
-      </object>
-      <packing>
-        <property name="left_attach">5</property>
-        <property name="top_attach">6</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkImage">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="pixbuf">images/wp.png</property>
-      </object>
-      <packing>
-        <property name="left_attach">7</property>
-        <property name="top_attach">6</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkImage">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="pixbuf">images/wp.png</property>
-      </object>
-      <packing>
-        <property name="left_attach">6</property>
-        <property name="top_attach">6</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkImage">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="pixbuf">images/bp.png</property>
-      </object>
-      <packing>
-        <property name="left_attach">1</property>
-        <property name="top_attach">1</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkImage">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="pixbuf">images/bp.png</property>
-      </object>
-      <packing>
-        <property name="left_attach">2</property>
-        <property name="top_attach">1</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkImage">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="pixbuf">images/bp.png</property>
-      </object>
-      <packing>
-        <property name="left_attach">3</property>
-        <property name="top_attach">1</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkImage">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="pixbuf">images/bp.png</property>
-      </object>
-      <packing>
-        <property name="left_attach">4</property>
-        <property name="top_attach">1</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkImage">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="pixbuf">images/bp.png</property>
-      </object>
-      <packing>
-        <property name="left_attach">5</property>
-        <property name="top_attach">1</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkImage">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="pixbuf">images/bp.png</property>
-      </object>
-      <packing>
-        <property name="left_attach">6</property>
-        <property name="top_attach">1</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkImage">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="pixbuf">images/bp.png</property>
-      </object>
-      <packing>
-        <property name="left_attach">7</property>
-        <property name="top_attach">1</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkImage">
+      <object class="GtkImage" id="a6">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="pixbuf">images/blank-62.png</property>
@@ -1204,7 +1088,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkImage">
+      <object class="GtkImage" id="b6">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="pixbuf">images/blank-62.png</property>
@@ -1215,7 +1099,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkImage">
+      <object class="GtkImage" id="c6">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="pixbuf">images/blank-62.png</property>
@@ -1226,7 +1110,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkImage">
+      <object class="GtkImage" id="f6">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="pixbuf">images/blank-62.png</property>
@@ -1237,7 +1121,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkImage">
+      <object class="GtkImage" id="h6">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="pixbuf">images/blank-62.png</property>
@@ -1248,7 +1132,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkImage">
+      <object class="GtkImage" id="a3">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="pixbuf">images/blank-62.png</property>
@@ -1259,7 +1143,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkImage">
+      <object class="GtkImage" id="c3">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="pixbuf">images/blank-62.png</property>
@@ -1270,7 +1154,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkImage">
+      <object class="GtkImage" id="f3">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="pixbuf">images/blank-62.png</property>
@@ -1281,7 +1165,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkImage">
+      <object class="GtkImage" id="h3">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="pixbuf">images/blank-62.png</property>
@@ -1292,7 +1176,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkImage">
+      <object class="GtkImage" id="a4">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="pixbuf">images/blank-62.png</property>
@@ -1303,7 +1187,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkImage">
+      <object class="GtkImage" id="a5">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="pixbuf">images/blank-62.png</property>
@@ -1314,7 +1198,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkImage">
+      <object class="GtkImage" id="c5">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="pixbuf">images/blank-62.png</property>
@@ -1325,7 +1209,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkImage">
+      <object class="GtkImage" id="c4">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="pixbuf">images/blank-62.png</property>
@@ -1336,7 +1220,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkImage">
+      <object class="GtkImage" id="f5">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="pixbuf">images/blank-62.png</property>
@@ -1347,7 +1231,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkImage">
+      <object class="GtkImage" id="f4">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="pixbuf">images/blank-62.png</property>
@@ -1358,7 +1242,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkImage">
+      <object class="GtkImage" id="h5">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="pixbuf">images/blank-62.png</property>
@@ -1369,7 +1253,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkImage">
+      <object class="GtkImage" id="h4">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="pixbuf">images/blank-62.png</property>
@@ -1380,7 +1264,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkImage">
+      <object class="GtkImage" id="b5">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="pixbuf">images/blank-62.png</property>
@@ -1391,7 +1275,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkImage">
+      <object class="GtkImage" id="b4">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="pixbuf">images/blank-62.png</property>
@@ -1402,7 +1286,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkImage">
+      <object class="GtkImage" id="b3">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="pixbuf">images/blank-62.png</property>
@@ -1413,7 +1297,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkImage">
+      <object class="GtkImage" id="d6">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="pixbuf">images/blank-62.png</property>
@@ -1424,7 +1308,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkImage">
+      <object class="GtkImage" id="d5">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="pixbuf">images/blank-62.png</property>
@@ -1435,7 +1319,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkImage">
+      <object class="GtkImage" id="d4">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="pixbuf">images/blank-62.png</property>
@@ -1446,7 +1330,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkImage">
+      <object class="GtkImage" id="d3">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="pixbuf">images/blank-62.png</property>
@@ -1457,7 +1341,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkImage">
+      <object class="GtkImage" id="e6">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="pixbuf">images/blank-62.png</property>
@@ -1468,7 +1352,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkImage">
+      <object class="GtkImage" id="e4">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="pixbuf">images/blank-62.png</property>
@@ -1479,7 +1363,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkImage">
+      <object class="GtkImage" id="e5">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="pixbuf">images/blank-62.png</property>
@@ -1490,7 +1374,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkImage">
+      <object class="GtkImage" id="e3">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="pixbuf">images/blank-62.png</property>
@@ -1501,7 +1385,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkImage">
+      <object class="GtkImage" id="g6">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="pixbuf">images/blank-62.png</property>
@@ -1512,7 +1396,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkImage">
+      <object class="GtkImage" id="g5">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="pixbuf">images/blank-62.png</property>
@@ -1523,7 +1407,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkImage">
+      <object class="GtkImage" id="g4">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="pixbuf">images/blank-62.png</property>
@@ -1534,7 +1418,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkImage">
+      <object class="GtkImage" id="g3">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="pixbuf">images/blank-62.png</property>
@@ -1542,17 +1426,6 @@
       <packing>
         <property name="left_attach">6</property>
         <property name="top_attach">5</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkImage">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="pixbuf">images/bq.png</property>
-      </object>
-      <packing>
-        <property name="left_attach">3</property>
-        <property name="top_attach">0</property>
       </packing>
     </child>
     <child>
@@ -1561,19 +1434,432 @@
         <property name="height_request">0</property>
         <property name="visible">True</property>
         <property name="can_focus">False</property>
+        <property name="focus_on_click">False</property>
         <property name="receives_default">True</property>
         <property name="halign">center</property>
         <property name="valign">center</property>
         <property name="border_width">0</property>
         <property name="resize_mode">immediate</property>
-        <property name="image">image2</property>
+        <property name="image">wblImg</property>
         <property name="relief">none</property>
-        <property name="image_position">bottom</property>
+        <property name="image_position">top</property>
         <property name="always_show_image">True</property>
       </object>
       <packing>
         <property name="left_attach">1</property>
         <property name="top_attach">7</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkButton" id="wrlBtn">
+        <property name="width_request">1</property>
+        <property name="height_request">0</property>
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="is_focus">True</property>
+        <property name="receives_default">True</property>
+        <property name="events"/>
+        <property name="halign">center</property>
+        <property name="valign">center</property>
+        <property name="border_width">0</property>
+        <property name="image">wrlImg</property>
+        <property name="relief">none</property>
+      </object>
+      <packing>
+        <property name="left_attach">0</property>
+        <property name="top_attach">7</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkButton" id="wnlBtn">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="focus_on_click">False</property>
+        <property name="receives_default">True</property>
+        <property name="image">wnlImg</property>
+        <property name="relief">none</property>
+        <property name="always_show_image">True</property>
+      </object>
+      <packing>
+        <property name="left_attach">2</property>
+        <property name="top_attach">7</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkButton" id="wqBtn">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="receives_default">True</property>
+        <property name="image">wqImg</property>
+        <property name="relief">none</property>
+      </object>
+      <packing>
+        <property name="left_attach">3</property>
+        <property name="top_attach">7</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkButton" id="wnrBtn">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="receives_default">True</property>
+        <property name="image">wnrImg</property>
+        <property name="relief">none</property>
+      </object>
+      <packing>
+        <property name="left_attach">5</property>
+        <property name="top_attach">7</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkButton" id="wbrBtn">
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="receives_default">True</property>
+        <property name="image">wbrImg</property>
+        <property name="relief">none</property>
+      </object>
+      <packing>
+        <property name="left_attach">6</property>
+        <property name="top_attach">7</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkButton" id="wkBtn">
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="receives_default">True</property>
+        <property name="image">wkImg</property>
+        <property name="relief">none</property>
+      </object>
+      <packing>
+        <property name="left_attach">4</property>
+        <property name="top_attach">7</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkButton" id="wp1Btn">
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="receives_default">True</property>
+        <property name="image">wp1Img</property>
+        <property name="relief">none</property>
+      </object>
+      <packing>
+        <property name="left_attach">0</property>
+        <property name="top_attach">6</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkButton" id="wp2Btn">
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="receives_default">True</property>
+        <property name="image">wp2Img</property>
+        <property name="relief">none</property>
+      </object>
+      <packing>
+        <property name="left_attach">1</property>
+        <property name="top_attach">6</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkButton" id="wp3Btn">
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="receives_default">True</property>
+        <property name="image">wp3Img</property>
+        <property name="relief">none</property>
+      </object>
+      <packing>
+        <property name="left_attach">2</property>
+        <property name="top_attach">6</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkButton" id="wp5Btn">
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="receives_default">True</property>
+        <property name="image">wp5Img</property>
+        <property name="relief">none</property>
+      </object>
+      <packing>
+        <property name="left_attach">4</property>
+        <property name="top_attach">6</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkButton" id="wp6Btn">
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="receives_default">True</property>
+        <property name="image">wp6Img</property>
+        <property name="relief">none</property>
+      </object>
+      <packing>
+        <property name="left_attach">5</property>
+        <property name="top_attach">6</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkButton" id="wp4Btn">
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="receives_default">True</property>
+        <property name="image">wp4Img</property>
+        <property name="relief">none</property>
+      </object>
+      <packing>
+        <property name="left_attach">3</property>
+        <property name="top_attach">6</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkButton" id="wp7Btn">
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="receives_default">True</property>
+        <property name="image">wp7Img</property>
+        <property name="relief">none</property>
+      </object>
+      <packing>
+        <property name="left_attach">6</property>
+        <property name="top_attach">6</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkButton" id="wp8Btn">
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="receives_default">True</property>
+        <property name="image">wp8Img</property>
+        <property name="relief">none</property>
+      </object>
+      <packing>
+        <property name="left_attach">7</property>
+        <property name="top_attach">6</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkButton" id="wrrBtn">
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="receives_default">True</property>
+        <property name="image">wrrImg</property>
+        <property name="relief">none</property>
+      </object>
+      <packing>
+        <property name="left_attach">7</property>
+        <property name="top_attach">7</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkButton" id="brlBtn">
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="receives_default">True</property>
+        <property name="image">brlImg</property>
+        <property name="relief">none</property>
+      </object>
+      <packing>
+        <property name="left_attach">0</property>
+        <property name="top_attach">0</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkButton" id="bblBtn">
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="receives_default">True</property>
+        <property name="image">bblImg</property>
+        <property name="relief">none</property>
+      </object>
+      <packing>
+        <property name="left_attach">1</property>
+        <property name="top_attach">0</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkButton" id="bqBtn">
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="receives_default">True</property>
+        <property name="image">bqImg</property>
+        <property name="relief">none</property>
+      </object>
+      <packing>
+        <property name="left_attach">3</property>
+        <property name="top_attach">0</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkButton" id="bnrBtn">
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="receives_default">True</property>
+        <property name="image">bnrImg</property>
+        <property name="relief">none</property>
+      </object>
+      <packing>
+        <property name="left_attach">5</property>
+        <property name="top_attach">0</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkButton" id="bkBtn">
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="receives_default">True</property>
+        <property name="image">bkImg</property>
+        <property name="relief">none</property>
+      </object>
+      <packing>
+        <property name="left_attach">4</property>
+        <property name="top_attach">0</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkButton" id="bnlBtn">
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="receives_default">True</property>
+        <property name="image">bnlImg</property>
+        <property name="relief">none</property>
+      </object>
+      <packing>
+        <property name="left_attach">2</property>
+        <property name="top_attach">0</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkButton" id="bp6Btn">
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="receives_default">True</property>
+        <property name="image">bp6Img</property>
+        <property name="relief">none</property>
+      </object>
+      <packing>
+        <property name="left_attach">5</property>
+        <property name="top_attach">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkButton" id="bp2Btn">
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="receives_default">True</property>
+        <property name="image">bp2Img</property>
+        <property name="relief">none</property>
+      </object>
+      <packing>
+        <property name="left_attach">1</property>
+        <property name="top_attach">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkButton" id="bp3Btn">
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="receives_default">True</property>
+        <property name="image">bp3Img</property>
+        <property name="relief">none</property>
+      </object>
+      <packing>
+        <property name="left_attach">2</property>
+        <property name="top_attach">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkButton" id="bp4Btn">
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="receives_default">True</property>
+        <property name="image">bp4Img</property>
+        <property name="relief">none</property>
+      </object>
+      <packing>
+        <property name="left_attach">3</property>
+        <property name="top_attach">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkButton" id="bp5Btn">
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="receives_default">True</property>
+        <property name="image">bp5Img</property>
+        <property name="relief">none</property>
+      </object>
+      <packing>
+        <property name="left_attach">4</property>
+        <property name="top_attach">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkButton" id="bp7Btn">
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="receives_default">True</property>
+        <property name="image">bp7Img</property>
+        <property name="relief">none</property>
+      </object>
+      <packing>
+        <property name="left_attach">6</property>
+        <property name="top_attach">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkButton" id="bp1Btn">
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="receives_default">True</property>
+        <property name="image">bp1Img</property>
+        <property name="relief">none</property>
+      </object>
+      <packing>
+        <property name="left_attach">0</property>
+        <property name="top_attach">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkButton" id="bbrBtn">
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="receives_default">True</property>
+        <property name="image">bbrImg</property>
+        <property name="relief">none</property>
+      </object>
+      <packing>
+        <property name="left_attach">6</property>
+        <property name="top_attach">0</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkButton" id="brrBtn">
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="receives_default">True</property>
+        <property name="image">brrImg</property>
+        <property name="relief">none</property>
+      </object>
+      <packing>
+        <property name="left_attach">7</property>
+        <property name="top_attach">0</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkButton" id="bp8Btn">
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="receives_default">True</property>
+        <property name="image">bp8Img</property>
+        <property name="relief">none</property>
+      </object>
+      <packing>
+        <property name="left_attach">7</property>
+        <property name="top_attach">1</property>
       </packing>
     </child>
   </object>
