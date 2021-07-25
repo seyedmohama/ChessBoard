@@ -5,5 +5,5 @@ class Rook : public Chessman
 {
 public:
   Rook(int, int, ChessColor);
-  virtual std::vector<std::pair<int, int>> GetMovements();
+  virtual std::vector<std::pair<int, int>> GetMovements(Cell** Board);
 };

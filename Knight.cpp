@@ -9,7 +9,7 @@ Knight::Knight(int x, int y, ChessColor color)
 
 }
 
-std::vector<std::pair<int, int>> Knight::GetMovements()
+std::vector<std::pair<int, int>> Knight::GetMovements(Cell** Board)
 {
   std::vector<std::pair<int, int>> movements;
 

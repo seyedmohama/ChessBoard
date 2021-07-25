@@ -9,7 +9,11 @@ Queen::Queen(int x, int y, ChessColor color)
 
 }
 
- std::vector<std::pair<int, int>> Queen::GetMovements()
+std::vector<std::pair<int, int>> Queen::GetMovements(Cell** Board)
 {
-  return std::vector<std::pair<int, int>> ();
+  std::vector<std::pair<int, int>> crossmoves = ((Bishop*)this)->GetMovements(Board);
+  //std::vector<std::pair<int, int>> plusmoves = ((Rook*)this)->GetMovements(Board);
+  //crossmoves.insert(crossmoves.end(), plusmoves.begin(), plusmoves.end());
+  //return crossmoves;
+  return std::vector<std::pair<int, int>>();
 }

@@ -1,6 +1,8 @@
 #pragma once
 #include <string>
 #include <vector>
+#include "Cell.h"
+
 using namespace std;
 enum class ChessColor { White , Black };
 
@@ -25,6 +27,6 @@ public:
   Chessman(int x, int y, ChessColor color);
   Chessman();
   char TypeString();
-  virtual std::vector<std::pair<int, int>> GetMovements() = 0;
+  virtual std::vector<std::pair<int, int>> GetMovements(Cell** Board) = 0;
   void Move(pair<int, int> position);
 };

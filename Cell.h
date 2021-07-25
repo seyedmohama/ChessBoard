@@ -1,20 +1,17 @@
 #pragma once
-#include "King.h"
-#include "Knight.h"
-#include "Bishop.h"
-#include "Pawn.h"
-#include "Rook.h"
-#include "Queen.h"
+#ifndef CELL_H
+#define CELL
+
+class Chessman;
 
 class Cell
 {
 public:
   Chessman *ptr = nullptr;
 
-    void SetPawn(Chessman* manptr);
+  void SetPawn(Chessman* manptr);
 
-    bool IsEmpty()
-    {
-      return ptr == nullptr;
-    }
+  bool IsEmpty();
 };
+
+#endif

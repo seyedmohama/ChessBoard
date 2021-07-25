@@ -1,5 +1,4 @@
 #include "ChessBoard.h"
-
 using namespace std;
 
 void PrintBoard(Cell** cells)
@@ -33,9 +32,34 @@ int main()
   ChessBoard a;
   a.initBoard();
   Cell** cells = a.GetBoard();
-  PrintBoard(cells);
-  a.Move({0, 0}, {0, 2});
-  PrintBoard(cells);
-  a.Move({3, 0}, {5, 2});
-  PrintBoard(cells);
+  char command;
+  do
+  {
+    PrintBoard(cells);
+    std::cin >> command;
+    if (command == 'm')
+    {
+      int x, y, tox, toy;
+      std::cout << "Which one: ";
+      cin >> x >> y;
+      std::cout << "To where: ";
+      cin >> tox >> toy;
+
+      a.Move({x, y}, {tox, toy});
+    }
+    else if (command == 'o')
+    {
+      int x, y;
+      std::cout << "Which one: ";
+      cin >> x >> y;
+
+      auto movements = a.GetFreeMovements({x, y});
+
+      for (auto i = movements.begin(); i < movements.end(); i++)
+        std::cout << '(' << i->first << ", " << i->second << ") ";
+      std::cout << "\n";
+    }
+  } while (true);
+
+
 }

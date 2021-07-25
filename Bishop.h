@@ -9,7 +9,7 @@ class Bishop : public Chessman
 {
 public:
   Bishop(int, int, ChessColor);
-  virtual vector<pair<int, int>> GetMovements();
+  virtual vector<pair<int, int>> GetMovements(Cell** Board);
 };
 
 #endif
