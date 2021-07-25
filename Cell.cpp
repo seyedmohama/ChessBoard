@@ -7,5 +7,5 @@ void Cell::SetPawn(Chessman* manptr)
 
 bool Cell::IsEmpty()
 {
-  return ptr == nullptr;
+  return (ptr == nullptr);
 }

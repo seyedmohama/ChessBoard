@@ -1,5 +1,4 @@
 #include "Rook.h"
-#include <iostream>
 Rook::Rook(int x, int y, ChessColor color)
 {
   X = x;
@@ -15,7 +14,7 @@ std::vector<std::pair<int, int>> Rook::GetMovements(Cell** Board)
   //Going top
   for (int i = Y; i > 0; i--)
   {
-    if (!Board[X][i].IsEmpty())
+    if (!Board[X][i].IsEmpty() && i != Y)
       break;
     movements.push_back({X, i});
   }
@@ -23,7 +22,7 @@ std::vector<std::pair<int, int>> Rook::GetMovements(Cell** Board)
   //Going Bottom
   for (int i = Y; i < 8; i++)
   {
-    if (!Board[X][i].IsEmpty())
+    if (!Board[X][i].IsEmpty() && i != Y)
       break;
     movements.push_back({X, i});
   }
@@ -32,7 +31,7 @@ std::vector<std::pair<int, int>> Rook::GetMovements(Cell** Board)
   //Going Right
   for (int i = X; i > 0; i--)
   {
-    if (!Board[i][Y].IsEmpty())
+    if (!Board[i][Y].IsEmpty() && i != X)
       break;
     movements.push_back({i, Y});
   }
@@ -40,7 +39,7 @@ std::vector<std::pair<int, int>> Rook::GetMovements(Cell** Board)
   //Going Right
   for (int i = X; i < 8; i++)
   {
-    if (!Board[i][Y].IsEmpty())
+    if (!Board[i][Y].IsEmpty() && i != X)
       break;
     movements.push_back({i, Y});
   }

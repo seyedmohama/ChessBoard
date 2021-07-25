@@ -28,5 +28,5 @@ public:
   Chessman();
   char TypeString();
   virtual std::vector<std::pair<int, int>> GetMovements(Cell** Board) = 0;
-  void Move(pair<int, int> position);
+  virtual void Move(pair<int, int> position);
 };
