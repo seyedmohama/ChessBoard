@@ -79,6 +79,8 @@ m_refGlade(refGlade){
 	buttonsArr[29] = pBP6Btn;
 	buttonsArr[30] = pBP7Btn;
 	buttonsArr[31] = pBP8Btn;
+
+	
 /*	
 	pWNLImg->property_events() = Gdk::EventMask::BUTTON_PRESS_MASK;
 	pWNLImg->signal_button_press_event().connect(sigc::mem_fun(*this,&StackPage::on_activate2));
@@ -148,6 +150,9 @@ void StackPage::startGameBtn_clicked(){
 	m_refGlade->get_widget("gameNameLabelID", pGameNameLabel);
 
 	m_refGlade->get_widget("brlImg", pBRLImg);
+
+
+
 //	std::cout << "name of brl: " << pBRLImg->property_icon_name().get_value() << std::endl;
 	std::cout << pBRLImg->get_name() << std::endl;
 
@@ -178,67 +183,19 @@ void StackPage::startGameBtn_clicked(){
 			squars[pair]->drag_dest_set(target);
 		}
 	}
-//	pWRLBtn->signal_drag_begin().connect(sigc::mem_fun(*this, &StackPage::on_wrl_drag_begin));
-//	pWRLBtn->signal_drag_data_delete().connect(sigc::mem_fun(*this,&StackPage::on_wsl_drag_data_delete));
-	pWRLBtn->signal_drag_data_get().connect(sigc::mem_fun(*this, &StackPage::on_wrl_drag_data_get));
 	
+	pBoardGame->attach(*pWRLBtn, 0, 7);
+	std::pair<char, int> newPair('a', 3);
+	pBoardGame->attach(*(squars[newPair]), 0, 5);
+	show_all();
+
+	pWRLBtn->signal_drag_data_get().connect(sigc::mem_fun(*this, &StackPage::on_wrl_drag_data_get));
 	std::pair<char,int> tempPair('a',3);
 	squars[tempPair]->signal_drag_data_received().connect(sigc::mem_fun(*this,&StackPage::on_a3_drag_data_received));
 }
-void StackPage::on_wrl_drag_data_get(const Glib::RefPtr<Gdk::DragContext>& context, Gtk::SelectionData& selection_data, guint info, guint time){
-	piece = "wrl";
-	cellOrigin = positionOfPieces[piece];
-	selection_data.set( selection_data.get_target(), "I'm Dataaaaa");
 
-	std::cout << "on_wrl_drag_data_get\t" << "piece: " << piece << "\tdraged from: " << cellOrigin << std::endl;
-}
-
-void StackPage::on_a3_drag_data_received(const Glib::RefPtr<Gdk::DragContext>& context, int x, int y, const Gtk::SelectionData& selection_data, guint info, guint time){
-	std::cout << "\ton_a3_drag_data_reieved\n" << "x: " << x << "\ty: " << y << "\tinfo: " << info << "\ttime: " << time << std::endl;
-
-	context->drag_finish(false, false, time);
-}
-
-void StackPage::on_wrl_drag_begin(const Glib::RefPtr<Gdk::DragContext>& context){
-	piece = "wrl";
-	cellOrigin = positionOfPieces[piece];
-
-/*	std::cout << "on_wrl_drag_begin" << std::endl;
-	std::cout << context->get_selection() << std::endl;
-	std::cout << context->get_protocol() << std::endl;
-	std::cout << context->get_actions() << std::endl;
-	std::cout << "get_device\t" << context->get_device()->get_name() << std::endl;
-	std::cout << "get_has_cursor: " << context->get_device()->get_has_cursor() << std::endl;
-	std::cout << "get_source: " << context->get_device()->get_source() << std::endl;
-	std::cout << "get_mode: " << context->get_device()->get_mode() << std::endl;
-	std::cout << "get_n_keys: " << context->get_device()->get_n_keys() << std::endl;
-	std::cout << "get_vendor_id: " << context->get_device()->get_vendor_id() << std::endl;
-	std::cout << "get_product_id: " << context->get_device()->get_product_id() << std::endl;
-*/
-}
-
-
-
-void StackPage::on_wsl_drag_data_delete(const Glib::RefPtr<Gdk::DragContext>& context){
-	std::cout << "on_wsl_drag_data_delete" << std::endl;
-}
-
-
-/*
-void StackPage::on_activate() {
-	std::cout << "ok" << std::endl;
-}
-bool StackPage::on_activate2(GdkEventButton* test) {
-	std::cout << "ok" << std::endl;
-	return true;
-}
-void StackPage::on_wbl_active(){
-	pWBLBtn->set_relief(Gtk::RELIEF_NONE);
-}*/
-
-
-bool StackPage::motionVerification(std::string cellOrigin, std::string item, std::string cellDestination){
-	std::cout << "motion = " << item << " from " <<  cellOrigin << " to " << cellDestination << std::endl;
+bool StackPage::motionVerification(){
+	std::cout << "motion = " << piece << " from " <<  cellOrigin << " to " << cellDestination << std::endl;
 	return true;
 }
 

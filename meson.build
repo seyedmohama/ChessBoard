@@ -10,7 +10,8 @@ src = [
   'src/main.cpp',
   'src/gui/MainWindow.cpp',
   'src/gui/StackPage.cpp',
-	'src/handler.cpp'
+	'src/handler.cpp',
+	'src/gui/drag_drop.cpp'
 ]
 includes = include_directories(
   'include',

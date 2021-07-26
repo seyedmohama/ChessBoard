@@ -102,7 +102,7 @@
     <property name="pixbuf">images/bq.png</property>
   </object>
   <object class="GtkImage" id="brlImg">
-    <property name="name">brlImg</property>
+    <property name="name">brlImgName</property>
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="margin_top">1</property>
@@ -1065,6 +1065,20 @@
     <property name="margin_bottom">1</property>
     <property name="pixbuf">images/wr.png</property>
   </object>
+  <object class="GtkButton" id="wrlBtn">
+    <property name="width_request">1</property>
+    <property name="height_request">0</property>
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="is_focus">True</property>
+    <property name="receives_default">True</property>
+    <property name="events"/>
+    <property name="halign">center</property>
+    <property name="valign">center</property>
+    <property name="border_width">0</property>
+    <property name="image">wrlImg</property>
+    <property name="relief">none</property>
+  </object>
   <object class="GtkImage" id="wrrImg">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -1129,17 +1143,6 @@
       <packing>
         <property name="left_attach">7</property>
         <property name="top_attach">2</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkImage" id="a3">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="pixbuf">images/blank-62.png</property>
-      </object>
-      <packing>
-        <property name="left_attach">0</property>
-        <property name="top_attach">5</property>
       </packing>
     </child>
     <child>
@@ -1447,26 +1450,6 @@
       </object>
       <packing>
         <property name="left_attach">1</property>
-        <property name="top_attach">7</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkButton" id="wrlBtn">
-        <property name="width_request">1</property>
-        <property name="height_request">0</property>
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="is_focus">True</property>
-        <property name="receives_default">True</property>
-        <property name="events"/>
-        <property name="halign">center</property>
-        <property name="valign">center</property>
-        <property name="border_width">0</property>
-        <property name="image">wrlImg</property>
-        <property name="relief">none</property>
-      </object>
-      <packing>
-        <property name="left_attach">0</property>
         <property name="top_attach">7</property>
       </packing>
     </child>
@@ -1861,6 +1844,12 @@
         <property name="left_attach">7</property>
         <property name="top_attach">1</property>
       </packing>
+    </child>
+    <child>
+      <placeholder/>
+    </child>
+    <child>
+      <placeholder/>
     </child>
   </object>
 </interface>

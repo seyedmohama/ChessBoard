@@ -35,16 +35,22 @@ class StackPage : public Gtk::Stack{
 		std::map<std::pair<char,int>, Gtk::Image*> squars; 
 
 		std::map<std::string, std::string> positionOfPieces;
+
 		std::string cellOrigin, piece, cellDestination;
+		Gtk::Widget *pointerPiece;
+		int X_Position, Y_Position;
 
 		void startGameBtn_clicked();
-		bool motionVerification(std::string cellOrigin, std::string item, std::string cellDestination);
+		bool motionVerification();
 
 		void on_wrl_drag_begin(const Glib::RefPtr<Gdk::DragContext>& context);
 		void on_wsl_drag_data_delete(const Glib::RefPtr<Gdk::DragContext>&);
 		void on_wrl_drag_data_get(const Glib::RefPtr<Gdk::DragContext>& context, Gtk::SelectionData& selection_data, guint info, guint time);
 
 		void on_a3_drag_data_received(const Glib::RefPtr<Gdk::DragContext>&, int, int, const Gtk::SelectionData&, guint, guint);
+
+
+		std::pair<int, int> positionExtraction(std::string);
 };
 
 class Item : public Gtk::Button{
