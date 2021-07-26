@@ -42,11 +42,9 @@ class StackPage : public Gtk::Stack{
 
 		void on_wrl_drag_begin(const Glib::RefPtr<Gdk::DragContext>& context);
 		void on_wsl_drag_data_delete(const Glib::RefPtr<Gdk::DragContext>&);
-		/*
-		void on_activate();
-		bool on_activate2(GdkEventButton*);
-		void on_wbl_active();
-		*/
+		void on_wrl_drag_data_get(const Glib::RefPtr<Gdk::DragContext>& context, Gtk::SelectionData& selection_data, guint info, guint time);
+
+		void on_a3_drag_data_received(const Glib::RefPtr<Gdk::DragContext>&, int, int, const Gtk::SelectionData&, guint, guint);
 };
 
 class Item : public Gtk::Button{

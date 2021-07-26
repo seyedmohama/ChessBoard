@@ -103,38 +103,38 @@ StackPage::~StackPage(){
 }
 
 void StackPage::startGameBtn_clicked(){
-	positionsOfPieces["wrl"] = "a1";
-	positionsOfPieces["wbl"] = "b1";
-	positionsOfPieces["wnl"] = "c1";
-	positionsOfPieces["wq"] = "d1";
-	positionsOfPieces["wk"] = "e1";
-	positionsOfPieces["wnr"] = "f1";
-	positionsOfPieces["wbr"] = "g1";
-	positionsOfPieces["wrr"] = "h1";
-	positionsOfPieces["wp1"] = "a2";
-	positionsOfPieces["wp2"] = "b2";
-	positionsOfPieces["wp3"] = "c2";
-	positionsOfPieces["wp4"] = "d2";
-	positionsOfPieces["wp5"] = "e2";
-	positionsOfPieces["wp6"] = "f2";
-	positionsOfPieces["wp7"] = "g2";
-	positionsOfPieces["wp8"] = "h2";
-	positionsOfPieces["brl"] = "a1";
-	positionsOfPieces["bbl"] = "b1";
-	positionsOfPieces["bnl"] = "c1";
-	positionsOfPieces["bq"] = "d1";
-	positionsOfPieces["bk"] = "e1";
-	positionsOfPieces["bnr"] = "f1";
-	positionsOfPieces["bbr"] = "g1";
-	positionsOfPieces["brr"] = "h1";
-	positionsOfPieces["bp1"] = "a2";
-	positionsOfPieces["bp2"] = "b2";
-	positionsOfPieces["bp3"] = "c2";
-	positionsOfPieces["bp4"] = "d2";
-	positionsOfPieces["bp5"] = "e2";
-	positionsOfPieces["bp6"] = "f2";
-	positionsOfPieces["bp7"] = "g2";
-	positionsOfPieces["bp8"] = "h2";
+	positionOfPieces["wrl"] = "a1";
+	positionOfPieces["wbl"] = "b1";
+	positionOfPieces["wnl"] = "c1";
+	positionOfPieces["wq"] = "d1";
+	positionOfPieces["wk"] = "e1";
+	positionOfPieces["wnr"] = "f1";
+	positionOfPieces["wbr"] = "g1";
+	positionOfPieces["wrr"] = "h1";
+	positionOfPieces["wp1"] = "a2";
+	positionOfPieces["wp2"] = "b2";
+	positionOfPieces["wp3"] = "c2";
+	positionOfPieces["wp4"] = "d2";
+	positionOfPieces["wp5"] = "e2";
+	positionOfPieces["wp6"] = "f2";
+	positionOfPieces["wp7"] = "g2";
+	positionOfPieces["wp8"] = "h2";
+	positionOfPieces["brl"] = "a1";
+	positionOfPieces["bbl"] = "b1";
+	positionOfPieces["bnl"] = "c1";
+	positionOfPieces["bq"] = "d1";
+	positionOfPieces["bk"] = "e1";
+	positionOfPieces["bnr"] = "f1";
+	positionOfPieces["bbr"] = "g1";
+	positionOfPieces["brr"] = "h1";
+	positionOfPieces["bp1"] = "a2";
+	positionOfPieces["bp2"] = "b2";
+	positionOfPieces["bp3"] = "c2";
+	positionOfPieces["bp4"] = "d2";
+	positionOfPieces["bp5"] = "e2";
+	positionOfPieces["bp6"] = "f2";
+	positionOfPieces["bp7"] = "g2";
+	positionOfPieces["bp8"] = "h2";
 	m_refGlade->get_widget("gameNameEntry", pGameNameEnt);
 	m_refGlade->get_widget("playerFirstNameEntry", pPlayerFirstNameEnt);
 	m_refGlade->get_widget("playerSecondNameEntry", pPlayerSecondNameEnt);
@@ -178,20 +178,32 @@ void StackPage::startGameBtn_clicked(){
 			squars[pair]->drag_dest_set(target);
 		}
 	}
-	pWRLBtn->signal_drag_begin().connect(sigc::mem_fun(*this, &StackPage::on_wrl_drag_begin));
-	pWRLBtn->signal_drag_data_delete().connect(sigc::mem_fun(*this,&StackPage::on_wsl_drag_data_delete));
+//	pWRLBtn->signal_drag_begin().connect(sigc::mem_fun(*this, &StackPage::on_wrl_drag_begin));
+//	pWRLBtn->signal_drag_data_delete().connect(sigc::mem_fun(*this,&StackPage::on_wsl_drag_data_delete));
+	pWRLBtn->signal_drag_data_get().connect(sigc::mem_fun(*this, &StackPage::on_wrl_drag_data_get));
 	
 	std::pair<char,int> tempPair('a',3);
-	squars[tempPair]->signal_drag_drop
+	squars[tempPair]->signal_drag_data_received().connect(sigc::mem_fun(*this,&StackPage::on_a3_drag_data_received));
+}
+void StackPage::on_wrl_drag_data_get(const Glib::RefPtr<Gdk::DragContext>& context, Gtk::SelectionData& selection_data, guint info, guint time){
+	piece = "wrl";
+	cellOrigin = positionOfPieces[piece];
+	selection_data.set( selection_data.get_target(), "I'm Dataaaaa");
+
+	std::cout << "on_wrl_drag_data_get\t" << "piece: " << piece << "\tdraged from: " << cellOrigin << std::endl;
+}
+
+void StackPage::on_a3_drag_data_received(const Glib::RefPtr<Gdk::DragContext>& context, int x, int y, const Gtk::SelectionData& selection_data, guint info, guint time){
+	std::cout << "\ton_a3_drag_data_reieved\n" << "x: " << x << "\ty: " << y << "\tinfo: " << info << "\ttime: " << time << std::endl;
+
+	context->drag_finish(false, false, time);
 }
 
 void StackPage::on_wrl_drag_begin(const Glib::RefPtr<Gdk::DragContext>& context){
 	piece = "wrl";
-	cellOrigin = positionsOfPieces[piece];
+	cellOrigin = positionOfPieces[piece];
 
-
-
-	std::cout << "on_wrl_drag_begin" << std::endl;
+/*	std::cout << "on_wrl_drag_begin" << std::endl;
 	std::cout << context->get_selection() << std::endl;
 	std::cout << context->get_protocol() << std::endl;
 	std::cout << context->get_actions() << std::endl;
@@ -202,7 +214,7 @@ void StackPage::on_wrl_drag_begin(const Glib::RefPtr<Gdk::DragContext>& context)
 	std::cout << "get_n_keys: " << context->get_device()->get_n_keys() << std::endl;
 	std::cout << "get_vendor_id: " << context->get_device()->get_vendor_id() << std::endl;
 	std::cout << "get_product_id: " << context->get_device()->get_product_id() << std::endl;
-
+*/
 }
 
 
@@ -225,7 +237,8 @@ void StackPage::on_wbl_active(){
 }*/
 
 
-void StackPage::motionVerification(std::string cellOrigin, std::string item, std::string cellDestination){
+bool StackPage::motionVerification(std::string cellOrigin, std::string item, std::string cellDestination){
 	std::cout << "motion = " << item << " from " <<  cellOrigin << " to " << cellDestination << std::endl;
 	return true;
 }
+
