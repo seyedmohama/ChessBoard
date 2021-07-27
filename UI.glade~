@@ -1065,20 +1065,6 @@
     <property name="margin_bottom">1</property>
     <property name="pixbuf">images/wr.png</property>
   </object>
-  <object class="GtkButton" id="wrlBtn">
-    <property name="width_request">1</property>
-    <property name="height_request">0</property>
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="is_focus">True</property>
-    <property name="receives_default">True</property>
-    <property name="events"/>
-    <property name="halign">center</property>
-    <property name="valign">center</property>
-    <property name="border_width">0</property>
-    <property name="image">wrlImg</property>
-    <property name="relief">none</property>
-  </object>
   <object class="GtkImage" id="wrrImg">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -1091,7 +1077,7 @@
     <property name="can_focus">False</property>
     <property name="margin_top">5</property>
     <child>
-      <object class="GtkImage" id="a6">
+      <object class="GtkImage" id="25sq">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="pixbuf">images/blank-62.png</property>
@@ -1102,7 +1088,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkImage" id="b6">
+      <object class="GtkImage" id="26sq">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="pixbuf">images/blank-62.png</property>
@@ -1113,7 +1099,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkImage" id="c6">
+      <object class="GtkImage" id="27sq">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="pixbuf">images/blank-62.png</property>
@@ -1124,7 +1110,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkImage" id="f6">
+      <object class="GtkImage" id="30sq">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="pixbuf">images/blank-62.png</property>
@@ -1135,7 +1121,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkImage" id="h6">
+      <object class="GtkImage" id="32sq">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="pixbuf">images/blank-62.png</property>
@@ -1146,7 +1132,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkImage" id="c3">
+      <object class="GtkImage" id="3sq">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="pixbuf">images/blank-62.png</property>
@@ -1157,7 +1143,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkImage" id="f3">
+      <object class="GtkImage" id="6sq">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="pixbuf">images/blank-62.png</property>
@@ -1168,7 +1154,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkImage" id="h3">
+      <object class="GtkImage" id="8sq">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="pixbuf">images/blank-62.png</property>
@@ -1179,7 +1165,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkImage" id="a4">
+      <object class="GtkImage" id="9sq">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="pixbuf">images/blank-62.png</property>
@@ -1190,7 +1176,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkImage" id="a5">
+      <object class="GtkImage" id="17sq">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="pixbuf">images/blank-62.png</property>
@@ -1201,7 +1187,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkImage" id="c5">
+      <object class="GtkImage" id="19sq">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="pixbuf">images/blank-62.png</property>
@@ -1212,7 +1198,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkImage" id="c4">
+      <object class="GtkImage" id="11sq">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="pixbuf">images/blank-62.png</property>
@@ -1223,7 +1209,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkImage" id="f5">
+      <object class="GtkImage" id="22sq">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="pixbuf">images/blank-62.png</property>
@@ -1234,7 +1220,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkImage" id="f4">
+      <object class="GtkImage" id="14sq">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="pixbuf">images/blank-62.png</property>
@@ -1245,7 +1231,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkImage" id="h5">
+      <object class="GtkImage" id="24sq">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="pixbuf">images/blank-62.png</property>
@@ -1256,7 +1242,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkImage" id="h4">
+      <object class="GtkImage" id="16sq">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="pixbuf">images/blank-62.png</property>
@@ -1267,7 +1253,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkImage" id="b5">
+      <object class="GtkImage" id="18sq">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="pixbuf">images/blank-62.png</property>
@@ -1278,7 +1264,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkImage" id="b4">
+      <object class="GtkImage" id="10sq">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="pixbuf">images/blank-62.png</property>
@@ -1289,7 +1275,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkImage" id="b3">
+      <object class="GtkImage" id="2sq">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="pixbuf">images/blank-62.png</property>
@@ -1300,7 +1286,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkImage" id="d6">
+      <object class="GtkImage" id="28sq">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="pixbuf">images/blank-62.png</property>
@@ -1311,7 +1297,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkImage" id="d5">
+      <object class="GtkImage" id="20sq">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="pixbuf">images/blank-62.png</property>
@@ -1322,7 +1308,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkImage" id="d4">
+      <object class="GtkImage" id="12sq">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="pixbuf">images/blank-62.png</property>
@@ -1333,7 +1319,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkImage" id="d3">
+      <object class="GtkImage" id="4sq">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="pixbuf">images/blank-62.png</property>
@@ -1344,7 +1330,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkImage" id="e6">
+      <object class="GtkImage" id="29sq">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="pixbuf">images/blank-62.png</property>
@@ -1355,7 +1341,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkImage" id="e4">
+      <object class="GtkImage" id="13sq">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="pixbuf">images/blank-62.png</property>
@@ -1366,7 +1352,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkImage" id="e5">
+      <object class="GtkImage" id="21sq">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="pixbuf">images/blank-62.png</property>
@@ -1377,7 +1363,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkImage" id="e3">
+      <object class="GtkImage" id="5sq">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="pixbuf">images/blank-62.png</property>
@@ -1388,7 +1374,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkImage" id="g6">
+      <object class="GtkImage" id="31sq">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="pixbuf">images/blank-62.png</property>
@@ -1399,7 +1385,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkImage" id="g5">
+      <object class="GtkImage" id="23sq">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="pixbuf">images/blank-62.png</property>
@@ -1410,7 +1396,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkImage" id="g4">
+      <object class="GtkImage" id="15sq">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="pixbuf">images/blank-62.png</property>
@@ -1421,7 +1407,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkImage" id="g3">
+      <object class="GtkImage" id="7sq">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="pixbuf">images/blank-62.png</property>
@@ -1730,6 +1716,7 @@
     </child>
     <child>
       <object class="GtkButton" id="bp2Btn">
+        <property name="name">bp2Btn</property>
         <property name="visible">True</property>
         <property name="can_focus">True</property>
         <property name="receives_default">True</property>
@@ -1846,10 +1833,35 @@
       </packing>
     </child>
     <child>
-      <placeholder/>
+      <object class="GtkImage" id="1sq">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="pixbuf">images/blank-62.png</property>
+      </object>
+      <packing>
+        <property name="left_attach">0</property>
+        <property name="top_attach">5</property>
+      </packing>
     </child>
     <child>
-      <placeholder/>
+      <object class="GtkButton" id="wrlBtn">
+        <property name="width_request">1</property>
+        <property name="height_request">0</property>
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="is_focus">True</property>
+        <property name="receives_default">True</property>
+        <property name="events"/>
+        <property name="halign">center</property>
+        <property name="valign">center</property>
+        <property name="border_width">0</property>
+        <property name="image">wrlImg</property>
+        <property name="relief">none</property>
+      </object>
+      <packing>
+        <property name="left_attach">0</property>
+        <property name="top_attach">7</property>
+      </packing>
     </child>
   </object>
 </interface>
