@@ -63,7 +63,6 @@ m_refGlade(refGlade){
 	buttonsArr[13] = pWP6Btn;
 	buttonsArr[14] = pWP7Btn;
 	buttonsArr[15] = pWP8Btn;
-
 	buttonsArr[16] = pBRLBtn;
 	buttonsArr[17] = pBBLBtn;
 	buttonsArr[18] = pBNLBtn;
@@ -125,39 +124,41 @@ void StackPage::startGameBtn_clicked(){
 	positionOfPieces["bp7"] = "g7";
 	positionOfPieces["bp8"] = "h7";
 
-	// set positions of blank squars
-	positionOfSquars[1] = "a3";
-	positionOfSquars[2] = "b3";
-	positionOfSquars[3] = "c3";
-	positionOfSquars[4] = "d3";
-	positionOfSquars[5] = "e3";
-	positionOfSquars[6] = "f3";
-	positionOfSquars[7] = "g3";
-	positionOfSquars[8] = "h3";
-	positionOfSquars[9] = "a4";
-	positionOfSquars[10] = "b4";
-	positionOfSquars[11] = "c4";
-	positionOfSquars[12] = "d4";
-	positionOfSquars[13] = "e4";
-	positionOfSquars[14] = "f4";
-	positionOfSquars[15] = "g4";
-	positionOfSquars[16] = "h4";
-	positionOfSquars[17] = "a5";
-	positionOfSquars[18] = "b5";
-	positionOfSquars[19] = "c5";
-	positionOfSquars[20] = "d5";
-	positionOfSquars[21] = "e5";
-	positionOfSquars[22] = "f5";
-	positionOfSquars[23] = "g5";
-	positionOfSquars[24] = "h5";
-	positionOfSquars[25] = "a6";
-	positionOfSquars[26] = "b6";
-	positionOfSquars[27] = "c6";
-	positionOfSquars[28] = "d6";
-	positionOfSquars[29] = "e6";
-	positionOfSquars[30] = "f6";
-	positionOfSquars[31] = "g6";
-	positionOfSquars[32] = "h6";
+	// set positions of blank blankSquars
+	positionOfBlankSquars[1] = "a3";
+	positionOfBlankSquars[2] = "b3";
+	positionOfBlankSquars[3] = "c3";
+	positionOfBlankSquars[4] = "d3";
+	positionOfBlankSquars[5] = "e3";
+	positionOfBlankSquars[6] = "f3";
+	positionOfBlankSquars[7] = "g3";
+	positionOfBlankSquars[8] = "h3";
+	positionOfBlankSquars[9] = "a4";
+	positionOfBlankSquars[10] = "b4";
+	positionOfBlankSquars[11] = "c4";
+	positionOfBlankSquars[12] = "d4";
+	positionOfBlankSquars[13] = "e4";
+	positionOfBlankSquars[14] = "f4";
+	positionOfBlankSquars[15] = "g4";
+	positionOfBlankSquars[16] = "h4";
+	positionOfBlankSquars[17] = "a5";
+	positionOfBlankSquars[18] = "b5";
+	positionOfBlankSquars[19] = "c5";
+	positionOfBlankSquars[20] = "d5";
+	positionOfBlankSquars[21] = "e5";
+	positionOfBlankSquars[22] = "f5";
+	positionOfBlankSquars[23] = "g5";
+	positionOfBlankSquars[24] = "h5";
+	positionOfBlankSquars[25] = "a6";
+	positionOfBlankSquars[26] = "b6";
+	positionOfBlankSquars[27] = "c6";
+	positionOfBlankSquars[28] = "d6";
+	positionOfBlankSquars[29] = "e6";
+	positionOfBlankSquars[30] = "f6";
+	positionOfBlankSquars[31] = "g6";
+	positionOfBlankSquars[32] = "h6";
+
+	//positionOfBlankSquars[33] = "a1";
 
 	m_refGlade->get_widget("gameNameEntry", pGameNameEnt);
 	m_refGlade->get_widget("playerFirstNameEntry", pPlayerFirstNameEnt);
@@ -173,14 +174,10 @@ void StackPage::startGameBtn_clicked(){
 
 	m_refGlade->get_widget("brlImg", pBRLImg);
 
-
-
-//	std::cout << "name of brl: " << pBRLImg->property_icon_name().get_value() << std::endl;
-	std::cout << pBRLImg->get_name() << std::endl;
-
+	
 	Gtk::Allocation rectangle;
-	rectangle.set_width(69);
-	rectangle.set_height(69);
+	rectangle.set_width(609);
+	rectangle.set_height(609);
 
 	pBoardGame->size_allocate(rectangle,0);
 	pBoardGame->set_column_spacing(0);
@@ -192,15 +189,16 @@ void StackPage::startGameBtn_clicked(){
 	std::vector<Gtk::TargetEntry>	target;
 	target.push_back(Gtk::TargetEntry("Target"));
 
-	for(size_t i = 0;i < 32;i++){
+	for( size_t i = 0; i < 32; i++){
 		buttonsArr[i]->drag_source_set(target);
+		buttonsArr[i]->drag_dest_set(target);
 	}
-	
-	for(int i = 1;i <= 32;i++){
-			squars[i] = (Gtk::Image*)nullptr;
+
+	for( int i = 1; i <= 64; i++){
+			blankSquars[i] = (Gtk::Image*)nullptr;
 			std::string id = (std::to_string(i)) + "sq";
-			m_refGlade->get_widget( id, squars[i] );
-			squars[i]->drag_dest_set( target);
+			m_refGlade->get_widget( id, blankSquars[i]);
+			blankSquars[i]->drag_dest_set( target);
 	}
 
 	buttonsArr[0]-> signal_drag_data_get() .connect( sigc::mem_fun( *this, &StackPage::on_0_drag_data_get));
@@ -235,41 +233,107 @@ void StackPage::startGameBtn_clicked(){
 	buttonsArr[29]-> signal_drag_data_get() .connect( sigc::mem_fun( *this, &StackPage::on_29_drag_data_get));
 	buttonsArr[30]-> signal_drag_data_get() .connect( sigc::mem_fun( *this, &StackPage::on_30_drag_data_get));
 	buttonsArr[31]-> signal_drag_data_get() .connect( sigc::mem_fun( *this, &StackPage::on_31_drag_data_get));
-	squars[1]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_1_drag_data_received));
-	squars[2]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_2_drag_data_received));
-	squars[3]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_3_drag_data_received));
-	squars[4]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_4_drag_data_received));
-	squars[5]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_5_drag_data_received));
-	squars[6]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_6_drag_data_received));
-	squars[7]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_7_drag_data_received));
-	squars[8]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_8_drag_data_received));
-	squars[9]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_9_drag_data_received));
-	squars[10]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_10_drag_data_received));
-	squars[11]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_11_drag_data_received));
-	squars[12]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_12_drag_data_received));
-	squars[13]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_13_drag_data_received));
-	squars[14]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_14_drag_data_received));
-	squars[15]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_15_drag_data_received));
-	squars[16]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_16_drag_data_received));
-	squars[17]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_17_drag_data_received));
-	squars[18]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_18_drag_data_received));
-	squars[19]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_19_drag_data_received));
-	squars[20]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_20_drag_data_received));
-	squars[21]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_21_drag_data_received));
-	squars[22]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_22_drag_data_received));
-	squars[23]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_23_drag_data_received));
-	squars[24]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_24_drag_data_received));
-	squars[25]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_25_drag_data_received));
-	squars[26]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_26_drag_data_received));
-	squars[27]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_27_drag_data_received));
-	squars[28]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_28_drag_data_received));
-	squars[29]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_29_drag_data_received));
-	squars[30]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_30_drag_data_received));
-	squars[31]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_31_drag_data_received));
-	squars[32]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_32_drag_data_received));
+	blankSquars[1]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_1s_drag_data_received));
+	blankSquars[2]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_2s_drag_data_received));
+	blankSquars[3]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_3s_drag_data_received));
+	blankSquars[4]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_4s_drag_data_received));
+	blankSquars[5]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_5s_drag_data_received));
+	blankSquars[6]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_6s_drag_data_received));
+	blankSquars[7]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_7s_drag_data_received));
+	blankSquars[8]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_8s_drag_data_received));
+	blankSquars[9]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_9s_drag_data_received));
+	blankSquars[10]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_10s_drag_data_received));
+	blankSquars[11]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_11s_drag_data_received));
+	blankSquars[12]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_12s_drag_data_received));
+	blankSquars[13]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_13s_drag_data_received));
+	blankSquars[14]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_14s_drag_data_received));
+	blankSquars[15]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_15s_drag_data_received));
+	blankSquars[16]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_16s_drag_data_received));
+	blankSquars[17]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_17s_drag_data_received));
+	blankSquars[18]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_18s_drag_data_received));
+	blankSquars[19]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_19s_drag_data_received));
+	blankSquars[20]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_20s_drag_data_received));
+	blankSquars[21]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_21s_drag_data_received));
+	blankSquars[22]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_22s_drag_data_received));
+	blankSquars[23]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_23s_drag_data_received));
+	blankSquars[24]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_24s_drag_data_received));
+	blankSquars[25]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_25s_drag_data_received));
+	blankSquars[26]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_26s_drag_data_received));
+	blankSquars[27]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_27s_drag_data_received));
+	blankSquars[28]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_28s_drag_data_received));
+	blankSquars[29]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_29s_drag_data_received));
+	blankSquars[30]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_30s_drag_data_received));
+	blankSquars[31]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_31s_drag_data_received));
+	blankSquars[32]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_32s_drag_data_received));
+	blankSquars[33]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_33s_drag_data_received));
+	blankSquars[34]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_34s_drag_data_received));
+	blankSquars[35]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_35s_drag_data_received));
+	blankSquars[36]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_36s_drag_data_received));
+	blankSquars[37]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_37s_drag_data_received));
+	blankSquars[38]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_38s_drag_data_received));
+	blankSquars[39]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_39s_drag_data_received));
+	blankSquars[40]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_40s_drag_data_received));
+	blankSquars[41]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_41s_drag_data_received));
+	blankSquars[42]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_42s_drag_data_received));
+	blankSquars[43]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_43s_drag_data_received));
+	blankSquars[44]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_44s_drag_data_received));
+	blankSquars[45]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_45s_drag_data_received));
+	blankSquars[46]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_46s_drag_data_received));
+	blankSquars[47]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_47s_drag_data_received));
+	blankSquars[48]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_48s_drag_data_received));
+	blankSquars[49]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_49s_drag_data_received));
+	blankSquars[50]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_50s_drag_data_received));
+	blankSquars[51]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_51s_drag_data_received));
+	blankSquars[52]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_52s_drag_data_received));
+	blankSquars[53]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_53s_drag_data_received));
+	blankSquars[54]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_54s_drag_data_received));
+	blankSquars[55]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_55s_drag_data_received));
+	blankSquars[56]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_56s_drag_data_received));
+	blankSquars[57]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_57s_drag_data_received));
+	blankSquars[58]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_58s_drag_data_received));
+	blankSquars[59]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_59s_drag_data_received));
+	blankSquars[60]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_60s_drag_data_received));
+	blankSquars[61]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_61s_drag_data_received));
+	blankSquars[62]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_62s_drag_data_received));
+	blankSquars[63]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_63s_drag_data_received));
+	blankSquars[64]-> signal_drag_data_received().connect( sigc::mem_fun( *this, &StackPage::on_64s_drag_data_received));
+
+
+
+
+	buttonsArr[0]-> signal_drag_data_received() .connect( sigc::mem_fun( *this, &StackPage::on_0p_drag_data_received));
+}
+
+std::string StackPage::pieceNameByPosition(std::map< std::string, std::string> map, std::string position){
+	for( auto it = map.cbegin(); it != map.cend(); it++){
+		if((*it).second == position){
+			return (*it).first;
+		}
+	}
+	return "";
+}
+
+int StackPage::cellIsEmpty( std::map< std::string, std::string> map, std::string cell){
+	for( auto it = map.cbegin(); it != map.cend(); it++){
+		if((*it).second == cell){
+			if((*it).first == piece){
+				return -1;
+			}
+			return 0;
+		}
+	}
+	return 1;
 }
 
 bool StackPage::motionVerification(){
+	if(cellIsEmpty( positionOfPieces, cellDestination) == 0){
+		std::cout << "motion attack = " << piece << " from " << cellOrigin << " to " << pieceNameByPosition( positionOfPieces, cellDestination) << " on "<< cellDestination << std::endl;
+		return true;
+	}
+	if(cellIsEmpty( positionOfPieces, cellDestination) == -1){
+		std::cout << "motion invalid!!!" << std::endl;
+		return false;
+	}
 	std::cout << "motion = " << piece << " from " <<  cellOrigin << " to " << cellDestination << std::endl;
 	return true;
 }
