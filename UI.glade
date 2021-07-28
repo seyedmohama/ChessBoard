@@ -3,6 +3,166 @@
 <interface>
   <requires lib="gtk+" version="3.20"/>
   <!-- interface-css-provider-path res/style.css -->
+  <object class="GtkImage" id="33sq">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/blank-62.png</property>
+  </object>
+  <object class="GtkImage" id="34sq">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/blank-62.png</property>
+  </object>
+  <object class="GtkImage" id="35sq">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/blank-62.png</property>
+  </object>
+  <object class="GtkImage" id="36sq">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/blank-62.png</property>
+  </object>
+  <object class="GtkImage" id="37sq">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/blank-62.png</property>
+  </object>
+  <object class="GtkImage" id="38sq">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/blank-62.png</property>
+  </object>
+  <object class="GtkImage" id="39sq">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/blank-62.png</property>
+  </object>
+  <object class="GtkImage" id="40sq">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/blank-62.png</property>
+  </object>
+  <object class="GtkImage" id="41sq">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/blank-62.png</property>
+  </object>
+  <object class="GtkImage" id="42sq">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/blank-62.png</property>
+  </object>
+  <object class="GtkImage" id="43sq">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/blank-62.png</property>
+  </object>
+  <object class="GtkImage" id="44sq">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/blank-62.png</property>
+  </object>
+  <object class="GtkImage" id="45sq">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/blank-62.png</property>
+  </object>
+  <object class="GtkImage" id="46sq">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/blank-62.png</property>
+  </object>
+  <object class="GtkImage" id="47sq">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/blank-62.png</property>
+  </object>
+  <object class="GtkImage" id="48sq">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/blank-62.png</property>
+  </object>
+  <object class="GtkImage" id="49sq">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/blank-62.png</property>
+  </object>
+  <object class="GtkImage" id="50sq">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/blank-62.png</property>
+  </object>
+  <object class="GtkImage" id="51sq">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/blank-62.png</property>
+  </object>
+  <object class="GtkImage" id="52sq">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/blank-62.png</property>
+  </object>
+  <object class="GtkImage" id="53sq">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/blank-62.png</property>
+  </object>
+  <object class="GtkImage" id="54sq">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/blank-62.png</property>
+  </object>
+  <object class="GtkImage" id="55sq">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/blank-62.png</property>
+  </object>
+  <object class="GtkImage" id="56sq">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/blank-62.png</property>
+  </object>
+  <object class="GtkImage" id="57sq">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/blank-62.png</property>
+  </object>
+  <object class="GtkImage" id="58sq">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/blank-62.png</property>
+  </object>
+  <object class="GtkImage" id="59sq">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/blank-62.png</property>
+  </object>
+  <object class="GtkImage" id="60sq">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/blank-62.png</property>
+  </object>
+  <object class="GtkImage" id="61sq">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/blank-62.png</property>
+  </object>
+  <object class="GtkImage" id="62sq">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/blank-62.png</property>
+  </object>
+  <object class="GtkImage" id="63sq">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/blank-62.png</property>
+  </object>
+  <object class="GtkImage" id="64sq">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/blank-62.png</property>
+  </object>
   <object class="GtkImage" id="bblImg">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
