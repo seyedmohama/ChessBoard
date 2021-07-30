@@ -1258,6 +1258,7 @@ void StackPage::on_64s_drag_data_received(const Glib::RefPtr<Gdk::DragContext>& 
 
 void StackPage::on_0p_drag_data_received(const Glib::RefPtr<Gdk::DragContext>& context, int x, int y, const Gtk::SelectionData& selection_data, guint info, guint time){
 	std::string pieceNameDest = "wrl";
+	int i = 0;
 	cellDestination = positionOfPieces[pieceNameDest];
 	if(motionVerification()){
 
@@ -1265,19 +1266,731 @@ void StackPage::on_0p_drag_data_received(const Glib::RefPtr<Gdk::DragContext>& c
 		positionOfBlankSquars[numberNewBlankSquars + 32] = positionOfPieces[piece];
 
 		pBoardGame->remove(*pointerPiece);
-		pBoardGame->remove(*(buttonsArr[0]));
+		pBoardGame->remove(*(buttonsArr[i]));
 		pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
 
 		pBoardGame->attach(*(pointerPiece), positionExtraction(positionOfPieces[pieceNameDest]).first, positionExtraction(positionOfPieces[pieceNameDest]).second);
 
 		pBoardGame->attach(*(blankSquars[numberNewBlankSquars + 32]), positionExtraction(positionOfPieces[piece]).first, positionExtraction(positionOfPieces[piece]).second);
 
-		positionOfBlankSquars[33] = positionOfPieces[piece];
+		positionOfPieces[pieceNameDest] = "removed";
 		positionOfPieces[piece] = cellDestination;
 	}
 	context->drag_finish(false, false, time);
 }
 
+void StackPage::on_1p_drag_data_received(const Glib::RefPtr<Gdk::DragContext>& context, int x, int y, const Gtk::SelectionData& selection_data, guint info, guint time){
+	std::string pieceNameDest = "wbl";
+	int i = 1;
+	cellDestination = positionOfPieces[pieceNameDest];
+	if(motionVerification()){
+
+		numberNewBlankSquars++;
+		positionOfBlankSquars[numberNewBlankSquars + 32] = positionOfPieces[piece];
+
+		pBoardGame->remove(*pointerPiece);
+		pBoardGame->remove(*(buttonsArr[i]));
+		pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
+
+		pBoardGame->attach(*(pointerPiece), positionExtraction(positionOfPieces[pieceNameDest]).first, positionExtraction(positionOfPieces[pieceNameDest]).second);
+
+		pBoardGame->attach(*(blankSquars[numberNewBlankSquars + 32]), positionExtraction(positionOfPieces[piece]).first, positionExtraction(positionOfPieces[piece]).second);
+
+		positionOfPieces[pieceNameDest] = "removed";
+		positionOfPieces[piece] = cellDestination;
+	}
+	context->drag_finish(false, false, time);
+}
+
+void StackPage::on_2p_drag_data_received(const Glib::RefPtr<Gdk::DragContext>& context, int x, int y, const Gtk::SelectionData& selection_data, guint info, guint time){
+	std::string pieceNameDest = "wnl";
+	int i = 2;
+	cellDestination = positionOfPieces[pieceNameDest];
+	if(motionVerification()){
+
+		numberNewBlankSquars++;
+		positionOfBlankSquars[numberNewBlankSquars + 32] = positionOfPieces[piece];
+
+		pBoardGame->remove(*pointerPiece);
+		pBoardGame->remove(*(buttonsArr[i]));
+		pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
+
+		pBoardGame->attach(*(pointerPiece), positionExtraction(positionOfPieces[pieceNameDest]).first, positionExtraction(positionOfPieces[pieceNameDest]).second);
+
+		pBoardGame->attach(*(blankSquars[numberNewBlankSquars + 32]), positionExtraction(positionOfPieces[piece]).first, positionExtraction(positionOfPieces[piece]).second);
+
+		positionOfPieces[pieceNameDest] = "removed";
+		positionOfPieces[piece] = cellDestination;
+	}
+	context->drag_finish(false, false, time);
+}
+
+void StackPage::on_3p_drag_data_received(const Glib::RefPtr<Gdk::DragContext>& context, int x, int y, const Gtk::SelectionData& selection_data, guint info, guint time){
+	std::string pieceNameDest = "wq";
+	int i = 3;
+	cellDestination = positionOfPieces[pieceNameDest];
+	if(motionVerification()){
+
+		numberNewBlankSquars++;
+		positionOfBlankSquars[numberNewBlankSquars + 32] = positionOfPieces[piece];
+
+		pBoardGame->remove(*pointerPiece);
+		pBoardGame->remove(*(buttonsArr[i]));
+		pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
+
+		pBoardGame->attach(*(pointerPiece), positionExtraction(positionOfPieces[pieceNameDest]).first, positionExtraction(positionOfPieces[pieceNameDest]).second);
+
+		pBoardGame->attach(*(blankSquars[numberNewBlankSquars + 32]), positionExtraction(positionOfPieces[piece]).first, positionExtraction(positionOfPieces[piece]).second);
+
+		positionOfPieces[pieceNameDest] = "removed";
+		positionOfPieces[piece] = cellDestination;
+	}
+	context->drag_finish(false, false, time);
+}
+
+void StackPage::on_4p_drag_data_received(const Glib::RefPtr<Gdk::DragContext>& context, int x, int y, const Gtk::SelectionData& selection_data, guint info, guint time){
+	std::string pieceNameDest = "wk";
+	int i = 4;
+	cellDestination = positionOfPieces[pieceNameDest];
+	if(motionVerification()){
+
+		numberNewBlankSquars++;
+		positionOfBlankSquars[numberNewBlankSquars + 32] = positionOfPieces[piece];
+
+		pBoardGame->remove(*pointerPiece);
+		pBoardGame->remove(*(buttonsArr[i]));
+		pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
+
+		pBoardGame->attach(*(pointerPiece), positionExtraction(positionOfPieces[pieceNameDest]).first, positionExtraction(positionOfPieces[pieceNameDest]).second);
+
+		pBoardGame->attach(*(blankSquars[numberNewBlankSquars + 32]), positionExtraction(positionOfPieces[piece]).first, positionExtraction(positionOfPieces[piece]).second);
+
+		positionOfPieces[pieceNameDest] = "removed";
+		positionOfPieces[piece] = cellDestination;
+	}
+	context->drag_finish(false, false, time);
+}
+
+void StackPage::on_5p_drag_data_received(const Glib::RefPtr<Gdk::DragContext>& context, int x, int y, const Gtk::SelectionData& selection_data, guint info, guint time){
+	std::string pieceNameDest = "wnr";
+	int i = 5;
+	cellDestination = positionOfPieces[pieceNameDest];
+	if(motionVerification()){
+
+		numberNewBlankSquars++;
+		positionOfBlankSquars[numberNewBlankSquars + 32] = positionOfPieces[piece];
+
+		pBoardGame->remove(*pointerPiece);
+		pBoardGame->remove(*(buttonsArr[i]));
+		pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
+
+		pBoardGame->attach(*(pointerPiece), positionExtraction(positionOfPieces[pieceNameDest]).first, positionExtraction(positionOfPieces[pieceNameDest]).second);
+
+		pBoardGame->attach(*(blankSquars[numberNewBlankSquars + 32]), positionExtraction(positionOfPieces[piece]).first, positionExtraction(positionOfPieces[piece]).second);
+
+		positionOfPieces[pieceNameDest] = "removed";
+		positionOfPieces[piece] = cellDestination;
+	}
+	context->drag_finish(false, false, time);
+}
+
+void StackPage::on_6p_drag_data_received(const Glib::RefPtr<Gdk::DragContext>& context, int x, int y, const Gtk::SelectionData& selection_data, guint info, guint time){
+	std::string pieceNameDest = "wbr";
+	int i = 6;
+	cellDestination = positionOfPieces[pieceNameDest];
+	if(motionVerification()){
+
+		numberNewBlankSquars++;
+		positionOfBlankSquars[numberNewBlankSquars + 32] = positionOfPieces[piece];
+
+		pBoardGame->remove(*pointerPiece);
+		pBoardGame->remove(*(buttonsArr[i]));
+		pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
+
+		pBoardGame->attach(*(pointerPiece), positionExtraction(positionOfPieces[pieceNameDest]).first, positionExtraction(positionOfPieces[pieceNameDest]).second);
+
+		pBoardGame->attach(*(blankSquars[numberNewBlankSquars + 32]), positionExtraction(positionOfPieces[piece]).first, positionExtraction(positionOfPieces[piece]).second);
+
+		positionOfPieces[pieceNameDest] = "removed";
+		positionOfPieces[piece] = cellDestination;
+	}
+	context->drag_finish(false, false, time);
+}
+
+void StackPage::on_7p_drag_data_received(const Glib::RefPtr<Gdk::DragContext>& context, int x, int y, const Gtk::SelectionData& selection_data, guint info, guint time){
+	std::string pieceNameDest = "wrr";
+	int i = 7;
+	cellDestination = positionOfPieces[pieceNameDest];
+	if(motionVerification()){
+
+		numberNewBlankSquars++;
+		positionOfBlankSquars[numberNewBlankSquars + 32] = positionOfPieces[piece];
+
+		pBoardGame->remove(*pointerPiece);
+		pBoardGame->remove(*(buttonsArr[i]));
+		pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
+
+		pBoardGame->attach(*(pointerPiece), positionExtraction(positionOfPieces[pieceNameDest]).first, positionExtraction(positionOfPieces[pieceNameDest]).second);
+
+		pBoardGame->attach(*(blankSquars[numberNewBlankSquars + 32]), positionExtraction(positionOfPieces[piece]).first, positionExtraction(positionOfPieces[piece]).second);
+
+		positionOfPieces[pieceNameDest] = "removed";
+		positionOfPieces[piece] = cellDestination;
+	}
+	context->drag_finish(false, false, time);
+}
+
+void StackPage::on_8p_drag_data_received(const Glib::RefPtr<Gdk::DragContext>& context, int x, int y, const Gtk::SelectionData& selection_data, guint info, guint time){
+	std::string pieceNameDest = "wp1";
+	int i = 8;
+	cellDestination = positionOfPieces[pieceNameDest];
+	if(motionVerification()){
+
+		numberNewBlankSquars++;
+		positionOfBlankSquars[numberNewBlankSquars + 32] = positionOfPieces[piece];
+
+		pBoardGame->remove(*pointerPiece);
+		pBoardGame->remove(*(buttonsArr[i]));
+		pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
+
+		pBoardGame->attach(*(pointerPiece), positionExtraction(positionOfPieces[pieceNameDest]).first, positionExtraction(positionOfPieces[pieceNameDest]).second);
+
+		pBoardGame->attach(*(blankSquars[numberNewBlankSquars + 32]), positionExtraction(positionOfPieces[piece]).first, positionExtraction(positionOfPieces[piece]).second);
+
+		positionOfPieces[pieceNameDest] = "removed";
+		positionOfPieces[piece] = cellDestination;
+	}
+	context->drag_finish(false, false, time);
+}
+
+void StackPage::on_9p_drag_data_received(const Glib::RefPtr<Gdk::DragContext>& context, int x, int y, const Gtk::SelectionData& selection_data, guint info, guint time){
+	std::string pieceNameDest = "wp2";
+	int i = 9;
+	cellDestination = positionOfPieces[pieceNameDest];
+	if(motionVerification()){
+
+		numberNewBlankSquars++;
+		positionOfBlankSquars[numberNewBlankSquars + 32] = positionOfPieces[piece];
+
+		pBoardGame->remove(*pointerPiece);
+		pBoardGame->remove(*(buttonsArr[i]));
+		pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
+
+		pBoardGame->attach(*(pointerPiece), positionExtraction(positionOfPieces[pieceNameDest]).first, positionExtraction(positionOfPieces[pieceNameDest]).second);
+
+		pBoardGame->attach(*(blankSquars[numberNewBlankSquars + 32]), positionExtraction(positionOfPieces[piece]).first, positionExtraction(positionOfPieces[piece]).second);
+
+		positionOfPieces[pieceNameDest] = "removed";
+		positionOfPieces[piece] = cellDestination;
+	}
+	context->drag_finish(false, false, time);
+}
+
+void StackPage::on_10p_drag_data_received(const Glib::RefPtr<Gdk::DragContext>& context, int x, int y, const Gtk::SelectionData& selection_data, guint info, guint time){
+	std::string pieceNameDest = "wp3";
+	int i = 10;
+	cellDestination = positionOfPieces[pieceNameDest];
+	if(motionVerification()){
+
+		numberNewBlankSquars++;
+		positionOfBlankSquars[numberNewBlankSquars + 32] = positionOfPieces[piece];
+
+		pBoardGame->remove(*pointerPiece);
+		pBoardGame->remove(*(buttonsArr[i]));
+		pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
+
+		pBoardGame->attach(*(pointerPiece), positionExtraction(positionOfPieces[pieceNameDest]).first, positionExtraction(positionOfPieces[pieceNameDest]).second);
+
+		pBoardGame->attach(*(blankSquars[numberNewBlankSquars + 32]), positionExtraction(positionOfPieces[piece]).first, positionExtraction(positionOfPieces[piece]).second);
+
+		positionOfPieces[pieceNameDest] = "removed";
+		positionOfPieces[piece] = cellDestination;
+	}
+	context->drag_finish(false, false, time);
+}
+
+void StackPage::on_11p_drag_data_received(const Glib::RefPtr<Gdk::DragContext>& context, int x, int y, const Gtk::SelectionData& selection_data, guint info, guint time){
+	std::string pieceNameDest = "wp4";
+	int i = 11;
+	cellDestination = positionOfPieces[pieceNameDest];
+	if(motionVerification()){
+
+		numberNewBlankSquars++;
+		positionOfBlankSquars[numberNewBlankSquars + 32] = positionOfPieces[piece];
+
+		pBoardGame->remove(*pointerPiece);
+		pBoardGame->remove(*(buttonsArr[i]));
+		pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
+
+		pBoardGame->attach(*(pointerPiece), positionExtraction(positionOfPieces[pieceNameDest]).first, positionExtraction(positionOfPieces[pieceNameDest]).second);
+
+		pBoardGame->attach(*(blankSquars[numberNewBlankSquars + 32]), positionExtraction(positionOfPieces[piece]).first, positionExtraction(positionOfPieces[piece]).second);
+
+		positionOfPieces[pieceNameDest] = "removed";
+		positionOfPieces[piece] = cellDestination;
+	}
+	context->drag_finish(false, false, time);
+}
+
+void StackPage::on_12p_drag_data_received(const Glib::RefPtr<Gdk::DragContext>& context, int x, int y, const Gtk::SelectionData& selection_data, guint info, guint time){
+	std::string pieceNameDest = "wp5";
+	int i = 12;
+	cellDestination = positionOfPieces[pieceNameDest];
+	if(motionVerification()){
+
+		numberNewBlankSquars++;
+		positionOfBlankSquars[numberNewBlankSquars + 32] = positionOfPieces[piece];
+
+		pBoardGame->remove(*pointerPiece);
+		pBoardGame->remove(*(buttonsArr[i]));
+		pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
+
+		pBoardGame->attach(*(pointerPiece), positionExtraction(positionOfPieces[pieceNameDest]).first, positionExtraction(positionOfPieces[pieceNameDest]).second);
+
+		pBoardGame->attach(*(blankSquars[numberNewBlankSquars + 32]), positionExtraction(positionOfPieces[piece]).first, positionExtraction(positionOfPieces[piece]).second);
+
+		positionOfPieces[pieceNameDest] = "removed";
+		positionOfPieces[piece] = cellDestination;
+	}
+	context->drag_finish(false, false, time);
+}
+
+void StackPage::on_13p_drag_data_received(const Glib::RefPtr<Gdk::DragContext>& context, int x, int y, const Gtk::SelectionData& selection_data, guint info, guint time){
+	std::string pieceNameDest = "wp6";
+	int i = 13;
+	cellDestination = positionOfPieces[pieceNameDest];
+	if(motionVerification()){
+
+		numberNewBlankSquars++;
+		positionOfBlankSquars[numberNewBlankSquars + 32] = positionOfPieces[piece];
+
+		pBoardGame->remove(*pointerPiece);
+		pBoardGame->remove(*(buttonsArr[i]));
+		pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
+
+		pBoardGame->attach(*(pointerPiece), positionExtraction(positionOfPieces[pieceNameDest]).first, positionExtraction(positionOfPieces[pieceNameDest]).second);
+
+		pBoardGame->attach(*(blankSquars[numberNewBlankSquars + 32]), positionExtraction(positionOfPieces[piece]).first, positionExtraction(positionOfPieces[piece]).second);
+
+		positionOfPieces[pieceNameDest] = "removed";
+		positionOfPieces[piece] = cellDestination;
+	}
+	context->drag_finish(false, false, time);
+}
+
+void StackPage::on_14p_drag_data_received(const Glib::RefPtr<Gdk::DragContext>& context, int x, int y, const Gtk::SelectionData& selection_data, guint info, guint time){
+	std::string pieceNameDest = "wp7";
+	int i = 14;
+	cellDestination = positionOfPieces[pieceNameDest];
+	if(motionVerification()){
+
+		numberNewBlankSquars++;
+		positionOfBlankSquars[numberNewBlankSquars + 32] = positionOfPieces[piece];
+
+		pBoardGame->remove(*pointerPiece);
+		pBoardGame->remove(*(buttonsArr[i]));
+		pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
+
+		pBoardGame->attach(*(pointerPiece), positionExtraction(positionOfPieces[pieceNameDest]).first, positionExtraction(positionOfPieces[pieceNameDest]).second);
+
+		pBoardGame->attach(*(blankSquars[numberNewBlankSquars + 32]), positionExtraction(positionOfPieces[piece]).first, positionExtraction(positionOfPieces[piece]).second);
+
+		positionOfPieces[pieceNameDest] = "removed";
+		positionOfPieces[piece] = cellDestination;
+	}
+	context->drag_finish(false, false, time);
+}
+
+void StackPage::on_15p_drag_data_received(const Glib::RefPtr<Gdk::DragContext>& context, int x, int y, const Gtk::SelectionData& selection_data, guint info, guint time){
+	std::string pieceNameDest = "wp8";
+	int i = 15;
+	cellDestination = positionOfPieces[pieceNameDest];
+	if(motionVerification()){
+
+		numberNewBlankSquars++;
+		positionOfBlankSquars[numberNewBlankSquars + 32] = positionOfPieces[piece];
+
+		pBoardGame->remove(*pointerPiece);
+		pBoardGame->remove(*(buttonsArr[i]));
+		pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
+
+		pBoardGame->attach(*(pointerPiece), positionExtraction(positionOfPieces[pieceNameDest]).first, positionExtraction(positionOfPieces[pieceNameDest]).second);
+
+		pBoardGame->attach(*(blankSquars[numberNewBlankSquars + 32]), positionExtraction(positionOfPieces[piece]).first, positionExtraction(positionOfPieces[piece]).second);
+
+		positionOfPieces[pieceNameDest] = "removed";
+		positionOfPieces[piece] = cellDestination;
+	}
+	context->drag_finish(false, false, time);
+}
+
+void StackPage::on_16p_drag_data_received(const Glib::RefPtr<Gdk::DragContext>& context, int x, int y, const Gtk::SelectionData& selection_data, guint info, guint time){
+	std::string pieceNameDest = "brl";
+	int i = 16;
+	cellDestination = positionOfPieces[pieceNameDest];
+	if(motionVerification()){
+
+		numberNewBlankSquars++;
+		positionOfBlankSquars[numberNewBlankSquars + 32] = positionOfPieces[piece];
+
+		pBoardGame->remove(*pointerPiece);
+		pBoardGame->remove(*(buttonsArr[i]));
+		pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
+
+		pBoardGame->attach(*(pointerPiece), positionExtraction(positionOfPieces[pieceNameDest]).first, positionExtraction(positionOfPieces[pieceNameDest]).second);
+
+		pBoardGame->attach(*(blankSquars[numberNewBlankSquars + 32]), positionExtraction(positionOfPieces[piece]).first, positionExtraction(positionOfPieces[piece]).second);
+
+		positionOfPieces[pieceNameDest] = "removed";
+		positionOfPieces[piece] = cellDestination;
+	}
+	context->drag_finish(false, false, time);
+}
+
+void StackPage::on_17p_drag_data_received(const Glib::RefPtr<Gdk::DragContext>& context, int x, int y, const Gtk::SelectionData& selection_data, guint info, guint time){
+	std::string pieceNameDest = "bbl";
+	int i = 17;
+	cellDestination = positionOfPieces[pieceNameDest];
+	if(motionVerification()){
+
+		numberNewBlankSquars++;
+		positionOfBlankSquars[numberNewBlankSquars + 32] = positionOfPieces[piece];
+
+		pBoardGame->remove(*pointerPiece);
+		pBoardGame->remove(*(buttonsArr[i]));
+		pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
+
+		pBoardGame->attach(*(pointerPiece), positionExtraction(positionOfPieces[pieceNameDest]).first, positionExtraction(positionOfPieces[pieceNameDest]).second);
+
+		pBoardGame->attach(*(blankSquars[numberNewBlankSquars + 32]), positionExtraction(positionOfPieces[piece]).first, positionExtraction(positionOfPieces[piece]).second);
+
+		positionOfPieces[pieceNameDest] = "removed";
+		positionOfPieces[piece] = cellDestination;
+	}
+	context->drag_finish(false, false, time);
+}
+
+void StackPage::on_18p_drag_data_received(const Glib::RefPtr<Gdk::DragContext>& context, int x, int y, const Gtk::SelectionData& selection_data, guint info, guint time){
+	std::string pieceNameDest = "bnl";
+	int i = 18;
+	cellDestination = positionOfPieces[pieceNameDest];
+	if(motionVerification()){
+
+		numberNewBlankSquars++;
+		positionOfBlankSquars[numberNewBlankSquars + 32] = positionOfPieces[piece];
+
+		pBoardGame->remove(*pointerPiece);
+		pBoardGame->remove(*(buttonsArr[i]));
+		pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
+
+		pBoardGame->attach(*(pointerPiece), positionExtraction(positionOfPieces[pieceNameDest]).first, positionExtraction(positionOfPieces[pieceNameDest]).second);
+
+		pBoardGame->attach(*(blankSquars[numberNewBlankSquars + 32]), positionExtraction(positionOfPieces[piece]).first, positionExtraction(positionOfPieces[piece]).second);
+
+		positionOfPieces[pieceNameDest] = "removed";
+		positionOfPieces[piece] = cellDestination;
+	}
+	context->drag_finish(false, false, time);
+}
+
+void StackPage::on_19p_drag_data_received(const Glib::RefPtr<Gdk::DragContext>& context, int x, int y, const Gtk::SelectionData& selection_data, guint info, guint time){
+	std::string pieceNameDest = "bq";
+	int i = 19;
+	cellDestination = positionOfPieces[pieceNameDest];
+	if(motionVerification()){
+
+		numberNewBlankSquars++;
+		positionOfBlankSquars[numberNewBlankSquars + 32] = positionOfPieces[piece];
+
+		pBoardGame->remove(*pointerPiece);
+		pBoardGame->remove(*(buttonsArr[i]));
+		pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
+
+		pBoardGame->attach(*(pointerPiece), positionExtraction(positionOfPieces[pieceNameDest]).first, positionExtraction(positionOfPieces[pieceNameDest]).second);
+
+		pBoardGame->attach(*(blankSquars[numberNewBlankSquars + 32]), positionExtraction(positionOfPieces[piece]).first, positionExtraction(positionOfPieces[piece]).second);
+
+		positionOfPieces[pieceNameDest] = "removed";
+		positionOfPieces[piece] = cellDestination;
+	}
+	context->drag_finish(false, false, time);
+}
+
+void StackPage::on_20p_drag_data_received(const Glib::RefPtr<Gdk::DragContext>& context, int x, int y, const Gtk::SelectionData& selection_data, guint info, guint time){
+	std::string pieceNameDest = "bk";
+	int i = 20;
+	cellDestination = positionOfPieces[pieceNameDest];
+	if(motionVerification()){
+
+		numberNewBlankSquars++;
+		positionOfBlankSquars[numberNewBlankSquars + 32] = positionOfPieces[piece];
+
+		pBoardGame->remove(*pointerPiece);
+		pBoardGame->remove(*(buttonsArr[i]));
+		pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
+
+		pBoardGame->attach(*(pointerPiece), positionExtraction(positionOfPieces[pieceNameDest]).first, positionExtraction(positionOfPieces[pieceNameDest]).second);
+
+		pBoardGame->attach(*(blankSquars[numberNewBlankSquars + 32]), positionExtraction(positionOfPieces[piece]).first, positionExtraction(positionOfPieces[piece]).second);
+
+		positionOfPieces[pieceNameDest] = "removed";
+		positionOfPieces[piece] = cellDestination;
+	}
+	context->drag_finish(false, false, time);
+}
+
+void StackPage::on_21p_drag_data_received(const Glib::RefPtr<Gdk::DragContext>& context, int x, int y, const Gtk::SelectionData& selection_data, guint info, guint time){
+	std::string pieceNameDest = "bnr";
+	int i = 21;
+	cellDestination = positionOfPieces[pieceNameDest];
+	if(motionVerification()){
+
+		numberNewBlankSquars++;
+		positionOfBlankSquars[numberNewBlankSquars + 32] = positionOfPieces[piece];
+
+		pBoardGame->remove(*pointerPiece);
+		pBoardGame->remove(*(buttonsArr[i]));
+		pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
+
+		pBoardGame->attach(*(pointerPiece), positionExtraction(positionOfPieces[pieceNameDest]).first, positionExtraction(positionOfPieces[pieceNameDest]).second);
+
+		pBoardGame->attach(*(blankSquars[numberNewBlankSquars + 32]), positionExtraction(positionOfPieces[piece]).first, positionExtraction(positionOfPieces[piece]).second);
+
+		positionOfPieces[pieceNameDest] = "removed";
+		positionOfPieces[piece] = cellDestination;
+	}
+	context->drag_finish(false, false, time);
+}
+
+void StackPage::on_22p_drag_data_received(const Glib::RefPtr<Gdk::DragContext>& context, int x, int y, const Gtk::SelectionData& selection_data, guint info, guint time){
+	std::string pieceNameDest = "bbr";
+	int i = 22;
+	cellDestination = positionOfPieces[pieceNameDest];
+	if(motionVerification()){
+
+		numberNewBlankSquars++;
+		positionOfBlankSquars[numberNewBlankSquars + 32] = positionOfPieces[piece];
+
+		pBoardGame->remove(*pointerPiece);
+		pBoardGame->remove(*(buttonsArr[i]));
+		pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
+
+		pBoardGame->attach(*(pointerPiece), positionExtraction(positionOfPieces[pieceNameDest]).first, positionExtraction(positionOfPieces[pieceNameDest]).second);
+
+		pBoardGame->attach(*(blankSquars[numberNewBlankSquars + 32]), positionExtraction(positionOfPieces[piece]).first, positionExtraction(positionOfPieces[piece]).second);
+
+		positionOfPieces[pieceNameDest] = "removed";
+		positionOfPieces[piece] = cellDestination;
+	}
+	context->drag_finish(false, false, time);
+}
+
+void StackPage::on_23p_drag_data_received(const Glib::RefPtr<Gdk::DragContext>& context, int x, int y, const Gtk::SelectionData& selection_data, guint info, guint time){
+	std::string pieceNameDest = "brr";
+	int i = 23;
+	cellDestination = positionOfPieces[pieceNameDest];
+	if(motionVerification()){
+
+		numberNewBlankSquars++;
+		positionOfBlankSquars[numberNewBlankSquars + 32] = positionOfPieces[piece];
+
+		pBoardGame->remove(*pointerPiece);
+		pBoardGame->remove(*(buttonsArr[i]));
+		pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
+
+		pBoardGame->attach(*(pointerPiece), positionExtraction(positionOfPieces[pieceNameDest]).first, positionExtraction(positionOfPieces[pieceNameDest]).second);
+
+		pBoardGame->attach(*(blankSquars[numberNewBlankSquars + 32]), positionExtraction(positionOfPieces[piece]).first, positionExtraction(positionOfPieces[piece]).second);
+
+		positionOfPieces[pieceNameDest] = "removed";
+		positionOfPieces[piece] = cellDestination;
+	}
+	context->drag_finish(false, false, time);
+}
+
+void StackPage::on_24p_drag_data_received(const Glib::RefPtr<Gdk::DragContext>& context, int x, int y, const Gtk::SelectionData& selection_data, guint info, guint time){
+	std::string pieceNameDest = "bp1";
+	int i = 24;
+	cellDestination = positionOfPieces[pieceNameDest];
+	if(motionVerification()){
+
+		numberNewBlankSquars++;
+		positionOfBlankSquars[numberNewBlankSquars + 32] = positionOfPieces[piece];
+
+		pBoardGame->remove(*pointerPiece);
+		pBoardGame->remove(*(buttonsArr[i]));
+		pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
+
+		pBoardGame->attach(*(pointerPiece), positionExtraction(positionOfPieces[pieceNameDest]).first, positionExtraction(positionOfPieces[pieceNameDest]).second);
+
+		pBoardGame->attach(*(blankSquars[numberNewBlankSquars + 32]), positionExtraction(positionOfPieces[piece]).first, positionExtraction(positionOfPieces[piece]).second);
+
+		positionOfPieces[pieceNameDest] = "removed";
+		positionOfPieces[piece] = cellDestination;
+	}
+	context->drag_finish(false, false, time);
+}
+
+void StackPage::on_25p_drag_data_received(const Glib::RefPtr<Gdk::DragContext>& context, int x, int y, const Gtk::SelectionData& selection_data, guint info, guint time){
+	std::string pieceNameDest = "bp2";
+	int i = 25;
+	cellDestination = positionOfPieces[pieceNameDest];
+	if(motionVerification()){
+
+		numberNewBlankSquars++;
+		positionOfBlankSquars[numberNewBlankSquars + 32] = positionOfPieces[piece];
+
+		pBoardGame->remove(*pointerPiece);
+		pBoardGame->remove(*(buttonsArr[i]));
+		pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
+
+		pBoardGame->attach(*(pointerPiece), positionExtraction(positionOfPieces[pieceNameDest]).first, positionExtraction(positionOfPieces[pieceNameDest]).second);
+
+		pBoardGame->attach(*(blankSquars[numberNewBlankSquars + 32]), positionExtraction(positionOfPieces[piece]).first, positionExtraction(positionOfPieces[piece]).second);
+
+		positionOfPieces[pieceNameDest] = "removed";
+		positionOfPieces[piece] = cellDestination;
+	}
+	context->drag_finish(false, false, time);
+}
+
+void StackPage::on_26p_drag_data_received(const Glib::RefPtr<Gdk::DragContext>& context, int x, int y, const Gtk::SelectionData& selection_data, guint info, guint time){
+	std::string pieceNameDest = "bp3";
+	int i = 26;
+	cellDestination = positionOfPieces[pieceNameDest];
+	if(motionVerification()){
+
+		numberNewBlankSquars++;
+		positionOfBlankSquars[numberNewBlankSquars + 32] = positionOfPieces[piece];
+
+		pBoardGame->remove(*pointerPiece);
+		pBoardGame->remove(*(buttonsArr[i]));
+		pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
+
+		pBoardGame->attach(*(pointerPiece), positionExtraction(positionOfPieces[pieceNameDest]).first, positionExtraction(positionOfPieces[pieceNameDest]).second);
+
+		pBoardGame->attach(*(blankSquars[numberNewBlankSquars + 32]), positionExtraction(positionOfPieces[piece]).first, positionExtraction(positionOfPieces[piece]).second);
+
+		positionOfPieces[pieceNameDest] = "removed";
+		positionOfPieces[piece] = cellDestination;
+	}
+	context->drag_finish(false, false, time);
+}
+
+void StackPage::on_27p_drag_data_received(const Glib::RefPtr<Gdk::DragContext>& context, int x, int y, const Gtk::SelectionData& selection_data, guint info, guint time){
+	std::string pieceNameDest = "bp4";
+	int i = 27;
+	cellDestination = positionOfPieces[pieceNameDest];
+	if(motionVerification()){
+
+		numberNewBlankSquars++;
+		positionOfBlankSquars[numberNewBlankSquars + 32] = positionOfPieces[piece];
+
+		pBoardGame->remove(*pointerPiece);
+		pBoardGame->remove(*(buttonsArr[i]));
+		pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
+
+		pBoardGame->attach(*(pointerPiece), positionExtraction(positionOfPieces[pieceNameDest]).first, positionExtraction(positionOfPieces[pieceNameDest]).second);
+
+		pBoardGame->attach(*(blankSquars[numberNewBlankSquars + 32]), positionExtraction(positionOfPieces[piece]).first, positionExtraction(positionOfPieces[piece]).second);
+
+		positionOfPieces[pieceNameDest] = "removed";
+		positionOfPieces[piece] = cellDestination;
+	}
+	context->drag_finish(false, false, time);
+}
+
+void StackPage::on_28p_drag_data_received(const Glib::RefPtr<Gdk::DragContext>& context, int x, int y, const Gtk::SelectionData& selection_data, guint info, guint time){
+	std::string pieceNameDest = "bp5";
+	int i = 28;
+	cellDestination = positionOfPieces[pieceNameDest];
+	if(motionVerification()){
+
+		numberNewBlankSquars++;
+		positionOfBlankSquars[numberNewBlankSquars + 32] = positionOfPieces[piece];
+
+		pBoardGame->remove(*pointerPiece);
+		pBoardGame->remove(*(buttonsArr[i]));
+		pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
+
+		pBoardGame->attach(*(pointerPiece), positionExtraction(positionOfPieces[pieceNameDest]).first, positionExtraction(positionOfPieces[pieceNameDest]).second);
+
+		pBoardGame->attach(*(blankSquars[numberNewBlankSquars + 32]), positionExtraction(positionOfPieces[piece]).first, positionExtraction(positionOfPieces[piece]).second);
+
+		positionOfPieces[pieceNameDest] = "removed";
+		positionOfPieces[piece] = cellDestination;
+	}
+	context->drag_finish(false, false, time);
+}
+
+void StackPage::on_29p_drag_data_received(const Glib::RefPtr<Gdk::DragContext>& context, int x, int y, const Gtk::SelectionData& selection_data, guint info, guint time){
+	std::string pieceNameDest = "bp6";
+	int i = 29;
+	cellDestination = positionOfPieces[pieceNameDest];
+	if(motionVerification()){
+
+		numberNewBlankSquars++;
+		positionOfBlankSquars[numberNewBlankSquars + 32] = positionOfPieces[piece];
+
+		pBoardGame->remove(*pointerPiece);
+		pBoardGame->remove(*(buttonsArr[i]));
+		pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
+
+		pBoardGame->attach(*(pointerPiece), positionExtraction(positionOfPieces[pieceNameDest]).first, positionExtraction(positionOfPieces[pieceNameDest]).second);
+
+		pBoardGame->attach(*(blankSquars[numberNewBlankSquars + 32]), positionExtraction(positionOfPieces[piece]).first, positionExtraction(positionOfPieces[piece]).second);
+
+		positionOfPieces[pieceNameDest] = "removed";
+		positionOfPieces[piece] = cellDestination;
+	}
+	context->drag_finish(false, false, time);
+}
+
+void StackPage::on_30p_drag_data_received(const Glib::RefPtr<Gdk::DragContext>& context, int x, int y, const Gtk::SelectionData& selection_data, guint info, guint time){
+	std::string pieceNameDest = "bp7";
+	int i = 30;
+	cellDestination = positionOfPieces[pieceNameDest];
+	if(motionVerification()){
+
+		numberNewBlankSquars++;
+		positionOfBlankSquars[numberNewBlankSquars + 32] = positionOfPieces[piece];
+
+		pBoardGame->remove(*pointerPiece);
+		pBoardGame->remove(*(buttonsArr[i]));
+		pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
+
+		pBoardGame->attach(*(pointerPiece), positionExtraction(positionOfPieces[pieceNameDest]).first, positionExtraction(positionOfPieces[pieceNameDest]).second);
+
+		pBoardGame->attach(*(blankSquars[numberNewBlankSquars + 32]), positionExtraction(positionOfPieces[piece]).first, positionExtraction(positionOfPieces[piece]).second);
+
+		positionOfPieces[pieceNameDest] = "removed";
+		positionOfPieces[piece] = cellDestination;
+	}
+	context->drag_finish(false, false, time);
+}
+
+void StackPage::on_31p_drag_data_received(const Glib::RefPtr<Gdk::DragContext>& context, int x, int y, const Gtk::SelectionData& selection_data, guint info, guint time){
+	std::string pieceNameDest = "bp8";
+	int i = 31;
+	cellDestination = positionOfPieces[pieceNameDest];
+	if(motionVerification()){
+
+		numberNewBlankSquars++;
+		positionOfBlankSquars[numberNewBlankSquars + 32] = positionOfPieces[piece];
+
+		pBoardGame->remove(*pointerPiece);
+		pBoardGame->remove(*(buttonsArr[i]));
+		pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
+
+		pBoardGame->attach(*(pointerPiece), positionExtraction(positionOfPieces[pieceNameDest]).first, positionExtraction(positionOfPieces[pieceNameDest]).second);
+
+		pBoardGame->attach(*(blankSquars[numberNewBlankSquars + 32]), positionExtraction(positionOfPieces[piece]).first, positionExtraction(positionOfPieces[piece]).second);
+
+		positionOfPieces[pieceNameDest] = "removed";
+		positionOfPieces[piece] = cellDestination;
+	}
+	context->drag_finish(false, false, time);
+}
 
 std::pair<int, int> StackPage::positionExtraction(std::string input){
 	std::pair<int, int> pair;

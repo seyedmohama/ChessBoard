@@ -302,7 +302,38 @@ void StackPage::startGameBtn_clicked(){
 
 
 	buttonsArr[0]-> signal_drag_data_received() .connect( sigc::mem_fun( *this, &StackPage::on_0p_drag_data_received));
-}
+	buttonsArr[1]-> signal_drag_data_received() .connect( sigc::mem_fun( *this, &StackPage::on_1p_drag_data_received));
+	buttonsArr[2]-> signal_drag_data_received() .connect( sigc::mem_fun( *this, &StackPage::on_2p_drag_data_received));
+	buttonsArr[3]-> signal_drag_data_received() .connect( sigc::mem_fun( *this, &StackPage::on_3p_drag_data_received));
+	buttonsArr[4]-> signal_drag_data_received() .connect( sigc::mem_fun( *this, &StackPage::on_4p_drag_data_received));
+	buttonsArr[5]-> signal_drag_data_received() .connect( sigc::mem_fun( *this, &StackPage::on_5p_drag_data_received));
+	buttonsArr[6]-> signal_drag_data_received() .connect( sigc::mem_fun( *this, &StackPage::on_6p_drag_data_received));
+	buttonsArr[7]-> signal_drag_data_received() .connect( sigc::mem_fun( *this, &StackPage::on_7p_drag_data_received));
+	buttonsArr[8]-> signal_drag_data_received() .connect( sigc::mem_fun( *this, &StackPage::on_8p_drag_data_received));
+	buttonsArr[9]-> signal_drag_data_received() .connect( sigc::mem_fun( *this, &StackPage::on_9p_drag_data_received));
+	buttonsArr[10]-> signal_drag_data_received() .connect( sigc::mem_fun( *this, &StackPage::on_10p_drag_data_received));
+	buttonsArr[11]-> signal_drag_data_received() .connect( sigc::mem_fun( *this, &StackPage::on_11p_drag_data_received));
+	buttonsArr[12]-> signal_drag_data_received() .connect( sigc::mem_fun( *this, &StackPage::on_12p_drag_data_received));
+	buttonsArr[13]-> signal_drag_data_received() .connect( sigc::mem_fun( *this, &StackPage::on_13p_drag_data_received));
+	buttonsArr[14]-> signal_drag_data_received() .connect( sigc::mem_fun( *this, &StackPage::on_14p_drag_data_received));
+	buttonsArr[15]-> signal_drag_data_received() .connect( sigc::mem_fun( *this, &StackPage::on_15p_drag_data_received));
+	buttonsArr[16]-> signal_drag_data_received() .connect( sigc::mem_fun( *this, &StackPage::on_16p_drag_data_received));
+	buttonsArr[17]-> signal_drag_data_received() .connect( sigc::mem_fun( *this, &StackPage::on_17p_drag_data_received));
+	buttonsArr[18]-> signal_drag_data_received() .connect( sigc::mem_fun( *this, &StackPage::on_18p_drag_data_received));
+	buttonsArr[19]-> signal_drag_data_received() .connect( sigc::mem_fun( *this, &StackPage::on_19p_drag_data_received));
+	buttonsArr[20]-> signal_drag_data_received() .connect( sigc::mem_fun( *this, &StackPage::on_20p_drag_data_received));
+	buttonsArr[21]-> signal_drag_data_received() .connect( sigc::mem_fun( *this, &StackPage::on_21p_drag_data_received));
+	buttonsArr[22]-> signal_drag_data_received() .connect( sigc::mem_fun( *this, &StackPage::on_22p_drag_data_received));
+	buttonsArr[23]-> signal_drag_data_received() .connect( sigc::mem_fun( *this, &StackPage::on_23p_drag_data_received));
+	buttonsArr[24]-> signal_drag_data_received() .connect( sigc::mem_fun( *this, &StackPage::on_24p_drag_data_received));
+	buttonsArr[25]-> signal_drag_data_received() .connect( sigc::mem_fun( *this, &StackPage::on_25p_drag_data_received));
+	buttonsArr[26]-> signal_drag_data_received() .connect( sigc::mem_fun( *this, &StackPage::on_26p_drag_data_received));
+	buttonsArr[27]-> signal_drag_data_received() .connect( sigc::mem_fun( *this, &StackPage::on_27p_drag_data_received));
+	buttonsArr[28]-> signal_drag_data_received() .connect( sigc::mem_fun( *this, &StackPage::on_28p_drag_data_received));
+	buttonsArr[29]-> signal_drag_data_received() .connect( sigc::mem_fun( *this, &StackPage::on_29p_drag_data_received));
+	buttonsArr[30]-> signal_drag_data_received() .connect( sigc::mem_fun( *this, &StackPage::on_30p_drag_data_received));
+	buttonsArr[31]-> signal_drag_data_received() .connect( sigc::mem_fun( *this, &StackPage::on_31p_drag_data_received));
+	}
 
 std::string StackPage::pieceNameByPosition(std::map< std::string, std::string> map, std::string position){
 	for( auto it = map.cbegin(); it != map.cend(); it++){
