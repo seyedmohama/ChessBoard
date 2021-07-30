@@ -1270,7 +1270,7 @@ void StackPage::on_0p_drag_data_received(const Glib::RefPtr<Gdk::DragContext>& c
 
 		pBoardGame->attach(*(pointerPiece), positionExtraction(positionOfPieces[pieceNameDest]).first, positionExtraction(positionOfPieces[pieceNameDest]).second);
 
-		pBoardGame->attach(*(blankSquars[numberNewBlankSquars]), positionExtraction(positionOfPieces[piece]).first, positionExtraction(positionOfPieces[piece]).second);
+		pBoardGame->attach(*(blankSquars[numberNewBlankSquars + 32]), positionExtraction(positionOfPieces[piece]).first, positionExtraction(positionOfPieces[piece]).second);
 
 		positionOfBlankSquars[33] = positionOfPieces[piece];
 		positionOfPieces[piece] = cellDestination;
