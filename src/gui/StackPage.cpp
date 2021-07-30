@@ -15,6 +15,7 @@ m_refGlade(refGlade){
   m_refGlade->get_widget("gameBtnPage0", pGameBtn);
   m_refGlade->get_widget("settingBtnPage0", pSettingBtn);
 	m_refGlade->get_widget("startGameBtnID", pStartGameBtn);
+
 	m_refGlade->get_widget("wrlBtn", pWRLBtn);
 	m_refGlade->get_widget("wrrBtn", pWRRBtn);
 	m_refGlade->get_widget("wblBtn", pWBLBtn);

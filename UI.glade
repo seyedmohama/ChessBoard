@@ -285,6 +285,7 @@
   </object>
   <object class="GtkWindow" id="mainWindow">
     <property name="can_focus">False</property>
+    <property name="resizable">False</property>
     <property name="window_position">center</property>
     <child type="titlebar">
       <placeholder/>
@@ -293,8 +294,10 @@
       <object class="GtkStack" id="StackID">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
+        <property name="hhomogeneous">False</property>
+        <property name="vhomogeneous">False</property>
         <child>
-          <object class="GtkGrid">
+          <object class="GtkGrid" id="Stack0">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="hexpand">True</property>
@@ -396,7 +399,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkGrid">
+          <object class="GtkGrid" id="Stack1">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="margin_left">50</property>
@@ -453,7 +456,7 @@
                     <property name="hexpand">True</property>
                     <property name="vexpand">True</property>
                     <child>
-                      <object class="GtkEntry" id="playerSecondNameEntry">
+                      <object class="GtkEntry" id="playerFirstNameEntry">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                       </object>
@@ -466,7 +469,8 @@
                       <object class="GtkLabel">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">بازیکن دو</property>
+                        <property name="margin_bottom">5</property>
+                        <property name="label" translatable="yes">بازیکن اول</property>
                       </object>
                       <packing>
                         <property name="left_attach">0</property>
@@ -491,7 +495,8 @@
                       <object class="GtkLabel">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">بازیکن یک</property>
+                        <property name="margin_bottom">5</property>
+                        <property name="label" translatable="yes">بازیکن دوم</property>
                       </object>
                       <packing>
                         <property name="left_attach">0</property>
@@ -499,7 +504,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkEntry" id="playerFirstNameEntry">
+                      <object class="GtkEntry" id="playerSecondNameEntry">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                       </object>
@@ -519,7 +524,8 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">end</property>
-                    <property name="valign">start</property>
+                    <property name="valign">center</property>
+                    <property name="margin_right">50</property>
                     <property name="hexpand">True</property>
                     <property name="vexpand">True</property>
                     <property name="pixbuf">images/bk.png</property>
@@ -534,7 +540,8 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
-                    <property name="valign">start</property>
+                    <property name="valign">center</property>
+                    <property name="margin_left">50</property>
                     <property name="hexpand">True</property>
                     <property name="vexpand">True</property>
                     <property name="pixbuf">images/wk.png</property>
@@ -573,7 +580,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkGrid">
+          <object class="GtkGrid" id="Stack2">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="hexpand">True</property>
@@ -588,8 +595,8 @@
                   <object class="GtkLabel" id="gameNameLabelID">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="margin_left">10</property>
-                    <property name="margin_right">10</property>
+                    <property name="margin_left">20</property>
+                    <property name="margin_right">20</property>
                     <property name="label" translatable="yes">بازی مسخره</property>
                     <attributes>
                       <attribute name="font-desc" value="Vazir Light 10"/>
@@ -619,25 +626,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkButton">
-                    <property name="label" translatable="yes">شروع</property>
-                    <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">True</property>
-                    <property name="margin_left">15</property>
-                    <property name="margin_right">15</property>
-                    <property name="margin_bottom">5</property>
-                    <style>
-                      <class name="class"/>
-                    </style>
-                  </object>
-                  <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">2</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkButton">
+                  <object class="GtkButton" id="reloadBtnStack2">
                     <property name="label" translatable="yes">دوباره</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
@@ -653,7 +642,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkButton">
+                  <object class="GtkButton" id="exitBtnStack2">
                     <property name="label" translatable="yes">خروج</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
@@ -661,11 +650,15 @@
                     <property name="margin_left">15</property>
                     <property name="margin_right">15</property>
                     <property name="margin_top">5</property>
+                    <property name="margin_bottom">15</property>
                   </object>
                   <packing>
                     <property name="left_attach">0</property>
                     <property name="top_attach">4</property>
                   </packing>
+                </child>
+                <child>
+                  <placeholder/>
                 </child>
               </object>
               <packing>

@@ -11,7 +11,12 @@ pStartGameBtn(nullptr){
   m_refGlade->get_widget("exitBtnPage0", pExitBtn);
 	m_refGlade->get_widget("gameBtnPage0", pGameBtn);
 	m_refGlade->get_widget("startGameBtnID", pStartGameBtn);
+	m_refGlade->get_widget("startGameBtnID", pStartGameBtn);
+	m_refGlade->get_widget("startGameBtnID", pStartGameBtn);
 
+
+	set_default_size(500,200);
+	set_position(Gtk::WIN_POS_CENTER_ALWAYS);
 	if(pGameBtn){
 		pGameBtn->signal_clicked().connect(sigc::bind(sigc::mem_fun(*this, &MainWindow::set_size_request), 800, 200));
 	}
