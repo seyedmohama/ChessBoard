@@ -15,6 +15,7 @@ m_refGlade(refGlade){
   m_refGlade->get_widget("gameBtnPage0", pGameBtn);
   m_refGlade->get_widget("settingBtnPage0", pSettingBtn);
 	m_refGlade->get_widget("startGameBtnID", pStartGameBtn);
+	m_refGlade->get_widget("exitBtnStack2", pExitBtnStack2);
 
 	m_refGlade->get_widget("wrlBtn", pWRLBtn);
 	m_refGlade->get_widget("wrrBtn", pWRRBtn);
@@ -84,6 +85,8 @@ m_refGlade(refGlade){
   pGameBtn->signal_clicked().connect(sigc::bind(sigc::mem_fun(*this, &StackPage::set_visible_child), "start_game_page", Gtk::STACK_TRANSITION_TYPE_NONE));
 	
 	pStartGameBtn->signal_clicked().connect(sigc::mem_fun(*this,&StackPage::startGameBtn_clicked));
+
+	pExitBtnStack2-> signal_clicked() .connect( sigc::bind( sigc::mem_fun( *this, &StackPage::set_visible_child), "wellcome_page", Gtk::STACK_TRANSITION_TYPE_NONE));
 }
 
 StackPage::~StackPage(){

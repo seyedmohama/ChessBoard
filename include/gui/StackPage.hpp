@@ -20,7 +20,7 @@ class StackPage : public Gtk::Stack{
 		StackPage(BaseObjectType *cobject, const Glib::RefPtr<Gtk::Builder>& refGlade);
 		virtual ~StackPage();
 	private:
-		Gtk::Button *pGameBtn, *pExitBtn, *pSettingBtn, *pStartGameBtn;
+		Gtk::Button *pGameBtn, *pExitBtn, *pSettingBtn, *pStartGameBtn, *pExitBtnStack2;
 		Gtk::Entry *pGameNameEnt, *pPlayerFirstNameEnt, *pPlayerSecondNameEnt;
 		Gtk::Grid *pBoardGame;
 		Gtk::Overlay *pGameBoardOverlay;
