@@ -12,7 +12,7 @@ std::vector<std::pair<int, int>> Rook::GetMovements(Cell** Board)
   std::vector<pair<int, int>> movements;
 
   //Going top
-  for (int i = Y; i > 0; i--)
+  for (int i = Y - 1; i > 0; i--)
   {
     if (!Board[X][i].IsEmpty() && i != Y)
       break;
@@ -20,7 +20,7 @@ std::vector<std::pair<int, int>> Rook::GetMovements(Cell** Board)
   }
 
   //Going Bottom
-  for (int i = Y; i < 8; i++)
+  for (int i = Y + 1; i < 8; i++)
   {
     if (!Board[X][i].IsEmpty() && i != Y)
       break;
@@ -29,7 +29,7 @@ std::vector<std::pair<int, int>> Rook::GetMovements(Cell** Board)
 
 
   //Going Right
-  for (int i = X; i > 0; i--)
+  for (int i = X - 1; i > 0; i--)
   {
     if (!Board[i][Y].IsEmpty() && i != X)
       break;
@@ -37,7 +37,7 @@ std::vector<std::pair<int, int>> Rook::GetMovements(Cell** Board)
   }
 
   //Going Right
-  for (int i = X; i < 8; i++)
+  for (int i = X + 1; i < 8; i++)
   {
     if (!Board[i][Y].IsEmpty() && i != X)
       break;

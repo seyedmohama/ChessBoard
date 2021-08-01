@@ -49,7 +49,89 @@ vector<pair<int, int>> ChessBoard::GetFreeMovements(pair<int, int> cell)
   Cell c = Board[cell.first][cell.second];
   auto movements = c.ptr->GetMovements(Board);
 
+  for (auto i = movements.begin(); i != movements.end(); i++)
+  {
+    if (!Board[i->first][i->second].IsEmpty() && Board[i->first][i->second].ptr->Type == ChessType::King)
+      i = movements.erase(i);
+      i--;
+  }
+
   return movements;
+}
+
+pair<int, int> ChessBoard::FindKing(ChessColor color)
+{
+    for (int i = 0; i < 8; i++)
+    {
+      for (int j = 0; j < 8; j++)
+      {
+        if (!Board[i][j].IsEmpty() && Board[i][j].ptr->Type == ChessType::King && Board[i][j].ptr->Color == color)
+          return {i, j};
+      }
+    }
+
+    return {0, 0};
+}
+
+bool ChessBoard::IsCheckMated(ChessColor color)
+{
+  return IsChecked(color) && IsMated(color);
+}
+
+bool ChessBoard::IsChecked(ChessColor color)
+{
+  auto king = FindKing(color);
+  ChessColor targetcolor = (color == ChessColor::Black) ? ChessColor::White : ChessColor::Black;
+
+  for (int i = 0; i < 8; i++)
+  {
+    for (int j = 0; j < 8; j++)
+    {
+      if (!Board[i][j].IsEmpty()
+      && Board[i][j].ptr->Color == targetcolor)
+      {
+        auto moves = Board[i][j].ptr->GetMovements();
+        for (auto k = moves.begin(); i != moves.end(); i++)
+        {
+          if (k->first == king.first && k->second == king.second)
+            return true;
+        }
+      }
+    }
+  }
+
+  return false;
+}
+
+bool ChessBoard::IsMated(ChessColor color)
+{
+  auto king = FindKing(color);
+
+  auto kingmoves = Board[king.first][king.second].ptr->GetMovements();
+
+
+
+  ChessColor targetcolor = (color == ChessColor::Black) ? ChessColor::White : ChessColor::Black;
+
+  for (int i = 0; i < 8; i++)
+  {
+    for (int j = 0; j < 8; j++)
+    {
+      if (!Board[i][j].IsEmpty()
+      && Board[i][j].ptr->Color == targetcolor)
+      {
+        auto moves = Board[i][j].ptr->GetMovements();
+        for (auto k = moves.begin(); i != moves.end(); i++)
+        {
+          auto it = kingmoves.find({k->first, k->second});
+          if (it != kingmoves.end())
+            kingmoves.erase(it);
+        }
+      }
+    }
+  }
+
+  return (kingmoves.size() == 0);
 }
 
 
