@@ -20,7 +20,7 @@ class StackPage : public Gtk::Stack{
 		StackPage(BaseObjectType *cobject, const Glib::RefPtr<Gtk::Builder>& refGlade);
 		virtual ~StackPage();
 	private:
-		Gtk::Button *pGameBtn, *pExitBtn, *pSettingBtn, *pStartGameBtn, *pExitBtnStack2;
+		Gtk::Button *pGameBtn, *pExitBtn, *pSettingBtn, *pStartGameBtn, *pExitBtnStack2, *pReloadBtnStack2;
 		Gtk::Entry *pGameNameEnt, *pPlayerFirstNameEnt, *pPlayerSecondNameEnt;
 		Gtk::Grid *pBoardGame;
 		Gtk::Overlay *pGameBoardOverlay;
@@ -28,22 +28,24 @@ class StackPage : public Gtk::Stack{
 		Gtk::Label *pGameNameLabel;
 		Handler *handler ;
 		Glib::RefPtr<Gtk::Builder> m_refGlade;
-		Gtk::Button *pWRLBtn, *pWRRBtn, *pWBLBtn, *pWBRBtn, *pWNLBtn, *pWNRBtn, *pWQBtn, *pWKBtn, *pBRLBtn, *pBRRBtn, *pBBLBtn, *pBBRBtn, *pBNLBtn, *pBNRBtn, *pBQBtn, *pBKBtn, *pWP1Btn, *pWP2Btn, *pWP3Btn, *pWP4Btn, *pWP5Btn, *pWP6Btn, *pWP7Btn, *pWP8Btn, *pBP1Btn, *pBP2Btn, *pBP3Btn, *pBP4Btn, *pBP5Btn, *pBP6Btn, *pBP7Btn, *pBP8Btn;
-		std::array<Gtk::Button*, 32> buttonsArr;
 
-		std::pair<char,int> pair;
-		std::map< int, Gtk::Image*> blankSquars; 
+		std::array < Gtk::Button*, 32> pieces;
+		std::array < std::string, 32> nameOfPieces;
 
-		std::map<std::string, std::string> positionOfPieces;
-		std::map< int, std::string> positionOfBlankSquars;
+		std::map < int, Gtk::Image*> blankSquars; 
+
+		std::map < std::string, std::string> positionOfPieces;
+		std::map < int, std::string> positionOfBlankSquars;
 
 		std::string cellOrigin, piece, cellDestination;
 		Gtk::Widget *pointerPiece;
 
 		int numberNewBlankSquars = 0;
+		std::pair < char, int> pair;
 
 		void startGameBtn_clicked();
 		void exitBtnStack2_clicked();
+		void reloadBtnStack2_clicked();
 
 		void on_0_drag_data_get(const Glib::RefPtr<Gdk::DragContext>& context, Gtk::SelectionData& selection_data, guint info, guint time);
 		void on_1_drag_data_get(const Glib::RefPtr<Gdk::DragContext>& context, Gtk::SelectionData& selection_data, guint info, guint time);
@@ -177,10 +179,6 @@ class StackPage : public Gtk::Stack{
 		void on_29p_drag_data_received(const Glib::RefPtr<Gdk::DragContext>&, int, int, const Gtk::SelectionData&, guint, guint);
 		void on_30p_drag_data_received(const Glib::RefPtr<Gdk::DragContext>&, int, int, const Gtk::SelectionData&, guint, guint);
 		void on_31p_drag_data_received(const Glib::RefPtr<Gdk::DragContext>&, int, int, const Gtk::SelectionData&, guint, guint);
-
-
-		std::pair<int, int> positionExtraction(std::string);
-		std::string pieceNameByPosition(std::map< std::string, std::string> map, std::string position);
 
 		int cellIsEmpty( std::map< std::string, std::string> map, std::string cell);
 		
