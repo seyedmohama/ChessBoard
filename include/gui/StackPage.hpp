@@ -43,6 +43,7 @@ class StackPage : public Gtk::Stack{
 		int numberNewBlankSquars = 0;
 
 		void startGameBtn_clicked();
+		void exitBtnStack2_clicked();
 
 		void on_0_drag_data_get(const Glib::RefPtr<Gdk::DragContext>& context, Gtk::SelectionData& selection_data, guint info, guint time);
 		void on_1_drag_data_get(const Glib::RefPtr<Gdk::DragContext>& context, Gtk::SelectionData& selection_data, guint info, guint time);

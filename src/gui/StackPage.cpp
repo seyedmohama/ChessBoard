@@ -11,11 +11,16 @@ pExitBtn(nullptr),
 pSettingBtn(nullptr),
 pStartGameBtn(nullptr),
 handler(nullptr),
+pBoardGame(nullptr),
 m_refGlade(refGlade){
   m_refGlade->get_widget("gameBtnPage0", pGameBtn);
   m_refGlade->get_widget("settingBtnPage0", pSettingBtn);
 	m_refGlade->get_widget("startGameBtnID", pStartGameBtn);
 	m_refGlade->get_widget("exitBtnStack2", pExitBtnStack2);
+	m_refGlade->get_widget("boardGameID", pBoardGame);
+	m_refGlade->get_widget("overlayGameBoardID", pGameBoardOverlay);
+	m_refGlade->get_widget("boardGameImageID", pGameBoardImage);
+	m_refGlade->get_widget("gameNameLabelID", pGameNameLabel);
 
 	m_refGlade->get_widget("wrlBtn", pWRLBtn);
 	m_refGlade->get_widget("wrrBtn", pWRRBtn);
@@ -82,16 +87,22 @@ m_refGlade(refGlade){
 	buttonsArr[30] = pBP7Btn;
 	buttonsArr[31] = pBP8Btn;
 
+	pGameBoardOverlay->add_overlay(*pBoardGame);
+
   pGameBtn->signal_clicked().connect(sigc::bind(sigc::mem_fun(*this, &StackPage::set_visible_child), "start_game_page", Gtk::STACK_TRANSITION_TYPE_NONE));
 	
 	pStartGameBtn->signal_clicked().connect(sigc::mem_fun(*this,&StackPage::startGameBtn_clicked));
 
-	pExitBtnStack2-> signal_clicked() .connect( sigc::bind( sigc::mem_fun( *this, &StackPage::set_visible_child), "wellcome_page", Gtk::STACK_TRANSITION_TYPE_NONE));
+	pExitBtnStack2-> signal_clicked() .connect( sigc::mem_fun( *this, &StackPage::exitBtnStack2_clicked));
 }
 
 StackPage::~StackPage(){
 }
 
+void StackPage::exitBtnStack2_clicked(){
+	set_visible_child( "wellcome_page", Gtk::STACK_TRANSITION_TYPE_NONE);
+	handler = nullptr;
+}
 void StackPage::startGameBtn_clicked(){
 
 	//set positions of pieces
@@ -171,13 +182,10 @@ void StackPage::startGameBtn_clicked(){
 	handler = new Handler ( pGameNameEnt->get_text(), pPlayerFirstNameEnt->get_text(), pPlayerSecondNameEnt->get_text());
 	
 	set_visible_child("game_page", Gtk::STACK_TRANSITION_TYPE_NONE);
-	m_refGlade->get_widget("boardGameID", pBoardGame);
-	m_refGlade->get_widget("overlayGameBoardID", pGameBoardOverlay);
-	m_refGlade->get_widget("boardGameImageID", pGameBoardImage);
-	m_refGlade->get_widget("gameNameLabelID", pGameNameLabel);
 
 	m_refGlade->get_widget("brlImg", pBRLImg);
 
+	pGameNameLabel->set_label(handler->get_gameName());
 	
 	Gtk::Allocation rectangle;
 	rectangle.set_width(609);
@@ -185,9 +193,6 @@ void StackPage::startGameBtn_clicked(){
 
 	pBoardGame->size_allocate(rectangle,0);
 	pBoardGame->set_column_spacing(0);
-
-	pGameBoardOverlay->add_overlay(*pBoardGame);
-	pGameNameLabel->set_label(handler->get_gameName());
 
 
 	std::vector<Gtk::TargetEntry>	target;
