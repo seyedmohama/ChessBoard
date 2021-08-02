@@ -72,50 +72,26 @@ m_refGlade(refGlade){
 
 	m_refGlade->get_widget( "reloadBtnStack2", pReloadBtnStack2);
 	pReloadBtnStack2-> signal_clicked() .connect( sigc::mem_fun( *this, &StackPage::reloadBtnStack2_clicked));
-}
 
-void StackPage::reloadBtnStack2_clicked(){
-
-	std::cout << "\npositionOfPieces :" << std::endl;
-	std::cout << "\twrl\t" << positionOfPieces["wrl"] << std::endl <<
-	"\twbl\t" << positionOfPieces["wbl"]  << std::endl <<
-	"\twnl\t" << positionOfPieces["wnl"]  << std::endl <<
-	"\twq\t" << positionOfPieces["wq"]  << std::endl <<
-	"\twk\t" << positionOfPieces["wk"]  << std::endl <<
-	"\twnr\t" << positionOfPieces["wnr"]  << std::endl <<
-	"\twbr\t" << positionOfPieces["wbr"]  << std::endl <<
-	"\twrr\t" << positionOfPieces["wrr"]  << std::endl <<
-	"\twp1\t" << positionOfPieces["wp1"]  << std::endl <<
-	"\twp2\t" << positionOfPieces["wp2"]  << std::endl <<
-	"\twp3\t" << positionOfPieces["wp3"]  << std::endl <<
-	"\twp4\t" << positionOfPieces["wp4"]  << std::endl <<
-	"\twp5\t" << positionOfPieces["wp5"]  << std::endl <<
-	"\twp6\t" << positionOfPieces["wp6"]  << std::endl <<
-	"\twp7\t" << positionOfPieces["wp7"]  << std::endl <<
-	"\twp8\t" << positionOfPieces["wp8"]  << std::endl <<
-	"\tbrl\t" << positionOfPieces["brl"]  << std::endl <<
-	"\tbbl\t" << positionOfPieces["bbl"]  << std::endl <<
-	"\tbnl\t" << positionOfPieces["bnl"]  << std::endl <<
-	"\tbq\t" << positionOfPieces["bq"]  << std::endl <<
-	"\tbk\t" << positionOfPieces["bk"]  << std::endl <<
-	"\tbnr\t" << positionOfPieces["bnr"]  << std::endl <<
-	"\tbbr\t" << positionOfPieces["bbr"]  << std::endl <<
-	"\tbrr\t" << positionOfPieces["brr"]  << std::endl <<
-	"\tbp1\t" << positionOfPieces["bp1"]  << std::endl <<
-	"\tbp2\t" << positionOfPieces["bp2"]  << std::endl <<
-	"\tbp3\t" << positionOfPieces["bp3"]  << std::endl <<
-	"\tbp4\t" << positionOfPieces["bp4"]  << std::endl <<
-	"\tbp5\t" << positionOfPieces["bp5"]  << std::endl <<
-	"\tbp6\t" << positionOfPieces["bp6"]  << std::endl <<
-	"\tbp7\t" << positionOfPieces["bp7"]  << std::endl <<
-	"\tbp8\t" << positionOfPieces["bp8"]  << std::endl;
-
-	std::cout << "positionOfBlankSquars :" << std::endl;
-	for( int i = 1; i < 64; i++){
-		std::cout << "\t" << i << "\t" << positionOfBlankSquars[i] << std::endl;
+	//	connect images blank squars on UI file to program code and set target to drag&drop.
+	std::vector<Gtk::TargetEntry>	target;
+	target.push_back(Gtk::TargetEntry("Target"));
+	for( int i = 1; i <= 64; i++){
+			blankSquars[i] = (Gtk::Image*)nullptr;
+			std::string id = (std::to_string(i)) + "sq";
+			m_refGlade->get_widget( id, blankSquars[i]);
+			blankSquars[i]->drag_dest_set( target);
+	}
+//	Set pieces target for DnD
+	for( size_t i = 0; i <= 31; i++){
+		pieces[i]->drag_source_set(target);
+		pieces[i]->drag_dest_set(target);
 	}
 
+
 }
+
+
 StackPage::~StackPage(){
 }
 
@@ -126,6 +102,9 @@ void StackPage::exitBtnStack2_clicked(){
 
 
 void StackPage::startGameBtn_clicked(){
+//	Show the startGame Page	
+	set_visible_child("game_page", Gtk::STACK_TRANSITION_TYPE_NONE);
+	
 //	set positions of pieces
 	//	set white pieces location
 	int count = 0;
@@ -161,28 +140,11 @@ void StackPage::startGameBtn_clicked(){
 	m_refGlade->get_widget("playerFirstNameEntry", pPlayerFirstNameEnt);
 	m_refGlade->get_widget("playerSecondNameEntry", pPlayerSecondNameEnt);
 
+
 	handler = new Handler ( pGameNameEnt->get_text(), pPlayerFirstNameEnt->get_text(), pPlayerSecondNameEnt->get_text());
 	
-	set_visible_child("game_page", Gtk::STACK_TRANSITION_TYPE_NONE);
-	
+
 	pGameNameLabel->set_label(handler->get_gameName());
-
-
-//	Set pieces and blankSquars target
-	std::vector<Gtk::TargetEntry>	target;
-	target.push_back(Gtk::TargetEntry("Target"));
-
-	for( size_t i = 0; i <= 31; i++){
-		pieces[i]->drag_source_set(target);
-		pieces[i]->drag_dest_set(target);
-	}
-
-	for( int i = 1; i <= 64; i++){
-			blankSquars[i] = (Gtk::Image*)nullptr;
-			std::string id = (std::to_string(i)) + "sq";
-			m_refGlade->get_widget( id, blankSquars[i]);
-			blankSquars[i]->drag_dest_set( target);
-	}
 
 
 //	Place the pieces in the original position
@@ -192,14 +154,9 @@ void StackPage::startGameBtn_clicked(){
 		}
 	}
 	for( int i = 0; i <= 31; i++){
-		std::cout << nameOfPieces[i] << " attach to [" << positionExtraction( positionOfPieces[ nameOfPieces[ i]]) .first << "," << positionExtraction( positionOfPieces[ nameOfPieces[ i]]) .second << "]" << std::endl; 
-
 		pBoardGame-> attach( *( pieces[ i]), positionExtraction( positionOfPieces[ nameOfPieces[ i]]) .first, positionExtraction( positionOfPieces[ nameOfPieces[ i]]) .second );
 	}
 
-	std::cout << "Debug a1 , a7 => " << "[" << positionExtraction("a1").first << "," << positionExtraction("a1").second << "]" << "[" << positionExtraction("a7").first << "," << positionExtraction("a7").second << "]" << std::endl;
-
-std::cout << "Debug\tline197" << std::endl;
 //	Place the blank squars in the original position
 	for( size_t i = 1; i <= 64; i++){
 		if(blankSquars[i]-> get_parent()){
@@ -369,3 +326,45 @@ bool StackPage::motionVerification(){
 	return true;
 }
 
+void StackPage::reloadBtnStack2_clicked(){
+
+	std::cout << "\npositionOfPieces :" << std::endl;
+	std::cout << "\twrl\t" << positionOfPieces["wrl"] << std::endl <<
+	"\twbl\t" << positionOfPieces["wbl"]  << std::endl <<
+	"\twnl\t" << positionOfPieces["wnl"]  << std::endl <<
+	"\twq\t" << positionOfPieces["wq"]  << std::endl <<
+	"\twk\t" << positionOfPieces["wk"]  << std::endl <<
+	"\twnr\t" << positionOfPieces["wnr"]  << std::endl <<
+	"\twbr\t" << positionOfPieces["wbr"]  << std::endl <<
+	"\twrr\t" << positionOfPieces["wrr"]  << std::endl <<
+	"\twp1\t" << positionOfPieces["wp1"]  << std::endl <<
+	"\twp2\t" << positionOfPieces["wp2"]  << std::endl <<
+	"\twp3\t" << positionOfPieces["wp3"]  << std::endl <<
+	"\twp4\t" << positionOfPieces["wp4"]  << std::endl <<
+	"\twp5\t" << positionOfPieces["wp5"]  << std::endl <<
+	"\twp6\t" << positionOfPieces["wp6"]  << std::endl <<
+	"\twp7\t" << positionOfPieces["wp7"]  << std::endl <<
+	"\twp8\t" << positionOfPieces["wp8"]  << std::endl <<
+	"\tbrl\t" << positionOfPieces["brl"]  << std::endl <<
+	"\tbbl\t" << positionOfPieces["bbl"]  << std::endl <<
+	"\tbnl\t" << positionOfPieces["bnl"]  << std::endl <<
+	"\tbq\t" << positionOfPieces["bq"]  << std::endl <<
+	"\tbk\t" << positionOfPieces["bk"]  << std::endl <<
+	"\tbnr\t" << positionOfPieces["bnr"]  << std::endl <<
+	"\tbbr\t" << positionOfPieces["bbr"]  << std::endl <<
+	"\tbrr\t" << positionOfPieces["brr"]  << std::endl <<
+	"\tbp1\t" << positionOfPieces["bp1"]  << std::endl <<
+	"\tbp2\t" << positionOfPieces["bp2"]  << std::endl <<
+	"\tbp3\t" << positionOfPieces["bp3"]  << std::endl <<
+	"\tbp4\t" << positionOfPieces["bp4"]  << std::endl <<
+	"\tbp5\t" << positionOfPieces["bp5"]  << std::endl <<
+	"\tbp6\t" << positionOfPieces["bp6"]  << std::endl <<
+	"\tbp7\t" << positionOfPieces["bp7"]  << std::endl <<
+	"\tbp8\t" << positionOfPieces["bp8"]  << std::endl;
+
+	std::cout << "positionOfBlankSquars :" << std::endl;
+	for( int i = 1; i < 64; i++){
+		std::cout << "\t" << i << "\t" << positionOfBlankSquars[i] << std::endl;
+	}
+
+}

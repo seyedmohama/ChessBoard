@@ -22,11 +22,11 @@ class StackPage : public Gtk::Stack{
 	private:
 		Gtk::Button *pGameBtn, *pExitBtn, *pSettingBtn, *pStartGameBtn, *pExitBtnStack2, *pReloadBtnStack2;
 		Gtk::Entry *pGameNameEnt, *pPlayerFirstNameEnt, *pPlayerSecondNameEnt;
+		Handler *handler ;
 		Gtk::Grid *pBoardGame;
 		Gtk::Overlay *pGameBoardOverlay;
 		Gtk::Image *pGameBoardImage, *pWNLImg, *pBRLImg;
 		Gtk::Label *pGameNameLabel;
-		Handler *handler ;
 		Glib::RefPtr<Gtk::Builder> m_refGlade;
 
 		std::array < Gtk::Button*, 32> pieces;
