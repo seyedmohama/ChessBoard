@@ -1,4 +1,5 @@
 #include "MainWindow.hpp"
+#include <gtkmm/cssprovider.h>
 
 MainWindow::MainWindow(BaseObjectType* cobject , const Glib::RefPtr<Gtk::Builder>& refGlade) :
 Gtk::Window(cobject),
@@ -13,7 +14,6 @@ pStartGameBtn(nullptr){
 	m_refGlade->get_widget("startGameBtnID", pStartGameBtn);
 	m_refGlade->get_widget("startGameBtnID", pStartGameBtn);
 	m_refGlade->get_widget("startGameBtnID", pStartGameBtn);
-
 
 	set_default_size(500,200);
 	set_position(Gtk::WIN_POS_CENTER_ALWAYS);

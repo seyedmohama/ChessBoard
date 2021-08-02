@@ -11,6 +11,7 @@
 #include <gtkmm/image.h>
 #include <gtkmm/label.h>
 #include <gtkmm/widget.h>
+#include <gtkmm/separator.h>
 #include <map>
 #include <utility>
 
@@ -26,7 +27,9 @@ class StackPage : public Gtk::Stack{
 		Gtk::Grid *pBoardGame;
 		Gtk::Overlay *pGameBoardOverlay;
 		Gtk::Image *pGameBoardImage, *pWNLImg, *pBRLImg;
-		Gtk::Label *pGameNameLabel;
+		Gtk::Label *pGameNameLabel, *pFirstPLNameScoreLabel, *pSecondPLNameScoreLabel, *pFirstPLNameNegativScoreLabel, *pSecondPLNameNegativScoreLabel;
+		Gtk::Separator *pSeparators[10];
+
 		Glib::RefPtr<Gtk::Builder> m_refGlade;
 
 		std::array < Gtk::Button*, 32> pieces;
