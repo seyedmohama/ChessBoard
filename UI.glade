@@ -686,8 +686,8 @@
                           <object class="GtkLabel">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
-                            <property name="margin_left">105</property>
-                            <property name="margin_right">105</property>
+                            <property name="margin_left">80</property>
+                            <property name="margin_right">80</property>
                             <property name="margin_top">15</property>
                             <property name="margin_bottom">15</property>
                             <property name="label" translatable="yes">امتیاز ها</property>
@@ -716,10 +716,17 @@
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="vexpand">True</property>
+                            <property name="column_homogeneous">True</property>
                             <child>
                               <object class="GtkLabel" id="firstPLNameScoreLabel">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
+                                <property name="margin_top">10</property>
+                                <property name="margin_bottom">5</property>
+                                <property name="label" translatable="yes">first PL Name Score</property>
+                                <attributes>
+                                  <attribute name="font-desc" value="Vazir 14"/>
+                                </attributes>
                               </object>
                               <packing>
                                 <property name="left_attach">0</property>
@@ -730,6 +737,12 @@
                               <object class="GtkLabel" id="firstPLNameNegativScoreLabel">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
+                                <property name="margin_top">25</property>
+                                <property name="margin_bottom">10</property>
+                                <property name="label" translatable="yes">first PL Name Negativ Score</property>
+                                <attributes>
+                                  <attribute name="font-desc" value="Vazir 14"/>
+                                </attributes>
                               </object>
                               <packing>
                                 <property name="left_attach">0</property>
@@ -737,10 +750,36 @@
                               </packing>
                             </child>
                             <child>
-                              <placeholder/>
+                              <object class="GtkLabel" id="scoreFirstPL">
+                                <property name="visible">True</property>
+                                <property name="can_focus">False</property>
+                                <property name="margin_top">5</property>
+                                <property name="margin_bottom">25</property>
+                                <property name="label" translatable="yes">score first PL</property>
+                                <attributes>
+                                  <attribute name="font-desc" value="Vazir 14"/>
+                                </attributes>
+                              </object>
+                              <packing>
+                                <property name="left_attach">0</property>
+                                <property name="top_attach">1</property>
+                              </packing>
                             </child>
                             <child>
-                              <placeholder/>
+                              <object class="GtkLabel" id="negativScoreFirstPL">
+                                <property name="visible">True</property>
+                                <property name="can_focus">False</property>
+                                <property name="margin_top">5</property>
+                                <property name="margin_bottom">10</property>
+                                <property name="label" translatable="yes">negativ score first PL</property>
+                                <attributes>
+                                  <attribute name="font-desc" value="Vazir 14"/>
+                                </attributes>
+                              </object>
+                              <packing>
+                                <property name="left_attach">0</property>
+                                <property name="top_attach">3</property>
+                              </packing>
                             </child>
                           </object>
                           <packing>
@@ -764,10 +803,16 @@
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="vexpand">True</property>
+                            <property name="column_homogeneous">True</property>
                             <child>
                               <object class="GtkLabel" id="secondPLNameScoreLabel">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
+                                <property name="margin_top">10</property>
+                                <property name="label" translatable="yes">second PL Name Score:</property>
+                                <attributes>
+                                  <attribute name="font-desc" value="Vazir 14"/>
+                                </attributes>
                               </object>
                               <packing>
                                 <property name="left_attach">0</property>
@@ -778,6 +823,11 @@
                               <object class="GtkLabel" id="secondPLNameNegativScoreLabel">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
+                                <property name="margin_top">25</property>
+                                <property name="label" translatable="yes">second PL Name Negativ Score:</property>
+                                <attributes>
+                                  <attribute name="font-desc" value="Vazir 14"/>
+                                </attributes>
                               </object>
                               <packing>
                                 <property name="left_attach">0</property>
@@ -785,10 +835,36 @@
                               </packing>
                             </child>
                             <child>
-                              <placeholder/>
+                              <object class="GtkLabel" id="scoreSecondPL">
+                                <property name="visible">True</property>
+                                <property name="can_focus">False</property>
+                                <property name="margin_top">5</property>
+                                <property name="margin_bottom">25</property>
+                                <property name="label" translatable="yes">score first PL</property>
+                                <attributes>
+                                  <attribute name="font-desc" value="Vazir 14"/>
+                                </attributes>
+                              </object>
+                              <packing>
+                                <property name="left_attach">0</property>
+                                <property name="top_attach">1</property>
+                              </packing>
                             </child>
                             <child>
-                              <placeholder/>
+                              <object class="GtkLabel" id="negativScoreSecondPL">
+                                <property name="visible">True</property>
+                                <property name="can_focus">False</property>
+                                <property name="margin_top">5</property>
+                                <property name="margin_bottom">10</property>
+                                <property name="label" translatable="yes">negativ score first PL</property>
+                                <attributes>
+                                  <attribute name="font-desc" value="Vazir 14"/>
+                                </attributes>
+                              </object>
+                              <packing>
+                                <property name="left_attach">0</property>
+                                <property name="top_attach">3</property>
+                              </packing>
                             </child>
                           </object>
                           <packing>

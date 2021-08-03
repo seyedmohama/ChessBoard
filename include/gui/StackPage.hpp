@@ -27,7 +27,7 @@ class StackPage : public Gtk::Stack{
 		Gtk::Grid *pBoardGame;
 		Gtk::Overlay *pGameBoardOverlay;
 		Gtk::Image *pGameBoardImage, *pWNLImg, *pBRLImg;
-		Gtk::Label *pGameNameLabel, *pFirstPLNameScoreLabel, *pSecondPLNameScoreLabel, *pFirstPLNameNegativScoreLabel, *pSecondPLNameNegativScoreLabel;
+		Gtk::Label *pGameNameLabel, *pFirstPLNameScoreLabel, *pSecondPLNameScoreLabel, *pFirstPLNameNegativScoreLabel, *pSecondPLNameNegativScoreLabel, *pScoreFirstPL, *pNegativScoreFirstPL, *pScoreSecondPL, *pNegativScoreSecondPL;
 		Gtk::Separator *pSeparators[10];
 
 		Glib::RefPtr<Gtk::Builder> m_refGlade;
