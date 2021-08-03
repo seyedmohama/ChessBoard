@@ -90,8 +90,8 @@ bool ChessBoard::IsChecked(ChessColor color)
       if (!Board[i][j].IsEmpty()
       && Board[i][j].ptr->Color == targetcolor)
       {
-        auto moves = Board[i][j].ptr->GetMovements();
-        for (auto k = moves.begin(); i != moves.end(); i++)
+        auto moves = Board[i][j].ptr->GetMovements(Board);
+        for (auto k = moves.begin(); k != moves.end(); k++)
         {
           if (k->first == king.first && k->second == king.second)
             return true;
@@ -107,7 +107,7 @@ bool ChessBoard::IsMated(ChessColor color)
 {
   auto king = FindKing(color);
 
-  auto kingmoves = Board[king.first][king.second].ptr->GetMovements();
+  auto kingmoves = Board[king.first][king.second].ptr->GetMovements(Board);
 
 
 
@@ -120,10 +120,18 @@ bool ChessBoard::IsMated(ChessColor color)
       if (!Board[i][j].IsEmpty()
       && Board[i][j].ptr->Color == targetcolor)
       {
-        auto moves = Board[i][j].ptr->GetMovements();
-        for (auto k = moves.begin(); i != moves.end(); i++)
+        auto moves = Board[i][j].ptr->GetMovements(Board);
+        for (auto k = moves.begin(); k != moves.end(); k++)
         {
-          auto it = kingmoves.find({k->first, k->second});
+          auto it = kingmoves.end();
+          for (auto f = kingmoves.begin(); f != kingmoves.end(); f++)
+          {
+            if (k->first == f->first && k->second == f->second)
+            {
+              it = f;
+            }
+          }
+
           if (it != kingmoves.end())
             kingmoves.erase(it);
         }

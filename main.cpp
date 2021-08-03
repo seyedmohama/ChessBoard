@@ -56,7 +56,7 @@ int main()
       auto movements = a.GetFreeMovements({x, y});
 
       for (auto i = movements.begin(); i < movements.end(); i++)
-        std::cout << '(' << i->first << ", " << i->second << ") ";
+        std::cout << '(' << movements.first << ", " << i->second << ") ";
       std::cout << "\n";
     }
   } while (true);
