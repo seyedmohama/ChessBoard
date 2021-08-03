@@ -13,6 +13,7 @@ pSettingBtn(nullptr),
 pStartGameBtn(nullptr),
 handler(nullptr),
 pBoardGame(nullptr),
+pRemovedPiecesGrid(nullptr),
 m_refGlade(refGlade){
   m_refGlade->get_widget("gameBtnPage0", pGameBtn);
   m_refGlade->get_widget("settingBtnPage0", pSettingBtn);
@@ -22,6 +23,7 @@ m_refGlade(refGlade){
 	m_refGlade->get_widget("overlayGameBoardID", pGameBoardOverlay);
 	m_refGlade->get_widget("boardGameImageID", pGameBoardImage);
 	m_refGlade->get_widget("gameNameLabelID", pGameNameLabel);
+	m_refGlade-> get_widget( "removedPiecesGrid", pRemovedPiecesGrid);
 
 	nameOfPieces[0] = "wrl";
  	nameOfPieces[1] = "wbl";

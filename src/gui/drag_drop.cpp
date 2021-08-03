@@ -1268,7 +1268,16 @@ void StackPage::on_0p_drag_data_received(const Glib::RefPtr<Gdk::DragContext>& c
 
 		pBoardGame->remove(*pointerPiece);
 		pBoardGame->remove(*(pieces[i]));
-		pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
+		
+//	move piece to removed pices list
+		Gtk::Widget * pWidget = pRemovedPiecesGrid-> get_child_at( numberWhitePiecesRemoved, 0);
+		pRemovedPiecesGrid-> remove( *pWidget);
+
+		m_refGlade-> get_widget( nameOfPieces[ i], pImageTemp);
+		pRemovedPiecesGrid-> attach( *pImageTemp, numberWhitePiecesRemoved, 0);
+		numberWhitePiecesRemoved++;
+
+pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
 
 		pBoardGame->attach(*(pointerPiece), positionExtraction(positionOfPieces[pieceNameDest]).first, positionExtraction(positionOfPieces[pieceNameDest]).second);
 
@@ -1291,7 +1300,16 @@ void StackPage::on_1p_drag_data_received(const Glib::RefPtr<Gdk::DragContext>& c
 
 		pBoardGame->remove(*pointerPiece);
 		pBoardGame->remove(*(pieces[i]));
-		pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
+		
+//	move piece to removed pices list
+		Gtk::Widget * pWidget = pRemovedPiecesGrid-> get_child_at( numberWhitePiecesRemoved, 0);
+		pRemovedPiecesGrid-> remove( *pWidget);
+
+		m_refGlade-> get_widget( nameOfPieces[ i], pImageTemp);
+		pRemovedPiecesGrid-> attach( *pImageTemp, numberWhitePiecesRemoved, 0);
+		numberWhitePiecesRemoved++;
+
+pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
 
 		pBoardGame->attach(*(pointerPiece), positionExtraction(positionOfPieces[pieceNameDest]).first, positionExtraction(positionOfPieces[pieceNameDest]).second);
 
@@ -1314,7 +1332,16 @@ void StackPage::on_2p_drag_data_received(const Glib::RefPtr<Gdk::DragContext>& c
 
 		pBoardGame->remove(*pointerPiece);
 		pBoardGame->remove(*(pieces[i]));
-		pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
+		
+//	move piece to removed pices list
+		Gtk::Widget * pWidget = pRemovedPiecesGrid-> get_child_at( numberWhitePiecesRemoved, 0);
+		pRemovedPiecesGrid-> remove( *pWidget);
+
+		m_refGlade-> get_widget( nameOfPieces[ i], pImageTemp);
+		pRemovedPiecesGrid-> attach( *pImageTemp, numberWhitePiecesRemoved, 0);
+		numberWhitePiecesRemoved++;
+
+pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
 
 		pBoardGame->attach(*(pointerPiece), positionExtraction(positionOfPieces[pieceNameDest]).first, positionExtraction(positionOfPieces[pieceNameDest]).second);
 
@@ -1337,7 +1364,16 @@ void StackPage::on_3p_drag_data_received(const Glib::RefPtr<Gdk::DragContext>& c
 
 		pBoardGame->remove(*pointerPiece);
 		pBoardGame->remove(*(pieces[i]));
-		pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
+		
+//	move piece to removed pices list
+		Gtk::Widget * pWidget = pRemovedPiecesGrid-> get_child_at( numberWhitePiecesRemoved, 0);
+		pRemovedPiecesGrid-> remove( *pWidget);
+
+		m_refGlade-> get_widget( nameOfPieces[ i], pImageTemp);
+		pRemovedPiecesGrid-> attach( *pImageTemp, numberWhitePiecesRemoved, 0);
+		numberWhitePiecesRemoved++;
+
+pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
 
 		pBoardGame->attach(*(pointerPiece), positionExtraction(positionOfPieces[pieceNameDest]).first, positionExtraction(positionOfPieces[pieceNameDest]).second);
 
@@ -1360,7 +1396,16 @@ void StackPage::on_4p_drag_data_received(const Glib::RefPtr<Gdk::DragContext>& c
 
 		pBoardGame->remove(*pointerPiece);
 		pBoardGame->remove(*(pieces[i]));
-		pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
+		
+//	move piece to removed pices list
+		Gtk::Widget * pWidget = pRemovedPiecesGrid-> get_child_at( numberWhitePiecesRemoved, 0);
+		pRemovedPiecesGrid-> remove( *pWidget);
+
+		m_refGlade-> get_widget( nameOfPieces[ i], pImageTemp);
+		pRemovedPiecesGrid-> attach( *pImageTemp, numberWhitePiecesRemoved, 0);
+		numberWhitePiecesRemoved++;
+
+pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
 
 		pBoardGame->attach(*(pointerPiece), positionExtraction(positionOfPieces[pieceNameDest]).first, positionExtraction(positionOfPieces[pieceNameDest]).second);
 
@@ -1383,7 +1428,16 @@ void StackPage::on_5p_drag_data_received(const Glib::RefPtr<Gdk::DragContext>& c
 
 		pBoardGame->remove(*pointerPiece);
 		pBoardGame->remove(*(pieces[i]));
-		pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
+		
+//	move piece to removed pices list
+		Gtk::Widget * pWidget = pRemovedPiecesGrid-> get_child_at( numberWhitePiecesRemoved, 0);
+		pRemovedPiecesGrid-> remove( *pWidget);
+
+		m_refGlade-> get_widget( nameOfPieces[ i], pImageTemp);
+		pRemovedPiecesGrid-> attach( *pImageTemp, numberWhitePiecesRemoved, 0);
+		numberWhitePiecesRemoved++;
+
+pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
 
 		pBoardGame->attach(*(pointerPiece), positionExtraction(positionOfPieces[pieceNameDest]).first, positionExtraction(positionOfPieces[pieceNameDest]).second);
 
@@ -1406,7 +1460,16 @@ void StackPage::on_6p_drag_data_received(const Glib::RefPtr<Gdk::DragContext>& c
 
 		pBoardGame->remove(*pointerPiece);
 		pBoardGame->remove(*(pieces[i]));
-		pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
+		
+//	move piece to removed pices list
+		Gtk::Widget * pWidget = pRemovedPiecesGrid-> get_child_at( numberWhitePiecesRemoved, 0);
+		pRemovedPiecesGrid-> remove( *pWidget);
+
+		m_refGlade-> get_widget( nameOfPieces[ i], pImageTemp);
+		pRemovedPiecesGrid-> attach( *pImageTemp, numberWhitePiecesRemoved, 0);
+		numberWhitePiecesRemoved++;
+
+pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
 
 		pBoardGame->attach(*(pointerPiece), positionExtraction(positionOfPieces[pieceNameDest]).first, positionExtraction(positionOfPieces[pieceNameDest]).second);
 
@@ -1429,7 +1492,16 @@ void StackPage::on_7p_drag_data_received(const Glib::RefPtr<Gdk::DragContext>& c
 
 		pBoardGame->remove(*pointerPiece);
 		pBoardGame->remove(*(pieces[i]));
-		pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
+		
+//	move piece to removed pices list
+		Gtk::Widget * pWidget = pRemovedPiecesGrid-> get_child_at( numberWhitePiecesRemoved, 0);
+		pRemovedPiecesGrid-> remove( *pWidget);
+
+		m_refGlade-> get_widget( nameOfPieces[ i], pImageTemp);
+		pRemovedPiecesGrid-> attach( *pImageTemp, numberWhitePiecesRemoved, 0);
+		numberWhitePiecesRemoved++;
+
+pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
 
 		pBoardGame->attach(*(pointerPiece), positionExtraction(positionOfPieces[pieceNameDest]).first, positionExtraction(positionOfPieces[pieceNameDest]).second);
 
@@ -1452,7 +1524,16 @@ void StackPage::on_8p_drag_data_received(const Glib::RefPtr<Gdk::DragContext>& c
 
 		pBoardGame->remove(*pointerPiece);
 		pBoardGame->remove(*(pieces[i]));
-		pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
+		
+//	move piece to removed pices list
+		Gtk::Widget * pWidget = pRemovedPiecesGrid-> get_child_at( numberWhitePiecesRemoved, 0);
+		pRemovedPiecesGrid-> remove( *pWidget);
+
+		m_refGlade-> get_widget( nameOfPieces[ i], pImageTemp);
+		pRemovedPiecesGrid-> attach( *pImageTemp, numberWhitePiecesRemoved, 0);
+		numberWhitePiecesRemoved++;
+
+pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
 
 		pBoardGame->attach(*(pointerPiece), positionExtraction(positionOfPieces[pieceNameDest]).first, positionExtraction(positionOfPieces[pieceNameDest]).second);
 
@@ -1475,7 +1556,16 @@ void StackPage::on_9p_drag_data_received(const Glib::RefPtr<Gdk::DragContext>& c
 
 		pBoardGame->remove(*pointerPiece);
 		pBoardGame->remove(*(pieces[i]));
-		pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
+		
+//	move piece to removed pices list
+		Gtk::Widget * pWidget = pRemovedPiecesGrid-> get_child_at( numberWhitePiecesRemoved, 0);
+		pRemovedPiecesGrid-> remove( *pWidget);
+
+		m_refGlade-> get_widget( nameOfPieces[ i], pImageTemp);
+		pRemovedPiecesGrid-> attach( *pImageTemp, numberWhitePiecesRemoved, 0);
+		numberWhitePiecesRemoved++;
+
+pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
 
 		pBoardGame->attach(*(pointerPiece), positionExtraction(positionOfPieces[pieceNameDest]).first, positionExtraction(positionOfPieces[pieceNameDest]).second);
 
@@ -1498,7 +1588,16 @@ void StackPage::on_10p_drag_data_received(const Glib::RefPtr<Gdk::DragContext>& 
 
 		pBoardGame->remove(*pointerPiece);
 		pBoardGame->remove(*(pieces[i]));
-		pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
+		
+//	move piece to removed pices list
+		Gtk::Widget * pWidget = pRemovedPiecesGrid-> get_child_at( numberWhitePiecesRemoved, 0);
+		pRemovedPiecesGrid-> remove( *pWidget);
+
+		m_refGlade-> get_widget( nameOfPieces[ i], pImageTemp);
+		pRemovedPiecesGrid-> attach( *pImageTemp, numberWhitePiecesRemoved, 0);
+		numberWhitePiecesRemoved++;
+
+pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
 
 		pBoardGame->attach(*(pointerPiece), positionExtraction(positionOfPieces[pieceNameDest]).first, positionExtraction(positionOfPieces[pieceNameDest]).second);
 
@@ -1521,7 +1620,16 @@ void StackPage::on_11p_drag_data_received(const Glib::RefPtr<Gdk::DragContext>& 
 
 		pBoardGame->remove(*pointerPiece);
 		pBoardGame->remove(*(pieces[i]));
-		pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
+		
+//	move piece to removed pices list
+		Gtk::Widget * pWidget = pRemovedPiecesGrid-> get_child_at( numberWhitePiecesRemoved, 0);
+		pRemovedPiecesGrid-> remove( *pWidget);
+
+		m_refGlade-> get_widget( nameOfPieces[ i], pImageTemp);
+		pRemovedPiecesGrid-> attach( *pImageTemp, numberWhitePiecesRemoved, 0);
+		numberWhitePiecesRemoved++;
+
+pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
 
 		pBoardGame->attach(*(pointerPiece), positionExtraction(positionOfPieces[pieceNameDest]).first, positionExtraction(positionOfPieces[pieceNameDest]).second);
 
@@ -1544,7 +1652,16 @@ void StackPage::on_12p_drag_data_received(const Glib::RefPtr<Gdk::DragContext>& 
 
 		pBoardGame->remove(*pointerPiece);
 		pBoardGame->remove(*(pieces[i]));
-		pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
+		
+//	move piece to removed pices list
+		Gtk::Widget * pWidget = pRemovedPiecesGrid-> get_child_at( numberWhitePiecesRemoved, 0);
+		pRemovedPiecesGrid-> remove( *pWidget);
+
+		m_refGlade-> get_widget( nameOfPieces[ i], pImageTemp);
+		pRemovedPiecesGrid-> attach( *pImageTemp, numberWhitePiecesRemoved, 0);
+		numberWhitePiecesRemoved++;
+
+pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
 
 		pBoardGame->attach(*(pointerPiece), positionExtraction(positionOfPieces[pieceNameDest]).first, positionExtraction(positionOfPieces[pieceNameDest]).second);
 
@@ -1567,7 +1684,16 @@ void StackPage::on_13p_drag_data_received(const Glib::RefPtr<Gdk::DragContext>& 
 
 		pBoardGame->remove(*pointerPiece);
 		pBoardGame->remove(*(pieces[i]));
-		pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
+	
+//	move piece to removed pices list
+		Gtk::Widget * pWidget = pRemovedPiecesGrid-> get_child_at( numberWhitePiecesRemoved, 0);
+		pRemovedPiecesGrid-> remove( *pWidget);
+
+		m_refGlade-> get_widget( nameOfPieces[ i], pImageTemp);
+		pRemovedPiecesGrid-> attach( *pImageTemp, numberWhitePiecesRemoved, 0);
+		numberWhitePiecesRemoved++;
+
+	pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
 
 		pBoardGame->attach(*(pointerPiece), positionExtraction(positionOfPieces[pieceNameDest]).first, positionExtraction(positionOfPieces[pieceNameDest]).second);
 
@@ -1590,7 +1716,16 @@ void StackPage::on_14p_drag_data_received(const Glib::RefPtr<Gdk::DragContext>& 
 
 		pBoardGame->remove(*pointerPiece);
 		pBoardGame->remove(*(pieces[i]));
-		pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
+		
+//	move piece to removed pices list
+		Gtk::Widget * pWidget = pRemovedPiecesGrid-> get_child_at( numberWhitePiecesRemoved, 0);
+		pRemovedPiecesGrid-> remove( *pWidget);
+
+		m_refGlade-> get_widget( nameOfPieces[ i], pImageTemp);
+		pRemovedPiecesGrid-> attach( *pImageTemp, numberWhitePiecesRemoved, 0);
+		numberWhitePiecesRemoved++;
+
+	pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
 
 		pBoardGame->attach(*(pointerPiece), positionExtraction(positionOfPieces[pieceNameDest]).first, positionExtraction(positionOfPieces[pieceNameDest]).second);
 
@@ -1613,6 +1748,15 @@ void StackPage::on_15p_drag_data_received(const Glib::RefPtr<Gdk::DragContext>& 
 
 		pBoardGame->remove(*pointerPiece);
 		pBoardGame->remove(*(pieces[i]));
+	
+//	move piece to removed pices list
+		Gtk::Widget * pWidget = pRemovedPiecesGrid-> get_child_at( numberWhitePiecesRemoved, 0);
+		pRemovedPiecesGrid-> remove( *pWidget);
+
+		m_refGlade-> get_widget( nameOfPieces[ i], pImageTemp);
+		pRemovedPiecesGrid-> attach( *pImageTemp, numberWhitePiecesRemoved, 0);
+		numberWhitePiecesRemoved++;
+
 		pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
 
 		pBoardGame->attach(*(pointerPiece), positionExtraction(positionOfPieces[pieceNameDest]).first, positionExtraction(positionOfPieces[pieceNameDest]).second);
@@ -1636,7 +1780,14 @@ void StackPage::on_16p_drag_data_received(const Glib::RefPtr<Gdk::DragContext>& 
 
 		pBoardGame->remove(*pointerPiece);
 		pBoardGame->remove(*(pieces[i]));
-		pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
+	
+//	move piece to removed pices list
+		Gtk::Widget * pWidget = pRemovedPiecesGrid-> get_child_at( numberBlackPiecesRemoved, 2);
+		pRemovedPiecesGrid-> remove( *pWidget);
+
+		m_refGlade-> get_widget( nameOfPieces[ i], pImageTemp);
+		pRemovedPiecesGrid-> attach( *pImageTemp, numberBlackPiecesRemoved, 2);
+		numberBlackPiecesRemoved++;	pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
 
 		pBoardGame->attach(*(pointerPiece), positionExtraction(positionOfPieces[pieceNameDest]).first, positionExtraction(positionOfPieces[pieceNameDest]).second);
 
@@ -1659,7 +1810,14 @@ void StackPage::on_17p_drag_data_received(const Glib::RefPtr<Gdk::DragContext>& 
 
 		pBoardGame->remove(*pointerPiece);
 		pBoardGame->remove(*(pieces[i]));
-		pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
+	
+//	move piece to removed pices list
+		Gtk::Widget * pWidget = pRemovedPiecesGrid-> get_child_at( numberBlackPiecesRemoved, 2);
+		pRemovedPiecesGrid-> remove( *pWidget);
+
+		m_refGlade-> get_widget( nameOfPieces[ i], pImageTemp);
+		pRemovedPiecesGrid-> attach( *pImageTemp, numberBlackPiecesRemoved, 2);
+		numberBlackPiecesRemoved++;	pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
 
 		pBoardGame->attach(*(pointerPiece), positionExtraction(positionOfPieces[pieceNameDest]).first, positionExtraction(positionOfPieces[pieceNameDest]).second);
 
@@ -1682,7 +1840,14 @@ void StackPage::on_18p_drag_data_received(const Glib::RefPtr<Gdk::DragContext>& 
 
 		pBoardGame->remove(*pointerPiece);
 		pBoardGame->remove(*(pieces[i]));
-		pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
+	
+//	move piece to removed pices list
+		Gtk::Widget * pWidget = pRemovedPiecesGrid-> get_child_at( numberBlackPiecesRemoved, 2);
+		pRemovedPiecesGrid-> remove( *pWidget);
+
+		m_refGlade-> get_widget( nameOfPieces[ i], pImageTemp);
+		pRemovedPiecesGrid-> attach( *pImageTemp, numberBlackPiecesRemoved, 2);
+		numberBlackPiecesRemoved++;	pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
 
 		pBoardGame->attach(*(pointerPiece), positionExtraction(positionOfPieces[pieceNameDest]).first, positionExtraction(positionOfPieces[pieceNameDest]).second);
 
@@ -1705,7 +1870,14 @@ void StackPage::on_19p_drag_data_received(const Glib::RefPtr<Gdk::DragContext>& 
 
 		pBoardGame->remove(*pointerPiece);
 		pBoardGame->remove(*(pieces[i]));
-		pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
+	
+//	move piece to removed pices list
+		Gtk::Widget * pWidget = pRemovedPiecesGrid-> get_child_at( numberBlackPiecesRemoved, 2);
+		pRemovedPiecesGrid-> remove( *pWidget);
+
+		m_refGlade-> get_widget( nameOfPieces[ i], pImageTemp);
+		pRemovedPiecesGrid-> attach( *pImageTemp, numberBlackPiecesRemoved, 2);
+		numberBlackPiecesRemoved++;	pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
 
 		pBoardGame->attach(*(pointerPiece), positionExtraction(positionOfPieces[pieceNameDest]).first, positionExtraction(positionOfPieces[pieceNameDest]).second);
 
@@ -1728,7 +1900,14 @@ void StackPage::on_20p_drag_data_received(const Glib::RefPtr<Gdk::DragContext>& 
 
 		pBoardGame->remove(*pointerPiece);
 		pBoardGame->remove(*(pieces[i]));
-		pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
+	
+//	move piece to removed pices list
+		Gtk::Widget * pWidget = pRemovedPiecesGrid-> get_child_at( numberBlackPiecesRemoved, 2);
+		pRemovedPiecesGrid-> remove( *pWidget);
+
+		m_refGlade-> get_widget( nameOfPieces[ i], pImageTemp);
+		pRemovedPiecesGrid-> attach( *pImageTemp, numberBlackPiecesRemoved, 2);
+		numberBlackPiecesRemoved++;	pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
 
 		pBoardGame->attach(*(pointerPiece), positionExtraction(positionOfPieces[pieceNameDest]).first, positionExtraction(positionOfPieces[pieceNameDest]).second);
 
@@ -1751,7 +1930,14 @@ void StackPage::on_21p_drag_data_received(const Glib::RefPtr<Gdk::DragContext>& 
 
 		pBoardGame->remove(*pointerPiece);
 		pBoardGame->remove(*(pieces[i]));
-		pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
+	
+//	move piece to removed pices list
+		Gtk::Widget * pWidget = pRemovedPiecesGrid-> get_child_at( numberBlackPiecesRemoved, 2);
+		pRemovedPiecesGrid-> remove( *pWidget);
+
+		m_refGlade-> get_widget( nameOfPieces[ i], pImageTemp);
+		pRemovedPiecesGrid-> attach( *pImageTemp, numberBlackPiecesRemoved, 2);
+		numberBlackPiecesRemoved++;	pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
 
 		pBoardGame->attach(*(pointerPiece), positionExtraction(positionOfPieces[pieceNameDest]).first, positionExtraction(positionOfPieces[pieceNameDest]).second);
 
@@ -1774,7 +1960,14 @@ void StackPage::on_22p_drag_data_received(const Glib::RefPtr<Gdk::DragContext>& 
 
 		pBoardGame->remove(*pointerPiece);
 		pBoardGame->remove(*(pieces[i]));
-		pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
+	
+//	move piece to removed pices list
+		Gtk::Widget * pWidget = pRemovedPiecesGrid-> get_child_at( numberBlackPiecesRemoved, 2);
+		pRemovedPiecesGrid-> remove( *pWidget);
+
+		m_refGlade-> get_widget( nameOfPieces[ i], pImageTemp);
+		pRemovedPiecesGrid-> attach( *pImageTemp, numberBlackPiecesRemoved, 2);
+		numberBlackPiecesRemoved++;	pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
 
 		pBoardGame->attach(*(pointerPiece), positionExtraction(positionOfPieces[pieceNameDest]).first, positionExtraction(positionOfPieces[pieceNameDest]).second);
 
@@ -1797,7 +1990,14 @@ void StackPage::on_23p_drag_data_received(const Glib::RefPtr<Gdk::DragContext>& 
 
 		pBoardGame->remove(*pointerPiece);
 		pBoardGame->remove(*(pieces[i]));
-		pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
+	
+//	move piece to removed pices list
+		Gtk::Widget * pWidget = pRemovedPiecesGrid-> get_child_at( numberBlackPiecesRemoved, 2);
+		pRemovedPiecesGrid-> remove( *pWidget);
+
+		m_refGlade-> get_widget( nameOfPieces[ i], pImageTemp);
+		pRemovedPiecesGrid-> attach( *pImageTemp, numberBlackPiecesRemoved, 2);
+		numberBlackPiecesRemoved++;	pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
 
 		pBoardGame->attach(*(pointerPiece), positionExtraction(positionOfPieces[pieceNameDest]).first, positionExtraction(positionOfPieces[pieceNameDest]).second);
 
@@ -1820,7 +2020,14 @@ void StackPage::on_24p_drag_data_received(const Glib::RefPtr<Gdk::DragContext>& 
 
 		pBoardGame->remove(*pointerPiece);
 		pBoardGame->remove(*(pieces[i]));
-		pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
+	
+//	move piece to removed pices list
+		Gtk::Widget * pWidget = pRemovedPiecesGrid-> get_child_at( numberBlackPiecesRemoved, 2);
+		pRemovedPiecesGrid-> remove( *pWidget);
+
+		m_refGlade-> get_widget( nameOfPieces[ i], pImageTemp);
+		pRemovedPiecesGrid-> attach( *pImageTemp, numberBlackPiecesRemoved, 2);
+		numberBlackPiecesRemoved++;	pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
 
 		pBoardGame->attach(*(pointerPiece), positionExtraction(positionOfPieces[pieceNameDest]).first, positionExtraction(positionOfPieces[pieceNameDest]).second);
 
@@ -1843,7 +2050,14 @@ void StackPage::on_25p_drag_data_received(const Glib::RefPtr<Gdk::DragContext>& 
 
 		pBoardGame->remove(*pointerPiece);
 		pBoardGame->remove(*(pieces[i]));
-		pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
+	
+//	move piece to removed pices list
+		Gtk::Widget * pWidget = pRemovedPiecesGrid-> get_child_at( numberBlackPiecesRemoved, 2);
+		pRemovedPiecesGrid-> remove( *pWidget);
+
+		m_refGlade-> get_widget( nameOfPieces[ i], pImageTemp);
+		pRemovedPiecesGrid-> attach( *pImageTemp, numberBlackPiecesRemoved, 2);
+		numberBlackPiecesRemoved++;	pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
 
 		pBoardGame->attach(*(pointerPiece), positionExtraction(positionOfPieces[pieceNameDest]).first, positionExtraction(positionOfPieces[pieceNameDest]).second);
 
@@ -1866,7 +2080,14 @@ void StackPage::on_26p_drag_data_received(const Glib::RefPtr<Gdk::DragContext>& 
 
 		pBoardGame->remove(*pointerPiece);
 		pBoardGame->remove(*(pieces[i]));
-		pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
+	
+//	move piece to removed pices list
+		Gtk::Widget * pWidget = pRemovedPiecesGrid-> get_child_at( numberBlackPiecesRemoved, 2);
+		pRemovedPiecesGrid-> remove( *pWidget);
+
+		m_refGlade-> get_widget( nameOfPieces[ i], pImageTemp);
+		pRemovedPiecesGrid-> attach( *pImageTemp, numberBlackPiecesRemoved, 2);
+		numberBlackPiecesRemoved++;	pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
 
 		pBoardGame->attach(*(pointerPiece), positionExtraction(positionOfPieces[pieceNameDest]).first, positionExtraction(positionOfPieces[pieceNameDest]).second);
 
@@ -1889,7 +2110,14 @@ void StackPage::on_27p_drag_data_received(const Glib::RefPtr<Gdk::DragContext>& 
 
 		pBoardGame->remove(*pointerPiece);
 		pBoardGame->remove(*(pieces[i]));
-		pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
+	
+//	move piece to removed pices list
+		Gtk::Widget * pWidget = pRemovedPiecesGrid-> get_child_at( numberBlackPiecesRemoved, 2);
+		pRemovedPiecesGrid-> remove( *pWidget);
+
+		m_refGlade-> get_widget( nameOfPieces[ i], pImageTemp);
+		pRemovedPiecesGrid-> attach( *pImageTemp, numberBlackPiecesRemoved, 2);
+		numberBlackPiecesRemoved++;	pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
 
 		pBoardGame->attach(*(pointerPiece), positionExtraction(positionOfPieces[pieceNameDest]).first, positionExtraction(positionOfPieces[pieceNameDest]).second);
 
@@ -1912,7 +2140,14 @@ void StackPage::on_28p_drag_data_received(const Glib::RefPtr<Gdk::DragContext>& 
 
 		pBoardGame->remove(*pointerPiece);
 		pBoardGame->remove(*(pieces[i]));
-		pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
+	
+//	move piece to removed pices list
+		Gtk::Widget * pWidget = pRemovedPiecesGrid-> get_child_at( numberBlackPiecesRemoved, 2);
+		pRemovedPiecesGrid-> remove( *pWidget);
+
+		m_refGlade-> get_widget( nameOfPieces[ i], pImageTemp);
+		pRemovedPiecesGrid-> attach( *pImageTemp, numberBlackPiecesRemoved, 2);
+		numberBlackPiecesRemoved++;	pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
 
 		pBoardGame->attach(*(pointerPiece), positionExtraction(positionOfPieces[pieceNameDest]).first, positionExtraction(positionOfPieces[pieceNameDest]).second);
 
@@ -1935,7 +2170,14 @@ void StackPage::on_29p_drag_data_received(const Glib::RefPtr<Gdk::DragContext>& 
 
 		pBoardGame->remove(*pointerPiece);
 		pBoardGame->remove(*(pieces[i]));
-		pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
+	
+//	move piece to removed pices list
+		Gtk::Widget * pWidget = pRemovedPiecesGrid-> get_child_at( numberBlackPiecesRemoved, 2);
+		pRemovedPiecesGrid-> remove( *pWidget);
+
+		m_refGlade-> get_widget( nameOfPieces[ i], pImageTemp);
+		pRemovedPiecesGrid-> attach( *pImageTemp, numberBlackPiecesRemoved, 2);
+		numberBlackPiecesRemoved++;	pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
 
 		pBoardGame->attach(*(pointerPiece), positionExtraction(positionOfPieces[pieceNameDest]).first, positionExtraction(positionOfPieces[pieceNameDest]).second);
 
@@ -1958,7 +2200,14 @@ void StackPage::on_30p_drag_data_received(const Glib::RefPtr<Gdk::DragContext>& 
 
 		pBoardGame->remove(*pointerPiece);
 		pBoardGame->remove(*(pieces[i]));
-		pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
+	
+//	move piece to removed pices list
+		Gtk::Widget * pWidget = pRemovedPiecesGrid-> get_child_at( numberBlackPiecesRemoved, 2);
+		pRemovedPiecesGrid-> remove( *pWidget);
+
+		m_refGlade-> get_widget( nameOfPieces[ i], pImageTemp);
+		pRemovedPiecesGrid-> attach( *pImageTemp, numberBlackPiecesRemoved, 2);
+		numberBlackPiecesRemoved++;	pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
 
 		pBoardGame->attach(*(pointerPiece), positionExtraction(positionOfPieces[pieceNameDest]).first, positionExtraction(positionOfPieces[pieceNameDest]).second);
 
@@ -1975,12 +2224,21 @@ void StackPage::on_31p_drag_data_received(const Glib::RefPtr<Gdk::DragContext>& 
 	int i = 31;
 	cellDestination = positionOfPieces[pieceNameDest];
 	if(motionVerification()){
-
+		
 		numberNewBlankSquars++;
 		positionOfBlankSquars[numberNewBlankSquars + 32] = positionOfPieces[piece];
 
 		pBoardGame->remove(*pointerPiece);
 		pBoardGame->remove(*(pieces[i]));
+
+//	move piece to removed pices list
+		Gtk::Widget * pWidget = pRemovedPiecesGrid-> get_child_at( numberBlackPiecesRemoved, 2);
+		pRemovedPiecesGrid-> remove( *pWidget);
+
+		m_refGlade-> get_widget( nameOfPieces[ i], pImageTemp);
+		pRemovedPiecesGrid-> attach( *pImageTemp, numberBlackPiecesRemoved, 2);
+		numberBlackPiecesRemoved++;
+
 		pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
 
 		pBoardGame->attach(*(pointerPiece), positionExtraction(positionOfPieces[pieceNameDest]).first, positionExtraction(positionOfPieces[pieceNameDest]).second);
