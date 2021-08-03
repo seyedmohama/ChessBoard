@@ -4,6 +4,11 @@ Handler::Handler(std::string gn, std::string pfn, std::string psn){
 	gameName = gn;
 	playerFirstName = pfn;
 	playerSecondName = psn;
+
+	firstPlayerScore = 0;
+	secondPlayerScore = 0;
+	firstPlayerNegativScore = 0;
+	secondPlayerNegativScore = 0;
 }
 
 Handler::~Handler(){
@@ -22,3 +27,15 @@ void Handler::set_playerSecondName(std::string psn){
 std::string Handler::get_gameName(){ return gameName; }
 std::string Handler::get_playerFirstName(){ return playerFirstName; }
 std::string Handler::get_playerSecondName(){ return playerSecondName; }
+void Handler::firstPlayerAppendScore(size_t number){
+	firstPlayerScore++;
+}
+void Handler::firstPlayerAppendNegativScore(size_t number){
+	firstPlayerNegativScore++;
+}
+void Handler::secondPlayerAppendScore(size_t number){
+	secondPlayerScore++;
+}
+void Handler::secondPlayerAppendNegativScore(size_t number){
+	secondPlayerNegativScore++;
+}

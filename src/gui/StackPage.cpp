@@ -96,7 +96,7 @@ StackPage::~StackPage(){
 
 void StackPage::exitBtnStack2_clicked(){
 	set_visible_child( "wellcome_page", Gtk::STACK_TRANSITION_TYPE_NONE);
-	handler = nullptr;
+	delete(handler);
 }
 
 
