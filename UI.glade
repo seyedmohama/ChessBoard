@@ -667,7 +667,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkGrid">
+              <object class="GtkGrid" id="GridTestID">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="hexpand">True</property>
@@ -686,9 +686,13 @@
                           <object class="GtkLabel">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
+                            <property name="margin_left">80</property>
+                            <property name="margin_right">80</property>
+                            <property name="margin_top">15</property>
+                            <property name="margin_bottom">15</property>
                             <property name="label" translatable="yes">امتیاز ها</property>
                             <attributes>
-                              <attribute name="font-desc" value="Vazir 16"/>
+                              <attribute name="font-desc" value="Vazir 19"/>
                             </attributes>
                           </object>
                           <packing>
@@ -696,9 +700,181 @@
                             <property name="top_attach">0</property>
                           </packing>
                         </child>
+                        <child>
+                          <object class="GtkSeparator" id="separator2Stack2">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="orientation">vertical</property>
+                          </object>
+                          <packing>
+                            <property name="left_attach">0</property>
+                            <property name="top_attach">1</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkGrid" id="scoreboardFirstPLGrid">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="vexpand">True</property>
+                            <property name="column_homogeneous">True</property>
+                            <child>
+                              <object class="GtkLabel" id="firstPLNameScoreLabel">
+                                <property name="visible">True</property>
+                                <property name="can_focus">False</property>
+                                <property name="margin_top">10</property>
+                                <property name="margin_bottom">5</property>
+                                <property name="label" translatable="yes">first PL Name Score</property>
+                                <attributes>
+                                  <attribute name="font-desc" value="Vazir 14"/>
+                                </attributes>
+                              </object>
+                              <packing>
+                                <property name="left_attach">0</property>
+                                <property name="top_attach">0</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkLabel" id="firstPLNameNegativScoreLabel">
+                                <property name="visible">True</property>
+                                <property name="can_focus">False</property>
+                                <property name="margin_top">25</property>
+                                <property name="margin_bottom">10</property>
+                                <property name="label" translatable="yes">first PL Name Negativ Score</property>
+                                <attributes>
+                                  <attribute name="font-desc" value="Vazir 14"/>
+                                </attributes>
+                              </object>
+                              <packing>
+                                <property name="left_attach">0</property>
+                                <property name="top_attach">2</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkLabel" id="scoreFirstPL">
+                                <property name="visible">True</property>
+                                <property name="can_focus">False</property>
+                                <property name="margin_top">5</property>
+                                <property name="margin_bottom">25</property>
+                                <property name="label" translatable="yes">score first PL</property>
+                                <attributes>
+                                  <attribute name="font-desc" value="Vazir 14"/>
+                                </attributes>
+                              </object>
+                              <packing>
+                                <property name="left_attach">0</property>
+                                <property name="top_attach">1</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkLabel" id="negativScoreFirstPL">
+                                <property name="visible">True</property>
+                                <property name="can_focus">False</property>
+                                <property name="margin_top">5</property>
+                                <property name="margin_bottom">10</property>
+                                <property name="label" translatable="yes">negativ score first PL</property>
+                                <attributes>
+                                  <attribute name="font-desc" value="Vazir 14"/>
+                                </attributes>
+                              </object>
+                              <packing>
+                                <property name="left_attach">0</property>
+                                <property name="top_attach">3</property>
+                              </packing>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="left_attach">0</property>
+                            <property name="top_attach">2</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkSeparator" id="separator3Stack2">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="orientation">vertical</property>
+                          </object>
+                          <packing>
+                            <property name="left_attach">0</property>
+                            <property name="top_attach">3</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkGrid" id="scoreboardSecondPLGrid">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="vexpand">True</property>
+                            <property name="column_homogeneous">True</property>
+                            <child>
+                              <object class="GtkLabel" id="secondPLNameScoreLabel">
+                                <property name="visible">True</property>
+                                <property name="can_focus">False</property>
+                                <property name="margin_top">10</property>
+                                <property name="label" translatable="yes">second PL Name Score:</property>
+                                <attributes>
+                                  <attribute name="font-desc" value="Vazir 14"/>
+                                </attributes>
+                              </object>
+                              <packing>
+                                <property name="left_attach">0</property>
+                                <property name="top_attach">0</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkLabel" id="secondPLNameNegativScoreLabel">
+                                <property name="visible">True</property>
+                                <property name="can_focus">False</property>
+                                <property name="margin_top">25</property>
+                                <property name="label" translatable="yes">second PL Name Negativ Score:</property>
+                                <attributes>
+                                  <attribute name="font-desc" value="Vazir 14"/>
+                                </attributes>
+                              </object>
+                              <packing>
+                                <property name="left_attach">0</property>
+                                <property name="top_attach">2</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkLabel" id="scoreSecondPL">
+                                <property name="visible">True</property>
+                                <property name="can_focus">False</property>
+                                <property name="margin_top">5</property>
+                                <property name="margin_bottom">25</property>
+                                <property name="label" translatable="yes">score first PL</property>
+                                <attributes>
+                                  <attribute name="font-desc" value="Vazir 14"/>
+                                </attributes>
+                              </object>
+                              <packing>
+                                <property name="left_attach">0</property>
+                                <property name="top_attach">1</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkLabel" id="negativScoreSecondPL">
+                                <property name="visible">True</property>
+                                <property name="can_focus">False</property>
+                                <property name="margin_top">5</property>
+                                <property name="margin_bottom">10</property>
+                                <property name="label" translatable="yes">negativ score first PL</property>
+                                <attributes>
+                                  <attribute name="font-desc" value="Vazir 14"/>
+                                </attributes>
+                              </object>
+                              <packing>
+                                <property name="left_attach">0</property>
+                                <property name="top_attach">3</property>
+                              </packing>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="left_attach">0</property>
+                            <property name="top_attach">4</property>
+                          </packing>
+                        </child>
                       </object>
                       <packing>
-                        <property name="left_attach">1</property>
+                        <property name="left_attach">2</property>
                         <property name="top_attach">0</property>
                       </packing>
                     </child>
@@ -706,14 +882,14 @@
                       <object class="GtkOverlay" id="overlayGameBoardID">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="hexpand">True</property>
-                        <property name="vexpand">True</property>
                         <child>
                           <object class="GtkImage" id="boardGameImageID">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">start</property>
                             <property name="valign">center</property>
+                            <property name="margin_left">30</property>
+                            <property name="margin_top">30</property>
                             <property name="hexpand">True</property>
                             <property name="vexpand">True</property>
                             <property name="pixbuf">images/chessboard-552.png</property>
@@ -728,6 +904,29 @@
                         <property name="top_attach">0</property>
                       </packing>
                     </child>
+                    <child>
+                      <object class="GtkSeparator" id="separator1Stack2">
+                        <property name="width_request">2</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">1</property>
+                        <property name="top_attach">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkSeparator" id="separator5Stack2">
+                        <property name="height_request">3</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">0</property>
+                        <property name="top_attach">1</property>
+                        <property name="width">3</property>
+                      </packing>
+                    </child>
                   </object>
                   <packing>
                     <property name="left_attach">0</property>
@@ -735,7 +934,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkGrid">
+                  <object class="GtkGrid" id="removedPiecesGrid">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <child>
@@ -768,7 +967,7 @@
                       </object>
                       <packing>
                         <property name="left_attach">0</property>
-                        <property name="top_attach">1</property>
+                        <property name="top_attach">2</property>
                       </packing>
                     </child>
                     <child>
@@ -779,7 +978,7 @@
                       </object>
                       <packing>
                         <property name="left_attach">1</property>
-                        <property name="top_attach">1</property>
+                        <property name="top_attach">2</property>
                       </packing>
                     </child>
                     <child>
@@ -801,7 +1000,7 @@
                       </object>
                       <packing>
                         <property name="left_attach">2</property>
-                        <property name="top_attach">1</property>
+                        <property name="top_attach">2</property>
                       </packing>
                     </child>
                     <child>
@@ -823,7 +1022,7 @@
                       </object>
                       <packing>
                         <property name="left_attach">3</property>
-                        <property name="top_attach">1</property>
+                        <property name="top_attach">2</property>
                       </packing>
                     </child>
                     <child>
@@ -845,7 +1044,7 @@
                       </object>
                       <packing>
                         <property name="left_attach">4</property>
-                        <property name="top_attach">1</property>
+                        <property name="top_attach">2</property>
                       </packing>
                     </child>
                     <child>
@@ -867,7 +1066,7 @@
                       </object>
                       <packing>
                         <property name="left_attach">5</property>
-                        <property name="top_attach">1</property>
+                        <property name="top_attach">2</property>
                       </packing>
                     </child>
                     <child>
@@ -889,7 +1088,7 @@
                       </object>
                       <packing>
                         <property name="left_attach">6</property>
-                        <property name="top_attach">1</property>
+                        <property name="top_attach">2</property>
                       </packing>
                     </child>
                     <child>
@@ -911,7 +1110,7 @@
                       </object>
                       <packing>
                         <property name="left_attach">7</property>
-                        <property name="top_attach">1</property>
+                        <property name="top_attach">2</property>
                       </packing>
                     </child>
                     <child>
@@ -933,7 +1132,7 @@
                       </object>
                       <packing>
                         <property name="left_attach">8</property>
-                        <property name="top_attach">1</property>
+                        <property name="top_attach">2</property>
                       </packing>
                     </child>
                     <child>
@@ -955,7 +1154,7 @@
                       </object>
                       <packing>
                         <property name="left_attach">9</property>
-                        <property name="top_attach">1</property>
+                        <property name="top_attach">2</property>
                       </packing>
                     </child>
                     <child>
@@ -977,7 +1176,7 @@
                       </object>
                       <packing>
                         <property name="left_attach">10</property>
-                        <property name="top_attach">1</property>
+                        <property name="top_attach">2</property>
                       </packing>
                     </child>
                     <child>
@@ -999,7 +1198,7 @@
                       </object>
                       <packing>
                         <property name="left_attach">11</property>
-                        <property name="top_attach">1</property>
+                        <property name="top_attach">2</property>
                       </packing>
                     </child>
                     <child>
@@ -1010,7 +1209,7 @@
                       </object>
                       <packing>
                         <property name="left_attach">12</property>
-                        <property name="top_attach">1</property>
+                        <property name="top_attach">2</property>
                       </packing>
                     </child>
                     <child>
@@ -1043,7 +1242,7 @@
                       </object>
                       <packing>
                         <property name="left_attach">13</property>
-                        <property name="top_attach">1</property>
+                        <property name="top_attach">2</property>
                       </packing>
                     </child>
                     <child>
@@ -1054,7 +1253,7 @@
                       </object>
                       <packing>
                         <property name="left_attach">14</property>
-                        <property name="top_attach">1</property>
+                        <property name="top_attach">2</property>
                       </packing>
                     </child>
                     <child>
@@ -1087,7 +1286,18 @@
                       </object>
                       <packing>
                         <property name="left_attach">15</property>
+                        <property name="top_attach">2</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkSeparator" id="separator6Stack2">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">0</property>
                         <property name="top_attach">1</property>
+                        <property name="width">16</property>
                       </packing>
                     </child>
                   </object>
@@ -1096,6 +1306,17 @@
                     <property name="top_attach">1</property>
                   </packing>
                 </child>
+              </object>
+              <packing>
+                <property name="left_attach">2</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkSeparator" id="separator0Stack2">
+                <property name="width_request">2</property>
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
               </object>
               <packing>
                 <property name="left_attach">1</property>
@@ -1228,7 +1449,8 @@
   <object class="GtkGrid" id="boardGameID">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="margin_top">5</property>
+    <property name="margin_left">30</property>
+    <property name="margin_top">30</property>
     <child>
       <object class="GtkImage" id="25sq">
         <property name="visible">True</property>

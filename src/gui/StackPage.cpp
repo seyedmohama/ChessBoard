@@ -88,7 +88,6 @@ m_refGlade(refGlade){
 		pieces[i]->drag_dest_set(target);
 	}
 
-
 }
 
 
@@ -97,11 +96,70 @@ StackPage::~StackPage(){
 
 void StackPage::exitBtnStack2_clicked(){
 	set_visible_child( "wellcome_page", Gtk::STACK_TRANSITION_TYPE_NONE);
-	handler = nullptr;
+	delete(handler);
 }
 
 
 void StackPage::startGameBtn_clicked(){
+
+//	setup separators on page stack2 game
+	m_refGlade-> get_widget( "separator0Stack2", pSeparators[0]);
+	m_refGlade-> get_widget( "separator1Stack2", pSeparators[1]);
+	m_refGlade-> get_widget( "separator2Stack2", pSeparators[2]);
+	m_refGlade-> get_widget( "separator3Stack2", pSeparators[3]);
+	m_refGlade-> get_widget( "separator5Stack2", pSeparators[5]);
+	m_refGlade-> get_widget( "separator6Stack2", pSeparators[6]);
+	pSeparators[0]-> override_background_color( Gdk::RGBA("#8d99ae"));
+	pSeparators[1]-> override_background_color( Gdk::RGBA("#8d99ae"));
+	pSeparators[2]-> override_background_color( Gdk::RGBA("#8d99ae"));
+	pSeparators[3]-> override_background_color( Gdk::RGBA("#8d99ae"));
+	pSeparators[5]-> override_background_color( Gdk::RGBA("#8d99ae"));
+	pSeparators[6]-> override_background_color( Gdk::RGBA("#8d99ae"));
+	
+
+//	create handler and set game name and player name to handler
+	m_refGlade->get_widget("gameNameEntry", pGameNameEnt);
+	m_refGlade->get_widget("playerFirstNameEntry", pPlayerFirstNameEnt);
+	m_refGlade->get_widget("playerSecondNameEntry", pPlayerSecondNameEnt);
+
+	handler = new Handler ( pGameNameEnt->get_text(), pPlayerFirstNameEnt->get_text(), pPlayerSecondNameEnt->get_text());
+
+
+//	setup scoreboard
+	m_refGlade-> get_widget( "firstPLNameScoreLabel", pFirstPLNameScoreLabel);
+	m_refGlade-> get_widget( "secondPLNameScoreLabel", pSecondPLNameScoreLabel);
+	m_refGlade-> get_widget( "firstPLNameNegativScoreLabel", pFirstPLNameNegativScoreLabel);
+	m_refGlade-> get_widget( "secondPLNameNegativScoreLabel", pSecondPLNameNegativScoreLabel);
+	m_refGlade-> get_widget( "scoreFirstPL", pScoreFirstPL);
+	m_refGlade-> get_widget( "negativScoreFirstPL", pNegativScoreFirstPL);
+	m_refGlade-> get_widget( "scoreSecondPL", pScoreSecondPL);
+	m_refGlade-> get_widget( "negativScoreSecondPL", pNegativScoreSecondPL);
+
+	std::string str = "امتیاز ";
+	str += (handler-> get_playerFirstName());
+	str += ":";
+	pFirstPLNameScoreLabel-> set_label(str);
+	pScoreFirstPL-> set_label("0");
+	
+	str = "امتیاز منفی ";
+	str += handler-> get_playerFirstName();
+	str += ":";
+	pFirstPLNameNegativScoreLabel-> set_label(str);
+	pNegativScoreFirstPL-> set_label("0");
+
+	str = "امتیاز ";
+	str += handler-> get_playerSecondName();
+	str += ":";
+	pSecondPLNameScoreLabel-> set_label(str);
+	pScoreSecondPL-> set_label("0");
+
+	str = "امتیاز منفی ";
+	str += handler-> get_playerSecondName();
+	str += ":";
+	pSecondPLNameNegativScoreLabel-> set_label(str);
+	pNegativScoreSecondPL-> set_label("0");
+
+
 //	Show the startGame Page	
 	set_visible_child("game_page", Gtk::STACK_TRANSITION_TYPE_NONE);
 	
@@ -135,15 +193,8 @@ void StackPage::startGameBtn_clicked(){
 		positionOfBlankSquars[i] = "null";
 	}
 
-
-	m_refGlade->get_widget("gameNameEntry", pGameNameEnt);
-	m_refGlade->get_widget("playerFirstNameEntry", pPlayerFirstNameEnt);
-	m_refGlade->get_widget("playerSecondNameEntry", pPlayerSecondNameEnt);
-
-
-	handler = new Handler ( pGameNameEnt->get_text(), pPlayerFirstNameEnt->get_text(), pPlayerSecondNameEnt->get_text());
 	
-
+//	set game name on page Stack2
 	pGameNameLabel->set_label(handler->get_gameName());
 
 
