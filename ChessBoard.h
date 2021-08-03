@@ -18,7 +18,10 @@ private:
 public:
   void initBoard();
   Cell** GetBoard();
+  bool IsMated(ChessColor color);
+  bool IsChecked(ChessColor color);
+  bool IsCheckMated(ChessColor color);
+  pair<int, int> FindKing(ChessColor color);
   vector<pair<int, int>> GetFreeMovements(pair<int, int> cell);
   virtual void Move(pair<int, int> position, pair<int, int> toPosition);
-  // int checkmat(int x , int y);// int king.x king.y
 };
