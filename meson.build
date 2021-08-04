@@ -7,12 +7,25 @@ project('chessap', 'cpp',
 )
 gtkmm_dep = dependency('gtkmm-3.0')
 src = [
+
+#	GUI
   'src/main.cpp',
   'src/gui/MainWindow.cpp',
   'src/gui/StackPage.cpp',
 	'src/handler.cpp',
 	'src/gui/drag_drop.cpp',
-	'src/gui/utility.cpp'
+	'src/gui/utility.cpp',
+	
+#	LOGIC
+	'Bishop.cpp',
+	'Cell.cpp',
+	'ChessBoard.cpp',
+	'Chessman.cpp',
+	'King.cpp',
+	'Knight.cpp',
+	'Pawn.cpp',
+	'Queen.cpp',
+	'Rook.cpp'
 ]
 includes = include_directories(
   'include',

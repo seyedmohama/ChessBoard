@@ -12,8 +12,10 @@
 #include <gtkmm/label.h>
 #include <gtkmm/widget.h>
 #include <gtkmm/separator.h>
+#include <gtkmm/messagedialog.h>
 #include <map>
 #include <utility>
+#include "ChessBoard.h"
 
 class Handler;
 class StackPage : public Gtk::Stack{
@@ -42,6 +44,8 @@ class StackPage : public Gtk::Stack{
 
 		std::string cellOrigin, piece, cellDestination;
 		Gtk::Widget *pointerPiece;
+
+		ChessBoard chessboard;
 
 		int numberNewBlankSquars = 0;
 		int numberWhitePiecesRemoved;
