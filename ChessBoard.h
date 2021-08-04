@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <string>
 
 #include "Cell.h"
 #include "Bishop.h"
@@ -23,5 +24,6 @@ public:
   bool IsCheckMated(ChessColor color);
   pair<int, int> FindKing(ChessColor color);
   vector<pair<int, int>> GetFreeMovements(pair<int, int> cell);
+	bool verifyMove(std::string);
   virtual void Move(pair<int, int> position, pair<int, int> toPosition);
 };
