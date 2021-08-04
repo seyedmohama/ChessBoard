@@ -8,7 +8,7 @@ std::pair<int, int> positionExtraction(std::string input){
   str1 += ch;
   str2 += nm;
   pair.first = std::stoi(str1);
-  pair.second = (std::stoi(str2) -1);
+  pair.second = (8 - std::stoi(str2));
 
   return pair;
 }
@@ -30,6 +30,20 @@ std::string generateLocationOfChessBoard( int x, int y){
 	std::string result;
 	result += a;
 	result += std::to_string( y);
+
+	return result;
+}
+
+std::string convertMoveCode( std::string input){
+	char x = input[1];
+	std::string temp;
+	temp += x;
+	int number = std::stoi(temp);
+	number -= 9;
+	number *= -1;
+	std::string result;
+	result += input[0];
+	result += std::to_string(number);
 
 	return result;
 }

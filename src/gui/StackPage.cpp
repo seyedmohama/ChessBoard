@@ -191,7 +191,7 @@ void StackPage::startGameBtn_clicked(){
 	}
 
 
-//	set positions of blank blankSquars
+//	set positions of blankSquars
 	count = 1;
 	for( int i = 2; i <= 5; i++){
 		for( int j = 0; j <= 7; j++){
@@ -379,7 +379,10 @@ bool StackPage::motionVerification(){
 	moveCode += cellOrigin;
 	moveCode += cellDestination;
 
+	std::cout << "move code : " << moveCode << std::endl;
 	if( chessboard.verifyMove( moveCode)){
+		
+		std::cout << "chessboard verifyMove = true" << std::endl;
 		chessboard.Move( positionExtraction( cellOrigin), positionExtraction( cellDestination));
 
 		if(cellIsEmpty( positionOfPieces, cellDestination) == 0){
@@ -392,6 +395,7 @@ bool StackPage::motionVerification(){
 		}
 	}
 	else{
+		std::cout << "chessboard verifyMove = false" << std::endl;
 			Gtk::MessageDialog dialog( "Motion warning!", false, Gtk::MESSAGE_WARNING, Gtk::BUTTONS_CLOSE);
 			std::string message = "Move " + moveCode[0] + std::string(" from ") + cellOrigin + " to " + cellDestination + " are invalid!";
 			dialog. set_secondary_text( message);

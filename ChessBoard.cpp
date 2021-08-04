@@ -164,7 +164,7 @@ bool ChessBoard::verifyMove( std::string move){
 	ystr1 += y1;
 	int n1 = stoi(xstr1);
 	int m1 = stoi(ystr1);
-	m1++;
+	m1--;
 	std::pair< int, int> origin (n1,m1);
 
 	char x2 = move[3];
@@ -175,10 +175,12 @@ bool ChessBoard::verifyMove( std::string move){
 	ystr2 += y2;
 	int n2 = stoi(xstr2);
 	int m2 = stoi(ystr2);
-	m2++;
+	m2--;
 	std::pair< int, int> destination (n2,m2);
 
+	std::cout << "origin : " << origin.first << "," << origin.second << "\tdest : " << destination.first << "," << destination.second << std::endl;
 	std::vector< std::pair< int, int>> freeDestinations = GetFreeMovements( origin);
+	std::cout << "after get free movements" << std::endl;
 	for( auto it = freeDestinations.cbegin(); it != freeDestinations.cend(); it++){
 		if( *it == destination ){
 			return true;
