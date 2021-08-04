@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 
+#include "Player.h"
 #include "Cell.h"
 #include "Bishop.h"
 #include "King.h"
@@ -16,6 +17,11 @@ private:
   Cell** Board;
 
 public:
+  Player plr1;
+  Player plr2;
+  ChessBoard();
+  void HitScoring(struct Player p , pair<int, int> position);
+  void ThreatScoring(struct Player p , pair<int, int> position);
   void initBoard();
   Cell** GetBoard();
   bool IsMated(ChessColor color);
