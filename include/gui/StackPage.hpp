@@ -12,8 +12,10 @@
 #include <gtkmm/label.h>
 #include <gtkmm/widget.h>
 #include <gtkmm/separator.h>
+#include <gtkmm/messagedialog.h>
 #include <map>
 #include <utility>
+#include "ChessBoard.h"
 
 class Handler;
 class StackPage : public Gtk::Stack{
@@ -24,9 +26,9 @@ class StackPage : public Gtk::Stack{
 		Gtk::Button *pGameBtn, *pExitBtn, *pSettingBtn, *pStartGameBtn, *pExitBtnStack2, *pReloadBtnStack2;
 		Gtk::Entry *pGameNameEnt, *pPlayerFirstNameEnt, *pPlayerSecondNameEnt;
 		Handler *handler ;
-		Gtk::Grid *pBoardGame;
+		Gtk::Grid *pBoardGame, *pRemovedPiecesGrid;
 		Gtk::Overlay *pGameBoardOverlay;
-		Gtk::Image *pGameBoardImage, *pWNLImg, *pBRLImg;
+		Gtk::Image *pGameBoardImage, *pWNLImg, *pBRLImg, *pImageTemp;
 		Gtk::Label *pGameNameLabel, *pFirstPLNameScoreLabel, *pSecondPLNameScoreLabel, *pFirstPLNameNegativScoreLabel, *pSecondPLNameNegativScoreLabel, *pScoreFirstPL, *pNegativScoreFirstPL, *pScoreSecondPL, *pNegativScoreSecondPL;
 		Gtk::Separator *pSeparators[10];
 
@@ -43,7 +45,12 @@ class StackPage : public Gtk::Stack{
 		std::string cellOrigin, piece, cellDestination;
 		Gtk::Widget *pointerPiece;
 
+		ChessBoard chessboard;
+
 		int numberNewBlankSquars = 0;
+		int numberWhitePiecesRemoved;
+		int numberBlackPiecesRemoved;
+
 		std::pair < char, int> pair;
 
 		void startGameBtn_clicked();

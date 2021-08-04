@@ -13,6 +13,7 @@ pSettingBtn(nullptr),
 pStartGameBtn(nullptr),
 handler(nullptr),
 pBoardGame(nullptr),
+pRemovedPiecesGrid(nullptr),
 m_refGlade(refGlade){
   m_refGlade->get_widget("gameBtnPage0", pGameBtn);
   m_refGlade->get_widget("settingBtnPage0", pSettingBtn);
@@ -22,6 +23,7 @@ m_refGlade(refGlade){
 	m_refGlade->get_widget("overlayGameBoardID", pGameBoardOverlay);
 	m_refGlade->get_widget("boardGameImageID", pGameBoardImage);
 	m_refGlade->get_widget("gameNameLabelID", pGameNameLabel);
+	m_refGlade-> get_widget( "removedPiecesGrid", pRemovedPiecesGrid);
 
 	nameOfPieces[0] = "wrl";
  	nameOfPieces[1] = "wbl";
@@ -101,6 +103,10 @@ void StackPage::exitBtnStack2_clicked(){
 
 
 void StackPage::startGameBtn_clicked(){
+
+//	initial Board from class chessboard
+	chessboard.initBoard();
+
 
 //	setup separators on page stack2 game
 	m_refGlade-> get_widget( "separator0Stack2", pSeparators[0]);
@@ -365,16 +371,33 @@ int StackPage::cellIsEmpty( std::map< std::string, std::string> map, std::string
 }
 
 bool StackPage::motionVerification(){
-	if(cellIsEmpty( positionOfPieces, cellDestination) == 0){
-		std::cout << "motion attack = " << piece << " from " << cellOrigin << " to " << pieceNameByPosition( positionOfPieces, cellDestination) << " on "<< cellDestination << std::endl;
-		return true;
+	char chessman = piece[1];
+	chessman -= 32;//	captalize
+	std::string moveCode; //create move string code
+	moveCode += chessman;
+	moveCode += cellOrigin;
+	moveCode += cellDestination;
+
+	if( chessboard.verifyMove( moveCode)){
+		chessboard.Move( positionExtraction( cellOrigin), positionExtraction( cellDestination));
+
+		if(cellIsEmpty( positionOfPieces, cellDestination) == 0){
+			std::cout << "motion attack = " << piece << " from " << cellOrigin << " to " << pieceNameByPosition( positionOfPieces, cellDestination) << " on "<< cellDestination << std::endl;
+			return true;
+		}
+		if( cellIsEmpty( positionOfPieces, cellDestination) == 1){
+			std::cout << "motion = " << piece << " from " <<  cellOrigin << " to " << cellDestination << std::endl;
+			return true;
+		}
 	}
-	if(cellIsEmpty( positionOfPieces, cellDestination) == -1){
-		std::cout << "motion invalid!!!" << std::endl;
-		return false;
+	else{
+			Gtk::MessageDialog dialog( "Motion warning!", false, Gtk::MESSAGE_WARNING, Gtk::BUTTONS_CLOSE);
+			std::string message = "Move " + moveCode[0] + std::string(" from ") + cellOrigin + " to " + cellDestination + " are invalid!";
+			dialog. set_secondary_text( message);
+			dialog. run();
+
+			return false;
 	}
-	std::cout << "motion = " << piece << " from " <<  cellOrigin << " to " << cellDestination << std::endl;
-	return true;
 }
 
 void StackPage::reloadBtnStack2_clicked(){
