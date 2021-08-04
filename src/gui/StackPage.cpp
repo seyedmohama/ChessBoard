@@ -176,14 +176,14 @@ void StackPage::startGameBtn_clicked(){
 //	set positions of pieces
 	//	initial white pieces location
 	int count = 0;
-	for( size_t i = 0; i <= 1; i++){
+	for( size_t i = 7; i >= 6; i--){
 		for( size_t j = 0; j <= 7; j++){
 			positionOfPieces[ nameOfPieces[ count]] = generateLocationOfChessBoard( j, i);
 			count ++;
 		}
 	}
 	//	initial black pieces location
-	for( size_t i = 7; i >= 6; i--){
+	for( size_t i = 0; i <= 1; i++){
 		for( size_t j = 0; j <= 7; j++){
 			positionOfPieces[ nameOfPieces[ count]] = generateLocationOfChessBoard( j, i);
 			count++;
@@ -191,9 +191,9 @@ void StackPage::startGameBtn_clicked(){
 	}
 
 
-//	set positions of blank blankSquars
+//	set positions of blankSquars
 	count = 1;
-	for( int i = 2; i <= 5; i++){
+	for( int i = 5; i >= 2; i--){
 		for( int j = 0; j <= 7; j++){
 			positionOfBlankSquars[ count] = generateLocationOfChessBoard( j, i);
 			count++;
