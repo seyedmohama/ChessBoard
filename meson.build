@@ -17,15 +17,15 @@ src = [
 	'src/gui/utility.cpp',
 	
 #	LOGIC
-	'Bishop.cpp',
-	'Cell.cpp',
-	'ChessBoard.cpp',
-	'Chessman.cpp',
-	'King.cpp',
-	'Knight.cpp',
-	'Pawn.cpp',
-	'Queen.cpp',
-	'Rook.cpp'
+	'src/Bishop.cpp',
+	'src/Cell.cpp',
+	'src/ChessBoard.cpp',
+	'src/Chessman.cpp',
+	'src/King.cpp',
+	'src/Knight.cpp',
+	'src/Pawn.cpp',
+	'src/Queen.cpp',
+	'src/Rook.cpp'
 ]
 includes = include_directories(
   'include',
