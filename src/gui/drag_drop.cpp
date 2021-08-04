@@ -9,6 +9,7 @@ void StackPage::on_0_drag_data_get(const Glib::RefPtr<Gdk::DragContext>& context
 	cellOrigin = positionOfPieces[piece];
 
 	selection_data.set( selection_data.get_target(), "I'm Dataaaaa");
+	std::cout << "drag data get" << std::endl;
 }
 void StackPage::on_1_drag_data_get(const Glib::RefPtr<Gdk::DragContext>& context, Gtk::SelectionData& selection_data, guint info, guint time){
 	piece = "wbl";
@@ -231,11 +232,11 @@ void StackPage::on_31_drag_data_get(const Glib::RefPtr<Gdk::DragContext>& contex
 void StackPage::on_1s_drag_data_received(const Glib::RefPtr<Gdk::DragContext>& context, int x, int y, const Gtk::SelectionData& selection_data, guint info, guint time){
 	int i = 1;
 	cellDestination = positionOfBlankSquars[i];
+	std::cout << "cell destination : " << cellDestination << std::endl;
 	if(motionVerification()){
-		
 		pBoardGame->remove(*pointerPiece);
 		pBoardGame->remove(*(blankSquars[i]));
-
+		
 		pBoardGame->attach(*(pointerPiece), positionExtraction(positionOfBlankSquars[i]).first, positionExtraction(positionOfBlankSquars[i]).second);
 		pBoardGame->attach(*(blankSquars[i]), positionExtraction(positionOfPieces[piece]).first, positionExtraction(positionOfPieces[piece]).second);
 
