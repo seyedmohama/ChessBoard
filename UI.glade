@@ -163,11 +163,21 @@
     <property name="can_focus">False</property>
     <property name="pixbuf">images/blank-62.png</property>
   </object>
+  <object class="GtkImage" id="bbl">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/bb.png</property>
+  </object>
   <object class="GtkImage" id="bblImg">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="margin_top">1</property>
     <property name="margin_bottom">1</property>
+    <property name="pixbuf">images/bb.png</property>
+  </object>
+  <object class="GtkImage" id="bbr">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
     <property name="pixbuf">images/bb.png</property>
   </object>
   <object class="GtkImage" id="bbrImg">
@@ -177,6 +187,11 @@
     <property name="margin_bottom">1</property>
     <property name="pixbuf">images/bb.png</property>
   </object>
+  <object class="GtkImage" id="bk">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/bk.png</property>
+  </object>
   <object class="GtkImage" id="bkImg">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -184,11 +199,21 @@
     <property name="margin_bottom">1</property>
     <property name="pixbuf">images/bk.png</property>
   </object>
+  <object class="GtkImage" id="bnl">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/bn.png</property>
+  </object>
   <object class="GtkImage" id="bnlImg">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="margin_top">1</property>
     <property name="margin_bottom">1</property>
+    <property name="pixbuf">images/bn.png</property>
+  </object>
+  <object class="GtkImage" id="bnr">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
     <property name="pixbuf">images/bn.png</property>
   </object>
   <object class="GtkImage" id="bnrImg">
@@ -198,11 +223,21 @@
     <property name="margin_bottom">1</property>
     <property name="pixbuf">images/bn.png</property>
   </object>
+  <object class="GtkImage" id="bp1">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/bp.png</property>
+  </object>
   <object class="GtkImage" id="bp1Img">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="margin_top">1</property>
     <property name="margin_bottom">1</property>
+    <property name="pixbuf">images/bp.png</property>
+  </object>
+  <object class="GtkImage" id="bp2">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
     <property name="pixbuf">images/bp.png</property>
   </object>
   <object class="GtkImage" id="bp2Img">
@@ -212,11 +247,21 @@
     <property name="margin_bottom">1</property>
     <property name="pixbuf">images/bp.png</property>
   </object>
+  <object class="GtkImage" id="bp3">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/bp.png</property>
+  </object>
   <object class="GtkImage" id="bp3Img">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="margin_top">1</property>
     <property name="margin_bottom">1</property>
+    <property name="pixbuf">images/bp.png</property>
+  </object>
+  <object class="GtkImage" id="bp4">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
     <property name="pixbuf">images/bp.png</property>
   </object>
   <object class="GtkImage" id="bp4Img">
@@ -226,11 +271,21 @@
     <property name="margin_bottom">1</property>
     <property name="pixbuf">images/bp.png</property>
   </object>
+  <object class="GtkImage" id="bp5">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/bp.png</property>
+  </object>
   <object class="GtkImage" id="bp5Img">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="margin_top">1</property>
     <property name="margin_bottom">1</property>
+    <property name="pixbuf">images/bp.png</property>
+  </object>
+  <object class="GtkImage" id="bp6">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
     <property name="pixbuf">images/bp.png</property>
   </object>
   <object class="GtkImage" id="bp6Img">
@@ -240,11 +295,21 @@
     <property name="margin_bottom">1</property>
     <property name="pixbuf">images/bp.png</property>
   </object>
+  <object class="GtkImage" id="bp7">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/bp.png</property>
+  </object>
   <object class="GtkImage" id="bp7Img">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="margin_top">1</property>
     <property name="margin_bottom">1</property>
+    <property name="pixbuf">images/bp.png</property>
+  </object>
+  <object class="GtkImage" id="bp8">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
     <property name="pixbuf">images/bp.png</property>
   </object>
   <object class="GtkImage" id="bp8Img">
@@ -254,6 +319,11 @@
     <property name="margin_bottom">1</property>
     <property name="pixbuf">images/bp.png</property>
   </object>
+  <object class="GtkImage" id="bq">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/bq.png</property>
+  </object>
   <object class="GtkImage" id="bqImg">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -261,12 +331,22 @@
     <property name="margin_bottom">1</property>
     <property name="pixbuf">images/bq.png</property>
   </object>
+  <object class="GtkImage" id="brl">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/br.png</property>
+  </object>
   <object class="GtkImage" id="brlImg">
     <property name="name">brlImgName</property>
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="margin_top">1</property>
     <property name="margin_bottom">1</property>
+    <property name="pixbuf">images/br.png</property>
+  </object>
+  <object class="GtkImage" id="brr">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
     <property name="pixbuf">images/br.png</property>
   </object>
   <object class="GtkImage" id="brrImg">
@@ -1333,11 +1413,21 @@
       </object>
     </child>
   </object>
+  <object class="GtkImage" id="wbl">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/wb.png</property>
+  </object>
   <object class="GtkImage" id="wblImg">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="margin_top">1</property>
     <property name="margin_bottom">1</property>
+    <property name="pixbuf">images/wb.png</property>
+  </object>
+  <object class="GtkImage" id="wbr">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
     <property name="pixbuf">images/wb.png</property>
   </object>
   <object class="GtkImage" id="wbrImg">
@@ -1347,6 +1437,11 @@
     <property name="margin_bottom">1</property>
     <property name="pixbuf">images/wb.png</property>
   </object>
+  <object class="GtkImage" id="wk">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/wk.png</property>
+  </object>
   <object class="GtkImage" id="wkImg">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -1354,11 +1449,21 @@
     <property name="margin_bottom">1</property>
     <property name="pixbuf">images/wk.png</property>
   </object>
+  <object class="GtkImage" id="wnl">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/wn.png</property>
+  </object>
   <object class="GtkImage" id="wnlImg">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="margin_top">1</property>
     <property name="margin_bottom">1</property>
+    <property name="pixbuf">images/wn.png</property>
+  </object>
+  <object class="GtkImage" id="wnr">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
     <property name="pixbuf">images/wn.png</property>
   </object>
   <object class="GtkImage" id="wnrImg">
@@ -1368,11 +1473,21 @@
     <property name="margin_bottom">1</property>
     <property name="pixbuf">images/wn.png</property>
   </object>
+  <object class="GtkImage" id="wp1">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/wp.png</property>
+  </object>
   <object class="GtkImage" id="wp1Img">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="margin_top">1</property>
     <property name="margin_bottom">1</property>
+    <property name="pixbuf">images/wp.png</property>
+  </object>
+  <object class="GtkImage" id="wp2">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
     <property name="pixbuf">images/wp.png</property>
   </object>
   <object class="GtkImage" id="wp2Img">
@@ -1382,11 +1497,21 @@
     <property name="margin_bottom">1</property>
     <property name="pixbuf">images/wp.png</property>
   </object>
+  <object class="GtkImage" id="wp3">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/wp.png</property>
+  </object>
   <object class="GtkImage" id="wp3Img">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="margin_top">1</property>
     <property name="margin_bottom">1</property>
+    <property name="pixbuf">images/wp.png</property>
+  </object>
+  <object class="GtkImage" id="wp4">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
     <property name="pixbuf">images/wp.png</property>
   </object>
   <object class="GtkImage" id="wp4Img">
@@ -1396,11 +1521,21 @@
     <property name="margin_bottom">1</property>
     <property name="pixbuf">images/wp.png</property>
   </object>
+  <object class="GtkImage" id="wp5">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/wp.png</property>
+  </object>
   <object class="GtkImage" id="wp5Img">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="margin_top">1</property>
     <property name="margin_bottom">1</property>
+    <property name="pixbuf">images/wp.png</property>
+  </object>
+  <object class="GtkImage" id="wp6">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
     <property name="pixbuf">images/wp.png</property>
   </object>
   <object class="GtkImage" id="wp6Img">
@@ -1411,11 +1546,21 @@
     <property name="margin_bottom">1</property>
     <property name="pixbuf">images/wp.png</property>
   </object>
+  <object class="GtkImage" id="wp7">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/wp.png</property>
+  </object>
   <object class="GtkImage" id="wp7Img">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="margin_top">1</property>
     <property name="margin_bottom">1</property>
+    <property name="pixbuf">images/wp.png</property>
+  </object>
+  <object class="GtkImage" id="wp8">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
     <property name="pixbuf">images/wp.png</property>
   </object>
   <object class="GtkImage" id="wp8Img">
@@ -1425,6 +1570,11 @@
     <property name="margin_bottom">1</property>
     <property name="pixbuf">images/wp.png</property>
   </object>
+  <object class="GtkImage" id="wq">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/wq.png</property>
+  </object>
   <object class="GtkImage" id="wqImg">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -1432,11 +1582,21 @@
     <property name="margin_bottom">1</property>
     <property name="pixbuf">images/wq.png</property>
   </object>
+  <object class="GtkImage" id="wrl">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/wr.png</property>
+  </object>
   <object class="GtkImage" id="wrlImg">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="margin_top">1</property>
     <property name="margin_bottom">1</property>
+    <property name="pixbuf">images/wr.png</property>
+  </object>
+  <object class="GtkImage" id="wrr">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
     <property name="pixbuf">images/wr.png</property>
   </object>
   <object class="GtkImage" id="wrrImg">
@@ -2238,165 +2398,5 @@
         <property name="top_attach">7</property>
       </packing>
     </child>
-  </object>
-  <object class="GtkImage" id="bp8">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixbuf">images/bp.png</property>
-  </object>
-  <object class="GtkImage" id="bp7">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixbuf">images/bp.png</property>
-  </object>
-  <object class="GtkImage" id="bp6">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixbuf">images/bp.png</property>
-  </object>
-  <object class="GtkImage" id="bp5">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixbuf">images/bp.png</property>
-  </object>
-  <object class="GtkImage" id="bp4">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixbuf">images/bp.png</property>
-  </object>
-  <object class="GtkImage" id="bp3">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixbuf">images/bp.png</property>
-  </object>
-  <object class="GtkImage" id="bp2">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixbuf">images/bp.png</property>
-  </object>
-  <object class="GtkImage" id="bp1">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixbuf">images/bp.png</property>
-  </object>
-  <object class="GtkImage" id="wp1">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixbuf">images/wp.png</property>
-  </object>
-  <object class="GtkImage" id="wp2">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixbuf">images/wp.png</property>
-  </object>
-  <object class="GtkImage" id="wp3">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixbuf">images/wp.png</property>
-  </object>
-  <object class="GtkImage" id="wp4">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixbuf">images/wp.png</property>
-  </object>
-  <object class="GtkImage" id="wp5">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixbuf">images/wp.png</property>
-  </object>
-  <object class="GtkImage" id="wp6">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixbuf">images/wp.png</property>
-  </object>
-  <object class="GtkImage" id="wp7">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixbuf">images/wp.png</property>
-  </object>
-  <object class="GtkImage" id="wp8">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixbuf">images/wp.png</property>
-  </object>
-  <object class="GtkImage" id="wrl">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixbuf">images/wr.png</property>
-  </object>
-  <object class="GtkImage" id="wrr">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixbuf">images/wr.png</property>
-  </object>
-  <object class="GtkImage" id="wbl">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixbuf">images/wb.png</property>
-  </object>
-  <object class="GtkImage" id="wbr">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixbuf">images/wb.png</property>
-  </object>
-  <object class="GtkImage" id="wnl">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixbuf">images/wn.png</property>
-  </object>
-  <object class="GtkImage" id="wnr">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixbuf">images/wn.png</property>
-  </object>
-  <object class="GtkImage" id="wq">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixbuf">images/wq.png</property>
-  </object>
-  <object class="GtkImage" id="wk">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixbuf">images/wk.png</property>
-  </object>
-  <object class="GtkImage" id="brl">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixbuf">images/br.png</property>
-  </object>
-  <object class="GtkImage" id="brr">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixbuf">images/br.png</property>
-  </object>
-  <object class="GtkImage" id="bbl">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixbuf">images/bb.png</property>
-  </object>
-  <object class="GtkImage" id="bbr">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixbuf">images/bb.png</property>
-  </object>
-  <object class="GtkImage" id="bnl">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixbuf">images/bn.png</property>
-  </object>
-  <object class="GtkImage" id="bnr">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixbuf">images/bn.png</property>
-  </object>
-  <object class="GtkImage" id="bq">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixbuf">images/bq.png</property>
-  </object>
-  <object class="GtkImage" id="bk">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixbuf">images/bk.png</property>
   </object>
 </interface>

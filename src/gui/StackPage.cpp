@@ -59,7 +59,7 @@ m_refGlade(refGlade){
  	nameOfPieces[31] = "bp8";
 
 	std::string name;
-	for( int i = 0; i < 32; i++){
+	for( int i = 0; i <= 31; i++){
 		name = nameOfPieces[i] + "Btn";
 		m_refGlade-> get_widget( name, pieces[i]);
 	}
@@ -166,20 +166,24 @@ void StackPage::startGameBtn_clicked(){
 	pNegativScoreSecondPL-> set_label("0");
 
 
+//	set game name on page Stack2
+	pGameNameLabel->set_label(handler->get_gameName());
+
+
 //	Show the startGame Page	
 	set_visible_child("game_page", Gtk::STACK_TRANSITION_TYPE_NONE);
 	
 //	set positions of pieces
-	//	set white pieces location
+	//	initial white pieces location
 	int count = 0;
-	for( size_t i = 7; i >= 6; i--){
+	for( size_t i = 0; i <= 1; i++){
 		for( size_t j = 0; j <= 7; j++){
 			positionOfPieces[ nameOfPieces[ count]] = generateLocationOfChessBoard( j, i);
 			count ++;
 		}
 	}
-	//	set black pieces location
-	for( size_t i = 0; i <= 1; i++){
+	//	initial black pieces location
+	for( size_t i = 7; i >= 6; i--){
 		for( size_t j = 0; j <= 7; j++){
 			positionOfPieces[ nameOfPieces[ count]] = generateLocationOfChessBoard( j, i);
 			count++;
@@ -189,7 +193,7 @@ void StackPage::startGameBtn_clicked(){
 
 //	set positions of blank blankSquars
 	count = 1;
-	for( int i = 5; i >= 2; i--){
+	for( int i = 2; i <= 5; i++){
 		for( int j = 0; j <= 7; j++){
 			positionOfBlankSquars[ count] = generateLocationOfChessBoard( j, i);
 			count++;
@@ -200,23 +204,20 @@ void StackPage::startGameBtn_clicked(){
 	}
 
 	
-//	set game name on page Stack2
-	pGameNameLabel->set_label(handler->get_gameName());
-
-
 //	Place the pieces in the original position
 	for( int i = 0; i <= 31; i++){
-		if( pieces[ i]-> get_parent()){
+		if( pieces[ i]-> get_parent()){ // if chessman is exist on board then remove it
 			pBoardGame-> remove( *( pieces[ i]));
 		}
 	}
-	for( int i = 0; i <= 31; i++){
+	for( int i = 0; i <= 31; i++){ //	initial chessman on original locations
 		pBoardGame-> attach( *( pieces[ i]), positionExtraction( positionOfPieces[ nameOfPieces[ i]]) .first, positionExtraction( positionOfPieces[ nameOfPieces[ i]]) .second );
 	}
 
+
 //	Place the blank squars in the original position
 	for( size_t i = 1; i <= 64; i++){
-		if(blankSquars[i]-> get_parent()){
+		if(blankSquars[i]-> get_parent()){ // if widget is exist on grid then remove it
 			pBoardGame-> remove( *( blankSquars[ i]));
 		}
 	}
