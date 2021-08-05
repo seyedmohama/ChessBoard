@@ -1,0 +1,12 @@
+*{
+	color: red !important;
+	padding: 200px !important;
+	margin: 200px !important;
+	background-color: red !important;
+}
+
+.GtkLabel , .GtkLabel property{
+	color: red !important;
+	font-size: 1000px !important;
+	background-color: red !important;
+}

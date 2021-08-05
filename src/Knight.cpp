@@ -6,6 +6,8 @@ Knight::Knight(int x, int y, ChessColor color)
   Y = y;
   Color = color;
   Type = ChessType::Knight;
+  HitScore = 8;
+  ThreatScore = 2;
 
 }
 

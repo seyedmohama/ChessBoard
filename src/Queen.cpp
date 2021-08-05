@@ -6,8 +6,8 @@ Queen::Queen(int x, int y, ChessColor color)
   Y = y;
   Color = color;
   Type = ChessType::Queen;
-  HitScore = 5;
-  ThreatScore = 15;
+  HitScore = 15;
+  ThreatScore = 5;
 }
 
 std::vector<std::pair<int, int>> Queen::GetPlusMovements(Cell** Board)
