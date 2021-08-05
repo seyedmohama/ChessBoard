@@ -6,8 +6,8 @@ Bishop::Bishop(int x, int y, ChessColor color)
   Y = y;
   Color = color;
   Type = ChessType::Bishop;
-  HitScore = 8;
-  ThreatScore = 2;
+  HitScore = 2;
+  ThreatScore = 8;
 }
 
 vector<pair<int, int>> Bishop::GetMovements(Cell** Board)

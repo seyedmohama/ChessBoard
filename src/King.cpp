@@ -6,8 +6,8 @@ King::King(int x, int y, ChessColor color)
   Y = y;
   Color = color;
   Type = ChessType::King;
-  HitScore = 50;
-  ThreatScore = 10;
+//  HitScore = 50;
+//  ThreatScore = 10;
 
 }
 
@@ -27,7 +27,7 @@ std::vector<std::pair<int, int>> King::GetMovements(Cell** Board)
   if (Y < 7 && Board[X][Y + 1].IsEmpty())
     movements.push_back({ X, Y + 1 });
 
-  if (X > 0 && Y > 0 && Board[X - 1][Y - 1].IsEmpty())
+/*  if (X > 0 && Y > 0 && Board[X - 1][Y - 1].IsEmpty())
     movements.push_back({ X - 1, Y - 1});
 
   if (X > 0 && Y < 7 && Board[X - 1][Y + 1].IsEmpty())
@@ -38,7 +38,7 @@ std::vector<std::pair<int, int>> King::GetMovements(Cell** Board)
 
   if (X < 7 && Y > 0 && Board[X + 1][Y - 1].IsEmpty())
     movements.push_back({ X + 1, Y - 1});
-
+*/
 
   return movements;
 }
