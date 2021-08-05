@@ -50,3 +50,12 @@ void Handler::changeRound(){
 		round = Color::White;
 	}
 }
+
+std::string Handler::get_round(){
+	if(round == Color::White){
+		return "White";
+	}
+	if(round == Color::Black){
+		return "Black";
+	}
+}

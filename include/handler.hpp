@@ -16,6 +16,7 @@ class Handler{
 		std::string get_playerFirstName();
 		std::string get_playerSecondName();
 		void changeRound();
+		std::string get_round();
 		virtual ~Handler();
 	private:
 		std::string playerFirstName;

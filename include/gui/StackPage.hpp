@@ -122,7 +122,6 @@ class StackPage : public Gtk::Stack{
 		void on_30s_drag_data_received(const Glib::RefPtr<Gdk::DragContext>&, int, int, const Gtk::SelectionData&, guint, guint);
 		void on_31s_drag_data_received(const Glib::RefPtr<Gdk::DragContext>&, int, int, const Gtk::SelectionData&, guint, guint);
 		void on_32s_drag_data_received(const Glib::RefPtr<Gdk::DragContext>&, int, int, const Gtk::SelectionData&, guint, guint);
-
 		void on_33s_drag_data_received(const Glib::RefPtr<Gdk::DragContext>&, int, int, const Gtk::SelectionData&, guint, guint);
 		void on_34s_drag_data_received(const Glib::RefPtr<Gdk::DragContext>&, int, int, const Gtk::SelectionData&, guint, guint);
 		void on_35s_drag_data_received(const Glib::RefPtr<Gdk::DragContext>&, int, int, const Gtk::SelectionData&, guint, guint);
@@ -193,6 +192,10 @@ class StackPage : public Gtk::Stack{
 		int cellIsEmpty( std::map< std::string, std::string> map, std::string cell);
 		
 		bool motionVerification();
+
+		void on_i_drag_data_get( int, Gtk::SelectionData&);
+		void on_is_drag_data_recieved( int, const Glib::RefPtr<Gdk::DragContext>& , guint);
+		void on_ip_drag_data_recieved( int, const Glib::RefPtr<Gdk::DragContext>& , guint);
 };
 
 #endif
