@@ -1,4 +1,4 @@
-#include "Queen.h"
+#include "../include/Queen.h"
 #include <iostream>
 Queen::Queen(int x, int y, ChessColor color)
 {
@@ -6,7 +6,8 @@ Queen::Queen(int x, int y, ChessColor color)
   Y = y;
   Color = color;
   Type = ChessType::Queen;
-
+  HitScore = 5;
+  ThreatScore = 15;
 }
 
 std::vector<std::pair<int, int>> Queen::GetPlusMovements(Cell** Board)

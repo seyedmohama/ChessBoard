@@ -1,4 +1,4 @@
-#include "Chessman.h"
+#include "../include/Chessman.h"
 Chessman::Chessman(int x, int y, ChessColor color)
 {
   X = x;

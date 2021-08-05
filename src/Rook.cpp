@@ -1,10 +1,12 @@
-#include "Rook.h"
+#include "../include/Rook.h"
 Rook::Rook(int x, int y, ChessColor color)
 {
   X = x;
   Y = y;
   Color = color;
   Type = ChessType::Rook;
+  HitScore = 2;
+  ThreatScore = 8;
 }
 
 std::vector<std::pair<int, int>> Rook::GetMovements(Cell** Board)

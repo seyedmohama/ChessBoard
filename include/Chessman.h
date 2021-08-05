@@ -22,6 +22,8 @@ class Chessman
 public:
   ChessType Type;
   ChessColor Color;
+  int HitScore;
+  int ThreatScore;
   int X, Y;
   void move(int x , int y);
   Chessman(int x, int y, ChessColor color);

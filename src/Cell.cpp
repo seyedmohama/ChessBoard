@@ -1,4 +1,4 @@
-#include "Cell.h"
+#include "../include/Cell.h"
 
 void Cell::SetPawn(Chessman* manptr)
 {
