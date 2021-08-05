@@ -167,6 +167,16 @@ void ChessBoard::ThreatScoring(struct Player p , pair<int, int> position)
 
 }
 
+void ChessBoard::UndoScoring(struct Player p)
+{
+  p.Score -= 5;
+}
+
+vector<pair<int, int>> ChessBoard::Threat(pair<int, int> cell)
+{
+  vector<pair<int, int>> ans;
+  ans = GetFreeMovements(cell);
+}
 
 void ChessBoard::Move(pair<int, int> position, pair<int, int> toPosition)
 {
