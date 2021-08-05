@@ -9,6 +9,8 @@ Handler::Handler(std::string gn, std::string pfn, std::string psn){
 	secondPlayerScore = 0;
 	firstPlayerNegativScore = 0;
 	secondPlayerNegativScore = 0;
+
+	round = Color::White;
 }
 
 Handler::~Handler(){
@@ -38,4 +40,13 @@ void Handler::secondPlayerAppendScore(size_t number){
 }
 void Handler::secondPlayerAppendNegativScore(size_t number){
 	secondPlayerNegativScore++;
+}
+
+void Handler::changeRound(){
+	if(round == Color::White){
+		round = Color::Black;
+	}
+	else{
+		round = Color::White;
+	}
 }
