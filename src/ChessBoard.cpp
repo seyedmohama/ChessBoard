@@ -1,4 +1,4 @@
-#include "ChessBoard.h"
+#include "../include/ChessBoard.h"
 
 ChessBoard :: ChessBoard()
 {
@@ -66,7 +66,7 @@ vector<pair<int, int>> ChessBoard::GetFreeMovements(pair<int, int> cell)
     {
       i = movements.erase(i);
       i--;
-    }
+		}
   }
 
   return movements;
@@ -178,4 +178,38 @@ void ChessBoard::Move(pair<int, int> position, pair<int, int> toPosition)
 Cell** ChessBoard::GetBoard()
 {
   return Board;
+}
+
+bool ChessBoard::verifyMove( std::string move){
+	char x1 = move[1];
+	x1 -= 49; // convert to {0, 1, 2, 3, 4, 5, 6, 7}
+	char y1 = move[2];
+	std::string xstr1, ystr1;
+	xstr1 += x1;
+	ystr1 += y1;
+	int n1 = stoi(xstr1);
+	int m1 = stoi(ystr1);
+	m1--;
+	std::pair< int, int> origin (n1,m1);
+
+	char x2 = move[3];
+	x2 -= 49; // convert to {0, 1, 2, 3, 4, 5, 6, 7}
+	char y2 = move[4];
+	std::string xstr2, ystr2;
+	xstr2 += x2;
+	ystr2 += y2;
+	int n2 = stoi(xstr2);
+	int m2 = stoi(ystr2);
+	m2--;
+	std::pair< int, int> destination (n2,m2);
+
+	std::cout << "origin : " << origin.first << "," << origin.second << "\tdest : " << destination.first << "," << destination.second << std::endl;
+	auto freeDestinations = (*this).GetFreeMovements( origin);
+	std::cout << "after get free movements" << std::endl;
+	for( auto it = freeDestinations.cbegin(); it != freeDestinations.cend(); it++){
+		if( *it == destination ){
+			return true;
+		}
+	}
+	return false;
 }

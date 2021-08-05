@@ -1,4 +1,4 @@
-#include "Bishop.h"
+#include "../include/Bishop.h"
 #include <iostream>
 Bishop::Bishop(int x, int y, ChessColor color)
 {

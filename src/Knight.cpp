@@ -1,4 +1,4 @@
-#include "Knight.h"
+#include "../include/Knight.h"
 #include <iostream>
 Knight::Knight(int x, int y, ChessColor color)
 {

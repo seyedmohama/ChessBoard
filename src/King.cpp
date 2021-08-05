@@ -1,4 +1,4 @@
-#include "King.h"
+#include "../include/King.h"
 
 King::King(int x, int y, ChessColor color)
 {

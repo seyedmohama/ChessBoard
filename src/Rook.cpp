@@ -1,4 +1,4 @@
-#include "Rook.h"
+#include "../include/Rook.h"
 Rook::Rook(int x, int y, ChessColor color)
 {
   X = x;

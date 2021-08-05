@@ -1,4 +1,4 @@
-#include "Queen.h"
+#include "../include/Queen.h"
 #include <iostream>
 Queen::Queen(int x, int y, ChessColor color)
 {

@@ -1,4 +1,4 @@
-#include "Pawn.h"
+#include "../include/Pawn.h"
 #include <iostream>
 Pawn::Pawn(int x, int y, ChessColor color)
 {
