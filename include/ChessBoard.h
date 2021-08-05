@@ -19,6 +19,7 @@ private:
 public:
   Player plr1;
   Player plr2;
+  vector<Chessman> TrashingList;
   Cell** GetBoard();
 
   ChessBoard();
@@ -27,6 +28,7 @@ public:
   void ThreatScoring(struct Player p , pair<int, int> position);
   void initBoard();
   void UndoScoring(struct Player p);
+
   bool IsMated(ChessColor color);
   bool IsChecked(ChessColor color);
   bool IsCheckMated(ChessColor color);
