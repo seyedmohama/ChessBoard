@@ -3,6 +3,7 @@
 #include "utility.hpp"
 #include <iostream>
 #include <string>
+#include <algorithm>
 
 void StackPage::on_i_drag_data_get( int i, Gtk::SelectionData& selection_data){
 //	Check periority round. White or Black??
@@ -54,6 +55,24 @@ pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
 
 		positionOfPieces[pieceNameDest] = "removed";
 		positionOfPieces[piece] = cellDestination;
+
+//	if pawn go to a8,b8,c8,d8,....
+		if(piece[1] == 'p'){
+			if(piece[0] == 'w' && cellDestination[1] == '8'){
+				pDialogConvertPawn-> run();
+				pQueenBtnDialogConvertPawn-> signal_clicked() .connect( sigc::bind( sigc::mem_fun( *this, &StackPage::convertPawn), "wqNew"));
+				pKnightBtnDialogConvertPawn-> signal_clicked() .connect( sigc::bind( sigc::mem_fun( *this, &StackPage::convertPawn), "wnNew"));
+				pBishopBtnDialogConvertPawn-> signal_clicked() .connect( sigc::bind( sigc::mem_fun( *this, &StackPage::convertPawn), "wbNew"));
+				pRookBtnDialogConvertPawn-> signal_clicked() .connect( sigc::bind( sigc::mem_fun( *this, &StackPage::convertPawn), "wrNew"));
+			}
+			if(piece[0] == 'b' && cellDestination[1] == '1'){
+				pDialogConvertPawn-> run();
+				pQueenBtnDialogConvertPawn-> signal_clicked() .connect( sigc::bind( sigc::mem_fun( *this, &StackPage::convertPawn), "bqNew"));
+				pKnightBtnDialogConvertPawn-> signal_clicked() .connect( sigc::bind( sigc::mem_fun( *this, &StackPage::convertPawn), "bnNew"));
+				pBishopBtnDialogConvertPawn-> signal_clicked() .connect( sigc::bind( sigc::mem_fun( *this, &StackPage::convertPawn), "bbNew"));
+				pRookBtnDialogConvertPawn-> signal_clicked() .connect( sigc::bind( sigc::mem_fun( *this, &StackPage::convertPawn), "brNew"));
+			}
+		}
 	}
 	context->drag_finish(false, false, time);
 }
@@ -70,6 +89,24 @@ void StackPage::on_i_cell_drag_data_recieved(int i, const Glib::RefPtr<Gdk::Drag
 
 		positionOfBlankSquars[i] = positionOfPieces[piece];
 		positionOfPieces[piece] = cellDestination;
+
+//	if pawn go to a8,b8,c8,d8,....
+		if(piece[1] == 'p'){
+			if(piece[0] == 'w' && cellDestination[1] == '8'){
+				pDialogConvertPawn-> run();
+				pQueenBtnDialogConvertPawn-> signal_clicked() .connect( sigc::bind( sigc::mem_fun( *this, &StackPage::convertPawn), "wqNew"));
+				pKnightBtnDialogConvertPawn-> signal_clicked() .connect( sigc::bind( sigc::mem_fun( *this, &StackPage::convertPawn), "wnNew"));
+				pBishopBtnDialogConvertPawn-> signal_clicked() .connect( sigc::bind( sigc::mem_fun( *this, &StackPage::convertPawn), "wbNew"));
+				pRookBtnDialogConvertPawn-> signal_clicked() .connect( sigc::bind( sigc::mem_fun( *this, &StackPage::convertPawn), "wrNew"));
+			}
+			if(piece[0] == 'b' && cellDestination[1] == '1'){
+				pDialogConvertPawn-> run();
+				pQueenBtnDialogConvertPawn-> signal_clicked() .connect( sigc::bind( sigc::mem_fun( *this, &StackPage::convertPawn), "bqNew"));
+				pKnightBtnDialogConvertPawn-> signal_clicked() .connect( sigc::bind( sigc::mem_fun( *this, &StackPage::convertPawn), "bnNew"));
+				pBishopBtnDialogConvertPawn-> signal_clicked() .connect( sigc::bind( sigc::mem_fun( *this, &StackPage::convertPawn), "bbNew"));
+				pRookBtnDialogConvertPawn-> signal_clicked() .connect( sigc::bind( sigc::mem_fun( *this, &StackPage::convertPawn), "brNew"));
+			}
+		}
 	}
 	context->drag_finish(false, false, time);
 }

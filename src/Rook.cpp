@@ -5,8 +5,8 @@ Rook::Rook(int x, int y, ChessColor color)
   Y = y;
   Color = color;
   Type = ChessType::Rook;
-  HitScore = 8;
-  ThreatScore = 2;
+  HitScore = 2;
+  ThreatScore = 8;
 }
 
 std::vector<std::pair<int, int>> Rook::GetMovements(Cell** Board)
