@@ -380,6 +380,16 @@ bool StackPage::motionVerification(){
 	moveCode += cellDestination;
 
 	std::cout << "move code : " << moveCode << std::endl;
+	if( cellIsEmpty( positionOfPieces, cellDestination) == -1){
+			Gtk::MessageDialog dialog( "دست به مهره!!", false, Gtk::MESSAGE_WARNING, Gtk::BUTTONS_CLOSE);
+			std::string message = "شما مهره ";
+			message += chessman;
+			message += " را برداشتید ولی هیچ حرکتی انجام ندادید و برای اولین بار در این نوبت امتیاز منفی کسب میکنید.";
+			dialog. set_secondary_text( message);
+			dialog. run();
+
+			return false;
+	}
 	if( chessboard.verifyMove( moveCode)){
 		
 		std::cout << "chessboard verifyMove = true" << std::endl;
