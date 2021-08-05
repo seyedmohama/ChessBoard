@@ -33,17 +33,3 @@ std::string generateLocationOfChessBoard( int x, int y){
 
 	return result;
 }
-
-std::string convertMoveCode( std::string input){
-	char x = input[1];
-	std::string temp;
-	temp += x;
-	int number = std::stoi(temp);
-	number -= 9;
-	number *= -1;
-	std::string result;
-	result += input[0];
-	result += std::to_string(number);
-
-	return result;
-}
