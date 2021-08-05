@@ -51,11 +51,6 @@ void Handler::changeRound(){
 	}
 }
 
-std::string Handler::get_round(){
-	if(round == Color::White){
-		return "White";
-	}
-	if(round == Color::Black){
-		return "Black";
-	}
+Handler::Color Handler::get_round(){
+	return round;
 }

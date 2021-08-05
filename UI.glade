@@ -679,13 +679,13 @@
                     <property name="margin_right">20</property>
                     <property name="label" translatable="yes">بازی مسخره</property>
                     <attributes>
-                      <attribute name="font-desc" value="Vazir Light 10"/>
+                      <attribute name="font-desc" value="Vazir Bold 13"/>
                       <attribute name="size" value="15000"/>
                     </attributes>
                   </object>
                   <packing>
                     <property name="left_attach">0</property>
-                    <property name="top_attach">0</property>
+                    <property name="top_attach">1</property>
                   </packing>
                 </child>
                 <child>
@@ -702,7 +702,7 @@
                   </object>
                   <packing>
                     <property name="left_attach">0</property>
-                    <property name="top_attach">1</property>
+                    <property name="top_attach">2</property>
                   </packing>
                 </child>
                 <child>
@@ -738,7 +738,19 @@
                   </packing>
                 </child>
                 <child>
-                  <placeholder/>
+                  <object class="GtkLabel">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="margin_top">40</property>
+                    <property name="label" translatable="yes">اسم بازی:</property>
+                    <attributes>
+                      <attribute name="font-desc" value="Vazir 13"/>
+                    </attributes>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">0</property>
+                  </packing>
                 </child>
               </object>
               <packing>
