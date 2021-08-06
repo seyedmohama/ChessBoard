@@ -163,6 +163,46 @@
     <property name="can_focus">False</property>
     <property name="pixbuf">images/blank-62.png</property>
   </object>
+  <object class="GtkImage" id="whiteBishopImgDialog">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/wb.png</property>
+  </object>
+  <object class="GtkImage" id="whiteKnightImgDialog">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/wn.png</property>
+  </object>
+  <object class="GtkImage" id="whiteQueenImgDialog">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/wq.png</property>
+  </object>
+  <object class="GtkImage" id="whiteRookImgDialog">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/wr.png</property>
+  </object>
+  <object class="GtkImage" id="blackBishopImgDialog">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/bb.png</property>
+  </object>
+  <object class="GtkImage" id="blackKnightImgDialog">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/bn.png</property>
+  </object>
+  <object class="GtkImage" id="blackQueenImgDialog">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/bq.png</property>
+  </object>
+  <object class="GtkImage" id="blackRookImgDialog">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/br.png</property>
+  </object>
   <object class="GtkImage" id="bbl">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -355,6 +395,107 @@
     <property name="margin_top">1</property>
     <property name="margin_bottom">1</property>
     <property name="pixbuf">images/br.png</property>
+  </object>
+  <object class="GtkDialog" id="dialogConvertPawn">
+    <property name="can_focus">False</property>
+    <property name="type_hint">dialog</property>
+    <child type="titlebar">
+      <placeholder/>
+    </child>
+    <child internal-child="vbox">
+      <object class="GtkBox">
+        <property name="can_focus">False</property>
+        <property name="orientation">vertical</property>
+        <property name="spacing">2</property>
+        <child internal-child="action_area">
+          <object class="GtkButtonBox">
+            <property name="can_focus">False</property>
+            <property name="margin_right">70</property>
+            <property name="layout_style">end</property>
+            <child>
+              <object class="GtkButton" id="dialogQueenBtn">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="always_show_image">True</property>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="dialogKnightBtn">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="always_show_image">True</property>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="dialogBishopBtn">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="always_show_image">True</property>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="position">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="dialogRookBtn">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="always_show_image">True</property>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="position">3</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">False</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="margin_top">40</property>
+            <property name="label" translatable="yes">تبریک ، ‌شما تونستید سربازتان را به اخرین خونه برسونید
+حالا از بین گزینه‌های زیر یکی رو برای جایگزینی سربازت انتخاب کن</property>
+            <property name="justify">center</property>
+            <attributes>
+              <attribute name="font-desc" value="Vazir 14"/>
+            </attributes>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+  <object class="GtkImage" id="newImg">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/wk.png</property>
   </object>
   <object class="GtkImage" id="undoImg">
     <property name="visible">True</property>
@@ -2411,10 +2552,44 @@
       </packing>
     </child>
   </object>
-	<object class="GtkImage" id="newImg">
+  <object class="GtkImage" id="bbNew">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="pixbuf">images/wk.png</property>
+    <property name="pixbuf">images/bb.png</property>
   </object>
- 
+  <object class="GtkImage" id="brNew">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/br.png</property>
+  </object>
+  <object class="GtkImage" id="bnNew">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/bn.png</property>
+  </object>
+  <object class="GtkImage" id="bqNew">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/bq.png</property>
+  </object>
+  <object class="GtkImage" id="wbNew">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/wb.png</property>
+  </object>
+  <object class="GtkImage" id="wrNew">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/wr.png</property>
+  </object>
+  <object class="GtkImage" id="wnNew">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/wn.png</property>
+  </object>
+  <object class="GtkImage" id="wqNew">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/wq.png</property>
+  </object>
 </interface>

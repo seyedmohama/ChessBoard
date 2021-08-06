@@ -110,7 +110,7 @@ void StackPage::exitBtnStack2_clicked(){
 void StackPage::startGameBtn_clicked(){
 
 //	initial Board from class chessboard
-//	chessboard.initBoard();
+	chessboard.initBoard();
 
 
 //	setup separators on page stack2 game
@@ -361,9 +361,6 @@ void StackPage::startGameBtn_clicked(){
 	pieces[30]-> signal_drag_data_received() .connect( sigc::mem_fun( *this, &StackPage::on_30_chessman_drag_data_received));
 	pieces[31]-> signal_drag_data_received() .connect( sigc::mem_fun( *this, &StackPage::on_31_chessman_drag_data_received));
 
-
-	m_refGlade-> get_widget( "newImg", pNewImg);
-	pieces[1]-> property_image() = pNewImg;
 }
 
 int StackPage::cellIsEmpty( std::map< std::string, std::string> map, std::string cell){
@@ -396,7 +393,7 @@ bool StackPage::motionVerification(){
 			dialog. run();
 
 			return false;
-	}/*
+	}
 	if( chessboard.verifyMove( moveCode)){
 		
 		std::cout << "chessboard verifyMove = true" << std::endl;
@@ -408,8 +405,8 @@ bool StackPage::motionVerification(){
 			return true;
 		}
 		if( cellIsEmpty( positionOfPieces, cellDestination) == 1){
-			std::cout << "motion = " << piece << " from " <<  cellOrigin << " to " << cellDestination << std::endl;*/
-			return true;/*
+			std::cout << "motion = " << piece << " from " <<  cellOrigin << " to " << cellDestination << std::endl;
+			return true;
 		}
 	}
 	else{
@@ -420,7 +417,7 @@ bool StackPage::motionVerification(){
 			dialog. run();
 
 			return false;
-	}*/
+	}
 }
 
 void StackPage::reloadBtnStack2_clicked(){
@@ -484,10 +481,12 @@ void StackPage::convertPawn( std::string chessman){
 		str += handler-> numberOfBlackConvertPawn;
 		handler-> numberOfBlackConvertPawn++;
 	}
-	nameOfPieces[i] = str;
-  
+
+	nameOfPieces[i] = str; 
   positionOfPieces[str] = cellDestination;
 
-	m_refGlade-> get_widget( "newImg", pNewImg);
-	pieces[i]-> property_image() = pNewImg;
+	pDialogConvertPawn-> close();
+
+	m_refGlade-> get_widget( chessman, pWidget[8]);
+	pieces[i]-> property_image() = pWidget[8];
 }
