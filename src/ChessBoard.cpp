@@ -176,17 +176,18 @@ void ChessBoard::UndoScoring(struct Player p)
 vector<pair<int, int>> ChessBoard::Threat(pair<int, int> cell)
 {
   vector<pair<int, int>> ans;
-
+  vector<pair<int, int>> FinallThreat;
   ans = GetFreeMovements(cell);
 
   for (auto i = ans.begin(); i != ans.end(); i++)
   {
     if (!Board[i -> first][i -> second].IsEmpty())
     {
+      FinallThreat = ans.at(i);
       ThreatScoring(plr1 , *i);
     }
   }
-
+  return FinallThreat;
 }
 
 void ChessBoard::Move(pair<int, int> position, pair<int, int> toPosition)

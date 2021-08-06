@@ -1,4 +1,4 @@
-#include "handler.hpp"
+#include "../include/handler.hpp"
 
 Handler::Handler(std::string gn, std::string pfn, std::string psn){
 	gameName = gn;
