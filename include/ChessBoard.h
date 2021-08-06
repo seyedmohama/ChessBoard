@@ -19,7 +19,7 @@ private:
 public:
   Player plr1;
   Player plr2;
-  vector<Chessman> TrashingList;
+  vector<Chessman*> TrashingList;
   Cell** GetBoard();
 
   ChessBoard();
