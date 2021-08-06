@@ -58,9 +58,9 @@ Handler::Color Handler::get_round(){
 	return round;
 }
 
-int StackPage::get_numberOfWhiteConvertPawn{
+int Handler::get_numberOfWhiteConvertPawn(){
 	return numberOfWhiteConvertPawn;
 }
-int StackPage::get_numberOfBlackConvertPawn{
+int Handler::get_numberOfBlackConvertPawn(){
 	return numberOfBlackConvertPawn;
 }

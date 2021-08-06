@@ -24,6 +24,11 @@ m_refGlade(refGlade){
 	m_refGlade->get_widget("boardGameImageID", pGameBoardImage);
 	m_refGlade->get_widget("gameNameLabelID", pGameNameLabel);
 	m_refGlade-> get_widget( "removedPiecesGrid", pRemovedPiecesGrid);
+	m_refGlade-> get_widget( "dialogConvertPawn", pDialogConvertPawn);
+	m_refGlade-> get_widget( "dialogQueenBtn", pQueenBtnDialogConvertPawn);
+	m_refGlade-> get_widget( "dialogKnightBtn", pKnightBtnDialogConvertPawn);
+	m_refGlade-> get_widget( "dialogBishopBtn", pBishopBtnDialogConvertPawn);
+	m_refGlade-> get_widget( "dialogRookBtn", pRookBtnDialogConvertPawn);
 
 	nameOfPieces[0] = "wrl";
  	nameOfPieces[1] = "wbl";
@@ -457,4 +462,27 @@ void StackPage::reloadBtnStack2_clicked(){
 		std::cout << "\t" << i << "\t" << positionOfBlankSquars[i] << std::endl;
 	}
 
+}
+
+void StackPage::convertPawn( std::string chessman){
+  positionOfPieces.erase( positionOfPieces.find( piece));
+  
+	int i;
+	for( i = 0; i <= 31; i++){
+		if(nameOfPieces[i] == piece){
+			break;
+		}
+	}
+	std::string str = chessman;
+	if(chessman[0] == 'w'){
+		str += handler-> numberOfWhiteConvertPawn;
+		handler-> numberOfWhiteConvertPawn++;
+	}
+	if(chessman[0] == 'b'){
+		str += handler-> numberOfBlackConvertPawn;
+		handler-> numberOfBlackConvertPawn++;
+	}
+	nameOfPieces[i] = str;
+  
+  positionOfPieces[chessman] = cellDestination;
 }

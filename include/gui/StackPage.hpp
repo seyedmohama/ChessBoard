@@ -47,6 +47,10 @@ class StackPage : public Gtk::Stack{
 
 		ChessBoard chessboard;
 
+		Gtk::Dialog *pDialogConvertPawn;
+		Gtk::Button *pQueenBtnDialogConvertPawn, *pKnightBtnDialogConvertPawn, *pBishopBtnDialogConvertPawn, *pRookBtnDialogConvertPawn;
+		void convertPawn( std::string);
+
 		int numberNewBlankSquars = 0;
 		int numberWhitePiecesRemoved;
 		int numberBlackPiecesRemoved;
@@ -195,7 +199,8 @@ class StackPage : public Gtk::Stack{
 
 		void on_i_drag_data_get( int, Gtk::SelectionData&);
 		void on_i_cell_drag_data_recieved( int, const Glib::RefPtr<Gdk::DragContext>& , guint);
-		void on_i_chessman_data_recieved( int, const Glib::RefPtr<Gdk::DragContext>& , guint);
+		void on_i_chessman_drag_data_recieved( int, const Glib::RefPtr<Gdk::DragContext>& , guint);
+		
 };
 
 #endif

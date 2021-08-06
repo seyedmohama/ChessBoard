@@ -126,6 +126,7 @@ bool ChessBoard::IsMated(ChessColor color)
 
   ChessColor targetcolor = (color == ChessColor::Black) ? ChessColor::White : ChessColor::Black;
 
+
   for (int i = 0; i < 8; i++)
   {
     for (int j = 0; j < 8; j++)
@@ -167,10 +168,34 @@ void ChessBoard::ThreatScoring(struct Player p , pair<int, int> position)
 
 }
 
+void ChessBoard::UndoScoring(struct Player p)
+{
+  p.Score -= 5;
+}
+
+vector<pair<int, int>> ChessBoard::Threat(pair<int, int> cell)
+{
+  vector<pair<int, int>> ans;
+
+  ans = GetFreeMovements(cell);
+
+  for (auto i = ans.begin(); i != ans.end(); i++)
+  {
+    if (!Board[i -> first][i -> second].IsEmpty())
+    {
+      ThreatScoring(plr1 , *i);
+    }
+  }
+
+}
 
 void ChessBoard::Move(pair<int, int> position, pair<int, int> toPosition)
 {
   Board[position.first][position.second].ptr->Move(toPosition);
+  if (!Board[toPosition.first][toPosition.second].IsEmpty())
+  {
+    TrashingList.push_back(Board[toPosition.first][toPosition.second].ptr);
+  }
   Board[toPosition.first][toPosition.second].ptr = Board[position.first][position.second].ptr;
   Board[position.first][position.second].ptr = nullptr;
 }
