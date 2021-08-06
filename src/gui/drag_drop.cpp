@@ -47,7 +47,7 @@ void StackPage::on_i_chessman_drag_data_recieved( int i, const Glib::RefPtr<Gdk:
 		pRemovedPiecesGrid-> attach( *pImageTemp, numberWhitePiecesRemoved, 0);
 		numberWhitePiecesRemoved++;
 
-pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
+		pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
 
 		pBoardGame->attach(*(pointerPiece), positionExtraction(positionOfPieces[pieceNameDest]).first, positionExtraction(positionOfPieces[pieceNameDest]).second);
 

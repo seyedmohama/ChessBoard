@@ -181,9 +181,9 @@ vector<pair<int, int>> ChessBoard::Threat(pair<int, int> cell)
 
   for (auto i = ans.begin(); i != ans.end(); i++)
   {
-    if (!Board[i -> first][i -> second].IsEmpty)
+    if (!Board[i -> first][i -> second].IsEmpty())
     {
-      ThreatScoring(plr1 , ans.at(i));
+      ThreatScoring(plr1 , *i);
     }
   }
 
@@ -192,7 +192,7 @@ vector<pair<int, int>> ChessBoard::Threat(pair<int, int> cell)
 void ChessBoard::Move(pair<int, int> position, pair<int, int> toPosition)
 {
   Board[position.first][position.second].ptr->Move(toPosition);
-  if (!Board[toPosition.first][toPosition.second].IsEmpty)
+  if (!Board[toPosition.first][toPosition.second].IsEmpty())
   {
     TrashingList.push_back(Board[toPosition.first][toPosition.second].ptr);
   }

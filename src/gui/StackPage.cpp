@@ -467,17 +467,22 @@ void StackPage::reloadBtnStack2_clicked(){
 void StackPage::convertPawn( std::string chessman){
   positionOfPieces.erase( positionOfPieces.find( piece));
   
-  auto it = find( nameOfPieces.cbegin(), nameOfPieces.cend(), piece);
-	std::string str = chessmand;
+	int i;
+	for( i = 0; i <= 31; i++){
+		if(nameOfPieces[i] == piece){
+			break;
+		}
+	}
+	std::string str = chessman;
 	if(chessman[0] == 'w'){
 		str += handler-> numberOfWhiteConvertPawn;
-		numberOfWhiteConvertPawn++;
+		handler-> numberOfWhiteConvertPawn++;
 	}
 	if(chessman[0] == 'b'){
 		str += handler-> numberOfBlackConvertPawn;
-		numberOfBlackConvertPawn++;
+		handler-> numberOfBlackConvertPawn++;
 	}
-  *it = str; 
+	nameOfPieces[i] = str;
   
   positionOfPieces[chessman] = cellDestination;
 }

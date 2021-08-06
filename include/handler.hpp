@@ -1,3 +1,6 @@
+#ifndef INC_HANDLER
+#define INC_HANDLER
+
 #include <iostream>
 #include <string>
 
@@ -18,6 +21,11 @@ class Handler{
 		void changeRound();
 		Color get_round();
 		virtual ~Handler();
+
+		int get_numberOfWhiteConvertPawn();
+		int get_numberOfBlackConvertPawn();
+		int numberOfWhiteConvertPawn;
+		int numberOfBlackConvertPawn;
 	private:
 		std::string playerFirstName;
 		std::string playerSecondName;
@@ -28,3 +36,5 @@ class Handler{
 		int secondPlayerNegativScore;
 		Color round;
 };
+
+#endif

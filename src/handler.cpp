@@ -11,6 +11,9 @@ Handler::Handler(std::string gn, std::string pfn, std::string psn){
 	secondPlayerNegativScore = 0;
 
 	round = Color::White;
+
+	numberOfWhiteConvertPawn = 0;
+	numberOfBlackConvertPawn = 0;
 }
 
 Handler::~Handler(){
@@ -53,4 +56,11 @@ void Handler::changeRound(){
 
 Handler::Color Handler::get_round(){
 	return round;
+}
+
+int Handler::get_numberOfWhiteConvertPawn(){
+	return numberOfWhiteConvertPawn;
+}
+int Handler::get_numberOfBlackConvertPawn(){
+	return numberOfBlackConvertPawn;
 }
