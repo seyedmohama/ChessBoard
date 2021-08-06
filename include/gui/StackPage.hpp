@@ -49,6 +49,7 @@ class StackPage : public Gtk::Stack{
 
 		Gtk::Dialog *pDialogConvertPawn;
 		Gtk::Button *pQueenBtnDialogConvertPawn, *pKnightBtnDialogConvertPawn, *pBishopBtnDialogConvertPawn, *pRookBtnDialogConvertPawn;
+		Gtk::Widget *pWidget[10];
 		void convertPawn( std::string);
 
 		int numberNewBlankSquars = 0;

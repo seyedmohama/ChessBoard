@@ -93,6 +93,14 @@ void StackPage::on_i_cell_drag_data_recieved(int i, const Glib::RefPtr<Gdk::Drag
 //	if pawn go to a8,b8,c8,d8,....
 		if(piece[1] == 'p'){
 			if(piece[0] == 'w' && cellDestination[1] == '8'){
+				m_refGlade-> get_widget( "whiteQueenImgDialog", pWidget[0]);	//|
+				pQueenBtnDialogConvertPawn-> property_image() = pWidget[1]; 	//|
+				m_refGlade-> get_widget( "whiteKnightImgDialog", pWidget[2]); //|
+				pKnightBtnDialogConvertPawn-> property_image() = pWidget[3];	//|=>	set color images
+				m_refGlade-> get_widget( "whiteBishopImgDialog", pWidget[4]); //|
+				pBishopBtnDialogConvertPawn-> property_image() = pWidget[5];  //|
+				m_refGlade-> get_widget( "whiteRookImgDialog", pWidget[6]);	  //|
+				pRookBtnDialogConvertPawn-> property_image() = pWidget[7];		//|
 				pDialogConvertPawn-> run();
 				pQueenBtnDialogConvertPawn-> signal_clicked() .connect( sigc::bind( sigc::mem_fun( *this, &StackPage::convertPawn), "wqNew"));
 				pKnightBtnDialogConvertPawn-> signal_clicked() .connect( sigc::bind( sigc::mem_fun( *this, &StackPage::convertPawn), "wnNew"));
@@ -100,6 +108,14 @@ void StackPage::on_i_cell_drag_data_recieved(int i, const Glib::RefPtr<Gdk::Drag
 				pRookBtnDialogConvertPawn-> signal_clicked() .connect( sigc::bind( sigc::mem_fun( *this, &StackPage::convertPawn), "wrNew"));
 			}
 			if(piece[0] == 'b' && cellDestination[1] == '1'){
+				m_refGlade-> get_widget( "blackQueenImgDialog", pWidget[0]);	//|
+				pQueenBtnDialogConvertPawn-> property_image() = pWidget[1];	  //|
+				m_refGlade-> get_widget( "blackKnightImgDialog", pWidget[2]); //|
+				pKnightBtnDialogConvertPawn-> property_image() = pWidget[3];	//|=>	set color images
+				m_refGlade-> get_widget( "blackBishopImgDialog", pWidget[4]); //|
+				pBishopBtnDialogConvertPawn-> property_image() = pWidget[5];	//|
+				m_refGlade-> get_widget( "blackRookImgDialog", pWidget[6]); 	//|
+				pRookBtnDialogConvertPawn-> property_image() = pWidget[7];		//|
 				pDialogConvertPawn-> run();
 				pQueenBtnDialogConvertPawn-> signal_clicked() .connect( sigc::bind( sigc::mem_fun( *this, &StackPage::convertPawn), "bqNew"));
 				pKnightBtnDialogConvertPawn-> signal_clicked() .connect( sigc::bind( sigc::mem_fun( *this, &StackPage::convertPawn), "bnNew"));

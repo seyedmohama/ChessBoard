@@ -361,7 +361,6 @@ void StackPage::startGameBtn_clicked(){
 	pieces[30]-> signal_drag_data_received() .connect( sigc::mem_fun( *this, &StackPage::on_30_chessman_drag_data_received));
 	pieces[31]-> signal_drag_data_received() .connect( sigc::mem_fun( *this, &StackPage::on_31_chessman_drag_data_received));
 
-
 }
 
 int StackPage::cellIsEmpty( std::map< std::string, std::string> map, std::string cell){
@@ -482,7 +481,12 @@ void StackPage::convertPawn( std::string chessman){
 		str += handler-> numberOfBlackConvertPawn;
 		handler-> numberOfBlackConvertPawn++;
 	}
-	nameOfPieces[i] = str;
-  
-  positionOfPieces[chessman] = cellDestination;
+
+	nameOfPieces[i] = str; 
+  positionOfPieces[str] = cellDestination;
+
+	pDialogConvertPawn-> close();
+
+	m_refGlade-> get_widget( chessman, pWidget[8]);
+	pieces[i]-> property_image() = pWidget[8];
 }
