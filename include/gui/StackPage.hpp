@@ -15,7 +15,7 @@
 #include <gtkmm/messagedialog.h>
 #include <map>
 #include <utility>
-#include "ChessBoard.h"
+//#include "ChessBoard.h"
 
 class Handler;
 class StackPage : public Gtk::Stack{
@@ -45,10 +45,11 @@ class StackPage : public Gtk::Stack{
 		std::string cellOrigin, piece, cellDestination;
 		Gtk::Widget *pointerPiece;
 
-		ChessBoard chessboard;
+		//ChessBoard chessboard;
 
 		Gtk::Dialog *pDialogConvertPawn;
 		Gtk::Button *pQueenBtnDialogConvertPawn, *pKnightBtnDialogConvertPawn, *pBishopBtnDialogConvertPawn, *pRookBtnDialogConvertPawn;
+		Gtk::Widget *pNewImg;
 		void convertPawn( std::string);
 
 		int numberNewBlankSquars = 0;
