@@ -4,10 +4,10 @@ ChessBoard :: ChessBoard()
 {
   std::cout << "Please enter the name of the white Player" << '\n';
   std::cin >> plr1.Name;
-  plr1.ColorOfPlayer = {White};
+  plr1.ColorOfPlayer = PlayersColor::White;
   std::cout << "Please enter the name of the Black Player" << '\n';
   std::cin >> plr2.Name;
-  plr2.ColorOfPlayer = {Black};
+  plr2.ColorOfPlayer = PlayersColor::Black;
 }
 
 void ChessBoard::initBoard()
@@ -183,7 +183,7 @@ vector<pair<int, int>> ChessBoard::Threat(pair<int, int> cell)
   {
     if (!Board[i -> first][i -> second].IsEmpty())
     {
-      FinallThreat = ans.at(i);
+      FinallThreat.push_back(*i);
       ThreatScoring(plr1 , *i);
     }
   }

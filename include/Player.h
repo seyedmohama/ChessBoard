@@ -1,6 +1,6 @@
 #include <iostream>
 
-enum  PlayersColor { White , Black };
+enum class PlayersColor { White , Black };
 
 struct Player
 {
