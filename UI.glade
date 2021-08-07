@@ -163,45 +163,10 @@
     <property name="can_focus">False</property>
     <property name="pixbuf">images/blank-62.png</property>
   </object>
-  <object class="GtkImage" id="whiteBishopImgDialog">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixbuf">images/wb.png</property>
-  </object>
-  <object class="GtkImage" id="whiteKnightImgDialog">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixbuf">images/wn.png</property>
-  </object>
-  <object class="GtkImage" id="whiteQueenImgDialog">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixbuf">images/wq.png</property>
-  </object>
-  <object class="GtkImage" id="whiteRookImgDialog">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixbuf">images/wr.png</property>
-  </object>
-  <object class="GtkImage" id="blackBishopImgDialog">
+  <object class="GtkImage" id="bbNew">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="pixbuf">images/bb.png</property>
-  </object>
-  <object class="GtkImage" id="blackKnightImgDialog">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixbuf">images/bn.png</property>
-  </object>
-  <object class="GtkImage" id="blackQueenImgDialog">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixbuf">images/bq.png</property>
-  </object>
-  <object class="GtkImage" id="blackRookImgDialog">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixbuf">images/br.png</property>
   </object>
   <object class="GtkImage" id="bbl">
     <property name="visible">True</property>
@@ -238,6 +203,31 @@
     <property name="margin_top">1</property>
     <property name="margin_bottom">1</property>
     <property name="pixbuf">images/bk.png</property>
+  </object>
+  <object class="GtkImage" id="blackBishopImgDialog">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/bb.png</property>
+  </object>
+  <object class="GtkImage" id="blackKnightImgDialog">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/bn.png</property>
+  </object>
+  <object class="GtkImage" id="blackQueenImgDialog">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/bq.png</property>
+  </object>
+  <object class="GtkImage" id="blackRookImgDialog">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/br.png</property>
+  </object>
+  <object class="GtkImage" id="bnNew">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/bn.png</property>
   </object>
   <object class="GtkImage" id="bnl">
     <property name="visible">True</property>
@@ -370,6 +360,16 @@
     <property name="margin_top">1</property>
     <property name="margin_bottom">1</property>
     <property name="pixbuf">images/bq.png</property>
+  </object>
+  <object class="GtkImage" id="bqNew">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/bq.png</property>
+  </object>
+  <object class="GtkImage" id="brNew">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/br.png</property>
   </object>
   <object class="GtkImage" id="brl">
     <property name="visible">True</property>
@@ -677,7 +677,7 @@
                     <property name="hexpand">True</property>
                     <property name="vexpand">True</property>
                     <child>
-                      <object class="GtkEntry" id="playerFirstNameEntry">
+                      <object class="GtkEntry" id="playerSecondNameEntry">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                       </object>
@@ -691,7 +691,7 @@
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="margin_bottom">5</property>
-                        <property name="label" translatable="yes">بازیکن اول</property>
+                        <property name="label" translatable="yes">بازیکن دوم</property>
                       </object>
                       <packing>
                         <property name="left_attach">0</property>
@@ -717,7 +717,7 @@
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="margin_bottom">5</property>
-                        <property name="label" translatable="yes">بازیکن دوم</property>
+                        <property name="label" translatable="yes">بازیکن اول</property>
                       </object>
                       <packing>
                         <property name="left_attach">0</property>
@@ -725,7 +725,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkEntry" id="playerSecondNameEntry">
+                      <object class="GtkEntry" id="playerFirstNameEntry">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                       </object>
@@ -1566,6 +1566,11 @@
       </object>
     </child>
   </object>
+  <object class="GtkImage" id="wbNew">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/wb.png</property>
+  </object>
   <object class="GtkImage" id="wbl">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -1590,6 +1595,26 @@
     <property name="margin_bottom">1</property>
     <property name="pixbuf">images/wb.png</property>
   </object>
+  <object class="GtkImage" id="whiteBishopImgDialog">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/wb.png</property>
+  </object>
+  <object class="GtkImage" id="whiteKnightImgDialog">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/wn.png</property>
+  </object>
+  <object class="GtkImage" id="whiteQueenImgDialog">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/wq.png</property>
+  </object>
+  <object class="GtkImage" id="whiteRookImgDialog">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/wr.png</property>
+  </object>
   <object class="GtkImage" id="wk">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -1601,6 +1626,11 @@
     <property name="margin_top">1</property>
     <property name="margin_bottom">1</property>
     <property name="pixbuf">images/wk.png</property>
+  </object>
+  <object class="GtkImage" id="wnNew">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/wn.png</property>
   </object>
   <object class="GtkImage" id="wnl">
     <property name="visible">True</property>
@@ -1734,6 +1764,16 @@
     <property name="margin_top">1</property>
     <property name="margin_bottom">1</property>
     <property name="pixbuf">images/wq.png</property>
+  </object>
+  <object class="GtkImage" id="wqNew">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/wq.png</property>
+  </object>
+  <object class="GtkImage" id="wrNew">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/wr.png</property>
   </object>
   <object class="GtkImage" id="wrl">
     <property name="visible">True</property>
@@ -2551,45 +2591,5 @@
         <property name="top_attach">7</property>
       </packing>
     </child>
-  </object>
-  <object class="GtkImage" id="bbNew">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixbuf">images/bb.png</property>
-  </object>
-  <object class="GtkImage" id="brNew">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixbuf">images/br.png</property>
-  </object>
-  <object class="GtkImage" id="bnNew">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixbuf">images/bn.png</property>
-  </object>
-  <object class="GtkImage" id="bqNew">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixbuf">images/bq.png</property>
-  </object>
-  <object class="GtkImage" id="wbNew">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixbuf">images/wb.png</property>
-  </object>
-  <object class="GtkImage" id="wrNew">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixbuf">images/wr.png</property>
-  </object>
-  <object class="GtkImage" id="wnNew">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixbuf">images/wn.png</property>
-  </object>
-  <object class="GtkImage" id="wqNew">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixbuf">images/wq.png</property>
   </object>
 </interface>

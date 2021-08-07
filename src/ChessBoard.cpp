@@ -1,13 +1,21 @@
 #include "../include/ChessBoard.h"
+#include "../include/handler.hpp"
 
 ChessBoard :: ChessBoard()
 {
   std::cout << "Please enter the name of the white Player" << '\n';
-  std::cin >> plr1.Name;
-  plr1.ColorOfPlayer = PlayersColor::White;
+  std::cin >> plr1->Name;
+  plr1->ColorOfPlayer = PlayersColor::White;
   std::cout << "Please enter the name of the Black Player" << '\n';
-  std::cin >> plr2.Name;
-  plr2.ColorOfPlayer = PlayersColor::Black;
+  std::cin >> plr2->Name;
+  plr2->ColorOfPlayer = PlayersColor::Black;
+}
+
+ChessBoard::ChessBoard( Player *player1, Player *player2, StackPage *pStack){
+	plr1 = player1;
+	plr2 = player2;
+
+	this->pStack = pStack;
 }
 
 void ChessBoard::initBoard()
@@ -156,21 +164,21 @@ bool ChessBoard::IsMated(ChessColor color)
   return (kingmoves.size() == 0);
 }
 
-void ChessBoard::HitScoring(struct Player p , pair<int, int> position)
+void ChessBoard::HitScoring(struct Player *p , pair<int, int> position)
 {
-  p.Score += Board[position.first][position.second].ptr -> HitScore;
+  p->Score += Board[position.first][position.second].ptr -> HitScore;
 
 }
 
-void ChessBoard::ThreatScoring(struct Player p , pair<int, int> position)
+void ChessBoard::ThreatScoring(struct Player *p , pair<int, int> position)
 {
-  p.Score += Board[position.first][position.second].ptr -> ThreatScore;
+  p->Score += Board[position.first][position.second].ptr -> ThreatScore;
 
 }
 
-void ChessBoard::UndoScoring(struct Player p)
+void ChessBoard::UndoScoring(struct Player *p)
 {
-  p.Score -= 5;
+  p->Score -= 5;
 }
 
 vector<pair<int, int>> ChessBoard::Threat(pair<int, int> cell)
@@ -183,8 +191,13 @@ vector<pair<int, int>> ChessBoard::Threat(pair<int, int> cell)
   {
     if (!Board[i -> first][i -> second].IsEmpty())
     {
-      FinallThreat.push_back(*i);
-      ThreatScoring(plr1 , *i);
+     	FinallThreat.push_back(*i);
+			if(pStack-> handler-> get_round() == PlayersColor::White){
+     		ThreatScoring(plr1 , *i);
+			}
+			if(pStack-> handler-> get_round() == PlayersColor::Black){
+     		ThreatScoring(plr2 , *i);
+			}
     }
   }
   return FinallThreat;

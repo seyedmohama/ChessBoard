@@ -1,15 +1,20 @@
 #include "../include/handler.hpp"
 #include "Player.h"
 
-Handler::Handler(std::string gn, std::string pfn, std::string psn){
+Handler::Handler(std::string gn, std::string pfn, std::string psn, StackPage* pStack){
 	gameName = gn;
-	firstPlayer.Name = pfn;
-	secondPlayer.Name = psn;
 
-	firstPlayer.Score = 0;
-	secondPlayer.Score = 0;
-	firstPlayer.NegativScore = 0;
-	secondPlayer.NegativScore = 0;
+	player1.Name = pfn;
+	player2.Name = psn;
+
+	this-> pStack = pStack;
+
+	pChessboard = new ChessBoard( &player1, &player2, pStack);
+
+player1.Score = 0;
+	player2.Score = 0;
+	player1.NegativScore = 0;
+	player2.NegativScore = 0;
 
 	round = PlayersColor::White;
 
@@ -23,25 +28,19 @@ Handler::~Handler(){
 void Handler::set_gameName(std::string gn){
 	gameName = gn;
 }
-void Handler::set_playerFirstName(std::string pfn){
-	firstPlayer.Name = pfn;
-}
-void Handler::set_playerSecondName(std::string psn){
-	secondPlayer.Name = psn;
-}
 
 std::string Handler::get_gameName(){ return gameName; }
 void Handler::firstPlayerAppendScore(size_t number){
-	firstPlayer.Score += number;
+	player1.Score += number;
 }
 void Handler::firstPlayerAppendNegativScore(size_t number){
-	firstPlayer.NegativScore += number;
+	player1.NegativScore += number;
 }
 void Handler::secondPlayerAppendScore(size_t number){
-	secondPlayer.Score += number;
+	player2.Score += number;
 }
 void Handler::secondPlayerAppendNegativScore(size_t number){
-	secondPlayer.NegativScore += number;
+	player2.NegativScore += number;
 }
 
 void Handler::changeRound(){
@@ -62,4 +61,13 @@ int Handler::get_numberOfWhiteConvertPawn(){
 }
 int Handler::get_numberOfBlackConvertPawn(){
 	return numberOfBlackConvertPawn;
+}
+
+Player* Handler::get_round_player(){
+	if( get_round() == PlayersColor::White ){
+		return &player1;
+	}
+	else{
+		return &player2;
+	}
 }

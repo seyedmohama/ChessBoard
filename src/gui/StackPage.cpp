@@ -109,10 +109,6 @@ void StackPage::exitBtnStack2_clicked(){
 
 void StackPage::startGameBtn_clicked(){
 
-//	initial Board from class chessboard
-	chessboard.initBoard();
-
-
 //	setup separators on page stack2 game
 	m_refGlade-> get_widget( "separator0Stack2", pSeparators[0]);
 	m_refGlade-> get_widget( "separator1Stack2", pSeparators[1]);
@@ -133,7 +129,7 @@ void StackPage::startGameBtn_clicked(){
 	m_refGlade->get_widget("playerFirstNameEntry", pPlayerFirstNameEnt);
 	m_refGlade->get_widget("playerSecondNameEntry", pPlayerSecondNameEnt);
 
-	handler = new Handler ( pGameNameEnt->get_text(), pPlayerFirstNameEnt->get_text(), pPlayerSecondNameEnt->get_text());
+	handler = new Handler ( pGameNameEnt->get_text(), pPlayerFirstNameEnt->get_text(), pPlayerSecondNameEnt->get_text(), this);
 
 
 //	setup scoreboard
@@ -147,25 +143,25 @@ void StackPage::startGameBtn_clicked(){
 	m_refGlade-> get_widget( "negativScoreSecondPL", pNegativScoreSecondPL);
 
 	std::string str = "امتیاز ";
-	str += (handler-> firstPlayer.Name);
+	str += (handler-> player1.Name);
 	str += ":";
 	pFirstPLNameScoreLabel-> set_label(str);
 	pScoreFirstPL-> set_label("0");
 	
 	str = "امتیاز منفی ";
-	str += handler-> firstPlayer.Name;
+	str += handler-> player1.Name;
 	str += ":";
 	pFirstPLNameNegativScoreLabel-> set_label(str);
 	pNegativScoreFirstPL-> set_label("0");
 
 	str = "امتیاز ";
-	str += handler-> secondPlayer.Name;
+	str += handler-> player2.Name;
 	str += ":";
 	pSecondPLNameScoreLabel-> set_label(str);
 	pScoreSecondPL-> set_label("0");
 
 	str = "امتیاز منفی ";
-	str += handler-> secondPlayer.Name;
+	str += handler-> player2.Name;
 	str += ":";
 	pSecondPLNameNegativScoreLabel-> set_label(str);
 	pNegativScoreSecondPL-> set_label("0");
@@ -394,12 +390,20 @@ bool StackPage::motionVerification(){
 
 			return false;
 	}
-	if( chessboard.verifyMove( moveCode)){
+	if( handler-> pChessboard-> verifyMove( moveCode)){
 		
 		std::cout << "chessboard verifyMove = true" << std::endl;
-		chessboard.Move( positionExtraction( cellOrigin), positionExtraction( cellDestination));
+		handler-> pChessboard-> Move( positionExtraction( cellOrigin), positionExtraction( cellDestination));
 
+
+//	امتیاز نیمه دوم سرباز
+		checkPawnInFrontHalfScore( this);
+//	بررسی ایا امتیاز تهدید کاربر میگیره یا نه و ثبت ان
+		handler-> pChessboard-> Threat( positionExtraction( cellDestination));
+
+//	change round
 		handler-> changeRound();
+
 		if(cellIsEmpty( positionOfPieces, cellDestination) == 0){
 			std::cout << "motion attack = " << piece << " from " << cellOrigin << " to " << pieceNameByPosition( positionOfPieces, cellDestination) << " on "<< cellDestination << std::endl;
 			return true;

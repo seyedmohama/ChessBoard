@@ -15,11 +15,13 @@
 #include <gtkmm/messagedialog.h>
 #include <map>
 #include <utility>
-#include "ChessBoard.h"
 
 class Handler;
 class StackPage : public Gtk::Stack{
 	public:
+		friend class ChessBoard;
+		friend void checkPawnInFrontHalfScore( StackPage*);
+
 		StackPage(BaseObjectType *cobject, const Glib::RefPtr<Gtk::Builder>& refGlade);
 		virtual ~StackPage();
 	private:
@@ -45,8 +47,6 @@ class StackPage : public Gtk::Stack{
 		std::string cellOrigin, piece, cellDestination;
 		Gtk::Widget *pointerPiece;
 
-		ChessBoard chessboard;
-
 		Gtk::Dialog *pDialogConvertPawn;
 		Gtk::Button *pQueenBtnDialogConvertPawn, *pKnightBtnDialogConvertPawn, *pBishopBtnDialogConvertPawn, *pRookBtnDialogConvertPawn;
 		Gtk::Widget *pWidget[10];
@@ -55,6 +55,9 @@ class StackPage : public Gtk::Stack{
 		int numberNewBlankSquars = 0;
 		int numberWhitePiecesRemoved;
 		int numberBlackPiecesRemoved;
+
+		std::vector<int> whitePawnsInFrontHalf;
+		std::vector<int> blackPawnsInFrontHalf;
 
 		std::pair < char, int> pair;
 

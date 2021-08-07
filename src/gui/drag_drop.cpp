@@ -73,6 +73,9 @@ void StackPage::on_i_chessman_drag_data_recieved( int i, const Glib::RefPtr<Gdk:
 				pRookBtnDialogConvertPawn-> signal_clicked() .connect( sigc::bind( sigc::mem_fun( *this, &StackPage::convertPawn), "brNew"));
 			}
 		}
+
+		//	enter score for player
+//		handler-> pChessboard-> HitScoring( handler-> get_round_player(), positionExtraction( cellDestination));
 	}
 	context->drag_finish(false, false, time);
 }
