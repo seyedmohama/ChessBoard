@@ -20,11 +20,9 @@ class Handler{
 
 		void changeRound();
 		PlayersColor get_round();
+		Player* get_round_player();
 
 		virtual ~Handler();
-
-		struct Player firstPlayer;
-		struct Player secondPlayer;
 
 		int get_numberOfWhiteConvertPawn();
 		int get_numberOfBlackConvertPawn();

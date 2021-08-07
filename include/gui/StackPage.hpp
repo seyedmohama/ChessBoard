@@ -54,6 +54,9 @@ class StackPage : public Gtk::Stack{
 		int numberWhitePiecesRemoved;
 		int numberBlackPiecesRemoved;
 
+		std::vector<int> whitePawnsInFrontHalf;
+		std::vector<int> blackPawnsInFrontHalf;
+
 		std::pair < char, int> pair;
 
 		void startGameBtn_clicked();

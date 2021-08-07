@@ -60,3 +60,12 @@ int Handler::get_numberOfWhiteConvertPawn(){
 int Handler::get_numberOfBlackConvertPawn(){
 	return numberOfBlackConvertPawn;
 }
+
+Player* Handler::get_round_player(){
+	if( get_round() == PlayersColor::White ){
+		return player1;
+	}
+	else{
+		return player2;
+	}
+}
