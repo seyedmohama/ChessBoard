@@ -16,6 +16,8 @@ ChessBoard::ChessBoard( Player *player1, Player *player2, StackPage *pStack){
 	plr2 = player2;
 
 	this->pStack = pStack;
+
+	initBoard();
 }
 
 void ChessBoard::initBoard()
