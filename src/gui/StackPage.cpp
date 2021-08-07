@@ -147,25 +147,25 @@ void StackPage::startGameBtn_clicked(){
 	m_refGlade-> get_widget( "negativScoreSecondPL", pNegativScoreSecondPL);
 
 	std::string str = "امتیاز ";
-	str += (handler-> get_playerFirstName());
+	str += (handler-> firstPlayer.Name);
 	str += ":";
 	pFirstPLNameScoreLabel-> set_label(str);
 	pScoreFirstPL-> set_label("0");
 	
 	str = "امتیاز منفی ";
-	str += handler-> get_playerFirstName();
+	str += handler-> firstPlayer.Name;
 	str += ":";
 	pFirstPLNameNegativScoreLabel-> set_label(str);
 	pNegativScoreFirstPL-> set_label("0");
 
 	str = "امتیاز ";
-	str += handler-> get_playerSecondName();
+	str += handler-> secondPlayer.Name;
 	str += ":";
 	pSecondPLNameScoreLabel-> set_label(str);
 	pScoreSecondPL-> set_label("0");
 
 	str = "امتیاز منفی ";
-	str += handler-> get_playerSecondName();
+	str += handler-> secondPlayer.Name;
 	str += ":";
 	pSecondPLNameNegativScoreLabel-> set_label(str);
 	pNegativScoreSecondPL-> set_label("0");

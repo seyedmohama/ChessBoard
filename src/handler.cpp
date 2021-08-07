@@ -3,13 +3,13 @@
 
 Handler::Handler(std::string gn, std::string pfn, std::string psn){
 	gameName = gn;
-	playerFirstName = pfn;
-	playerSecondName = psn;
+	firstPlayer.Name = pfn;
+	secondPlayer.Name = psn;
 
-	firstPlayerScore = 0;
-	secondPlayerScore = 0;
-	firstPlayerNegativScore = 0;
-	secondPlayerNegativScore = 0;
+	firstPlayer.Score = 0;
+	secondPlayer.Score = 0;
+	firstPlayer.NegativScore = 0;
+	secondPlayer.NegativScore = 0;
 
 	round = PlayersColor::White;
 
@@ -24,26 +24,24 @@ void Handler::set_gameName(std::string gn){
 	gameName = gn;
 }
 void Handler::set_playerFirstName(std::string pfn){
-	playerFirstName = pfn;
+	firstPlayer.Name = pfn;
 }
 void Handler::set_playerSecondName(std::string psn){
-	playerSecondName = psn;
+	secondPlayer.Name = psn;
 }
 
 std::string Handler::get_gameName(){ return gameName; }
-std::string Handler::get_playerFirstName(){ return playerFirstName; }
-std::string Handler::get_playerSecondName(){ return playerSecondName; }
 void Handler::firstPlayerAppendScore(size_t number){
-	firstPlayerScore++;
+	firstPlayer.Score += number;
 }
 void Handler::firstPlayerAppendNegativScore(size_t number){
-	firstPlayerNegativScore++;
+	firstPlayer.NegativScore += number;
 }
 void Handler::secondPlayerAppendScore(size_t number){
-	secondPlayerScore++;
+	secondPlayer.Score += number;
 }
 void Handler::secondPlayerAppendNegativScore(size_t number){
-	secondPlayerNegativScore++;
+	secondPlayer.NegativScore += number;
 }
 
 void Handler::changeRound(){
