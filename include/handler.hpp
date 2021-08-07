@@ -3,8 +3,7 @@
 
 #include <iostream>
 #include <string>
-
-enum class PlayersColor;
+#include "Player.h"
 
 class Handler{
 	public:
@@ -17,11 +16,12 @@ class Handler{
 		void secondPlayerAppendScore(size_t);
 		void secondPlayerAppendNegativScore(size_t);
 		std::string get_gameName();
-		std::string get_playerFirstName();
-		std::string get_playerSecondName();
 		void changeRound();
 		PlayersColor get_round();
 		virtual ~Handler();
+
+		struct Player firstPlayer;
+		struct Player secondPlayer;
 
 		int get_numberOfWhiteConvertPawn();
 		int get_numberOfBlackConvertPawn();
