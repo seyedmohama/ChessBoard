@@ -45,8 +45,6 @@ class StackPage : public Gtk::Stack{
 		std::string cellOrigin, piece, cellDestination;
 		Gtk::Widget *pointerPiece;
 
-		ChessBoard chessboard;
-
 		Gtk::Dialog *pDialogConvertPawn;
 		Gtk::Button *pQueenBtnDialogConvertPawn, *pKnightBtnDialogConvertPawn, *pBishopBtnDialogConvertPawn, *pRookBtnDialogConvertPawn;
 		Gtk::Widget *pWidget[10];

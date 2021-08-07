@@ -109,10 +109,6 @@ void StackPage::exitBtnStack2_clicked(){
 
 void StackPage::startGameBtn_clicked(){
 
-//	initial Board from class chessboard
-	chessboard.initBoard();
-
-
 //	setup separators on page stack2 game
 	m_refGlade-> get_widget( "separator0Stack2", pSeparators[0]);
 	m_refGlade-> get_widget( "separator1Stack2", pSeparators[1]);
@@ -394,10 +390,10 @@ bool StackPage::motionVerification(){
 
 			return false;
 	}
-	if( chessboard.verifyMove( moveCode)){
+	if( handler-> pChessboard-> verifyMove( moveCode)){
 		
 		std::cout << "chessboard verifyMove = true" << std::endl;
-		chessboard.Move( positionExtraction( cellOrigin), positionExtraction( cellDestination));
+		handler-> pChessboard-> Move( positionExtraction( cellOrigin), positionExtraction( cellDestination));
 
 		handler-> changeRound();
 		if(cellIsEmpty( positionOfPieces, cellDestination) == 0){

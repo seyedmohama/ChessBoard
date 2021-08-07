@@ -3,11 +3,18 @@
 ChessBoard :: ChessBoard()
 {
   std::cout << "Please enter the name of the white Player" << '\n';
-  std::cin >> plr1.Name;
-  plr1.ColorOfPlayer = PlayersColor::White;
+  std::cin >> plr1->Name;
+  plr1->ColorOfPlayer = PlayersColor::White;
   std::cout << "Please enter the name of the Black Player" << '\n';
-  std::cin >> plr2.Name;
-  plr2.ColorOfPlayer = PlayersColor::Black;
+  std::cin >> plr2->Name;
+  plr2->ColorOfPlayer = PlayersColor::Black;
+}
+
+ChessBoard::ChessBoard( Player *player1, Player *player2){
+	plr1 = player1;
+	plr2 = player2;
+
+	std::cout << "sdf" << plr1->Name << std::endl;
 }
 
 void ChessBoard::initBoard()
@@ -156,21 +163,21 @@ bool ChessBoard::IsMated(ChessColor color)
   return (kingmoves.size() == 0);
 }
 
-void ChessBoard::HitScoring(struct Player p , pair<int, int> position)
+void ChessBoard::HitScoring(struct Player *p , pair<int, int> position)
 {
-  p.Score += Board[position.first][position.second].ptr -> HitScore;
+  p->Score += Board[position.first][position.second].ptr -> HitScore;
 
 }
 
-void ChessBoard::ThreatScoring(struct Player p , pair<int, int> position)
+void ChessBoard::ThreatScoring(struct Player *p , pair<int, int> position)
 {
-  p.Score += Board[position.first][position.second].ptr -> ThreatScore;
+  p->Score += Board[position.first][position.second].ptr -> ThreatScore;
 
 }
 
-void ChessBoard::UndoScoring(struct Player p)
+void ChessBoard::UndoScoring(struct Player *p)
 {
-  p.Score -= 5;
+  p->Score -= 5;
 }
 
 vector<pair<int, int>> ChessBoard::Threat(pair<int, int> cell)

@@ -17,17 +17,18 @@ private:
   Cell** Board;
 
 public:
-  Player plr1;
-  Player plr2;
+	Player *plr1;
+  Player *plr2;
   vector<Chessman*> TrashingList;
   Cell** GetBoard();
 
   ChessBoard();
+	ChessBoard( Player*, Player*);
 
-  void HitScoring(struct Player p , pair<int, int> position);
-  void ThreatScoring(struct Player p , pair<int, int> position);
+  void HitScoring(struct Player *p , pair<int, int> position);
+  void ThreatScoring(struct Player *p , pair<int, int> position);
   void initBoard();
-  void UndoScoring(struct Player p);
+  void UndoScoring(struct Player *p);
 
   bool IsMated(ChessColor color);
   bool IsChecked(ChessColor color);

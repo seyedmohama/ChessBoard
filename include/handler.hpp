@@ -4,20 +4,23 @@
 #include <iostream>
 #include <string>
 #include "Player.h"
+#include "ChessBoard.h"
 
 class Handler{
 	public:
 		Handler(std::string, std::string, std::string);
 		void set_gameName(std::string);
-		void set_playerFirstName(std::string);
-		void set_playerSecondName(std::string);
+
 		void firstPlayerAppendScore(size_t);
 		void firstPlayerAppendNegativScore(size_t);
 		void secondPlayerAppendScore(size_t);
 		void secondPlayerAppendNegativScore(size_t);
+
 		std::string get_gameName();
+
 		void changeRound();
 		PlayersColor get_round();
+
 		virtual ~Handler();
 
 		struct Player firstPlayer;
@@ -27,6 +30,11 @@ class Handler{
 		int get_numberOfBlackConvertPawn();
 		int numberOfWhiteConvertPawn;
 		int numberOfBlackConvertPawn;
+
+		ChessBoard *pChessboard;
+
+		Player player1, player2;
+
 	private:
 		std::string playerFirstName;
 		std::string playerSecondName;
