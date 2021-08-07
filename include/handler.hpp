@@ -4,9 +4,10 @@
 #include <iostream>
 #include <string>
 
+enum class PlayersColor;
+
 class Handler{
 	public:
-		enum class Color { White, Black};
 		Handler(std::string, std::string, std::string);
 		void set_gameName(std::string);
 		void set_playerFirstName(std::string);
@@ -19,7 +20,7 @@ class Handler{
 		std::string get_playerFirstName();
 		std::string get_playerSecondName();
 		void changeRound();
-		Color get_round();
+		PlayersColor get_round();
 		virtual ~Handler();
 
 		int get_numberOfWhiteConvertPawn();
@@ -34,7 +35,7 @@ class Handler{
 		int secondPlayerScore;
 		int firstPlayerNegativScore;
 		int secondPlayerNegativScore;
-		Color round;
+		PlayersColor round;
 };
 
 #endif

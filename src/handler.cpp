@@ -1,4 +1,5 @@
 #include "../include/handler.hpp"
+#include "Player.h"
 
 Handler::Handler(std::string gn, std::string pfn, std::string psn){
 	gameName = gn;
@@ -10,7 +11,7 @@ Handler::Handler(std::string gn, std::string pfn, std::string psn){
 	firstPlayerNegativScore = 0;
 	secondPlayerNegativScore = 0;
 
-	round = Color::White;
+	round = PlayersColor::White;
 
 	numberOfWhiteConvertPawn = 0;
 	numberOfBlackConvertPawn = 0;
@@ -46,15 +47,15 @@ void Handler::secondPlayerAppendNegativScore(size_t number){
 }
 
 void Handler::changeRound(){
-	if(round == Color::White){
-		round = Color::Black;
+	if(round == PlayersColor::White){
+		round = PlayersColor::Black;
 	}
 	else{
-		round = Color::White;
+		round = PlayersColor::White;
 	}
 }
 
-Handler::Color Handler::get_round(){
+PlayersColor Handler::get_round(){
 	return round;
 }
 

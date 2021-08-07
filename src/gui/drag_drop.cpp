@@ -7,13 +7,13 @@
 
 void StackPage::on_i_drag_data_get( int i, Gtk::SelectionData& selection_data){
 //	Check periority round. White or Black??
-	if( 15 >= i /*White chessman*/ && handler->get_round() != Handler::Color::White ){
+	if( 15 >= i /*White chessman*/ && handler->get_round() != PlayersColor::White ){
 		Gtk::MessageDialog dialog( "نوبت تو نیست!!", false, Gtk::MESSAGE_WARNING, Gtk::BUTTONS_CLOSE);
 		dialog.set_secondary_text( "الان نوبت مهره سیاه هست !!!!!!!!!!!!\tبی ادب");
 		dialog.run();
 		return;
 	}
-	if( 16 <= i /*Black chessman*/ && handler->get_round() != Handler::Color::Black ){
+	if( 16 <= i /*Black chessman*/ && handler->get_round() != PlayersColor::Black ){
 		Gtk::MessageDialog dialog( "نوبت تو نیست!!", false, Gtk::MESSAGE_WARNING, Gtk::BUTTONS_CLOSE);
 		dialog.set_secondary_text( "الان نوبت مهره سفید هست !!!!!!!!!!!!\tبی ادب");
 		dialog.run();
@@ -94,21 +94,6 @@ void StackPage::on_i_cell_drag_data_recieved(int i, const Glib::RefPtr<Gdk::Drag
 		if(piece[1] == 'p'){
 			if(piece[0] == 'w' && cellDestination[1] == '8'){
 				m_refGlade-> get_widget( "whiteQueenImgDialog", pWidget[0]);	//|
-				pQueenBtnDialogConvertPawn-> property_image() = pWidget[1]; 	//|
-				m_refGlade-> get_widget( "whiteKnightImgDialog", pWidget[2]); //|
-				pKnightBtnDialogConvertPawn-> property_image() = pWidget[3];	//|=>	set color images
-				m_refGlade-> get_widget( "whiteBishopImgDialog", pWidget[4]); //|
-				pBishopBtnDialogConvertPawn-> property_image() = pWidget[5];  //|
-				m_refGlade-> get_widget( "whiteRookImgDialog", pWidget[6]);	  //|
-				pRookBtnDialogConvertPawn-> property_image() = pWidget[7];		//|
-				pDialogConvertPawn-> run();
-				pQueenBtnDialogConvertPawn-> signal_clicked() .connect( sigc::bind( sigc::mem_fun( *this, &StackPage::convertPawn), "wqNew"));
-				pKnightBtnDialogConvertPawn-> signal_clicked() .connect( sigc::bind( sigc::mem_fun( *this, &StackPage::convertPawn), "wnNew"));
-				pBishopBtnDialogConvertPawn-> signal_clicked() .connect( sigc::bind( sigc::mem_fun( *this, &StackPage::convertPawn), "wbNew"));
-				pRookBtnDialogConvertPawn-> signal_clicked() .connect( sigc::bind( sigc::mem_fun( *this, &StackPage::convertPawn), "wrNew"));
-			}
-			if(piece[0] == 'b' && cellDestination[1] == '1'){
-				m_refGlade-> get_widget( "blackQueenImgDialog", pWidget[0]);	//|
 				pQueenBtnDialogConvertPawn-> property_image() = pWidget[1];	  //|
 				m_refGlade-> get_widget( "blackKnightImgDialog", pWidget[2]); //|
 				pKnightBtnDialogConvertPawn-> property_image() = pWidget[3];	//|=>	set color images
