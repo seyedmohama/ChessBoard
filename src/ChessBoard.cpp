@@ -13,8 +13,6 @@ ChessBoard :: ChessBoard()
 ChessBoard::ChessBoard( Player *player1, Player *player2){
 	plr1 = player1;
 	plr2 = player2;
-
-	std::cout << "sdf" << plr1->Name << std::endl;
 }
 
 void ChessBoard::initBoard()

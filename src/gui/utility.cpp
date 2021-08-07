@@ -33,3 +33,24 @@ std::string generateLocationOfChessBoard( int x, int y){
 
 	return result;
 }
+
+void checkPawnInFrontHalfScore( StackPage *pStack){
+	if(pStack->piece[1] == 'p'){
+		if(pStack->piece[0] == 'w' && positionExtraction( pStack-> cellDestination).second >= 4){
+			for (auto &x : pStack-> whitePawnsInFrontHalf){
+				if(pStack-> piece[2] == x){
+					return;
+				}
+			}
+		}
+		if(pStack->piece[0] == 'b' && positionExtraction( pStack-> cellDestination).second <= 3){
+			for (auto &x : pStack-> blackPawnsInFrontHalf){
+				if(pStack-> piece[2] == x){
+					return;
+				}
+			}
+		}
+
+		pStack-> handler-> get_round_player()-> Score += 3;
+	}
+}

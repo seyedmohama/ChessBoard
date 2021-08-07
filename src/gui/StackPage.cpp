@@ -143,25 +143,25 @@ void StackPage::startGameBtn_clicked(){
 	m_refGlade-> get_widget( "negativScoreSecondPL", pNegativScoreSecondPL);
 
 	std::string str = "امتیاز ";
-	str += (handler-> firstPlayer.Name);
+	str += (handler-> player1.Name);
 	str += ":";
 	pFirstPLNameScoreLabel-> set_label(str);
 	pScoreFirstPL-> set_label("0");
 	
 	str = "امتیاز منفی ";
-	str += handler-> firstPlayer.Name;
+	str += handler-> player1.Name;
 	str += ":";
 	pFirstPLNameNegativScoreLabel-> set_label(str);
 	pNegativScoreFirstPL-> set_label("0");
 
 	str = "امتیاز ";
-	str += handler-> secondPlayer.Name;
+	str += handler-> player2.Name;
 	str += ":";
 	pSecondPLNameScoreLabel-> set_label(str);
 	pScoreSecondPL-> set_label("0");
 
 	str = "امتیاز منفی ";
-	str += handler-> secondPlayer.Name;
+	str += handler-> player2.Name;
 	str += ":";
 	pSecondPLNameNegativScoreLabel-> set_label(str);
 	pNegativScoreSecondPL-> set_label("0");
@@ -396,6 +396,10 @@ bool StackPage::motionVerification(){
 		handler-> pChessboard-> Move( positionExtraction( cellOrigin), positionExtraction( cellDestination));
 
 		handler-> changeRound();
+
+//	امتیاز نیمه دوم سرباز
+		checkPawnInFrontHalfScore( this);
+
 		if(cellIsEmpty( positionOfPieces, cellDestination) == 0){
 			std::cout << "motion attack = " << piece << " from " << cellOrigin << " to " << pieceNameByPosition( positionOfPieces, cellDestination) << " on "<< cellDestination << std::endl;
 			return true;
