@@ -1,13 +1,15 @@
 #include "../include/handler.hpp"
 #include "Player.h"
 
-Handler::Handler(std::string gn, std::string pfn, std::string psn){
+Handler::Handler(std::string gn, std::string pfn, std::string psn, StackPage* pStack){
 	gameName = gn;
 
 	player1.Name = pfn;
 	player2.Name = psn;
 
-		pChessboard = new ChessBoard( &player1, &player2);
+	this-> pStack = pStack;
+
+	pChessboard = new ChessBoard( &player1, &player2, pStack);
 
 player1.Score = 0;
 	player2.Score = 0;
@@ -63,9 +65,9 @@ int Handler::get_numberOfBlackConvertPawn(){
 
 Player* Handler::get_round_player(){
 	if( get_round() == PlayersColor::White ){
-		return player1;
+		return &player1;
 	}
 	else{
-		return player2;
+		return &player2;
 	}
 }

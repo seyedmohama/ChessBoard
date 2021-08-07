@@ -10,11 +10,14 @@
 #include "Queen.h"
 #include "Rook.h"
 
+#include "StackPage.hpp"
+
 
 class ChessBoard
 {
 private:
   Cell** Board;
+	StackPage *pStack;
 
 public:
 	Player *plr1;
@@ -23,7 +26,7 @@ public:
   Cell** GetBoard();
 
   ChessBoard();
-	ChessBoard( Player*, Player*);
+	ChessBoard( Player*, Player*, StackPage*);
 
   void HitScoring(struct Player *p , pair<int, int> position);
   void ThreatScoring(struct Player *p , pair<int, int> position);

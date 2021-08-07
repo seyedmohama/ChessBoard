@@ -1,4 +1,5 @@
 #include "../include/ChessBoard.h"
+#include "../include/handler.hpp"
 
 ChessBoard :: ChessBoard()
 {
@@ -10,9 +11,11 @@ ChessBoard :: ChessBoard()
   plr2->ColorOfPlayer = PlayersColor::Black;
 }
 
-ChessBoard::ChessBoard( Player *player1, Player *player2){
+ChessBoard::ChessBoard( Player *player1, Player *player2, StackPage *pStack){
 	plr1 = player1;
 	plr2 = player2;
+
+	this->pStack = pStack;
 }
 
 void ChessBoard::initBoard()
@@ -188,8 +191,13 @@ vector<pair<int, int>> ChessBoard::Threat(pair<int, int> cell)
   {
     if (!Board[i -> first][i -> second].IsEmpty())
     {
-      FinallThreat.push_back(*i);
-      ThreatScoring(plr1 , *i);
+     	FinallThreat.push_back(*i);
+			if(pStack-> handler-> get_round() == PlayersColor::White){
+     		ThreatScoring(plr1 , *i);
+			}
+			if(pStack-> handler-> get_round() == PlayersColor::Black){
+     		ThreatScoring(plr2 , *i);
+			}
     }
   }
   return FinallThreat;

@@ -129,7 +129,7 @@ void StackPage::startGameBtn_clicked(){
 	m_refGlade->get_widget("playerFirstNameEntry", pPlayerFirstNameEnt);
 	m_refGlade->get_widget("playerSecondNameEntry", pPlayerSecondNameEnt);
 
-	handler = new Handler ( pGameNameEnt->get_text(), pPlayerFirstNameEnt->get_text(), pPlayerSecondNameEnt->get_text());
+	handler = new Handler ( pGameNameEnt->get_text(), pPlayerFirstNameEnt->get_text(), pPlayerSecondNameEnt->get_text(), this);
 
 
 //	setup scoreboard
@@ -395,10 +395,14 @@ bool StackPage::motionVerification(){
 		std::cout << "chessboard verifyMove = true" << std::endl;
 		handler-> pChessboard-> Move( positionExtraction( cellOrigin), positionExtraction( cellDestination));
 
-		handler-> changeRound();
 
 //	امتیاز نیمه دوم سرباز
 		checkPawnInFrontHalfScore( this);
+//	بررسی ایا امتیاز تهدید کاربر میگیره یا نه و ثبت ان
+		handler-> pChessboard-> Threat( positionExtraction( cellDestination));
+
+//	change round
+		handler-> changeRound();
 
 		if(cellIsEmpty( positionOfPieces, cellDestination) == 0){
 			std::cout << "motion attack = " << piece << " from " << cellOrigin << " to " << pieceNameByPosition( positionOfPieces, cellDestination) << " on "<< cellDestination << std::endl;

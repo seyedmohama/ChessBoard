@@ -15,11 +15,13 @@
 #include <gtkmm/messagedialog.h>
 #include <map>
 #include <utility>
-#include "ChessBoard.h"
 
 class Handler;
 class StackPage : public Gtk::Stack{
 	public:
+		friend class ChessBoard;
+		friend void checkPawnInFrontHalfScore( StackPage*);
+
 		StackPage(BaseObjectType *cobject, const Glib::RefPtr<Gtk::Builder>& refGlade);
 		virtual ~StackPage();
 	private:

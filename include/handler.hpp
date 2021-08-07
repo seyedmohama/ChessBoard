@@ -8,7 +8,7 @@
 
 class Handler{
 	public:
-		Handler(std::string, std::string, std::string);
+		Handler(std::string, std::string, std::string, StackPage*);
 		void set_gameName(std::string);
 
 		void firstPlayerAppendScore(size_t);
@@ -42,6 +42,8 @@ class Handler{
 		int firstPlayerNegativScore;
 		int secondPlayerNegativScore;
 		PlayersColor round;
+
+		StackPage *pStack;
 };
 
 #endif
