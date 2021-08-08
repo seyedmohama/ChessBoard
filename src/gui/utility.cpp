@@ -55,3 +55,16 @@ void checkPawnInFrontHalfScore( StackPage *pStack){
 		pStack-> handler-> get_round_player()-> Score += 3;
 	}
 }
+
+void removeWidgetFromBoard( Gtk::Grid *grid, std::string cell){
+	Gtk::Widget *pWidget = grid-> get_child_at( positionExtraction( cell) .first, positionExtraction( cell) .second);
+
+	grid-> remove( *pWidget);
+}
+
+void removeWidgetFromGrid( Gtk::Grid *grid, int x, int y){
+	Gtk::Widget *pWidget = grid-> get_child_at( x, y);
+
+	grid-> remove( *pWidget);
+}
+
