@@ -11,6 +11,8 @@ struct Player
   PlayersColor ColorOfPlayer;
   int Score = 0;
 	int NegativScore = 0;
+
+	bool doualMove = false;
 };
 
 #endif

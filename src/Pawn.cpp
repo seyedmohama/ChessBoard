@@ -19,21 +19,26 @@ std::vector<std::pair<int, int>> Pawn::GetMovements(Cell** Board)
   {
     movements.push_back({X, Y + 1});
 
-    if (X != 7 && !Board[X + 1][Y + 1].IsEmpty() && Board[X + 1][Y + 1].ptr->Color != Color)
+    if (X != 7 && !Board[X + 1][Y + 1].IsEmpty() && Board[X + 1][Y + 1].ptr->Color != Color){
       movements.push_back({X + 1, Y + 1});
+		}
 
-    if (X != 0 && !Board[X - 1][Y + 1].IsEmpty() && Board[X - 1][Y + 1].ptr->Color != Color)
+    if (X != 0 && !Board[X - 1][Y + 1].IsEmpty() && Board[X - 1][Y + 1].ptr->Color != Color){
       movements.push_back({X - 1, Y + 1});
+		}
   }
   else if (Color == ChessColor::White && Y != 0)
   {
     movements.push_back({X, Y - 1});
 
-    if (X != 7 && !Board[X + 1][Y - 1].IsEmpty() && Board[X + 1][Y - 1].ptr->Color != Color)
+    if (X != 7 && !Board[X + 1][Y - 1].IsEmpty() && Board[X + 1][Y - 1].ptr->Color != Color){
       movements.push_back({X + 1, Y - 1});
+		}
 
-    if (X != 0 && !Board[X - 1][Y - 1].IsEmpty() && Board[X - 1][Y - 1].ptr->Color != Color)
+		std::cout << "38 of Pawn.cpp" << std::endl;
+    if (X != 0 && !Board[X - 1][Y - 1].IsEmpty() && Board[X - 1][Y - 1].ptr->Color != Color){
       movements.push_back({X - 1, Y - 1});
+		}
   }
 
   if (FirstMove)

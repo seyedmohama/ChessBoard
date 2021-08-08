@@ -25,7 +25,7 @@ class StackPage : public Gtk::Stack{
 		StackPage(BaseObjectType *cobject, const Glib::RefPtr<Gtk::Builder>& refGlade);
 		virtual ~StackPage();
 	private:
-		Gtk::Button *pGameBtn, *pExitBtn, *pSettingBtn, *pStartGameBtn, *pExitBtnStack2, *pReloadBtnStack2;
+		Gtk::Button *pGameBtn, *pExitBtn, *pSettingBtn, *pStartGameBtn, *pExitBtnStack2, *pReloadBtnStack2, *pDoualMoveBtn;
 		Gtk::Entry *pGameNameEnt, *pPlayerFirstNameEnt, *pPlayerSecondNameEnt;
 		Handler *handler ;
 		Gtk::Grid *pBoardGame, *pRemovedPiecesGrid;
@@ -64,6 +64,8 @@ class StackPage : public Gtk::Stack{
 		void startGameBtn_clicked();
 		void exitBtnStack2_clicked();
 		void reloadBtnStack2_clicked();
+
+		void doualMoveBtn_clicked();
 
 		void on_0_drag_data_get(const Glib::RefPtr<Gdk::DragContext>& context, Gtk::SelectionData& selection_data, guint info, guint time);
 		void on_1_drag_data_get(const Glib::RefPtr<Gdk::DragContext>& context, Gtk::SelectionData& selection_data, guint info, guint time);

@@ -29,6 +29,7 @@ m_refGlade(refGlade){
 	m_refGlade-> get_widget( "dialogKnightBtn", pKnightBtnDialogConvertPawn);
 	m_refGlade-> get_widget( "dialogBishopBtn", pBishopBtnDialogConvertPawn);
 	m_refGlade-> get_widget( "dialogRookBtn", pRookBtnDialogConvertPawn);
+	m_refGlade-> get_widget( "doualMoveBtn", pDoualMoveBtn);
 
 	nameOfPieces[0] = "wrl";
  	nameOfPieces[1] = "wbl";
@@ -357,6 +358,9 @@ void StackPage::startGameBtn_clicked(){
 	pieces[30]-> signal_drag_data_received() .connect( sigc::mem_fun( *this, &StackPage::on_30_chessman_drag_data_received));
 	pieces[31]-> signal_drag_data_received() .connect( sigc::mem_fun( *this, &StackPage::on_31_chessman_drag_data_received));
 
+//	doual move button get signal and set handler
+	pDoualMoveBtn-> signal_clicked() .connect( sigc::mem_fun( *this, &StackPage::doualMoveBtn_clicked));
+
 }
 
 int StackPage::cellIsEmpty( std::map< std::string, std::string> map, std::string cell){
@@ -380,6 +384,7 @@ bool StackPage::motionVerification(){
 	moveCode += cellDestination;
 
 	std::cout << "move code : " << moveCode << std::endl;
+
 	if( cellIsEmpty( positionOfPieces, cellDestination) == -1){
 			Gtk::MessageDialog dialog( "دست به مهره!!", false, Gtk::MESSAGE_WARNING, Gtk::BUTTONS_CLOSE);
 			std::string message = "شما مهره ";
@@ -390,26 +395,37 @@ bool StackPage::motionVerification(){
 
 			return false;
 	}
+
 	if( handler-> pChessboard-> verifyMove( moveCode)){
 		
 		std::cout << "chessboard verifyMove = true" << std::endl;
+
+		if( handler-> get_round_player()-> doualMove){
+			handler-> pChessboard-> Move( positionExtraction( cellOrigin), positionExtraction( cellDestination));
+			handler-> changeRound();
+			handler-> get_round_player()-> doualMove = false;
+			return true;
+		}
+
+		//	attack movement scoring
+		if(cellIsEmpty( positionOfPieces, cellDestination) == 0){
+			handler-> pChessboard-> HitScoring( handler-> get_round_player(), positionExtraction( cellDestination));
+		}
+
 		handler-> pChessboard-> Move( positionExtraction( cellOrigin), positionExtraction( cellDestination));
 
 
+//	Scorigs
 //	امتیاز نیمه دوم سرباز
 		checkPawnInFrontHalfScore( this);
 //	بررسی ایا امتیاز تهدید کاربر میگیره یا نه و ثبت ان
 		handler-> pChessboard-> Threat( positionExtraction( cellDestination));
 
+
 //	change round
 		handler-> changeRound();
 
-		if(cellIsEmpty( positionOfPieces, cellDestination) == 0){
-			std::cout << "motion attack = " << piece << " from " << cellOrigin << " to " << pieceNameByPosition( positionOfPieces, cellDestination) << " on "<< cellDestination << std::endl;
-			return true;
-		}
 		if( cellIsEmpty( positionOfPieces, cellDestination) == 1){
-			std::cout << "motion = " << piece << " from " <<  cellOrigin << " to " << cellDestination << std::endl;
 			return true;
 		}
 	}
@@ -493,4 +509,23 @@ void StackPage::convertPawn( std::string chessman){
 
 	m_refGlade-> get_widget( chessman, pWidget[8]);
 	pieces[i]-> property_image() = pWidget[8];
+}
+
+void StackPage::doualMoveBtn_clicked(){
+
+	Gtk::MessageDialog dialog("دو حرکت در یک نوبت.", false, Gtk::MESSAGE_QUESTION, Gtk::BUTTONS_YES_NO);
+	std::string message = handler-> get_round_player()-> Name;
+	message += " شما میتوانید یک حرکت دیگر انجام دهید\n و به ازای ان ۳۰ امتیاز از دست بدهید.";
+	dialog.set_secondary_text( message);
+	int response = dialog.run();
+
+	switch( response){
+		case 0:// Yes button clicked
+			handler-> changeRound();
+			handler-> get_round_player()-> NegativScore -= 30;
+			handler-> get_round_player()-> doualMove = true;
+			break;
+		case 1:// No button clicked
+			break;
+	}
 }

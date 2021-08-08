@@ -70,7 +70,7 @@ vector<pair<int, int>> ChessBoard::GetFreeMovements(pair<int, int> cell)
   Cell c = Board[cell.first][cell.second];
   auto movements = c.ptr->GetMovements(Board);
 
-  for (auto i = movements.begin(); i != movements.end(); i++)
+  for (auto i = movements.cbegin(); i != movements.cend(); i++)
   {
     if (!Board[i->first][i->second].IsEmpty() && Board[i->first][i->second].ptr->Type == ChessType::King)
     {
@@ -245,7 +245,7 @@ bool ChessBoard::verifyMove( std::string move){
 	std::pair< int, int> destination (n2,m2);
 
 	std::cout << "origin : " << origin.first << "," << origin.second << "\tdest : " << destination.first << "," << destination.second << std::endl;
-	auto freeDestinations = (*this).GetFreeMovements( origin);
+	auto freeDestinations = this-> GetFreeMovements( origin);
 	std::cout << "after get free movements" << std::endl;
 	for( auto it = freeDestinations.cbegin(); it != freeDestinations.cend(); it++){
 		if( *it == destination ){
