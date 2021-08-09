@@ -562,7 +562,7 @@ void StackPage::undoBtn_clicked(){
 			//	add blank image to buttom grid removed pieces
 			std::string str = "removedImg";
 			str += std::to_string( numberBlackPiecesRemoved);
-			std += '2';
+			str += '2';
 			
 			Gtk::Image *pImage;
 			m_refGlade-> get_widget( str, pImage);
@@ -574,9 +574,9 @@ void StackPage::undoBtn_clicked(){
 		//	remove chessman from destination cell and move it to origin cell
 			//	remove blank image that attached to origin cell
 			removeWidgetFromBoard( pBoardGame, cellOrigin);
-			for(auto positionOfBlankCellIt = positionOfBlankSquars.cbegin(); positionOfBlankCellIt != positionOfBlankSquars.cend(); positionOfBlankCellIt++){
-				if(positionOfBlankCellIt.second == cellOrigin){
-					positionOfBlankCellIt.second = "null";
+			for(auto positionOfBlankCellIt = positionOfBlankSquars.begin(); positionOfBlankCellIt != positionOfBlankSquars.end(); positionOfBlankCellIt++){
+				if((*positionOfBlankCellIt).second == cellOrigin){
+					(*positionOfBlankCellIt).second = "null";
 				}
 			}
 			numberNewBlankSquars--;
@@ -586,9 +586,9 @@ void StackPage::undoBtn_clicked(){
 
 			//	attach to origin cell
 			pBoardGame-> attach( *pointerPiece, positionExtraction( cellOrigin) .first, positionExtraction( cellOrigin) .second);
-			for(auto positionOfPiecesIt = positionOfPieces.cbegin(); positionOfPiecesIt != positionOfPieces.cend(); positionOfPiecesIt++){
-				if(positionOfPiecesIt.second == cellDestination){
-					positionOfPiecesIt.second = cellOrigin;
+			for(auto positionOfPiecesIt = positionOfPieces.begin(); positionOfPiecesIt != positionOfPieces.end(); positionOfPiecesIt++){
+				if((*positionOfPiecesIt).second == cellDestination){
+					(*positionOfPiecesIt).second = cellOrigin;
 				}
 			}
 
@@ -629,7 +629,7 @@ void StackPage::undoBtn_clicked(){
 			
 			std::string str = "removedImg";
 			str += std::to_string( numberWhitePiecesRemoved);
-			std += '2';
+			str += '2';
 			
 			Gtk::Image *pImage;
 			m_refGlade-> get_widget( str, pImage);
@@ -637,9 +637,9 @@ void StackPage::undoBtn_clicked(){
 			numberWhitePiecesRemoved--;
 
 			removeWidgetFromBoard( pBoardGame, cellOrigin);
-			for(auto positionOfBlankCellIt = positionOfBlankSquars.cbegin(); positionOfBlankCellIt != positionOfBlankSquars.cend(); positionOfBlankCellIt++){
-				if(positionOfBlankCellIt.second == cellOrigin){
-					positionOfBlankCellIt.second = "null";
+			for(auto positionOfBlankCellIt = positionOfBlankSquars.begin(); positionOfBlankCellIt != positionOfBlankSquars.end(); positionOfBlankCellIt++){
+				if((*positionOfBlankCellIt).second == cellOrigin){
+					(*positionOfBlankCellIt).second = "null";
 				}
 			}
 			numberNewBlankSquars--;
@@ -647,9 +647,9 @@ void StackPage::undoBtn_clicked(){
 			removeWidgetFromBoard( pBoardGame, cellDestination);
 
 			pBoardGame-> attach( *pointerPiece, positionExtraction( cellOrigin) .first, positionExtraction( cellOrigin) .second);
-			for(auto positionOfPiecesIt = positionOfPieces.cbegin(); positionOfPiecesIt != positionOfPieces.cend(); positionOfPiecesIt++){
-				if(positionOfPiecesIt.second == cellDestination){
-					positionOfPiecesIt.second = cellOrigin;
+			for(auto positionOfPiecesIt = positionOfPieces.begin(); positionOfPiecesIt != positionOfPieces.end(); positionOfPiecesIt++){
+				if((*positionOfPiecesIt).second == cellDestination){
+					(*positionOfPiecesIt).second = cellOrigin;
 				}
 			}
 
@@ -688,16 +688,16 @@ void StackPage::undoBtn_clicked(){
 	else{//	if movement is not an attack move
 		pBoardGame-> remove( *pointerPiece);
 		for(auto positionOfBlankCellIt = positionOfBlankSquars.cbegin(); positionOfBlankCellIt != positionOfBlankSquars.cend(); positionOfBlankCellIt++){
-			if(positionOfBlankCellIt.second == cellOrigin){
-				pBoardGame-> remove( *(blankSquars[ positionOfBlankCellIt.first]));
+			if((*positionOfBlankCellIt).second == cellOrigin){
+				pBoardGame-> remove( *(blankSquars[ (*positionOfBlankCellIt).first]));
+				pBoardGame-> attach( *(blankSquars[ (*positionOfBlankCellIt).first]), positionExtraction( cellDestination) .first, positionExtraction( cellDestination) .second);
+				positionOfBlankSquars[ (*positionOfBlankCellIt).first] = cellDestination;
 			}
 		}
 
 		pBoardGame-> attach( *pointerPiece, positionExtraction( cellOrigin) .first, positionExtraction( cellOrigin) .second);
-		pBoardGame-> attach( *blankSquars[ numberOfBlankCell], positionExtraction( cellDestination) .first, positionExtraction( cellDestination) .second);
 
 		positionOfPieces[ piece] = cellOrigin;
-		positionOfBlankSquars[ numberOfBlankCell] = cellDestination;
 	}
 
 	listOfMoves.pop_back();
