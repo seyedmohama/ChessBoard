@@ -65,12 +65,35 @@ void ChessBoard::initBoard()
   }
 }
 
-vector<pair<int, int>> ChessBoard::GetFreeMovements(pair<int, int> cell)
-{
-  Cell c = Board[cell.first][cell.second];
-  auto movements = c.ptr->GetMovements(Board);
+vector<pair<int, int>> ChessBoard::GetFreeMovements(pair<int, int> cell){/*
+  std::cout << "    ";
 
-  for (auto i = movements.cbegin(); i != movements.cend(); i++)
+  for (int j = 0; j < 8; j++)
+    std::cout << j << ' ';
+
+  std::cout << "\n\n";
+
+  for (int i = 0; i < 8; i++)
+  {
+    std::cout << i << "   ";
+
+    for (int j = 0; j < 8; j++)
+    {
+      if (Board[j][i].ptr)
+        std::cout << Board[j][i].ptr->TypeString();
+      else
+       std::cout << ' ';
+      std::cout << ' ';
+    }
+
+    std::cout << '\n';
+  }*/
+  Cell *c = &(Board[cell.first][cell.second]);
+//	std::cout << "cell.first: " << cell.first << "cell.second: " << cell.second << std::endl;
+  std::vector< std::pair< int, int>> movements = c->ptr->GetMovements(Board);
+//	std::cout << "ChessBoard.cpp => GetFreeMovements(); line74" << std::endl;
+
+  for (auto i = movements.begin(); i != movements.end(); i++)
   {
     if (!Board[i->first][i->second].IsEmpty() && Board[i->first][i->second].ptr->Type == ChessType::King)
     {

@@ -13,6 +13,8 @@ Pawn::Pawn(int x, int y, ChessColor color)
 
 std::vector<std::pair<int, int>> Pawn::GetMovements(Cell** Board)
 {
+std::cout << "X: " << X << "\tY: " << Y << std::endl;
+
   std::vector<std::pair<int, int>> movements;
   if (Color == ChessColor::Black && Y != 0)
   {

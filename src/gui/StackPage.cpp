@@ -382,6 +382,7 @@ int StackPage::cellIsEmpty( std::map< std::string, std::string> map, std::string
 bool StackPage::motionVerification(){
 	char chessman = piece[1];
 	chessman -= 32;//	captalize
+	moveCode = "";
 	moveCode += chessman;
 	moveCode += cellOrigin;
 	moveCode += cellDestination;
