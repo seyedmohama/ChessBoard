@@ -29,6 +29,8 @@ m_refGlade(refGlade){
 	m_refGlade-> get_widget( "dialogKnightBtn", pKnightBtnDialogConvertPawn);
 	m_refGlade-> get_widget( "dialogBishopBtn", pBishopBtnDialogConvertPawn);
 	m_refGlade-> get_widget( "dialogRookBtn", pRookBtnDialogConvertPawn);
+	m_refGlade-> get_widget( "doualMoveBtn", pDoualMoveBtn);
+	m_refGlade-> get_widget( "undoBtn", pUndoBtn);
 
 	nameOfPieces[0] = "wrl";
  	nameOfPieces[1] = "wbl";
@@ -357,6 +359,12 @@ void StackPage::startGameBtn_clicked(){
 	pieces[30]-> signal_drag_data_received() .connect( sigc::mem_fun( *this, &StackPage::on_30_chessman_drag_data_received));
 	pieces[31]-> signal_drag_data_received() .connect( sigc::mem_fun( *this, &StackPage::on_31_chessman_drag_data_received));
 
+//	doual move button get signal and set handler
+	pDoualMoveBtn-> signal_clicked() .connect( sigc::mem_fun( *this, &StackPage::doualMoveBtn_clicked));
+
+//	undo btn get signal and set handler
+	pUndoBtn-> signal_clicked() .connect( sigc::mem_fun( *this, &StackPage::undoBtn_clicked));
+
 }
 
 int StackPage::cellIsEmpty( std::map< std::string, std::string> map, std::string cell){
@@ -374,12 +382,13 @@ int StackPage::cellIsEmpty( std::map< std::string, std::string> map, std::string
 bool StackPage::motionVerification(){
 	char chessman = piece[1];
 	chessman -= 32;//	captalize
-	std::string moveCode; //create move string code
+	moveCode = "";
 	moveCode += chessman;
 	moveCode += cellOrigin;
 	moveCode += cellDestination;
 
 	std::cout << "move code : " << moveCode << std::endl;
+
 	if( cellIsEmpty( positionOfPieces, cellDestination) == -1){
 			Gtk::MessageDialog dialog( "دست به مهره!!", false, Gtk::MESSAGE_WARNING, Gtk::BUTTONS_CLOSE);
 			std::string message = "شما مهره ";
@@ -390,26 +399,52 @@ bool StackPage::motionVerification(){
 
 			return false;
 	}
+
 	if( handler-> pChessboard-> verifyMove( moveCode)){
-		
+		if(cellIsEmpty( positionOfPieces, cellDestination) == 0){
+			std::string move;
+			move += chessman;
+			move += cellOrigin;
+			move += 'x';
+			char temp = pieceNameByPosition(positionOfPieces, cellDestination)[1];
+			temp -= 32;
+			move += temp;
+			move += cellDestination;
+
+			listOfMoves.push_back(move);//	push to list of movements
+		}
+		if(cellIsEmpty( positionOfPieces, cellDestination) == 1){
+			listOfMoves.push_back(moveCode);
+		}
+
 		std::cout << "chessboard verifyMove = true" << std::endl;
+
+		if( handler-> get_round_player()-> doualMove){
+			handler-> pChessboard-> Move( positionExtraction( cellOrigin), positionExtraction( cellDestination));
+			handler-> changeRound();
+			handler-> get_round_player()-> doualMove = false;
+			return true;
+		}
+
+		//	attack movement scoring
+		if(cellIsEmpty( positionOfPieces, cellDestination) == 0){
+			handler-> pChessboard-> HitScoring( handler-> get_round_player(), positionExtraction( cellDestination));
+		}
+
 		handler-> pChessboard-> Move( positionExtraction( cellOrigin), positionExtraction( cellDestination));
 
 
+//	Scorigs
 //	امتیاز نیمه دوم سرباز
 		checkPawnInFrontHalfScore( this);
 //	بررسی ایا امتیاز تهدید کاربر میگیره یا نه و ثبت ان
 		handler-> pChessboard-> Threat( positionExtraction( cellDestination));
 
+
 //	change round
 		handler-> changeRound();
 
-		if(cellIsEmpty( positionOfPieces, cellDestination) == 0){
-			std::cout << "motion attack = " << piece << " from " << cellOrigin << " to " << pieceNameByPosition( positionOfPieces, cellDestination) << " on "<< cellDestination << std::endl;
-			return true;
-		}
 		if( cellIsEmpty( positionOfPieces, cellDestination) == 1){
-			std::cout << "motion = " << piece << " from " <<  cellOrigin << " to " << cellDestination << std::endl;
 			return true;
 		}
 	}
@@ -493,4 +528,180 @@ void StackPage::convertPawn( std::string chessman){
 
 	m_refGlade-> get_widget( chessman, pWidget[8]);
 	pieces[i]-> property_image() = pWidget[8];
+}
+
+void StackPage::doualMoveBtn_clicked(){
+
+	Gtk::MessageDialog dialog("دو حرکت در یک نوبت.", false, Gtk::MESSAGE_QUESTION, Gtk::BUTTONS_YES_NO);
+	std::string message = handler-> get_round_player()-> Name;
+	message += " شما میتوانید یک حرکت دیگر انجام دهید\n و به ازای ان ۳۰ امتیاز از دست بدهید.";
+	dialog.set_secondary_text( message);
+	int response = dialog.run();
+
+	switch( response){
+		case 0:// Yes button clicked
+			handler-> changeRound();
+			handler-> get_round_player()-> NegativScore -= 30;
+			handler-> get_round_player()-> doualMove = true;
+			break;
+		case 1:// No button clicked
+			break;
+	}
+}
+
+void StackPage::undoBtn_clicked(){
+	handler-> changeRound();
+	auto it = listOfMoves.cend();
+	it--;
+
+	if( (*it)[3] == 'x'){
+		if(handler-> get_round() == PlayersColor::White){
+		//	remove image chessman on buttom grid removed pieces
+			removeWidgetFromGrid( pRemovedPiecesGrid, numberBlackPiecesRemoved, 2);
+			
+
+			//	add blank image to buttom grid removed pieces
+			std::string str = "removedImg";
+			str += std::to_string( numberBlackPiecesRemoved);
+			str += '2';
+			
+			Gtk::Image *pImage;
+			m_refGlade-> get_widget( str, pImage);
+			pRemovedPiecesGrid-> attach( *pImage, numberBlackPiecesRemoved, 0);
+
+			numberBlackPiecesRemoved--;
+
+
+		//	remove chessman from destination cell and move it to origin cell
+			//	remove blank image that attached to origin cell
+			removeWidgetFromBoard( pBoardGame, cellOrigin);
+			for(auto positionOfBlankCellIt = positionOfBlankSquars.begin(); positionOfBlankCellIt != positionOfBlankSquars.end(); positionOfBlankCellIt++){
+				if((*positionOfBlankCellIt).second == cellOrigin){
+					(*positionOfBlankCellIt).second = "null";
+				}
+			}
+			numberNewBlankSquars--;
+
+			//	remove white chessman that attacked
+			removeWidgetFromBoard( pBoardGame, cellDestination);
+
+			//	attach to origin cell
+			pBoardGame-> attach( *pointerPiece, positionExtraction( cellOrigin) .first, positionExtraction( cellOrigin) .second);
+			for(auto positionOfPiecesIt = positionOfPieces.begin(); positionOfPiecesIt != positionOfPieces.end(); positionOfPiecesIt++){
+				if((*positionOfPiecesIt).second == cellDestination){
+					(*positionOfPiecesIt).second = cellOrigin;
+				}
+			}
+
+			//	attach removed black chessman to the previos cell
+			str = "b";
+			str += (moveCode[4] + 32);
+			if(moveCode[4] != 'Q' && moveCode[4] != 'K' && moveCode[4] != 'P'){
+				std::string temp = str;
+				temp += 'l';
+				if(positionOfPieces[temp] == "removed"){
+					str += 'l';
+				}
+				else{
+					str += 'r';
+				}
+			}
+			else if(moveCode[4] == 'P'){
+				for(int i = 1; i <= 8; i++){
+					std::string temp = str;
+					temp += std::to_string(i);
+					if(positionOfPieces[temp] == "removed"){
+						str += std::to_string(i);
+					}
+				}
+			}
+			int i;
+			for (int j = 0; ; j++){
+				if(nameOfPieces[j] == str){
+					i = j;
+				}
+			}
+			pBoardGame-> attach( *(pieces[i]), positionExtraction( cellDestination) .first, positionExtraction( cellDestination) .second);
+			positionOfPieces[str] = cellDestination;
+
+		}
+		else if(handler-> get_round() == PlayersColor::Black){
+			removeWidgetFromGrid( pRemovedPiecesGrid, numberWhitePiecesRemoved, 0);
+			
+			std::string str = "removedImg";
+			str += std::to_string( numberWhitePiecesRemoved);
+			str += '2';
+			
+			Gtk::Image *pImage;
+			m_refGlade-> get_widget( str, pImage);
+			pRemovedPiecesGrid-> attach( *pImage, numberWhitePiecesRemoved, 0);
+			numberWhitePiecesRemoved--;
+
+			removeWidgetFromBoard( pBoardGame, cellOrigin);
+			for(auto positionOfBlankCellIt = positionOfBlankSquars.begin(); positionOfBlankCellIt != positionOfBlankSquars.end(); positionOfBlankCellIt++){
+				if((*positionOfBlankCellIt).second == cellOrigin){
+					(*positionOfBlankCellIt).second = "null";
+				}
+			}
+			numberNewBlankSquars--;
+
+			removeWidgetFromBoard( pBoardGame, cellDestination);
+
+			pBoardGame-> attach( *pointerPiece, positionExtraction( cellOrigin) .first, positionExtraction( cellOrigin) .second);
+			for(auto positionOfPiecesIt = positionOfPieces.begin(); positionOfPiecesIt != positionOfPieces.end(); positionOfPiecesIt++){
+				if((*positionOfPiecesIt).second == cellDestination){
+					(*positionOfPiecesIt).second = cellOrigin;
+				}
+			}
+
+			str = "w";
+			str += (moveCode[4] + 32);
+			if(moveCode[4] != 'Q' && moveCode[4] != 'K' && moveCode[4] != 'P'){
+				std::string temp = str;
+				temp += 'l';
+				if(positionOfPieces[temp] == "removed"){
+					str += 'l';
+				}
+				else{
+					str += 'r';
+				}
+			}
+			else if(moveCode[4] == 'P'){
+				for(int i = 1; i <= 8; i++){
+					std::string temp = str;
+					temp += std::to_string(i);
+					if(positionOfPieces[temp] == "removed"){
+						str += std::to_string(i);
+					}
+				}
+			}
+			int i;
+			for (int j = 0; ; j++){
+				if(nameOfPieces[j] == str){
+					i = j;
+				}
+			}
+			pBoardGame-> attach( *(pieces[i]), positionExtraction( cellDestination) .first, positionExtraction( cellDestination) .second);
+			positionOfPieces[str] = cellDestination;
+
+		}
+	}
+	else{//	if movement is not an attack move
+		pBoardGame-> remove( *pointerPiece);
+		for(auto positionOfBlankCellIt = positionOfBlankSquars.cbegin(); positionOfBlankCellIt != positionOfBlankSquars.cend(); positionOfBlankCellIt++){
+			if((*positionOfBlankCellIt).second == cellOrigin){
+				pBoardGame-> remove( *(blankSquars[ (*positionOfBlankCellIt).first]));
+				pBoardGame-> attach( *(blankSquars[ (*positionOfBlankCellIt).first]), positionExtraction( cellDestination) .first, positionExtraction( cellDestination) .second);
+				positionOfBlankSquars[ (*positionOfBlankCellIt).first] = cellDestination;
+			}
+		}
+
+		pBoardGame-> attach( *pointerPiece, positionExtraction( cellOrigin) .first, positionExtraction( cellOrigin) .second);
+
+		positionOfPieces[ piece] = cellOrigin;
+	}
+
+	listOfMoves.pop_back();
+	
+	handler-> get_round_player()-> NegativScore -= 30;
 }

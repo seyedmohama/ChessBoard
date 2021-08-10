@@ -65,6 +65,7 @@ void ChessBoard::initBoard()
   }
 }
 
+<<<<<<< HEAD
 vector<pair<int, int>> ChessBoard::GetFreeMovements(pair<int, int> cell)//همان تابع movepiece است
 {
   /*
@@ -72,6 +73,35 @@ vector<pair<int, int>> ChessBoard::GetFreeMovements(pair<int, int> cell)//هما
   */
   Cell c = Board[cell.first][cell.second];
   auto movements = c.ptr->GetMovements(Board);
+=======
+vector<pair<int, int>> ChessBoard::GetFreeMovements(pair<int, int> cell){/*
+  std::cout << "    ";
+
+  for (int j = 0; j < 8; j++)
+    std::cout << j << ' ';
+
+  std::cout << "\n\n";
+
+  for (int i = 0; i < 8; i++)
+  {
+    std::cout << i << "   ";
+
+    for (int j = 0; j < 8; j++)
+    {
+      if (Board[j][i].ptr)
+        std::cout << Board[j][i].ptr->TypeString();
+      else
+       std::cout << ' ';
+      std::cout << ' ';
+    }
+
+    std::cout << '\n';
+  }*/
+  Cell *c = &(Board[cell.first][cell.second]);
+//	std::cout << "cell.first: " << cell.first << "cell.second: " << cell.second << std::endl;
+  std::vector< std::pair< int, int>> movements = c->ptr->GetMovements(Board);
+//	std::cout << "ChessBoard.cpp => GetFreeMovements(); line74" << std::endl;
+>>>>>>> a14f0399d15be2746d1bb5950d53c85ffafdee01
 
   for (auto i = movements.begin(); i != movements.end(); i++)
   {
@@ -264,7 +294,7 @@ bool ChessBoard::verifyMove( std::string move){
 	std::pair< int, int> destination (n2,m2);
 
 	std::cout << "origin : " << origin.first << "," << origin.second << "\tdest : " << destination.first << "," << destination.second << std::endl;
-	auto freeDestinations = (*this).GetFreeMovements( origin);
+	auto freeDestinations = this-> GetFreeMovements( origin);
 	std::cout << "after get free movements" << std::endl;
 	for( auto it = freeDestinations.cbegin(); it != freeDestinations.cend(); it++){
 		if( *it == destination ){

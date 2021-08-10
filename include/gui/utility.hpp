@@ -12,4 +12,8 @@ std::string pieceNameByPosition(std::map< std::string, std::string> map, std::st
 //	generate location code of chess board from a pair number
 std::string generateLocationOfChessBoard( int, int);
 void checkPawnInFrontHalfScore( StackPage *pStack);
+
+void removeWidgetFromBoard( Gtk::Grid*, std::string);
+void removeWidgetFromGrid( Gtk::Grid*, int, int);
+
 #endif

@@ -25,7 +25,7 @@ class StackPage : public Gtk::Stack{
 		StackPage(BaseObjectType *cobject, const Glib::RefPtr<Gtk::Builder>& refGlade);
 		virtual ~StackPage();
 	private:
-		Gtk::Button *pGameBtn, *pExitBtn, *pSettingBtn, *pStartGameBtn, *pExitBtnStack2, *pReloadBtnStack2;
+		Gtk::Button *pGameBtn, *pExitBtn, *pSettingBtn, *pStartGameBtn, *pExitBtnStack2, *pReloadBtnStack2, *pDoualMoveBtn, *pUndoBtn;
 		Gtk::Entry *pGameNameEnt, *pPlayerFirstNameEnt, *pPlayerSecondNameEnt;
 		Handler *handler ;
 		Gtk::Grid *pBoardGame, *pRemovedPiecesGrid;
@@ -36,6 +36,8 @@ class StackPage : public Gtk::Stack{
 
 		Glib::RefPtr<Gtk::Builder> m_refGlade;
 
+		std::string moveCode;//	move code :)
+
 		std::array < Gtk::Button*, 32> pieces;
 		std::array < std::string, 32> nameOfPieces;
 
@@ -43,6 +45,8 @@ class StackPage : public Gtk::Stack{
 
 		std::map < std::string, std::string> positionOfPieces;
 		std::map < int, std::string> positionOfBlankSquars;
+
+		std::vector<std::string> listOfMoves;
 
 		std::string cellOrigin, piece, cellDestination;
 		Gtk::Widget *pointerPiece;
@@ -64,6 +68,9 @@ class StackPage : public Gtk::Stack{
 		void startGameBtn_clicked();
 		void exitBtnStack2_clicked();
 		void reloadBtnStack2_clicked();
+
+		void doualMoveBtn_clicked();
+		void undoBtn_clicked();
 
 		void on_0_drag_data_get(const Glib::RefPtr<Gdk::DragContext>& context, Gtk::SelectionData& selection_data, guint info, guint time);
 		void on_1_drag_data_get(const Glib::RefPtr<Gdk::DragContext>& context, Gtk::SelectionData& selection_data, guint info, guint time);
