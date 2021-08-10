@@ -14,6 +14,10 @@ pStartGameBtn(nullptr),
 handler(nullptr),
 pBoardGame(nullptr),
 pRemovedPiecesGrid(nullptr),
+pScoreFirstPL(nullptr),
+pNegativScoreFirstPL(nullptr),
+pScoreSecondPL(nullptr),
+pNegativScoreSecondPL(nullptr),
 m_refGlade(refGlade){
   m_refGlade->get_widget("gameBtnPage0", pGameBtn);
   m_refGlade->get_widget("settingBtnPage0", pSettingBtn);
@@ -144,29 +148,30 @@ void StackPage::startGameBtn_clicked(){
 	m_refGlade-> get_widget( "scoreSecondPL", pScoreSecondPL);
 	m_refGlade-> get_widget( "negativScoreSecondPL", pNegativScoreSecondPL);
 
+
 	std::string str = "امتیاز ";
 	str += (handler-> player1.Name);
 	str += ":";
 	pFirstPLNameScoreLabel-> set_label(str);
-	pScoreFirstPL-> set_label("0");
+	pScoreFirstPL-> set_label( std::to_string( handler-> player1.Score));
 	
 	str = "امتیاز منفی ";
 	str += handler-> player1.Name;
 	str += ":";
 	pFirstPLNameNegativScoreLabel-> set_label(str);
-	pNegativScoreFirstPL-> set_label("0");
+	pNegativScoreFirstPL-> set_label( std::to_string( handler-> player1.NegativScore));
 
 	str = "امتیاز ";
 	str += handler-> player2.Name;
 	str += ":";
 	pSecondPLNameScoreLabel-> set_label(str);
-	pScoreSecondPL-> set_label("0");
+	pScoreSecondPL-> set_label( std::to_string( handler-> player2.Score));
 
 	str = "امتیاز منفی ";
 	str += handler-> player2.Name;
 	str += ":";
 	pSecondPLNameNegativScoreLabel-> set_label(str);
-	pNegativScoreSecondPL-> set_label("0");
+	pNegativScoreSecondPL-> set_label( std::to_string( handler-> player2.NegativScore));
 
 
 //	set game name on page Stack2
@@ -214,7 +219,7 @@ void StackPage::startGameBtn_clicked(){
 		}
 	}
 	for( int i = 0; i <= 31; i++){ //	initial chessman on original locations
-		pBoardGame-> attach( *( pieces[ i]), positionExtraction( positionOfPieces[ nameOfPieces[ i]]) .first, positionExtraction( positionOfPieces[ nameOfPieces[ i]]) .second );
+		pBoardGame-> attach( *( pieces[ i]), gridPositionExtraction( positionOfPieces[ nameOfPieces[ i]]) .first, gridPositionExtraction( positionOfPieces[ nameOfPieces[ i]]) .second );
 	}
 
 
@@ -225,7 +230,7 @@ void StackPage::startGameBtn_clicked(){
 		}
 	}
 	for( size_t i = 1; i <= 32; i++){
-		pBoardGame-> attach( *( blankSquars[i]), positionExtraction( positionOfBlankSquars[ i]).first, positionExtraction( positionOfBlankSquars[ i]).second);
+		pBoardGame-> attach( *( blankSquars[i]), gridPositionExtraction( positionOfBlankSquars[ i]).first, gridPositionExtraction( positionOfBlankSquars[ i]).second);
 	}
 
 
@@ -400,62 +405,72 @@ bool StackPage::motionVerification(){
 			return false;
 	}
 
-	if( handler-> pChessboard-> verifyMove( moveCode)){
-		if(cellIsEmpty( positionOfPieces, cellDestination) == 0){
-			std::string move;
-			move += chessman;
-			move += cellOrigin;
-			move += 'x';
-			char temp = pieceNameByPosition(positionOfPieces, cellDestination)[1];
-			temp -= 32;
-			move += temp;
-			move += cellDestination;
+	std::cout << "positionExtraction result: " << cellOrigin << " => " << '(' << positionExtraction(cellOrigin).first << ',' << positionExtraction(cellOrigin).second << ')' << std::endl;
+	std::vector<std::pair<int,int>> movements = handler-> pChessboard-> GetFreeMovements(positionExtraction(cellOrigin));
 
-			listOfMoves.push_back(move);//	push to list of movements
-		}
-		if(cellIsEmpty( positionOfPieces, cellDestination) == 1){
-			listOfMoves.push_back(moveCode);
-		}
+	bool found = false;
+	for(auto it = movements.cbegin(); it != movements.cend(); it++){
+		if( *it == positionExtraction(cellDestination) ){
+			found = true;
 
-		std::cout << "chessboard verifyMove = true" << std::endl;
+			if(cellIsEmpty( positionOfPieces, cellDestination) == 0){
+				std::string move;
+				move += chessman;
+				move += cellOrigin;
+				move += 'x';
+				char temp = pieceNameByPosition(positionOfPieces, cellDestination)[1];
+				temp -= 32;
+				move += temp;
+				move += cellDestination;
+	
+				listOfMoves.push_back(move);//	push to list of movements
+			}
+			if(cellIsEmpty( positionOfPieces, cellDestination) == 1){
+				listOfMoves.push_back(moveCode);
+			}
+	
+			std::cout << "chessboard verifyMove = true" << std::endl;
+	
+			if( handler-> get_round_player()-> doualMove){
+				handler-> pChessboard-> Move( positionExtraction( cellOrigin), positionExtraction( cellDestination));
+				handler-> changeRound();
+				handler-> get_round_player()-> doualMove = false;
+				return true;
+			}
+	
+			//	attack movement scoring
+			if(cellIsEmpty( positionOfPieces, cellDestination) == 0){
+				handler-> pChessboard-> HitScoring( handler-> get_round_player(), positionExtraction( cellDestination));
+			}
 
-		if( handler-> get_round_player()-> doualMove){
 			handler-> pChessboard-> Move( positionExtraction( cellOrigin), positionExtraction( cellDestination));
+
+
+	//	Scorigs
+	//	امتیاز نیمه دوم سرباز
+			checkPawnInFrontHalfScore( this);
+	//	بررسی ایا امتیاز تهدید کاربر میگیره یا نه و ثبت ان
+			handler-> pChessboard-> Threat( positionExtraction( cellDestination));
+
+			std::cout << "Scores:\tplayer1 = " << handler-> player1.Score << "\tplayer2 = " << handler-> player2.Score << std::endl <<
+									 "Negativ Scores:\tplayer1 = " << handler-> player1.NegativScore << "\tplayer2 = " << handler-> player2.NegativScore << std::endl;
+
+	//	change round
 			handler-> changeRound();
-			handler-> get_round_player()-> doualMove = false;
-			return true;
-		}
-
-		//	attack movement scoring
-		if(cellIsEmpty( positionOfPieces, cellDestination) == 0){
-			handler-> pChessboard-> HitScoring( handler-> get_round_player(), positionExtraction( cellDestination));
-		}
-
-		handler-> pChessboard-> Move( positionExtraction( cellOrigin), positionExtraction( cellDestination));
-
-
-//	Scorigs
-//	امتیاز نیمه دوم سرباز
-		checkPawnInFrontHalfScore( this);
-//	بررسی ایا امتیاز تهدید کاربر میگیره یا نه و ثبت ان
-		handler-> pChessboard-> Threat( positionExtraction( cellDestination));
-
-
-//	change round
-		handler-> changeRound();
-
-		if( cellIsEmpty( positionOfPieces, cellDestination) == 1){
-			return true;
+	
+			if( cellIsEmpty( positionOfPieces, cellDestination) == 1){
+				return true;
+			}
 		}
 	}
-	else{
+	if(!found){
 		std::cout << "chessboard verifyMove = false" << std::endl;
-			Gtk::MessageDialog dialog( "Motion warning!", false, Gtk::MESSAGE_WARNING, Gtk::BUTTONS_CLOSE);
-			std::string message = "Move " + moveCode[0] + std::string(" from ") + cellOrigin + " to " + cellDestination + " are invalid!";
-			dialog. set_secondary_text( message);
-			dialog. run();
+		Gtk::MessageDialog dialog( "Motion warning!", false, Gtk::MESSAGE_WARNING, Gtk::BUTTONS_CLOSE);
+		std::string message = "Move " + moveCode[0] + std::string(" from ") + cellOrigin + " to " + cellDestination + " are invalid!";
+		dialog. set_secondary_text( message);
+		dialog. run();
 
-			return false;
+		return false;
 	}
 }
 

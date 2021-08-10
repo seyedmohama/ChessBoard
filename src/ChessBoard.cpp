@@ -93,6 +93,11 @@ vector<pair<int, int>> ChessBoard::GetFreeMovements(pair<int, int> cell){/*
   std::vector< std::pair< int, int>> movements = c->ptr->GetMovements(Board);
 //	std::cout << "ChessBoard.cpp => GetFreeMovements(); line74" << std::endl;
 
+	std::cout << "movements: " << std::endl;
+	for (auto it = movements.cbegin(); it != movements.cend(); it++){
+		std::cout << "\t(" << (*it).first << ',' << (*it).second << ')' <<  std::endl;
+	}
+
   for (auto i = movements.begin(); i != movements.end(); i++)
   {
     if (!Board[i->first][i->second].IsEmpty() && Board[i->first][i->second].ptr->Type == ChessType::King)
@@ -268,7 +273,9 @@ bool ChessBoard::verifyMove( std::string move){
 	std::pair< int, int> destination (n2,m2);
 
 	std::cout << "origin : " << origin.first << "," << origin.second << "\tdest : " << destination.first << "," << destination.second << std::endl;
+	
 	auto freeDestinations = this-> GetFreeMovements( origin);
+
 	std::cout << "after get free movements" << std::endl;
 	for( auto it = freeDestinations.cbegin(); it != freeDestinations.cend(); it++){
 		if( *it == destination ){

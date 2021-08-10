@@ -4,7 +4,7 @@
 #include "Cell.h"
 
 using namespace std;
-enum class ChessColor { White , Black };
+enum class ChessColor { White = 0 , Black };
 
 enum class ChessType
 {

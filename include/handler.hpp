@@ -20,7 +20,7 @@ class Handler{
 
 		void changeRound();
 		PlayersColor get_round();
-		Player* get_round_player();
+		Player *get_round_player();
 
 		virtual ~Handler();
 

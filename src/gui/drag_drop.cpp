@@ -60,9 +60,9 @@ void StackPage::on_i_chessman_drag_data_recieved( int i, const Glib::RefPtr<Gdk:
 
 		pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
 
-		pBoardGame->attach(*(pointerPiece), positionExtraction(positionOfPieces[pieceNameDest]).first, positionExtraction(positionOfPieces[pieceNameDest]).second);
+		pBoardGame->attach(*(pointerPiece), gridPositionExtraction(positionOfPieces[pieceNameDest]).first, gridPositionExtraction(positionOfPieces[pieceNameDest]).second);
 
-		pBoardGame->attach(*(blankSquars[numberNewBlankSquars + 32]), positionExtraction(positionOfPieces[piece]).first, positionExtraction(positionOfPieces[piece]).second);
+		pBoardGame->attach(*(blankSquars[numberNewBlankSquars + 32]), gridPositionExtraction(positionOfPieces[piece]).first, gridPositionExtraction(positionOfPieces[piece]).second);
 
 		positionOfPieces[pieceNameDest] = "removed";
 		positionOfPieces[piece] = cellDestination;
@@ -98,8 +98,8 @@ void StackPage::on_i_cell_drag_data_recieved(int i, const Glib::RefPtr<Gdk::Drag
 		pBoardGame->remove(*pointerPiece);
 		pBoardGame->remove(*(blankSquars[i]));
 		
-		pBoardGame->attach(*(pointerPiece), positionExtraction(positionOfBlankSquars[i]).first, positionExtraction(positionOfBlankSquars[i]).second);
-		pBoardGame->attach(*(blankSquars[i]), positionExtraction(positionOfPieces[piece]).first, positionExtraction(positionOfPieces[piece]).second);
+		pBoardGame->attach(*(pointerPiece), gridPositionExtraction(positionOfBlankSquars[i]).first, gridPositionExtraction(positionOfBlankSquars[i]).second);
+		pBoardGame->attach(*(blankSquars[i]), gridPositionExtraction(positionOfPieces[piece]).first, gridPositionExtraction(positionOfPieces[piece]).second);
 
 		positionOfBlankSquars[i] = positionOfPieces[piece];
 		positionOfPieces[piece] = cellDestination;
@@ -122,6 +122,10 @@ void StackPage::on_i_cell_drag_data_recieved(int i, const Glib::RefPtr<Gdk::Drag
 				pRookBtnDialogConvertPawn-> signal_clicked() .connect( sigc::bind( sigc::mem_fun( *this, &StackPage::convertPawn), "brNew"));
 			}
 		}
+		pScoreFirstPL->set_label( std::to_string( handler-> player1.Score));
+		pNegativScoreFirstPL->set_label( std::to_string( handler-> player1.NegativScore));
+		pScoreSecondPL->set_label( std::to_string( handler-> player2.Score));
+		pNegativScoreSecondPL->set_label( std::to_string( handler-> player2.NegativScore));
 	}
 	context->drag_finish(false, false, time);
 }

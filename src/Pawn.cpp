@@ -13,7 +13,7 @@ Pawn::Pawn(int x, int y, ChessColor color)
 
 std::vector<std::pair<int, int>> Pawn::GetMovements(Cell** Board)
 {
-std::cout << "X: " << X << "\tY: " << Y << std::endl;
+std::cout << "Color: " << (int)Color << "\tX: " << X << "\tY: " << Y << std::endl;
 
   std::vector<std::pair<int, int>> movements;
   if (Color == ChessColor::Black && Y != 0)
@@ -43,11 +43,11 @@ std::cout << "X: " << X << "\tY: " << Y << std::endl;
 
   if (FirstMove)
   {
-    if (Color == ChessColor::Black && Y != 0)
+    if (Color == ChessColor::Black && Y != 7)
     {
       movements.push_back({X, Y - 2});
     }
-    else if (Color == ChessColor::White && Y != 7)
+    else if (Color == ChessColor::White && Y != 0)
     {
       movements.push_back({X, Y + 2});
     }

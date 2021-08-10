@@ -3,7 +3,7 @@
 
 #include <iostream>
 
-enum class PlayersColor { White , Black };
+enum class PlayersColor { White = 0 , Black };
 
 struct Player
 {
