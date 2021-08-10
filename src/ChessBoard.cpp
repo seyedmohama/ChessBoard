@@ -257,8 +257,7 @@ bool ChessBoard::verifyMove( std::string move){
 	xstr1 += x1;
 	ystr1 += y1;
 	int n1 = stoi(xstr1);
-	int m1 = stoi(ystr1);
-	m1--;
+	int m1 = stoi(ystr1) - 1;
 	std::pair< int, int> origin (n1,m1);
 
 	char x2 = move[3];
@@ -268,8 +267,7 @@ bool ChessBoard::verifyMove( std::string move){
 	xstr2 += x2;
 	ystr2 += y2;
 	int n2 = stoi(xstr2);
-	int m2 = stoi(ystr2);
-	m2--;
+	int m2 = stoi(ystr2) - 1;
 	std::pair< int, int> destination (n2,m2);
 
 	std::cout << "origin : " << origin.first << "," << origin.second << "\tdest : " << destination.first << "," << destination.second << std::endl;

@@ -405,13 +405,7 @@ bool StackPage::motionVerification(){
 			return false;
 	}
 
-	std::cout << "positionExtraction result: " << cellOrigin << " => " << '(' << positionExtraction(cellOrigin).first << ',' << positionExtraction(cellOrigin).second << ')' << std::endl;
-	std::vector<std::pair<int,int>> movements = handler-> pChessboard-> GetFreeMovements(positionExtraction(cellOrigin));
-
-	bool found = false;
-	for(auto it = movements.cbegin(); it != movements.cend(); it++){
-		if( *it == positionExtraction(cellDestination) ){
-			found = true;
+		if( handler-> pChessboard-> verifyMove( moveCode)){
 
 			if(cellIsEmpty( positionOfPieces, cellDestination) == 0){
 				std::string move;
@@ -428,8 +422,6 @@ bool StackPage::motionVerification(){
 			if(cellIsEmpty( positionOfPieces, cellDestination) == 1){
 				listOfMoves.push_back(moveCode);
 			}
-	
-			std::cout << "chessboard verifyMove = true" << std::endl;
 	
 			if( handler-> get_round_player()-> doualMove){
 				handler-> pChessboard-> Move( positionExtraction( cellOrigin), positionExtraction( cellDestination));
@@ -462,8 +454,6 @@ bool StackPage::motionVerification(){
 				return true;
 			}
 		}
-	}
-	if(!found){
 		std::cout << "chessboard verifyMove = false" << std::endl;
 		Gtk::MessageDialog dialog( "Motion warning!", false, Gtk::MESSAGE_WARNING, Gtk::BUTTONS_CLOSE);
 		std::string message = "Move " + moveCode[0] + std::string(" from ") + cellOrigin + " to " + cellDestination + " are invalid!";
@@ -471,7 +461,6 @@ bool StackPage::motionVerification(){
 		dialog. run();
 
 		return false;
-	}
 }
 
 void StackPage::reloadBtnStack2_clicked(){
