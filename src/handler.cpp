@@ -1,5 +1,4 @@
 #include "../include/handler.hpp"
-#include "Player.h"
 
 Handler::Handler(std::string gn, std::string pfn, std::string psn, StackPage* pStack){
 	gameName = gn;

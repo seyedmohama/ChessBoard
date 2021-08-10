@@ -61,12 +61,15 @@ void ChessBoard::initBoard()
 
   for (int i = 0; i < 8; i++)
   {
-    Board[i][6].SetPawn(new Pawn(i, 6, ChessColor::Black));
+    Board[i][6].SetPawn(new Pawn(i, 6, ChessColor::Black));// چیدمان جایگاه اول سرباز ها به صورت حلقه
   }
 }
 
-vector<pair<int, int>> ChessBoard::GetFreeMovements(pair<int, int> cell)
+vector<pair<int, int>> ChessBoard::GetFreeMovements(pair<int, int> cell)//همان تابع movepiece است
 {
+  /*
+    تابعی است که تمام خانه هایی که یک مهره میتواند در یک حرکت جای بگیرد را مشخص میکند
+  */
   Cell c = Board[cell.first][cell.second];
   auto movements = c.ptr->GetMovements(Board);
 
@@ -82,7 +85,7 @@ vector<pair<int, int>> ChessBoard::GetFreeMovements(pair<int, int> cell)
   return movements;
 }
 
-pair<int, int> ChessBoard::FindKing(ChessColor color)
+pair<int, int> ChessBoard::FindKing(ChessColor color)//جای شاه را مشخص میکند
 {
     for (int i = 0; i < 8; i++)
     {
@@ -96,12 +99,12 @@ pair<int, int> ChessBoard::FindKing(ChessColor color)
     return {0, 0};
 }
 
-bool ChessBoard::IsCheckMated(ChessColor color)
+bool ChessBoard::IsCheckMated(ChessColor color)//کیش و مات را مشخص میکند
 {
   return IsChecked(color) && IsMated(color);
 }
 
-bool ChessBoard::IsChecked(ChessColor color)
+bool ChessBoard::IsChecked(ChessColor color)//با استفاده از findking فقط کیش شدن را مشخص میکند
 {
   auto king = FindKing(color);
   ChessColor targetcolor = (color == ChessColor::Black) ? ChessColor::White : ChessColor::Black;
@@ -126,7 +129,7 @@ bool ChessBoard::IsChecked(ChessColor color)
   return false;
 }
 
-bool ChessBoard::IsMated(ChessColor color)
+bool ChessBoard::IsMated(ChessColor color)//فقط مات شدن
 {
   auto king = FindKing(color);
 
@@ -166,21 +169,37 @@ bool ChessBoard::IsMated(ChessColor color)
   return (kingmoves.size() == 0);
 }
 
-void ChessBoard::HitScoring(struct Player *p , pair<int, int> position)
+void ChessBoard::HitScoring(struct Player *p , pair<int, int> position)//امتیاز دهی زدن مهره
 {
   p->Score += Board[position.first][position.second].ptr -> HitScore;
 
 }
 
-void ChessBoard::ThreatScoring(struct Player *p , pair<int, int> position)
+void ChessBoard::ThreatScoring(struct Player *p , pair<int, int> position)//اتیاز دهی تهدید مهره
 {
   p->Score += Board[position.first][position.second].ptr -> ThreatScore;
 
 }
 
-void ChessBoard::UndoScoring(struct Player *p)
+void ChessBoard::UndoScoring(struct Player *p)//کسر امتیاز وقتی که از حرکت undo استفاده کنیم
 {
-  p->Score -= 5;
+  p-> Score -= 5;
+}
+
+<pair<int, int>> RandomMove(struct Player *p) // حرکت رندوم که یک پوینتر از بازیکن میگیرد
+{
+  srand(time(0))
+  int i = (rand()) % 8;
+  int j = (rand()) % 8;
+  while (Board[i][j].ptr -> color != p -> ColorOfPlayer)
+  {
+    i = (rand()) % 8;
+    j = (rand()) % 8;
+  }
+  vector<pair<int, int>> cell = GetFreeMovements(i , j);
+
+  return cell.at(1);
+
 }
 
 vector<pair<int, int>> ChessBoard::Threat(pair<int, int> cell)
