@@ -6,7 +6,7 @@
   <object class="GtkImage" id="33sq">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="pixbuf">images/blank-62_62.png</property>
+    <property name="pixbuf">images/blank-62_33.png</property>
   </object>
   <object class="GtkImage" id="34sq">
     <property name="visible">True</property>

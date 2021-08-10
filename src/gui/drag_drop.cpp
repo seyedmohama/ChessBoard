@@ -36,9 +36,11 @@ void StackPage::on_i_chessman_drag_data_recieved( int i, const Glib::RefPtr<Gdk:
 		numberNewBlankSquars++;
 		positionOfBlankSquars[numberNewBlankSquars + 32] = positionOfPieces[piece];
 
+		std::cout << "on drag drop file ==> line 39" << std::endl;
 		pBoardGame->remove(*pointerPiece);
 		pBoardGame->remove(*(pieces[i]));
 		
+		std::cout << "on drag drop file ==> line 43" << std::endl;
 		if( i <= 15){
 			//	move piece to removed pices list
 			Gtk::Widget * pWidget = pRemovedPiecesGrid-> get_child_at( numberWhitePiecesRemoved, 0);
@@ -58,7 +60,8 @@ void StackPage::on_i_chessman_drag_data_recieved( int i, const Glib::RefPtr<Gdk:
 			numberBlackPiecesRemoved++;
 		}
 
-		pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
+		std::cout << "on drag drop file ==> line 61" << std::endl;
+//		pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
 
 		pBoardGame->attach(*(pointerPiece), gridPositionExtraction(positionOfPieces[pieceNameDest]).first, gridPositionExtraction(positionOfPieces[pieceNameDest]).second);
 

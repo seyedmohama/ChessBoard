@@ -394,7 +394,7 @@ bool StackPage::motionVerification(){
 
 	std::cout << "move code : " << moveCode << std::endl;
 
-	if( cellIsEmpty( positionOfPieces, cellDestination) == -1){
+	if( cellIsEmpty( positionOfPieces, cellDestination) == -1/*cell destination is cell destination =))*/){
 			Gtk::MessageDialog dialog( "دست به مهره!!", false, Gtk::MESSAGE_WARNING, Gtk::BUTTONS_CLOSE);
 			std::string message = "شما مهره ";
 			message += chessman;
@@ -405,62 +405,60 @@ bool StackPage::motionVerification(){
 			return false;
 	}
 
-		if( handler-> pChessboard-> verifyMove( moveCode)){
+	if( handler-> pChessboard-> verifyMove( moveCode)){
 
-			if(cellIsEmpty( positionOfPieces, cellDestination) == 0){
-				std::string move;
-				move += chessman;
-				move += cellOrigin;
-				move += 'x';
-				char temp = pieceNameByPosition(positionOfPieces, cellDestination)[1];
-				temp -= 32;
-				move += temp;
-				move += cellDestination;
-	
-				listOfMoves.push_back(move);//	push to list of movements
-			}
-			if(cellIsEmpty( positionOfPieces, cellDestination) == 1){
-				listOfMoves.push_back(moveCode);
-			}
-	
-			if( handler-> get_round_player()-> doualMove){
-				handler-> pChessboard-> Move( positionExtraction( cellOrigin), positionExtraction( cellDestination));
-				handler-> changeRound();
-				handler-> get_round_player()-> doualMove = false;
-				return true;
-			}
-	
-			//	attack movement scoring
-			if(cellIsEmpty( positionOfPieces, cellDestination) == 0){
-				handler-> pChessboard-> HitScoring( handler-> get_round_player(), positionExtraction( cellDestination));
-			}
-
-			handler-> pChessboard-> Move( positionExtraction( cellOrigin), positionExtraction( cellDestination));
-
-
-	//	Scorigs
-	//	امتیاز نیمه دوم سرباز
-			checkPawnInFrontHalfScore( this);
-	//	بررسی ایا امتیاز تهدید کاربر میگیره یا نه و ثبت ان
-			handler-> pChessboard-> Threat( positionExtraction( cellDestination));
-
-			std::cout << "Scores:\tplayer1 = " << handler-> player1.Score << "\tplayer2 = " << handler-> player2.Score << std::endl <<
-									 "Negativ Scores:\tplayer1 = " << handler-> player1.NegativScore << "\tplayer2 = " << handler-> player2.NegativScore << std::endl;
-
-	//	change round
-			handler-> changeRound();
-	
-			if( cellIsEmpty( positionOfPieces, cellDestination) == 1){
-				return true;
-			}
+		if(cellIsEmpty( positionOfPieces, cellDestination) == 0/*cell destination isn't empty*/){
+			moveCode = "";
+			moveCode += chessman;
+			moveCode += cellOrigin;
+			moveCode += 'x';
+			char temp = pieceNameByPosition(positionOfPieces, cellDestination)[1];
+			temp -= 32;
+			moveCode += temp;
+			moveCode += cellDestination;
 		}
-		std::cout << "chessboard verifyMove = false" << std::endl;
-		Gtk::MessageDialog dialog( "Motion warning!", false, Gtk::MESSAGE_WARNING, Gtk::BUTTONS_CLOSE);
-		std::string message = "Move " + moveCode[0] + std::string(" from ") + cellOrigin + " to " + cellDestination + " are invalid!";
-		dialog. set_secondary_text( message);
-		dialog. run();
 
+		listOfMoves.push_back(moveCode);//	push to list of movements
+
+		if( handler-> get_round_player()-> doualMove){	//if this move is second move in once round for a player
+			handler-> pChessboard-> Move( positionExtraction( cellOrigin), positionExtraction( cellDestination));
+			handler-> changeRound();
+			handler-> get_round_player()-> doualMove = false;
+			return true;
+		}
+
+		//	attack movement scoring
+		if(cellIsEmpty( positionOfPieces, cellDestination) == 0){
+			handler-> pChessboard-> HitScoring( handler-> get_round_player(), positionExtraction( cellDestination));
+		}
+
+		handler-> pChessboard-> Move( positionExtraction( cellOrigin), positionExtraction( cellDestination));
+
+
+//	Scorigs
+//	امتیاز نیمه دوم سرباز
+		checkPawnInFrontHalfScore( this);
+//	بررسی ایا امتیاز تهدید کاربر میگیره یا نه و ثبت ان
+		handler-> pChessboard-> Threat( positionExtraction( cellDestination));
+
+		std::cout << "Scores:\tplayer1 = " << handler-> player1.Score << "\tplayer2 = " << handler-> player2.Score << std::endl <<
+								 "Negativ Scores:\tplayer1 = " << handler-> player1.NegativScore << "\tplayer2 = " << handler-> player2.NegativScore << std::endl;
+
+//	change round
+		handler-> changeRound();
+
+		return true;
+	}
+	else{
+		Gtk::MessageDialog dialog( "Motion warning!", false, Gtk::MESSAGE_WARNING, Gtk::BUTTONS_CLOSE);
+		std::string messageDetail = "Move ";
+		messageDetail += moveCode[0];
+		messageDetail += std::string(" from ") + cellOrigin + " to " + cellDestination + " are invalid!";
+		dialog. set_secondary_text( messageDetail);
+		dialog. run();
+	
 		return false;
+	}
 }
 
 void StackPage::reloadBtnStack2_clicked(){
