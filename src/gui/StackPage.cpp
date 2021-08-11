@@ -435,7 +435,7 @@ bool StackPage::motionVerification(){
 		handler-> pChessboard-> Move( positionExtraction( cellOrigin), positionExtraction( cellDestination));
 
 
-//	Scorigs
+//	Scoring
 //	امتیاز نیمه دوم سرباز
 		checkPawnInFrontHalfScore( this);
 //	بررسی ایا امتیاز تهدید کاربر میگیره یا نه و ثبت ان

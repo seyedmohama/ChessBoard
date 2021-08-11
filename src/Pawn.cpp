@@ -6,8 +6,8 @@ Pawn::Pawn(int x, int y, ChessColor color)
   Y = y;
   Color = color;
   Type = ChessType::Pawn;
-  HitScore = 1;
-  ThreatScore = 3;
+  HitScore = 3;
+  ThreatScore = 1;
 
 }
 
