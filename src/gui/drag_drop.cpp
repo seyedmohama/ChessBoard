@@ -93,10 +93,6 @@ void StackPage::on_i_chessman_drag_data_recieved( int i, const Glib::RefPtr<Gdk:
 				pRookBtnDialogConvertPawn-> set_image( *pImageKnight);
 
 				pDialogConvertPawn-> run();
-				pQueenBtnDialogConvertPawn-> signal_clicked() .connect( sigc::bind( sigc::mem_fun( *this, &StackPage::convertPawn), "wqNew"));
-				pKnightBtnDialogConvertPawn-> signal_clicked() .connect( sigc::bind( sigc::mem_fun( *this, &StackPage::convertPawn), "wnNew"));
-				pBishopBtnDialogConvertPawn-> signal_clicked() .connect( sigc::bind( sigc::mem_fun( *this, &StackPage::convertPawn), "wbNew"));
-				pRookBtnDialogConvertPawn-> signal_clicked() .connect( sigc::bind( sigc::mem_fun( *this, &StackPage::convertPawn), "wrNew"));
 			}
 			if(piece[0] == 'b' && cellDestination[1] == '1'){
 				m_refGlade-> get_widget("bbDialog", pImageBishop);
@@ -110,10 +106,6 @@ void StackPage::on_i_chessman_drag_data_recieved( int i, const Glib::RefPtr<Gdk:
 				pRookBtnDialogConvertPawn-> set_image( *pImageKnight);
 
 				pDialogConvertPawn-> run();
-				pQueenBtnDialogConvertPawn-> signal_clicked() .connect( sigc::bind( sigc::mem_fun( *this, &StackPage::convertPawn), "bqNew"));
-				pKnightBtnDialogConvertPawn-> signal_clicked() .connect( sigc::bind( sigc::mem_fun( *this, &StackPage::convertPawn), "bnNew"));
-				pBishopBtnDialogConvertPawn-> signal_clicked() .connect( sigc::bind( sigc::mem_fun( *this, &StackPage::convertPawn), "bbNew"));
-				pRookBtnDialogConvertPawn-> signal_clicked() .connect( sigc::bind( sigc::mem_fun( *this, &StackPage::convertPawn), "brNew"));
 			}
 		}
 
@@ -140,20 +132,30 @@ void StackPage::on_i_cell_drag_data_recieved(int i, const Glib::RefPtr<Gdk::Drag
 		if(piece[1] == 'p'){
 			if(piece[0] == 'w' && cellDestination[1] == '8'){
 				m_refGlade-> get_widget( "whiteQueenImgDialog", pWidget[0]);	//|
-				pQueenBtnDialogConvertPawn-> property_image() = pWidget[1];	  //|
-				m_refGlade-> get_widget( "blackKnightImgDialog", pWidget[2]); //|
-				pKnightBtnDialogConvertPawn-> property_image() = pWidget[3];	//|=>	set color images
-				m_refGlade-> get_widget( "blackBishopImgDialog", pWidget[4]); //|
-				pBishopBtnDialogConvertPawn-> property_image() = pWidget[5];	//|
-				m_refGlade-> get_widget( "blackRookImgDialog", pWidget[6]); 	//|
-				pRookBtnDialogConvertPawn-> property_image() = pWidget[7];		//|
+				pQueenBtnDialogConvertPawn-> property_image() = pWidget[0];	  //|
+				m_refGlade-> get_widget( "whiteKnightImgDialog", pWidget[1]); //|
+				pKnightBtnDialogConvertPawn-> property_image() = pWidget[1];	//|=>	set color images
+				m_refGlade-> get_widget( "whiteBishopImgDialog", pWidget[2]); //|
+				pBishopBtnDialogConvertPawn-> property_image() = pWidget[2];	//|
+				m_refGlade-> get_widget( "whiteRookImgDialog", pWidget[3]); 	//|
+				pRookBtnDialogConvertPawn-> property_image() = pWidget[3];		//|
+				
 				pDialogConvertPawn-> run();
-				pQueenBtnDialogConvertPawn-> signal_clicked() .connect( sigc::bind( sigc::mem_fun( *this, &StackPage::convertPawn), "bqNew"));
-				pKnightBtnDialogConvertPawn-> signal_clicked() .connect( sigc::bind( sigc::mem_fun( *this, &StackPage::convertPawn), "bnNew"));
-				pBishopBtnDialogConvertPawn-> signal_clicked() .connect( sigc::bind( sigc::mem_fun( *this, &StackPage::convertPawn), "bbNew"));
-				pRookBtnDialogConvertPawn-> signal_clicked() .connect( sigc::bind( sigc::mem_fun( *this, &StackPage::convertPawn), "brNew"));
+			}
+			else if(piece[0] == 'b' && cellDestination[1] == '1'){
+				m_refGlade-> get_widget( "blackQueenImgDialog", pWidget[0]);	//|
+				pQueenBtnDialogConvertPawn-> property_image() = pWidget[0];	  //|
+				m_refGlade-> get_widget( "blackKnightImgDialog", pWidget[1]); //|
+				pKnightBtnDialogConvertPawn-> property_image() = pWidget[1];	//|=>	set color images
+				m_refGlade-> get_widget( "blackBishopImgDialog", pWidget[2]); //|
+				pBishopBtnDialogConvertPawn-> property_image() = pWidget[2];	//|
+				m_refGlade-> get_widget( "blackRookImgDialog", pWidget[3]); 	//|
+				pRookBtnDialogConvertPawn-> property_image() = pWidget[3];		//|
+				
+				pDialogConvertPawn-> run();
 			}
 		}
+
 		pScoreFirstPL->set_label( std::to_string( handler-> player1.Score));
 		pNegativScoreFirstPL->set_label( std::to_string( handler-> player1.NegativScore));
 		pScoreSecondPL->set_label( std::to_string( handler-> player2.Score));

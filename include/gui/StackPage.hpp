@@ -55,6 +55,11 @@ class StackPage : public Gtk::Stack{
 		Gtk::Button *pQueenBtnDialogConvertPawn, *pKnightBtnDialogConvertPawn, *pBishopBtnDialogConvertPawn, *pRookBtnDialogConvertPawn;
 		Gtk::Widget *pWidget[10];
 		void convertPawn( std::string);
+		void on_queenBtnDialog();
+		void on_knightBtnDialog();
+		void on_rookBtnDialog();
+		void on_bishopBtnDialog();
+		std::map< std::string, int> numberOfWhiteChessmansThatConvertPawn, numberOfBlackChessmansThatConvertPawn;
 
 		int numberNewBlankSquars = 0;
 		int numberWhitePiecesRemoved = 0;

@@ -370,6 +370,23 @@ void StackPage::startGameBtn_clicked(){
 //	undo btn get signal and set handler
 	pUndoBtn-> signal_clicked() .connect( sigc::mem_fun( *this, &StackPage::undoBtn_clicked));
 
+//	get signals dialog buttons when pawn go to last cell on board
+  pQueenBtnDialogConvertPawn-> signal_clicked() .connect( sigc::mem_fun( *this, &StackPage::on_queenBtnDialog));
+  pKnightBtnDialogConvertPawn-> signal_clicked() .connect( sigc::mem_fun( *this, &StackPage::on_knightBtnDialog));
+  pBishopBtnDialogConvertPawn-> signal_clicked() .connect( sigc::mem_fun( *this, &StackPage::on_bishopBtnDialog));
+  pRookBtnDialogConvertPawn-> signal_clicked() .connect( sigc::mem_fun( *this, &StackPage::on_rookBtnDialog));
+	
+	//	initialize numberOfChessmansThatConvertPawn map:
+	numberOfWhiteChessmansThatConvertPawn[ "queen"] = 0;
+	numberOfWhiteChessmansThatConvertPawn[ "knight"] = 0;
+	numberOfWhiteChessmansThatConvertPawn[ "rook"] = 0;
+	numberOfWhiteChessmansThatConvertPawn[ "bishop"] = 0;
+
+	numberOfBlackChessmansThatConvertPawn[ "queen"] = 0;
+	numberOfBlackChessmansThatConvertPawn[ "knight"] = 0;
+	numberOfBlackChessmansThatConvertPawn[ "rook"] = 0;
+	numberOfBlackChessmansThatConvertPawn[ "bishop"] = 0;
+
 }
 
 int StackPage::cellIsEmpty( std::map< std::string, std::string> map, std::string cell){
@@ -417,6 +434,7 @@ bool StackPage::motionVerification(){
 			moveCode += temp;
 			moveCode += cellDestination;
 		}
+		std::cout << "move code (after ChessBoard::verifyMove): " << moveCode << std::endl;
 
 		listOfMoves.push_back(moveCode);//	push to list of movements
 
@@ -462,49 +480,40 @@ bool StackPage::motionVerification(){
 }
 
 void StackPage::reloadBtnStack2_clicked(){
-
+	
 	std::cout << "\npositionOfPieces :" << std::endl;
-	std::cout << "\twrl\t" << positionOfPieces["wrl"] << std::endl <<
-	"\twbl\t" << positionOfPieces["wbl"]  << std::endl <<
-	"\twnl\t" << positionOfPieces["wnl"]  << std::endl <<
-	"\twq\t" << positionOfPieces["wq"]  << std::endl <<
-	"\twk\t" << positionOfPieces["wk"]  << std::endl <<
-	"\twnr\t" << positionOfPieces["wnr"]  << std::endl <<
-	"\twbr\t" << positionOfPieces["wbr"]  << std::endl <<
-	"\twrr\t" << positionOfPieces["wrr"]  << std::endl <<
-	"\twp1\t" << positionOfPieces["wp1"]  << std::endl <<
-	"\twp2\t" << positionOfPieces["wp2"]  << std::endl <<
-	"\twp3\t" << positionOfPieces["wp3"]  << std::endl <<
-	"\twp4\t" << positionOfPieces["wp4"]  << std::endl <<
-	"\twp5\t" << positionOfPieces["wp5"]  << std::endl <<
-	"\twp6\t" << positionOfPieces["wp6"]  << std::endl <<
-	"\twp7\t" << positionOfPieces["wp7"]  << std::endl <<
-	"\twp8\t" << positionOfPieces["wp8"]  << std::endl <<
-	"\tbrl\t" << positionOfPieces["brl"]  << std::endl <<
-	"\tbbl\t" << positionOfPieces["bbl"]  << std::endl <<
-	"\tbnl\t" << positionOfPieces["bnl"]  << std::endl <<
-	"\tbq\t" << positionOfPieces["bq"]  << std::endl <<
-	"\tbk\t" << positionOfPieces["bk"]  << std::endl <<
-	"\tbnr\t" << positionOfPieces["bnr"]  << std::endl <<
-	"\tbbr\t" << positionOfPieces["bbr"]  << std::endl <<
-	"\tbrr\t" << positionOfPieces["brr"]  << std::endl <<
-	"\tbp1\t" << positionOfPieces["bp1"]  << std::endl <<
-	"\tbp2\t" << positionOfPieces["bp2"]  << std::endl <<
-	"\tbp3\t" << positionOfPieces["bp3"]  << std::endl <<
-	"\tbp4\t" << positionOfPieces["bp4"]  << std::endl <<
-	"\tbp5\t" << positionOfPieces["bp5"]  << std::endl <<
-	"\tbp6\t" << positionOfPieces["bp6"]  << std::endl <<
-	"\tbp7\t" << positionOfPieces["bp7"]  << std::endl <<
-	"\tbp8\t" << positionOfPieces["bp8"]  << std::endl;
+	for(int i = 0; i < nameOfPieces.size(); i++){
+		std::cout << '\t' << nameOfPieces.at(i) << '\t' << positionOfPieces[nameOfPieces.at(i)] << std::endl;
+	}
 
 	std::cout << "positionOfBlankSquars :" << std::endl;
-	for( int i = 1; i < 64; i++){
+	for( int i = 1; i < positionOfBlankSquars.size(); i++){
 		std::cout << "\t" << i << "\t" << positionOfBlankSquars[i] << std::endl;
 	}
 
 }
 
+void StackPage::on_queenBtnDialog(){ convertPawn( "qNew");}
+void StackPage::on_knightBtnDialog(){ convertPawn( "nNew");}
+void StackPage::on_rookBtnDialog(){ convertPawn( "rNew");}
+void StackPage::on_bishopBtnDialog(){ convertPawn( "bNew");}
+
 void StackPage::convertPawn( std::string chessman){
+	if( handler-> get_round() != PlayersColor::White){// if round is for white. because before it round changed
+		std::string temp = chessman;
+		chessman = "w";
+		chessman += temp;
+		handler-> numberOfWhiteConvertPawn++;
+		chessman += std::to_string( handler-> numberOfWhiteConvertPawn);
+	}
+	if( handler-> get_round() != PlayersColor::Black){
+		std::string temp = chessman;
+		chessman = "b";
+		chessman += temp;
+		handler-> numberOfBlackConvertPawn++;
+		chessman += std::to_string( handler-> numberOfBlackConvertPawn);
+	}
+
   positionOfPieces.erase( positionOfPieces.find( piece));
   
 	int i;
@@ -513,21 +522,17 @@ void StackPage::convertPawn( std::string chessman){
 			break;
 		}
 	}
-	std::string str = chessman;
-	if(chessman[0] == 'w'){
-		str += handler-> numberOfWhiteConvertPawn;
-		handler-> numberOfWhiteConvertPawn++;
-	}
-	if(chessman[0] == 'b'){
-		str += handler-> numberOfBlackConvertPawn;
-		handler-> numberOfBlackConvertPawn++;
-	}
 
-	nameOfPieces[i] = str; 
-  positionOfPieces[str] = cellDestination;
+	std::cout << "chessman input: " << chessman << std::endl;
+	std::cout << "numberOfWhite and BlackConvertPawn\t" << handler-> numberOfWhiteConvertPawn << '\t' << handler-> numberOfBlackConvertPawn << std::endl;
+
+	nameOfPieces[i] = chessman; 
+  positionOfPieces[chessman] = cellDestination;
 
 	pDialogConvertPawn-> close();
+	pDialogConvertPawn-> hide();
 
+	std::cout << "chessman  = " << chessman << std::endl;
 	m_refGlade-> get_widget( chessman, pWidget[8]);
 	pieces[i]-> property_image() = pWidget[8];
 }
