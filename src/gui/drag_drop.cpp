@@ -38,19 +38,31 @@ void StackPage::on_i_chessman_drag_data_recieved( int i, const Glib::RefPtr<Gdk:
 
 		pBoardGame->remove(*pointerPiece);
 		pBoardGame->remove(*(pieces[i]));
-		
+	
 		if( i <= 15){
 			//	move piece to removed pices list
-			Gtk::Widget * pWidget = pRemovedPiecesGrid-> get_child_at( numberWhitePiecesRemoved, 0);
-			pRemovedPiecesGrid-> remove( *pWidget);
+			Gtk::Widget * pWidget = nullptr;
+			pWidget = pRemovedPiecesGrid-> get_child_at( numberWhitePiecesRemoved, 0);
 	
+			if(pWidget == nullptr){
+				std::cerr << "Can't connect to widget on removedPiecesGrid [" << numberBlackPiecesRemoved << ",2]" << std::endl;
+				return;
+			}
+			pRemovedPiecesGrid-> remove( *pWidget);
+
 			m_refGlade-> get_widget( nameOfPieces[ i], pImageTemp);
 			pRemovedPiecesGrid-> attach( *pImageTemp, numberWhitePiecesRemoved, 0);
 			numberWhitePiecesRemoved++;
 		}
 		else if( i >= 16){
 			//	move piece to removed pices list
-			Gtk::Widget * pWidget = pRemovedPiecesGrid-> get_child_at( numberBlackPiecesRemoved, 2);
+			Gtk::Widget * pWidget = nullptr;
+			pWidget = pRemovedPiecesGrid-> get_child_at( numberBlackPiecesRemoved, 2);
+
+			if(pWidget == nullptr){
+				std::cerr << "Can't connect to widget on removedPiecesGrid [" << numberBlackPiecesRemoved << ",2]" << std::endl;
+				return;
+			}
 			pRemovedPiecesGrid-> remove( *pWidget);
 	
 			m_refGlade-> get_widget( nameOfPieces[ i], pImageTemp);

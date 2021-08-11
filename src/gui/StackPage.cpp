@@ -569,7 +569,7 @@ void StackPage::undoBtn_clicked(){
 			
 			Gtk::Image *pImage;
 			m_refGlade-> get_widget( str, pImage);
-			pRemovedPiecesGrid-> attach( *pImage, numberBlackPiecesRemoved, 0);
+			pRemovedPiecesGrid-> attach( *pImage, numberBlackPiecesRemoved, 2);
 
 			numberBlackPiecesRemoved--;
 
@@ -632,7 +632,7 @@ void StackPage::undoBtn_clicked(){
 			
 			std::string str = "removedImg";
 			str += std::to_string( numberWhitePiecesRemoved);
-			str += '2';
+			str += '0';
 			
 			Gtk::Image *pImage;
 			m_refGlade-> get_widget( str, pImage);

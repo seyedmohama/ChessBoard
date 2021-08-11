@@ -57,8 +57,8 @@ class StackPage : public Gtk::Stack{
 		void convertPawn( std::string);
 
 		int numberNewBlankSquars = 0;
-		int numberWhitePiecesRemoved;
-		int numberBlackPiecesRemoved;
+		int numberWhitePiecesRemoved = 0;
+		int numberBlackPiecesRemoved = 0;
 
 		std::vector<int> whitePawnsInFrontHalf;
 		std::vector<int> blackPawnsInFrontHalf;
