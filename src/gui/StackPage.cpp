@@ -37,12 +37,12 @@ m_refGlade(refGlade){
 	m_refGlade-> get_widget( "undoBtn", pUndoBtn);
 
 	nameOfPieces[0] = "wrl";
- 	nameOfPieces[1] = "wbl";
- 	nameOfPieces[2] = "wnl";
+ 	nameOfPieces[1] = "wnl";
+ 	nameOfPieces[2] = "wbl";
  	nameOfPieces[3] = "wq";
  	nameOfPieces[4] = "wk";
- 	nameOfPieces[5] = "wnr";
- 	nameOfPieces[6] = "wbr";
+ 	nameOfPieces[5] = "wbr";
+ 	nameOfPieces[6] = "wnr";
  	nameOfPieces[7] = "wrr";
  	nameOfPieces[8] = "wp1";
  	nameOfPieces[9] = "wp2";
@@ -53,12 +53,12 @@ m_refGlade(refGlade){
  	nameOfPieces[14] = "wp7";
  	nameOfPieces[15] = "wp8";
  	nameOfPieces[16] = "brl";
- 	nameOfPieces[17] = "bbl";
- 	nameOfPieces[18] = "bnl";
+ 	nameOfPieces[17] = "bnl";
+ 	nameOfPieces[18] = "bbl";
  	nameOfPieces[19] = "bq";
  	nameOfPieces[20] = "bk";
- 	nameOfPieces[21] = "bnr";
- 	nameOfPieces[22] = "bbr";
+ 	nameOfPieces[21] = "bbr";
+ 	nameOfPieces[22] = "bnr";
  	nameOfPieces[23] = "brr";
  	nameOfPieces[24] = "bp1";
  	nameOfPieces[25] = "bp2";

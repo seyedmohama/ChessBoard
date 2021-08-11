@@ -8,7 +8,7 @@ using namespace std;
 enum class PlayersColor;
 enum class ChessType
 {
-    Bishop,
+    Bishop = 0,
     King,
     Knight,
     Pawn,
