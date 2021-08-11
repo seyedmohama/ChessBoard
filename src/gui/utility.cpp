@@ -80,7 +80,7 @@ void checkPawnInFrontHalfScore( StackPage *pStack){
 }
 
 void removeWidgetFromBoard( Gtk::Grid *grid, std::string cell){
-	Gtk::Widget *pWidget = grid-> get_child_at( positionExtraction( cell) .first, positionExtraction( cell) .second);
+	Gtk::Widget *pWidget = grid-> get_child_at( gridPositionExtraction( cell) .first, gridPositionExtraction( cell) .second);
 
 	grid-> remove( *pWidget);
 }

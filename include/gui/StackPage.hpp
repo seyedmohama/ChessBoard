@@ -59,7 +59,6 @@ class StackPage : public Gtk::Stack{
 		void on_knightBtnDialog();
 		void on_rookBtnDialog();
 		void on_bishopBtnDialog();
-		std::map< std::string, int> numberOfWhiteChessmansThatConvertPawn, numberOfBlackChessmansThatConvertPawn;
 
 		int numberNewBlankSquars = 0;
 		int numberWhitePiecesRemoved = 0;

@@ -376,17 +376,6 @@ void StackPage::startGameBtn_clicked(){
   pBishopBtnDialogConvertPawn-> signal_clicked() .connect( sigc::mem_fun( *this, &StackPage::on_bishopBtnDialog));
   pRookBtnDialogConvertPawn-> signal_clicked() .connect( sigc::mem_fun( *this, &StackPage::on_rookBtnDialog));
 	
-	//	initialize numberOfChessmansThatConvertPawn map:
-	numberOfWhiteChessmansThatConvertPawn[ "queen"] = 0;
-	numberOfWhiteChessmansThatConvertPawn[ "knight"] = 0;
-	numberOfWhiteChessmansThatConvertPawn[ "rook"] = 0;
-	numberOfWhiteChessmansThatConvertPawn[ "bishop"] = 0;
-
-	numberOfBlackChessmansThatConvertPawn[ "queen"] = 0;
-	numberOfBlackChessmansThatConvertPawn[ "knight"] = 0;
-	numberOfBlackChessmansThatConvertPawn[ "rook"] = 0;
-	numberOfBlackChessmansThatConvertPawn[ "bishop"] = 0;
-
 }
 
 int StackPage::cellIsEmpty( std::map< std::string, std::string> map, std::string cell){
@@ -593,7 +582,7 @@ void StackPage::undoBtn_clicked(){
 			removeWidgetFromBoard( pBoardGame, cellDestination);
 
 			//	attach to origin cell
-			pBoardGame-> attach( *pointerPiece, positionExtraction( cellOrigin) .first, positionExtraction( cellOrigin) .second);
+			pBoardGame-> attach( *pointerPiece, gridPositionExtraction( cellOrigin) .first, gridPositionExtraction( cellOrigin) .second);
 			for(auto positionOfPiecesIt = positionOfPieces.begin(); positionOfPiecesIt != positionOfPieces.end(); positionOfPiecesIt++){
 				if((*positionOfPiecesIt).second == cellDestination){
 					(*positionOfPiecesIt).second = cellOrigin;
@@ -622,13 +611,15 @@ void StackPage::undoBtn_clicked(){
 					}
 				}
 			}
+
 			int i;
-			for (int j = 0; ; j++){
+			for (int j = 0; j < nameOfPieces.size(); j++){
 				if(nameOfPieces[j] == str){
 					i = j;
 				}
 			}
-			pBoardGame-> attach( *(pieces[i]), positionExtraction( cellDestination) .first, positionExtraction( cellDestination) .second);
+
+			pBoardGame-> attach( *(pieces[i]), gridPositionExtraction( cellDestination) .first, gridPositionExtraction( cellDestination) .second);
 			positionOfPieces[str] = cellDestination;
 
 		}
@@ -654,7 +645,7 @@ void StackPage::undoBtn_clicked(){
 
 			removeWidgetFromBoard( pBoardGame, cellDestination);
 
-			pBoardGame-> attach( *pointerPiece, positionExtraction( cellOrigin) .first, positionExtraction( cellOrigin) .second);
+			pBoardGame-> attach( *pointerPiece, gridPositionExtraction( cellOrigin) .first, gridPositionExtraction( cellOrigin) .second);
 			for(auto positionOfPiecesIt = positionOfPieces.begin(); positionOfPiecesIt != positionOfPieces.end(); positionOfPiecesIt++){
 				if((*positionOfPiecesIt).second == cellDestination){
 					(*positionOfPiecesIt).second = cellOrigin;
@@ -683,12 +674,12 @@ void StackPage::undoBtn_clicked(){
 				}
 			}
 			int i;
-			for (int j = 0; ; j++){
+			for (int j = 0; j < nameOfPieces.size(); j++){
 				if(nameOfPieces[j] == str){
 					i = j;
 				}
 			}
-			pBoardGame-> attach( *(pieces[i]), positionExtraction( cellDestination) .first, positionExtraction( cellDestination) .second);
+			pBoardGame-> attach( *(pieces[i]), gridPositionExtraction( cellDestination) .first, gridPositionExtraction( cellDestination) .second);
 			positionOfPieces[str] = cellDestination;
 
 		}
@@ -698,12 +689,12 @@ void StackPage::undoBtn_clicked(){
 		for(auto positionOfBlankCellIt = positionOfBlankSquars.cbegin(); positionOfBlankCellIt != positionOfBlankSquars.cend(); positionOfBlankCellIt++){
 			if((*positionOfBlankCellIt).second == cellOrigin){
 				pBoardGame-> remove( *(blankSquars[ (*positionOfBlankCellIt).first]));
-				pBoardGame-> attach( *(blankSquars[ (*positionOfBlankCellIt).first]), positionExtraction( cellDestination) .first, positionExtraction( cellDestination) .second);
+				pBoardGame-> attach( *(blankSquars[ (*positionOfBlankCellIt).first]), gridPositionExtraction( cellDestination) .first, gridPositionExtraction( cellDestination) .second);
 				positionOfBlankSquars[ (*positionOfBlankCellIt).first] = cellDestination;
 			}
 		}
 
-		pBoardGame-> attach( *pointerPiece, positionExtraction( cellOrigin) .first, positionExtraction( cellOrigin) .second);
+		pBoardGame-> attach( *pointerPiece, gridPositionExtraction( cellOrigin) .first, gridPositionExtraction( cellOrigin) .second);
 
 		positionOfPieces[ piece] = cellOrigin;
 	}
