@@ -528,6 +528,8 @@ void StackPage::convertPawn( std::string chessman){
 
 void StackPage::doualMoveBtn_clicked(){
 
+	handler-> changeRound();
+
 	Gtk::MessageDialog dialog("دو حرکت در یک نوبت.", false, Gtk::MESSAGE_QUESTION, Gtk::BUTTONS_YES_NO);
 	std::string message = handler-> get_round_player()-> Name;
 	message += " شما میتوانید یک حرکت دیگر انجام دهید\n و به ازای ان ۳۰ امتیاز از دست بدهید.";
