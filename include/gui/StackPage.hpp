@@ -76,6 +76,8 @@ class StackPage : public Gtk::Stack{
 		void doualMoveBtn_clicked();
 		void undoBtn_clicked();
 
+		void updateScoreBoard();
+
 		void on_0_drag_data_get(const Glib::RefPtr<Gdk::DragContext>& context, Gtk::SelectionData& selection_data, guint info, guint time);
 		void on_1_drag_data_get(const Glib::RefPtr<Gdk::DragContext>& context, Gtk::SelectionData& selection_data, guint info, guint time);
 		void on_2_drag_data_get(const Glib::RefPtr<Gdk::DragContext>& context, Gtk::SelectionData& selection_data, guint info, guint time);

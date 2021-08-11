@@ -189,7 +189,7 @@ void ChessBoard::ThreatScoring(struct Player *p , pair<int, int> position)//ات
 
 void ChessBoard::UndoScoring(struct Player *p)//کسر امتیاز وقتی که از حرکت undo استفاده کنیم
 {
-  p-> Score -= 5;
+  p-> NegativScore += 5;
 }
 
 std::pair<int, int> ChessBoard::RandomMove(struct Player *p) // حرکت رندوم که یک پوینتر از بازیکن میگیرد

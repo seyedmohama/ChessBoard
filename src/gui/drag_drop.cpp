@@ -109,8 +109,7 @@ void StackPage::on_i_chessman_drag_data_recieved( int i, const Glib::RefPtr<Gdk:
 			}
 		}
 
-		//	enter score for player
-//		handler-> pChessboard-> HitScoring( handler-> get_round_player(), positionExtraction( cellDestination));
+		updateScoreBoard();
 	}
 	context->drag_finish(false, false, time);
 }
@@ -156,10 +155,7 @@ void StackPage::on_i_cell_drag_data_recieved(int i, const Glib::RefPtr<Gdk::Drag
 			}
 		}
 
-		pScoreFirstPL->set_label( std::to_string( handler-> player1.Score));
-		pNegativScoreFirstPL->set_label( std::to_string( handler-> player1.NegativScore));
-		pScoreSecondPL->set_label( std::to_string( handler-> player2.Score));
-		pNegativScoreSecondPL->set_label( std::to_string( handler-> player2.NegativScore));
+		updateScoreBoard();
 	}
 	context->drag_finish(false, false, time);
 }

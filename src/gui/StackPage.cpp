@@ -703,5 +703,14 @@ void StackPage::undoBtn_clicked(){
 
 	listOfMoves.pop_back();
 	
-	handler-> get_round_player()-> NegativScore -= 30;
+	handler-> pChessboard-> UndoScoring( handler-> get_round_player());
+
+	updateScoreBoard();
+}
+
+void StackPage::updateScoreBoard(){
+	pScoreFirstPL->set_label( std::to_string( handler-> player1.Score));
+  pNegativScoreFirstPL->set_label( std::to_string( handler-> player1.NegativScore));
+  pScoreSecondPL->set_label( std::to_string( handler-> player2.Score));
+  pNegativScoreSecondPL->set_label( std::to_string( handler-> player2.NegativScore));
 }
