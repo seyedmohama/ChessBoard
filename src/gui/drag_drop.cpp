@@ -36,11 +36,9 @@ void StackPage::on_i_chessman_drag_data_recieved( int i, const Glib::RefPtr<Gdk:
 		numberNewBlankSquars++;
 		positionOfBlankSquars[numberNewBlankSquars + 32] = positionOfPieces[piece];
 
-		std::cout << "on drag drop file ==> line 39" << std::endl;
 		pBoardGame->remove(*pointerPiece);
 		pBoardGame->remove(*(pieces[i]));
 		
-		std::cout << "on drag drop file ==> line 43" << std::endl;
 		if( i <= 15){
 			//	move piece to removed pices list
 			Gtk::Widget * pWidget = pRemovedPiecesGrid-> get_child_at( numberWhitePiecesRemoved, 0);
@@ -60,9 +58,6 @@ void StackPage::on_i_chessman_drag_data_recieved( int i, const Glib::RefPtr<Gdk:
 			numberBlackPiecesRemoved++;
 		}
 
-		std::cout << "on drag drop file ==> line 61" << std::endl;
-//		pBoardGame->remove(*(blankSquars[numberNewBlankSquars]));
-
 		pBoardGame->attach(*(pointerPiece), gridPositionExtraction(positionOfPieces[pieceNameDest]).first, gridPositionExtraction(positionOfPieces[pieceNameDest]).second);
 
 		pBoardGame->attach(*(blankSquars[numberNewBlankSquars + 32]), gridPositionExtraction(positionOfPieces[piece]).first, gridPositionExtraction(positionOfPieces[piece]).second);
@@ -72,7 +67,19 @@ void StackPage::on_i_chessman_drag_data_recieved( int i, const Glib::RefPtr<Gdk:
 
 //	if pawn go to a8,b8,c8,d8,....
 		if(piece[1] == 'p'){
+			Gtk::Widget *pImageBishop, *pImageRook, *pImageQueen, *pImageKnight;
+
 			if(piece[0] == 'w' && cellDestination[1] == '8'){
+				m_refGlade-> get_widget("wbDialog", pImageBishop);
+				m_refGlade-> get_widget("wrDialog", pImageRook);
+				m_refGlade-> get_widget("wqDialog", pImageQueen);
+				m_refGlade-> get_widget("wnDialog", pImageKnight);
+
+				pQueenBtnDialogConvertPawn-> set_image( *pImageQueen);
+				pKnightBtnDialogConvertPawn-> set_image( *pImageRook);
+				pBishopBtnDialogConvertPawn-> set_image( *pImageQueen);
+				pRookBtnDialogConvertPawn-> set_image( *pImageKnight);
+
 				pDialogConvertPawn-> run();
 				pQueenBtnDialogConvertPawn-> signal_clicked() .connect( sigc::bind( sigc::mem_fun( *this, &StackPage::convertPawn), "wqNew"));
 				pKnightBtnDialogConvertPawn-> signal_clicked() .connect( sigc::bind( sigc::mem_fun( *this, &StackPage::convertPawn), "wnNew"));
@@ -80,6 +87,16 @@ void StackPage::on_i_chessman_drag_data_recieved( int i, const Glib::RefPtr<Gdk:
 				pRookBtnDialogConvertPawn-> signal_clicked() .connect( sigc::bind( sigc::mem_fun( *this, &StackPage::convertPawn), "wrNew"));
 			}
 			if(piece[0] == 'b' && cellDestination[1] == '1'){
+				m_refGlade-> get_widget("bbDialog", pImageBishop);
+				m_refGlade-> get_widget("brDialog", pImageRook);
+				m_refGlade-> get_widget("bqDialog", pImageQueen);
+				m_refGlade-> get_widget("bnDialog", pImageKnight);
+
+				pQueenBtnDialogConvertPawn-> set_image( *pImageQueen);
+				pKnightBtnDialogConvertPawn-> set_image( *pImageRook);
+				pBishopBtnDialogConvertPawn-> set_image( *pImageQueen);
+				pRookBtnDialogConvertPawn-> set_image( *pImageKnight);
+
 				pDialogConvertPawn-> run();
 				pQueenBtnDialogConvertPawn-> signal_clicked() .connect( sigc::bind( sigc::mem_fun( *this, &StackPage::convertPawn), "bqNew"));
 				pKnightBtnDialogConvertPawn-> signal_clicked() .connect( sigc::bind( sigc::mem_fun( *this, &StackPage::convertPawn), "bnNew"));
