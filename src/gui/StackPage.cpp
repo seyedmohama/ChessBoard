@@ -704,6 +704,12 @@ void StackPage::undoBtn_clicked(){
 	listOfMoves.pop_back();
 	
 	handler-> pChessboard-> UndoScoring( handler-> get_round_player());
+	if( handler-> pChessboard-> IsCheckMated( handler-> get_round())){
+		handler-> get_round_player()-> Score += 50;
+	}
+	else if( handler-> pChessboard-> IsChecked( handler-> get_round())){
+		handler-> get_round_player()-> Score += 10;
+	}
 
 	updateScoreBoard();
 }
