@@ -1,6 +1,8 @@
 #include "../include/Bishop.h"
+#include "Player.h"
 #include <iostream>
-Bishop::Bishop(int x, int y, ChessColor color)
+
+Bishop::Bishop(int x, int y, PlayersColor color)
 {
   X = x;
   Y = y;

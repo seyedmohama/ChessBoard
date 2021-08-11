@@ -1,6 +1,7 @@
 #include "../include/King.h"
+#include "Player.h"
 
-King::King(int x, int y, ChessColor color)
+King::King(int x, int y, PlayersColor color)
 {
   X = x;
   Y = y;

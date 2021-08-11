@@ -1,5 +1,6 @@
 #include "../include/ChessBoard.h"
 #include "../include/handler.hpp"
+#include "Player.h"
 
 ChessBoard :: ChessBoard()
 {
@@ -28,40 +29,40 @@ void ChessBoard::initBoard()
     Board[i] = new Cell[8];
 
   //Setting white pawns
-  Board[0][0].SetPawn(new Rook(0, 0, ChessColor::White));
-  Board[7][0].SetPawn(new Rook(7, 0, ChessColor::White));
+  Board[0][0].SetPawn(new Rook(0, 0, PlayersColor::White));
+  Board[7][0].SetPawn(new Rook(7, 0, PlayersColor::White));
 
-  Board[1][0].SetPawn(new Knight(1, 0, ChessColor::White));
-  Board[6][0].SetPawn(new Knight(6, 0, ChessColor::White));
+  Board[1][0].SetPawn(new Knight(1, 0, PlayersColor::White));
+  Board[6][0].SetPawn(new Knight(6, 0, PlayersColor::White));
 
-  Board[2][0].SetPawn(new Bishop(2, 0, ChessColor::White));
-  Board[5][0].SetPawn(new Bishop(5, 0, ChessColor::White));
+  Board[2][0].SetPawn(new Bishop(2, 0, PlayersColor::White));
+  Board[5][0].SetPawn(new Bishop(5, 0, PlayersColor::White));
 
-  Board[3][0].SetPawn(new Queen(3, 0, ChessColor::White));
-  Board[4][0].SetPawn(new King(4, 0, ChessColor::White));
+  Board[3][0].SetPawn(new Queen(3, 0, PlayersColor::White));
+  Board[4][0].SetPawn(new King(4, 0, PlayersColor::White));
 
   for (int i = 0; i < 8; i++)
   {
-    Board[i][1].SetPawn(new Pawn(i, 1, ChessColor::White));
+    Board[i][1].SetPawn(new Pawn(i, 1, PlayersColor::White));
   }
 
   //Setting black pawns
-  Board[0][7].SetPawn(new Rook(0, 7, ChessColor::Black));
-  Board[7][7].SetPawn(new Rook(7, 7, ChessColor::Black));
+  Board[0][7].SetPawn(new Rook(0, 7, PlayersColor::Black));
+  Board[7][7].SetPawn(new Rook(7, 7, PlayersColor::Black));
 
-  Board[1][7].SetPawn(new Knight(1, 7, ChessColor::Black));
-  Board[6][7].SetPawn(new Knight(6, 7, ChessColor::Black));
+  Board[1][7].SetPawn(new Knight(1, 7, PlayersColor::Black));
+  Board[6][7].SetPawn(new Knight(6, 7, PlayersColor::Black));
 
-  Board[2][7].SetPawn(new Bishop(2, 7, ChessColor::Black));
-  Board[5][7].SetPawn(new Bishop(5, 7, ChessColor::Black));
+  Board[2][7].SetPawn(new Bishop(2, 7, PlayersColor::Black));
+  Board[5][7].SetPawn(new Bishop(5, 7, PlayersColor::Black));
 
-  Board[3][7].SetPawn(new Queen(3, 7, ChessColor::Black));
-  Board[4][7].SetPawn(new King(4, 7, ChessColor::Black));
+  Board[3][7].SetPawn(new Queen(3, 7, PlayersColor::Black));
+  Board[4][7].SetPawn(new King(4, 7, PlayersColor::Black));
 
 
   for (int i = 0; i < 8; i++)
   {
-    Board[i][6].SetPawn(new Pawn(i, 6, ChessColor::Black));// چیدمان جایگاه اول سرباز ها به صورت حلقه
+    Board[i][6].SetPawn(new Pawn(i, 6, PlayersColor::Black));// چیدمان جایگاه اول سرباز ها به صورت حلقه
   }
 }
 
@@ -90,7 +91,7 @@ vector<pair<int, int>> ChessBoard::GetFreeMovements(pair<int, int> cell)//هما
   return movements;
 }
 
-pair<int, int> ChessBoard::FindKing(ChessColor color)//جای شاه را مشخص میکند
+pair<int, int> ChessBoard::FindKing(PlayersColor color)//جای شاه را مشخص میکند
 {
     for (int i = 0; i < 8; i++)
     {
@@ -104,15 +105,15 @@ pair<int, int> ChessBoard::FindKing(ChessColor color)//جای شاه را مشخ
     return {0, 0};
 }
 
-bool ChessBoard::IsCheckMated(ChessColor color)//کیش و مات را مشخص میکند
+bool ChessBoard::IsCheckMated(PlayersColor color)//کیش و مات را مشخص میکند
 {
   return IsChecked(color) && IsMated(color);
 }
 
-bool ChessBoard::IsChecked(ChessColor color)//با استفاده از findking فقط کیش شدن را مشخص میکند
+bool ChessBoard::IsChecked(PlayersColor color)//با استفاده از findking فقط کیش شدن را مشخص میکند
 {
   auto king = FindKing(color);
-  ChessColor targetcolor = (color == ChessColor::Black) ? ChessColor::White : ChessColor::Black;
+  PlayersColor targetcolor = (color == PlayersColor::Black) ? PlayersColor::White : PlayersColor::Black;
 
   for (int i = 0; i < 8; i++)
   {
@@ -134,7 +135,7 @@ bool ChessBoard::IsChecked(ChessColor color)//با استفاده از findking 
   return false;
 }
 
-bool ChessBoard::IsMated(ChessColor color)//فقط مات شدن
+bool ChessBoard::IsMated(PlayersColor color)//فقط مات شدن
 {
   auto king = FindKing(color);
 
@@ -142,7 +143,7 @@ bool ChessBoard::IsMated(ChessColor color)//فقط مات شدن
 
 
 
-  ChessColor targetcolor = (color == ChessColor::Black) ? ChessColor::White : ChessColor::Black;
+  PlayersColor targetcolor = (color == PlayersColor::Black) ? PlayersColor::White : PlayersColor::Black;
 
 
   for (int i = 0; i < 8; i++)
@@ -191,17 +192,17 @@ void ChessBoard::UndoScoring(struct Player *p)//کسر امتیاز وقتی ک�
   p-> Score -= 5;
 }
 
-<pair<int, int>> RandomMove(struct Player *p) // حرکت رندوم که یک پوینتر از بازیکن میگیرد
+std::pair<int, int> ChessBoard::RandomMove(struct Player *p) // حرکت رندوم که یک پوینتر از بازیکن میگیرد
 {
-  srand(time(0))
+  srand(time(0));
   int i = (rand()) % 8;
   int j = (rand()) % 8;
-  while (Board[i][j].ptr -> color != p -> ColorOfPlayer)
+  while (Board[i][j].ptr -> Color != p -> ColorOfPlayer)
   {
     i = (rand()) % 8;
     j = (rand()) % 8;
   }
-  vector<pair<int, int>> cell = GetFreeMovements(i , j);
+  vector<pair<int, int>> cell = GetFreeMovements({i , j});
 
   return cell.at(1);
 

@@ -1,6 +1,8 @@
 #include "../include/Knight.h"
 #include <iostream>
-Knight::Knight(int x, int y, ChessColor color)
+#include "Player.h"
+
+Knight::Knight(int x, int y, PlayersColor color)
 {
   X = x;
   Y = y;

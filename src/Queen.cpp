@@ -1,6 +1,8 @@
 #include "../include/Queen.h"
+#include "Player.h"
 #include <iostream>
-Queen::Queen(int x, int y, ChessColor color)
+
+Queen::Queen(int x, int y, PlayersColor color)
 {
   X = x;
   Y = y;
