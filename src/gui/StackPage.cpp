@@ -408,6 +408,12 @@ bool StackPage::motionVerification(){
 			dialog. set_secondary_text( message);
 			dialog. run();
 
+			if( !handler-> dastBeMohre){
+				handler-> get_round_player()-> NegativScore += 1;
+				handler-> dastBeMohre = true;
+			}
+
+			updateScoreBoard();
 			return false;
 	}
 
@@ -446,14 +452,19 @@ bool StackPage::motionVerification(){
 //	امتیاز نیمه دوم سرباز
 		checkPawnInFrontHalfScore( this);
 //	بررسی ایا امتیاز تهدید کاربر میگیره یا نه و ثبت ان
-		handler-> pChessboard-> Threat( positionExtraction( cellDestination));
+		//handler-> pChessboard-> Threat( positionExtraction( cellDestination));
+		//	امتیاز تهدید (اختیاری)
+		handler-> pChessboard-> ThreatPlus();
 
-		PlayersColor inverseColor = handler-> get_round ? PlayersColor::White : PlayersColor::Black;
-		if( handler-> pChessboard-> IsCheckMated( inverseColor){
+		PlayersColor inverseColor = (int)(handler-> get_round()) ? PlayersColor::White : PlayersColor::Black;
+		std::cout << "round: " << (int)(inverseColor) << std::endl;
+		if( handler-> pChessboard-> IsCheckMated( inverseColor)){
 			handler-> get_round_player()-> Score += 50;
+			std::cout << "IsCheckMated" << std::endl;
 		}
-		else if( handler-> pChessboard-> IsChecked( inverseColor){
+		else if( handler-> pChessboard-> IsChecked( inverseColor)){
 			handler-> get_round_player()-> Score += 10;
+			std::cout << "IsChecked" << std::endl;
 		}
 
 		updateScoreBoard();

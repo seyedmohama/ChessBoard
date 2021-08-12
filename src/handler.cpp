@@ -49,6 +49,8 @@ void Handler::changeRound(){
 	else{
 		round = PlayersColor::White;
 	}
+
+	dastBeMohre = false;
 }
 
 PlayersColor Handler::get_round(){
