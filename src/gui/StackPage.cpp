@@ -448,9 +448,15 @@ bool StackPage::motionVerification(){
 //	بررسی ایا امتیاز تهدید کاربر میگیره یا نه و ثبت ان
 		handler-> pChessboard-> Threat( positionExtraction( cellDestination));
 
-		std::cout << "Scores:\tplayer1 = " << handler-> player1.Score << "\tplayer2 = " << handler-> player2.Score << std::endl <<
-								 "Negativ Scores:\tplayer1 = " << handler-> player1.NegativScore << "\tplayer2 = " << handler-> player2.NegativScore << std::endl;
+		PlayersColor inverseColor = handler-> get_round ? PlayersColor::White : PlayersColor::Black;
+		if( handler-> pChessboard-> IsCheckMated( inverseColor){
+			handler-> get_round_player()-> Score += 50;
+		}
+		else if( handler-> pChessboard-> IsChecked( inverseColor){
+			handler-> get_round_player()-> Score += 10;
+		}
 
+		updateScoreBoard();
 //	change round
 		handler-> changeRound();
 
@@ -704,12 +710,6 @@ void StackPage::undoBtn_clicked(){
 	listOfMoves.pop_back();
 	
 	handler-> pChessboard-> UndoScoring( handler-> get_round_player());
-	if( handler-> pChessboard-> IsCheckMated( handler-> get_round())){
-		handler-> get_round_player()-> Score += 50;
-	}
-	else if( handler-> pChessboard-> IsChecked( handler-> get_round())){
-		handler-> get_round_player()-> Score += 10;
-	}
 
 	updateScoreBoard();
 }

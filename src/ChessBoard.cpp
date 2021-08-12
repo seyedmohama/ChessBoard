@@ -219,10 +219,10 @@ vector<pair<int, int>> ChessBoard::Threat(pair<int, int> cell)
     if (!Board[i -> first][i -> second].IsEmpty())
     {
      	FinallThreat.push_back(*i);
-			if(pStack-> handler-> get_round() == PlayersColor::White){
+			if(pStack-> handler-> get_round() != PlayersColor::White/*because before it round changed*/){
      		ThreatScoring(plr1 , *i);
 			}
-			if(pStack-> handler-> get_round() == PlayersColor::Black){
+			if(pStack-> handler-> get_round() != PlayersColor::Black){
      		ThreatScoring(plr2 , *i);
 			}
     }
