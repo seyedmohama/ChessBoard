@@ -41,6 +41,7 @@ public:
   bool IsCheckMated(PlayersColor color);
   pair<int, int> FindKing(PlayersColor color);
   vector<pair<int, int>> Threat(pair<int, int> cell);
+  void ThreatPlus();
   vector<pair<int, int>> GetFreeMovements(pair<int, int> cell);
   virtual void Move(pair<int, int> position, pair<int, int> toPosition);
 	bool verifyMove( std::string move);

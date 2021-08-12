@@ -1,5 +1,6 @@
 #include "../include/ChessBoard.h"
 #include "../include/handler.hpp"
+#include "utility.hpp"
 #include "Player.h"
 
 ChessBoard :: ChessBoard()
@@ -228,6 +229,62 @@ vector<pair<int, int>> ChessBoard::Threat(pair<int, int> cell)
     }
   }
   return FinallThreat;
+}
+
+void ChessBoard::ThreatPlus(){
+	std::vector<std::pair< int, int>> vector;
+	if(pStack-> handler-> get_round() == PlayersColor::White){
+		for(int i = 0; i <= 15; i++){
+			std::vector< std::pair< int, int>> ans;
+			if(i == numberValueInArray( pStack-> nameOfPieces, pStack-> piece)){
+				ans = GetFreeMovements( positionExtraction( pStack-> cellDestination));
+			}
+			else{
+				ans = GetFreeMovements( positionExtraction( pStack-> positionOfPieces[ pStack-> nameOfPieces[i]]));
+			}
+			for( auto j = ans.cbegin(); j != ans.cend(); j++){
+				if( !Board[j-> first][j-> second] .IsEmpty()){
+					vector.push_back(*j);
+				}
+			}
+		}
+	}
+	else{
+		for(int i = 16; i <= 31; i++){
+			std::vector< std::pair< int, int>> ans;
+			if(i == numberValueInArray( pStack-> nameOfPieces, pStack-> piece)){
+				ans = GetFreeMovements( positionExtraction( pStack-> cellDestination));
+			}
+			else{
+				ans = GetFreeMovements( positionExtraction( pStack-> positionOfPieces[ pStack-> nameOfPieces[i]]));
+			}
+			for( auto j = ans.cbegin(); j != ans.cend(); j++){
+				if( !Board[j-> first][j-> second] .IsEmpty()){
+					vector.push_back(*j);
+				}
+			}
+		}
+	}
+
+//	clear cells that repeated
+	for(auto i = vector.begin(); i != vector.end(); i++){
+		for(auto j = i+1; j != vector.end(); j++){
+			if(*i == *j){
+				j = vector.erase(j);
+				j--;
+			}
+		}
+	}
+
+//	scoring
+	for(int i = 0; i < vector.size(); i++){
+		if( pStack-> handler-> get_round() == PlayersColor::White){
+			ThreatScoring( plr1, vector[i]);
+		}
+		else{
+			ThreatScoring( plr2, vector[i]);
+		}
+	}
 }
 
 void ChessBoard::Move(pair<int, int> position, pair<int, int> toPosition)

@@ -17,4 +17,6 @@ void checkPawnInFrontHalfScore( StackPage *pStack);
 void removeWidgetFromBoard( Gtk::Grid*, std::string);
 void removeWidgetFromGrid( Gtk::Grid*, int, int);
 
+int numberValueInArray(std::array<std::string, 32>, std::string);
+
 #endif

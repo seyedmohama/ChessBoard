@@ -91,3 +91,10 @@ void removeWidgetFromGrid( Gtk::Grid *grid, int x, int y){
 	grid-> remove( *pWidget);
 }
 
+int numberValueInArray(std::array<std::string, 32> array, std::string value){
+	for(int i = 0; i < array.size(); i++){
+		if(array[i] == value){
+			return i;
+		}
+	}
+}
