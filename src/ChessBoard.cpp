@@ -203,7 +203,70 @@ std::pair<int, int> ChessBoard::RandomMove(struct Player *p) // حرکت رند�
     i = (rand()) % 8;
     j = (rand()) % 8;
   }
-  vector<pair<int, int>> cell = GetFreeMovements({i , j});
+//  vector<pair<int, int>> cell = GetFreeMovements({i , j});
+  std::vector< std::pair< int, int>> movements;
+  Chessman *pChessman = Board[i][j].ptr;
+  if( pChessman -> Type == ChessType::Pawn){
+    if( pChessman -> FirstMove){
+      movements.push_back({ i, j + 2});
+    }
+    if( j != 7){
+      movements.push_back({ i, j + 1});
+    }
+  }
+  
+  if( pChessman -> Type == ChessType::Rook){
+    for(int y = 0; y < 8; y++){
+      if(y != j){
+        movements.push_back({ i, y});
+      }
+    }
+    for(int x = 0; x < 8; x++){
+      if(x != i){
+        movements.push_back({ x, j});
+      }
+    }
+  }
+
+  if( pChessman -> Type == ChessType::Knight){
+    if (i < 7 && j < 6)
+    {
+      movements.push_back({ X + 1, Y + 2 });
+    }
+    if (i > 0 && j < 6)
+    {
+      movements.push_back({ i - 1, j + 2 });
+    }
+    if (i < 6 && j < 7)
+    {
+      movements.push_back({ i + 2, j + 1 });
+    }
+    if (i > 1 && j < 7)
+    {
+      movements.push_back({ i - 2, j + 1 });
+    }
+    if (i < 6 && j > 0)
+    {
+      movements.push_back({ i + 2, j - 1 });
+    }
+    if (i > 1 && j > 0)
+    {
+      movements.push_back({ i - 2, j - 1 });
+    }
+    if (i < 7 && j > 1)
+    {
+      movements.push_back({ i + 1, j - 2 });
+    }
+    if (i > 0 && j > 1)
+    {
+      movements.push_back({ i - 1, j - 2 });
+    }
+  }
+
+  if( pChessman -> Type == ChessType::Bishop){
+    int x = i, y = j;
+    for( ; y < 0; y--, x--){}
+  }
 
   return cell.at(1);
 
