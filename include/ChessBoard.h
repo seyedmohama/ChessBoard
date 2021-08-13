@@ -30,7 +30,7 @@ public:
   ChessBoard();
 	ChessBoard( Player*, Player*, StackPage*);
 
-  pair<int, int> RandomMove(struct Player *p); // حرکت رندوم که یک پوینتر از بازیکن میگیرد
+  pair< pair<int, int>, pair< int, int>> RandomMove(struct Player *p); // حرکت رندوم که یک پوینتر از بازیکن میگیرد
   void HitScoring(struct Player *p , pair<int, int> position);
   void ThreatScoring(struct Player *p , pair<int, int> position);
   void initBoard();

@@ -25,6 +25,7 @@ void StackPage::on_i_drag_data_get( int i, Gtk::SelectionData& selection_data){
 	cellOrigin = positionOfPieces[piece];
 
 	selection_data.set( selection_data.get_target(), "I'm Dataaaaa");
+	selectionDataTemp = &(selection_data);
 	std::cout << "drag data get" << std::endl;
 }
 
@@ -112,6 +113,9 @@ void StackPage::on_i_chessman_drag_data_recieved( int i, const Glib::RefPtr<Gdk:
 		updateScoreBoard();
 	}
 	context->drag_finish(false, false, time);
+
+	contextTemp = context;
+	timeTemp = &(time);
 }
 
 void StackPage::on_i_cell_drag_data_recieved(int i, const Glib::RefPtr<Gdk::DragContext>& context, guint time){

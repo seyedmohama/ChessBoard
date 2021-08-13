@@ -19,4 +19,6 @@ void removeWidgetFromGrid( Gtk::Grid*, int, int);
 
 int numberValueInArray(std::array<std::string, 32>, std::string);
 
+int numberPositionOfBlankCell( std::map< int, std::string>, std::string);
+
 #endif

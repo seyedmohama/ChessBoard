@@ -79,6 +79,9 @@ class StackPage : public Gtk::Stack{
 		void updateScoreBoard();
 
 		void check_15_NegativScore();
+		Gtk::SelectionData *selectionDataTemp;
+		Glib::RefPtr<Gdk::DragContext> contextTemp;
+		guint *timeTemp;
 
 		void on_0_drag_data_get(const Glib::RefPtr<Gdk::DragContext>& context, Gtk::SelectionData& selection_data, guint info, guint time);
 		void on_1_drag_data_get(const Glib::RefPtr<Gdk::DragContext>& context, Gtk::SelectionData& selection_data, guint info, guint time);

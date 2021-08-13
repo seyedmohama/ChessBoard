@@ -376,6 +376,7 @@ void StackPage::startGameBtn_clicked(){
   pBishopBtnDialogConvertPawn-> signal_clicked() .connect( sigc::mem_fun( *this, &StackPage::on_bishopBtnDialog));
   pRookBtnDialogConvertPawn-> signal_clicked() .connect( sigc::mem_fun( *this, &StackPage::on_rookBtnDialog));
 	
+	check_15_NegativScore();
 }
 
 int StackPage::cellIsEmpty( std::map< std::string, std::string> map, std::string cell){
@@ -739,4 +740,39 @@ void StackPage::updateScoreBoard(){
   pNegativScoreFirstPL->set_label( std::to_string( handler-> player1.NegativScore));
   pScoreSecondPL->set_label( std::to_string( handler-> player2.Score));
   pNegativScoreSecondPL->set_label( std::to_string( handler-> player2.NegativScore));
+}
+
+void StackPage::check_15_NegativScore(){
+//	if( handler-> get_round_player()-> NegativScore < 15){
+//		return;
+//	}
+	
+	std::pair< std::pair< int, int>, std::pair< int, int>> randomPosition = handler-> pChessboard-> RandomMove( handler-> get_round_player());
+
+	std::pair< std::pair< int, int>, std::pair< int, int>> tempPair = { { 8, 8}, { 8, 8}};
+	if( randomPosition == tempPair){
+		return;
+	}
+	
+	std::string orig = generateLocationOfChessBoard( randomPosition.first.first, randomPosition.first.second);
+	std::string dest = generateLocationOfChessBoard( randomPosition.second.first, randomPosition.second.second);
+
+	std::string nameOfPieceOrig = pieceNameByPosition( positionOfPieces, orig);
+	std::string nameOfPieceDest = pieceNameByPosition( positionOfPieces, dest);
+	int numberOfOrigPiece = numberValueInArray( nameOfPieces, nameOfPieceOrig);
+	int numberOfDest;
+	if( nameOfPieceDest != ""){
+		numberOfDest = numberValueInArray( nameOfPieces, nameOfPieceDest);
+	}
+	else{
+		numberOfDest = numberPositionOfBlankCell( positionOfBlankSquars, dest);
+	}
+
+	on_i_drag_data_get( numberOfOrigPiece, *selectionDataTemp);
+	if( nameOfPieceDest != ""){
+		on_i_chessman_drag_data_recieved( numberOfDest, contextTemp, *timeTemp);
+	}
+	else{
+		on_i_cell_drag_data_recieved( numberOfDest, contextTemp, *timeTemp);
+	}
 }

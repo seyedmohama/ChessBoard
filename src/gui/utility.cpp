@@ -98,3 +98,11 @@ int numberValueInArray(std::array<std::string, 32> array, std::string value){
 		}
 	}
 }
+
+int numberPositionOfBlankCell( std::map< int, std::string> map, std::string value){
+	for(int i = 0; i < map.size(); i++){
+		if(map[i] == value){
+			return i;
+		}
+	}
+}

@@ -193,7 +193,7 @@ void ChessBoard::UndoScoring(struct Player *p)//کسر امتیاز وقتی ک�
   p-> NegativScore += 5;
 }
 
-std::pair<int, int> ChessBoard::RandomMove(struct Player *p) // حرکت رندوم که یک پوینتر از بازیکن میگیرد
+std::pair< std::pair<int, int>, std::pair< int, int>> ChessBoard::RandomMove(struct Player *p) // حرکت رندوم که یک پوینتر از بازیکن میگیرد
 {
   srand(time(0));
   int i = (rand()) % 8;
@@ -207,15 +207,26 @@ std::pair<int, int> ChessBoard::RandomMove(struct Player *p) // حرکت رند�
   std::vector< std::pair< int, int>> movements;
   Chessman *pChessman = Board[i][j].ptr;
   if( pChessman -> Type == ChessType::Pawn){
-    if( pChessman -> FirstMove){
-      movements.push_back({ i, j + 2});
-    }
-    if( j != 7){
-      movements.push_back({ i, j + 1});
-    }
+		if( p-> ColorOfPlayer == PlayersColor::White){
+	    if( pChessman -> FirstMove){
+  	    movements.push_back({ i, j + 2});
+   		}
+    	if( j != 7){
+      	movements.push_back({ i, j + 1});
+    	}
+		}
+
+		else if( p-> ColorOfPlayer == PlayersColor::Black){
+	    if( pChessman -> FirstMove){
+  	    movements.push_back({ i, j - 2});
+   		}
+    	if( j != 0){
+      	movements.push_back({ i, j - 1});
+    	}
+		}
   }
   
-  if( pChessman -> Type == ChessType::Rook){
+  else if( pChessman -> Type == ChessType::Rook){
     for(int y = 0; y < 8; y++){
       if(y != j){
         movements.push_back({ i, y});
@@ -228,10 +239,10 @@ std::pair<int, int> ChessBoard::RandomMove(struct Player *p) // حرکت رند�
     }
   }
 
-  if( pChessman -> Type == ChessType::Knight){
+  else if( pChessman -> Type == ChessType::Knight){
     if (i < 7 && j < 6)
     {
-      movements.push_back({ X + 1, Y + 2 });
+      movements.push_back({ i + 1, j + 2 });
     }
     if (i > 0 && j < 6)
     {
@@ -263,13 +274,76 @@ std::pair<int, int> ChessBoard::RandomMove(struct Player *p) // حرکت رند�
     }
   }
 
-  if( pChessman -> Type == ChessType::Bishop){
+  else if( pChessman -> Type == ChessType::Bishop){
     int x = i, y = j;
+
     for( ; y < 0; y--, x--){}
+		for( ; x <= 7 && y <= 7; x++, y++){
+			if( x != i && y != j){
+				movements.push_back({ x, y});
+			}
+		}
+    for(x = i, y = j ; y < 0; y--, x++){}
+		for( ; x >= 0 && y <= 7; x--, y++){
+			if( x != i && y != j){
+				movements.push_back({ x, y});
+			}
+		}
   }
 
-  return cell.at(1);
+  else if( pChessman -> Type == ChessType::Queen){
+    int x = i, y = j;
+    for( ; y < 0; y--, x--){}
+		for( ; x <= 7 && y <= 7; x++, y++){
+			if( x != i && y != j){
+				movements.push_back({ x, y});
+			}
+		}
 
+    for( x = i, y = j; y < 0; y--, x++){}
+		for( ; x >= 0 && y <= 7; x--, y++){
+			if( x != i && y != j){
+				movements.push_back({ x, y});
+			}
+		}
+
+    for( y = 0; y < 8; y++){
+      if(y != j){
+        movements.push_back({ i, y});
+      }
+    }
+    for(x = 0; x < 8; x++){
+      if(x != i){
+        movements.push_back({ x, j});
+      }
+    }
+	}
+
+  else if( pChessman -> Type == ChessType::King){
+		if ( i > 0){
+			movements.push_back({ i - 1, j });
+		}
+		if ( i < 7){
+  		movements.push_back({ i + 1, j });
+		}
+		if ( j > 0){
+  		movements.push_back({ i, j - 1 });
+		} 
+		if ( j < 7){
+  		movements.push_back({ i, j + 1 });
+		}
+	}
+
+	int randomNumber = (rand()) % (int)(movements.size());
+
+	auto correctMovements = GetFreeMovements({ i, j});
+	for( auto it = correctMovements.cbegin(); it != correctMovements.cend(); it++){
+		if( *it == movements.at( randomNumber) ){
+			return { { i, j}, movements.at( randomNumber)};
+		}
+	}
+
+	return { {8, 8}, {8, 8}};
 }
 
 vector<pair<int, int>> ChessBoard::Threat(pair<int, int> cell)
