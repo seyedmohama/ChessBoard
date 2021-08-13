@@ -452,9 +452,9 @@ bool StackPage::motionVerification(){
 //	امتیاز نیمه دوم سرباز
 		checkPawnInFrontHalfScore( this);
 //	بررسی ایا امتیاز تهدید کاربر میگیره یا نه و ثبت ان
-		//handler-> pChessboard-> Threat( positionExtraction( cellDestination));
+		handler-> pChessboard-> Threat( positionExtraction( cellDestination));
 		//	امتیاز تهدید (اختیاری)
-		handler-> pChessboard-> ThreatPlus();
+		//handler-> pChessboard-> ThreatPlus(); 
 
 		PlayersColor inverseColor = (int)(handler-> get_round()) ? PlayersColor::White : PlayersColor::Black;
 		std::cout << "round: " << (int)(inverseColor) << std::endl;
@@ -566,10 +566,19 @@ void StackPage::doualMoveBtn_clicked(){
 
 void StackPage::undoBtn_clicked(){
 	handler-> changeRound();
+	if( listOfMoves.size() == 0){
+		Gtk::MessageDialog dialog( "اشتباه داری میزنی!", false, Gtk::MESSAGE_WARNING, Gtk::BUTTONS_CLOSE);
+		std::string detailMessage = "دکمه undo برای این است که وقتی حرکتی انجام دادید ان را بزنید تا حرکت شما برگردانده شود!\nولی شما هنوز هیچ حرکتی انجام نداده اید!";
+		dialog.set_secondary_text(detailMessage);
+		dialog.run();
+		handler->changeRound();
+
+		return;
+	}
 	auto it = listOfMoves.cend();
 	it--;
 
-	if( (*it)[3] == 'x'){
+	if( (*it)[3] == 'x'){ //	if last move is attack
 		if(handler-> get_round() == PlayersColor::White){
 		//	remove image chessman on buttom grid removed pieces
 			removeWidgetFromGrid( pRemovedPiecesGrid, numberBlackPiecesRemoved, 2);
@@ -703,7 +712,7 @@ void StackPage::undoBtn_clicked(){
 
 		}
 	}
-	else{//	if movement is not an attack move
+	else{//	if last movement is not an attack move
 		pBoardGame-> remove( *pointerPiece);
 		for(auto positionOfBlankCellIt = positionOfBlankSquars.cbegin(); positionOfBlankCellIt != positionOfBlankSquars.cend(); positionOfBlankCellIt++){
 			if((*positionOfBlankCellIt).second == cellOrigin){
