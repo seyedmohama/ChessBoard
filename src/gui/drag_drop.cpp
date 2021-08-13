@@ -24,11 +24,116 @@ void StackPage::on_i_drag_data_get( int i, Gtk::SelectionData& selection_data){
 	pointerPiece = pieces[i];
 	cellOrigin = positionOfPieces[piece];
 
+	std::cout << "on_i_drag_data_get  27" << std::endl;
 	selection_data.set( selection_data.get_target(), "I'm Dataaaaa");
-	selectionDataTemp = &(selection_data);
+	std::cout << "drag data get" << std::endl;
+}
+void StackPage::on_i_drag_data_get( int i){
+//	Check periority round. White or Black??
+	if( 15 >= i /*White chessman*/ && handler->get_round() != PlayersColor::White ){
+		Gtk::MessageDialog dialog( "نوبت تو نیست!!", false, Gtk::MESSAGE_WARNING, Gtk::BUTTONS_CLOSE);
+		dialog.set_secondary_text( "الان نوبت مهره سیاه هست !!!!!!!!!!!!\tبی ادب");
+		dialog.run();
+		return;
+	}
+	if( 16 <= i /*Black chessman*/ && handler->get_round() != PlayersColor::Black ){
+		Gtk::MessageDialog dialog( "نوبت تو نیست!!", false, Gtk::MESSAGE_WARNING, Gtk::BUTTONS_CLOSE);
+		dialog.set_secondary_text( "الان نوبت مهره سفید هست !!!!!!!!!!!!\tبی ادب");
+		dialog.run();
+		return;
+	}
+
+	piece = nameOfPieces[i];
+	pointerPiece = pieces[i];
+	cellOrigin = positionOfPieces[piece];
+
 	std::cout << "drag data get" << std::endl;
 }
 
+void StackPage::on_i_chessman_drag_data_recieved( int i){
+	std::string pieceNameDest = nameOfPieces[i];
+	cellDestination = positionOfPieces[pieceNameDest];
+	if(motionVerification()){
+
+		numberNewBlankSquars++;
+		positionOfBlankSquars[numberNewBlankSquars + 32] = positionOfPieces[piece];
+
+		pBoardGame->remove(*pointerPiece);
+		pBoardGame->remove(*(pieces[i]));
+	
+		if( i <= 15){
+			//	move piece to removed pices list
+			Gtk::Widget * pWidget = nullptr;
+			pWidget = pRemovedPiecesGrid-> get_child_at( numberWhitePiecesRemoved, 0);
+	
+			if(pWidget == nullptr){
+				std::cerr << "Can't connect to widget on removedPiecesGrid [" << numberBlackPiecesRemoved << ",2]" << std::endl;
+				return;
+			}
+			pRemovedPiecesGrid-> remove( *pWidget);
+
+			m_refGlade-> get_widget( nameOfPieces[ i], pImageTemp);
+			pRemovedPiecesGrid-> attach( *pImageTemp, numberWhitePiecesRemoved, 0);
+			numberWhitePiecesRemoved++;
+		}
+		else if( i >= 16){
+			//	move piece to removed pices list
+			Gtk::Widget * pWidget = nullptr;
+			pWidget = pRemovedPiecesGrid-> get_child_at( numberBlackPiecesRemoved, 2);
+
+			if(pWidget == nullptr){
+				std::cerr << "Can't connect to widget on removedPiecesGrid [" << numberBlackPiecesRemoved << ",2]" << std::endl;
+				return;
+			}
+			pRemovedPiecesGrid-> remove( *pWidget);
+	
+			m_refGlade-> get_widget( nameOfPieces[ i], pImageTemp);
+			pRemovedPiecesGrid-> attach( *pImageTemp, numberBlackPiecesRemoved, 2);
+			numberBlackPiecesRemoved++;
+		}
+
+		pBoardGame->attach(*(pointerPiece), gridPositionExtraction(positionOfPieces[pieceNameDest]).first, gridPositionExtraction(positionOfPieces[pieceNameDest]).second);
+
+		pBoardGame->attach(*(blankSquars[numberNewBlankSquars + 32]), gridPositionExtraction(positionOfPieces[piece]).first, gridPositionExtraction(positionOfPieces[piece]).second);
+
+		positionOfPieces[pieceNameDest] = "removed";
+		positionOfPieces[piece] = cellDestination;
+
+//	if pawn go to a8,b8,c8,d8,....
+		if(piece[1] == 'p'){
+			Gtk::Widget *pImageBishop, *pImageRook, *pImageQueen, *pImageKnight;
+
+			if(piece[0] == 'w' && cellDestination[1] == '8'){
+				m_refGlade-> get_widget("wbDialog", pImageBishop);
+				m_refGlade-> get_widget("wrDialog", pImageRook);
+				m_refGlade-> get_widget("wqDialog", pImageQueen);
+				m_refGlade-> get_widget("wnDialog", pImageKnight);
+
+				pQueenBtnDialogConvertPawn-> set_image( *pImageQueen);
+				pKnightBtnDialogConvertPawn-> set_image( *pImageRook);
+				pBishopBtnDialogConvertPawn-> set_image( *pImageQueen);
+				pRookBtnDialogConvertPawn-> set_image( *pImageKnight);
+
+				pDialogConvertPawn-> run();
+			}
+			if(piece[0] == 'b' && cellDestination[1] == '1'){
+				m_refGlade-> get_widget("bbDialog", pImageBishop);
+				m_refGlade-> get_widget("brDialog", pImageRook);
+				m_refGlade-> get_widget("bqDialog", pImageQueen);
+				m_refGlade-> get_widget("bnDialog", pImageKnight);
+
+				pQueenBtnDialogConvertPawn-> set_image( *pImageQueen);
+				pKnightBtnDialogConvertPawn-> set_image( *pImageRook);
+				pBishopBtnDialogConvertPawn-> set_image( *pImageQueen);
+				pRookBtnDialogConvertPawn-> set_image( *pImageKnight);
+
+				pDialogConvertPawn-> run();
+			}
+		}
+
+		updateScoreBoard();
+	}
+}
 void StackPage::on_i_chessman_drag_data_recieved( int i, const Glib::RefPtr<Gdk::DragContext>& context, guint time){
 	std::string pieceNameDest = nameOfPieces[i];
 	cellDestination = positionOfPieces[pieceNameDest];
@@ -113,12 +218,10 @@ void StackPage::on_i_chessman_drag_data_recieved( int i, const Glib::RefPtr<Gdk:
 		updateScoreBoard();
 	}
 	context->drag_finish(false, false, time);
-
-	contextTemp = context;
-	timeTemp = &(time);
 }
 
 void StackPage::on_i_cell_drag_data_recieved(int i, const Glib::RefPtr<Gdk::DragContext>& context, guint time){
+	std::cout << "\n////\ton_i_cell_drag_data_recieved start" << std::endl;
 	cellDestination = positionOfBlankSquars[i];
 	std::cout << "cell destination : " << cellDestination << std::endl;
 	if(motionVerification()){
@@ -162,9 +265,57 @@ void StackPage::on_i_cell_drag_data_recieved(int i, const Glib::RefPtr<Gdk::Drag
 		updateScoreBoard();
 	}
 	context->drag_finish(false, false, time);
+
+	check_15_NegativScore();
 }
 
 
+void StackPage::on_i_cell_drag_data_recieved(int i){
+		std::cout << "\n////\ton_i_cell_drag_data_recieved start" << std::endl;
+	cellDestination = positionOfBlankSquars[i];
+	std::cout << "cell destination : " << cellDestination << std::endl;
+	if(motionVerification()){
+		pBoardGame->remove(*pointerPiece);
+		pBoardGame->remove(*(blankSquars[i]));
+		
+		pBoardGame->attach(*(pointerPiece), gridPositionExtraction(positionOfBlankSquars[i]).first, gridPositionExtraction(positionOfBlankSquars[i]).second);
+		pBoardGame->attach(*(blankSquars[i]), gridPositionExtraction(positionOfPieces[piece]).first, gridPositionExtraction(positionOfPieces[piece]).second);
+
+		positionOfBlankSquars[i] = positionOfPieces[piece];
+		positionOfPieces[piece] = cellDestination;
+
+//	if pawn go to a8,b8,c8,d8,....
+		if(piece[1] == 'p'){
+			if(piece[0] == 'w' && cellDestination[1] == '8'){
+				m_refGlade-> get_widget( "whiteQueenImgDialog", pWidget[0]);	//|
+				pQueenBtnDialogConvertPawn-> property_image() = pWidget[0];	  //|
+				m_refGlade-> get_widget( "whiteKnightImgDialog", pWidget[1]); //|
+				pKnightBtnDialogConvertPawn-> property_image() = pWidget[1];	//|=>	set color images
+				m_refGlade-> get_widget( "whiteBishopImgDialog", pWidget[2]); //|
+				pBishopBtnDialogConvertPawn-> property_image() = pWidget[2];	//|
+				m_refGlade-> get_widget( "whiteRookImgDialog", pWidget[3]); 	//|
+				pRookBtnDialogConvertPawn-> property_image() = pWidget[3];		//|
+				
+				pDialogConvertPawn-> run();
+			}
+			else if(piece[0] == 'b' && cellDestination[1] == '1'){
+				m_refGlade-> get_widget( "blackQueenImgDialog", pWidget[0]);	//|
+				pQueenBtnDialogConvertPawn-> property_image() = pWidget[0];	  //|
+				m_refGlade-> get_widget( "blackKnightImgDialog", pWidget[1]); //|
+				pKnightBtnDialogConvertPawn-> property_image() = pWidget[1];	//|=>	set color images
+				m_refGlade-> get_widget( "blackBishopImgDialog", pWidget[2]); //|
+				pBishopBtnDialogConvertPawn-> property_image() = pWidget[2];	//|
+				m_refGlade-> get_widget( "blackRookImgDialog", pWidget[3]); 	//|
+				pRookBtnDialogConvertPawn-> property_image() = pWidget[3];		//|
+				
+				pDialogConvertPawn-> run();
+			}
+		}
+
+		updateScoreBoard();
+	}
+
+}
 
 void StackPage::on_0_drag_data_get(const Glib::RefPtr<Gdk::DragContext>& context, Gtk::SelectionData& selection_data, guint info, guint time){
 	on_i_drag_data_get( 0, selection_data);

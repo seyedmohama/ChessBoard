@@ -1,4 +1,5 @@
 #include "StackPage.hpp"
+#include "Cell.h"
 #include "utility.hpp"
 #include <string>
 #include <vector>
@@ -376,7 +377,6 @@ void StackPage::startGameBtn_clicked(){
   pBishopBtnDialogConvertPawn-> signal_clicked() .connect( sigc::mem_fun( *this, &StackPage::on_bishopBtnDialog));
   pRookBtnDialogConvertPawn-> signal_clicked() .connect( sigc::mem_fun( *this, &StackPage::on_rookBtnDialog));
 	
-	check_15_NegativScore();
 }
 
 int StackPage::cellIsEmpty( std::map< std::string, std::string> map, std::string cell){
@@ -714,6 +714,14 @@ void StackPage::undoBtn_clicked(){
 		}
 	}
 	else{//	if last movement is not an attack move
+		//	move chessman to before location (in Logic)
+		handler-> pChessboard-> Move( positionExtraction( cellDestination), positionExtraction( cellOrigin));
+
+		//	move chessman to before locain (in GUI)
+		if( piece[1] == 'p'){
+			Cell **Board = handler-> pChessboard-> GetBoard();
+			Board[ positionExtraction( cellOrigin).first][ positionExtraction( cellOrigin).second].ptr-> FirstMove = true;
+		}
 		pBoardGame-> remove( *pointerPiece);
 		for(auto positionOfBlankCellIt = positionOfBlankSquars.cbegin(); positionOfBlankCellIt != positionOfBlankSquars.cend(); positionOfBlankCellIt++){
 			if((*positionOfBlankCellIt).second == cellOrigin){
@@ -743,9 +751,13 @@ void StackPage::updateScoreBoard(){
 }
 
 void StackPage::check_15_NegativScore(){
-//	if( handler-> get_round_player()-> NegativScore < 15){
-//		return;
-//	}
+	std::cout << "\nNegativScore " << (int)(handler-> get_round_player()-> ColorOfPlayer) << " : " << handler-> get_round_player()-> NegativScore << std::endl;
+	if( handler-> get_round_player()-> NegativScore < 2){
+		std::cout << "NegativScore < 2" << std::endl;
+		return;
+	}
+	std::cout << "\n>>>>>>>>>>>>>>>>>>\tcheck_15_NegativScore start" << std::endl;
+	std::cout << "NegativScore >= 2" << std::endl;
 	
 	std::pair< std::pair< int, int>, std::pair< int, int>> randomPosition = handler-> pChessboard-> RandomMove( handler-> get_round_player());
 
@@ -768,11 +780,16 @@ void StackPage::check_15_NegativScore(){
 		numberOfDest = numberPositionOfBlankCell( positionOfBlankSquars, dest);
 	}
 
-	on_i_drag_data_get( numberOfOrigPiece, *selectionDataTemp);
+	std::cout << "\n>>>>>>>>\tbefore drag data get" << std::endl;
+	on_i_drag_data_get( numberOfOrigPiece);
 	if( nameOfPieceDest != ""){
-		on_i_chessman_drag_data_recieved( numberOfDest, contextTemp, *timeTemp);
+		std::cout << "\n>>>>>>>>\tbefore chessman drag data recieved" << std::endl;
+		on_i_chessman_drag_data_recieved( numberOfDest);
 	}
 	else{
-		on_i_cell_drag_data_recieved( numberOfDest, contextTemp, *timeTemp);
+		std::cout << "\n>>>>>>>>\tbefore cell drag data recieved" << std::endl;
+		on_i_cell_drag_data_recieved( numberOfDest);
 	}
+
+	handler-> get_round_player()-> NegativScore = 0;
 }

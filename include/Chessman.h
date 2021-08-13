@@ -9,11 +9,11 @@ enum class PlayersColor;
 enum class ChessType
 {
     Bishop = 0,
-    King,
-    Knight,
-    Pawn,
-    Queen,
-    Rook
+    King = 1,
+    Knight = 2,
+    Pawn = 3,
+    Queen = 4,
+    Rook = 5
 };
 
 

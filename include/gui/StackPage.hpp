@@ -79,9 +79,6 @@ class StackPage : public Gtk::Stack{
 		void updateScoreBoard();
 
 		void check_15_NegativScore();
-		Gtk::SelectionData *selectionDataTemp;
-		Glib::RefPtr<Gdk::DragContext> contextTemp;
-		guint *timeTemp;
 
 		void on_0_drag_data_get(const Glib::RefPtr<Gdk::DragContext>& context, Gtk::SelectionData& selection_data, guint info, guint time);
 		void on_1_drag_data_get(const Glib::RefPtr<Gdk::DragContext>& context, Gtk::SelectionData& selection_data, guint info, guint time);
@@ -222,7 +219,10 @@ class StackPage : public Gtk::Stack{
 		void on_i_drag_data_get( int, Gtk::SelectionData&);
 		void on_i_cell_drag_data_recieved( int, const Glib::RefPtr<Gdk::DragContext>& , guint);
 		void on_i_chessman_drag_data_recieved( int, const Glib::RefPtr<Gdk::DragContext>& , guint);
-		
+
+		void on_i_cell_drag_data_recieved( int)
+		void on_i_chessman_drag_data_recieved( int)
+		void on_i_drag_data_get( int);
 };
 
 #endif
