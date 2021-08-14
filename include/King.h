@@ -1,3 +1,5 @@
+#ifndef KING
+#define KING
 
 #include "Chessman.h"
 
@@ -10,3 +12,4 @@ public:
   virtual std::vector<std::pair<int, int>> GetMovements(Cell** Board);
 
 };
+#endif

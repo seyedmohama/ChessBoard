@@ -1,4 +1,7 @@
 #pragma once
+#ifndef QUEEN
+#define QUEEN
+
 #include "Chessman.h"
 
 enum class PlayersColor;
@@ -12,3 +15,5 @@ public:
   Queen(int, int, PlayersColor);
   virtual std::vector<std::pair<int, int>> GetMovements(Cell** Board);
 };
+
+#endif
