@@ -1,4 +1,7 @@
 #pragma once
+#ifndef CHESSBOARD
+#define CHESSBOARD
+
 #include <iostream>
 #include <time.h>
 #include <random>
@@ -46,3 +49,4 @@ public:
   virtual void Move(pair<int, int> position, pair<int, int> toPosition);
 	bool verifyMove( std::string move);
 };
+ #endif

@@ -6,15 +6,16 @@
 #include <string>
 #include "StackPage.hpp"
 
-class MainWindow : public Gtk::Window{
-	public:
-		MainWindow(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& refGlade);
-		virtual ~MainWindow();
-	protected:
-		Glib::RefPtr<Gtk::Builder> m_refGlade;
-    StackPage *pStackPage;
-    Gtk::Button *pExitBtn, *pGameBtn, *pStartGameBtn;
+class MainWindow : public Gtk::Window
+{
+public:
+	MainWindow(BaseObjectType *cobject, const Glib::RefPtr<Gtk::Builder> &refGlade);
+	virtual ~MainWindow();
 
+protected:
+	Glib::RefPtr<Gtk::Builder> m_refGlade;
+	StackPage *pStackPage;
+	Gtk::Button *pExitBtn, *pGameBtn, *pStartGameBtn;
 };
 
 #endif

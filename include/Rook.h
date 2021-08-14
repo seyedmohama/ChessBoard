@@ -1,4 +1,7 @@
 #pragma once
+#ifndef ROOK
+#define ROOK
+
 #include "Chessman.h"
 
 enum class PlayersColor;
@@ -9,3 +12,5 @@ public:
   Rook(int, int, PlayersColor);
   virtual std::vector<std::pair<int, int>> GetMovements(Cell** Board);
 };
+
+#endif
