@@ -11,17 +11,33 @@ void StackPage::on_i_drag_data_get(int i, Gtk::SelectionData &selection_data)
 	//	Check periority round. White or Black??
 	if (15 >= i /*White chessman*/ && handler->get_round() != PlayersColor::White)
 	{
-		Gtk::MessageDialog dialog("نوبت تو نیست!!", false, Gtk::MESSAGE_WARNING, Gtk::BUTTONS_CLOSE);
-		dialog.set_secondary_text("الان نوبت مهره سیاه هست !!!!!!!!!!!!\tبی ادب");
-		dialog.run();
-		return;
+		if( language == Language::Persian){
+			Gtk::MessageDialog dialog("نوبت تو نیست!!", false, Gtk::MESSAGE_WARNING, Gtk::BUTTONS_CLOSE);
+			dialog.set_secondary_text("الان نوبت مهره سیاه هست !!!!!!!!!!!!\tبی ادب");
+			dialog.run();
+			return;
+		}
+		if( language == Language::English){
+			Gtk::MessageDialog dialog("It is not your round!!", false, Gtk::MESSAGE_WARNING, Gtk::BUTTONS_CLOSE);
+			dialog.set_secondary_text("Now it is the round of black");
+			dialog.run();
+			return;
+		}
 	}
 	if (16 <= i /*Black chessman*/ && handler->get_round() != PlayersColor::Black)
 	{
-		Gtk::MessageDialog dialog("نوبت تو نیست!!", false, Gtk::MESSAGE_WARNING, Gtk::BUTTONS_CLOSE);
-		dialog.set_secondary_text("الان نوبت مهره سفید هست !!!!!!!!!!!!\tبی ادب");
-		dialog.run();
-		return;
+		if( language == Language::Persian){
+			Gtk::MessageDialog dialog("نوبت تو نیست!!", false, Gtk::MESSAGE_WARNING, Gtk::BUTTONS_CLOSE);
+			dialog.set_secondary_text("الان نوبت مهره سفید هست !!!!!!!!!!!!\tبی ادب");
+			dialog.run();
+			return;
+		}
+		if( language == Language::English){
+			Gtk::MessageDialog dialog("It is not your round!!", false, Gtk::MESSAGE_WARNING, Gtk::BUTTONS_CLOSE);
+			dialog.set_secondary_text("Now it is the round of white");
+			dialog.run();
+			return;
+		}
 	}
 
 	piece = nameOfPieces[i];
