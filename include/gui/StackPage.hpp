@@ -13,10 +13,13 @@
 #include <gtkmm/widget.h>
 #include <gtkmm/separator.h>
 #include <gtkmm/messagedialog.h>
+#include <gtkmm/comboboxtext.h>
 #include <map>
 #include <utility>
 
 class Handler;
+
+enum class Language { Persian = 0, English = 1};
 class StackPage : public Gtk::Stack{
 	public:
 		friend class ChessBoard;
@@ -28,14 +31,18 @@ class StackPage : public Gtk::Stack{
 		std::map < std::string, std::string> positionOfPieces;
 		std::string cellOrigin, piece, cellDestination;
 	private:
-		Gtk::Button *pGameBtn, *pExitBtn, *pSettingBtn, *pStartGameBtn, *pExitBtnStack2, *pReloadBtnStack2, *pDoualMoveBtn, *pUndoBtn;
+		Gtk::Button *pGameBtn, *pExitBtn, *pSettingBtnPage0, *pStartGameBtn, *pExitBtnStack2, *pReloadBtnStack2, *pDoualMoveBtn, *pUndoBtn, *pBackBtnPage3, *pExitBtnPage0, *pSettingBtnPage2;
 		Gtk::Entry *pGameNameEnt, *pPlayerFirstNameEnt, *pPlayerSecondNameEnt;
 		Handler *handler ;
 		Gtk::Grid *pBoardGame, *pRemovedPiecesGrid;
 		Gtk::Overlay *pGameBoardOverlay;
 		Gtk::Image *pGameBoardImage, *pWNLImg, *pBRLImg, *pImageTemp;
-		Gtk::Label *pGameNameLabel, *pFirstPLNameScoreLabel, *pSecondPLNameScoreLabel, *pFirstPLNameNegativScoreLabel, *pSecondPLNameNegativScoreLabel, *pScoreFirstPL, *pNegativScoreFirstPL, *pScoreSecondPL, *pNegativScoreSecondPL;
+		Gtk::Label *pGameNameLabel, *pFirstPLNameScoreLabel, *pSecondPLNameScoreLabel, *pFirstPLNameNegativScoreLabel, *pSecondPLNameNegativScoreLabel, *pScoreFirstPL, *pNegativScoreFirstPL, *pScoreSecondPL, *pNegativScoreSecondPL, *pTitleLabelPage0, *pGameNameLabelPage1, *pPlayer1NameLabelPage1, *pPlayer2NameLabelPage1, *pGameNameLabelPage2, *pScoresLabelPage2;
 		Gtk::Separator *pSeparators[10];
+		
+		Language language;
+		Gtk::ComboBoxText *pLanguageComboBox;
+		void on_languageComboBox_changed();
 
 		Glib::RefPtr<Gtk::Builder> m_refGlade;
 

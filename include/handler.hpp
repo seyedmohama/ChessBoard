@@ -34,7 +34,6 @@ class Handler{
 		Player player1, player2;
 
 		bool dastBeMohre = false;
-
 	private:
 		std::string playerFirstName;
 		std::string playerSecondName;

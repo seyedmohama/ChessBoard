@@ -10,7 +10,7 @@ StackPage::StackPage(BaseObjectType *cobject, const Glib::RefPtr<Gtk::Builder>& 
 Gtk::Stack(cobject),
 pGameBtn(nullptr),
 pExitBtn(nullptr),
-pSettingBtn(nullptr),
+pSettingBtnPage0(nullptr),
 pStartGameBtn(nullptr),
 handler(nullptr),
 pBoardGame(nullptr),
@@ -21,7 +21,7 @@ pScoreSecondPL(nullptr),
 pNegativScoreSecondPL(nullptr),
 m_refGlade(refGlade){
   m_refGlade->get_widget("gameBtnPage0", pGameBtn);
-  m_refGlade->get_widget("settingBtnPage0", pSettingBtn);
+  m_refGlade->get_widget("settingBtnPage0", pSettingBtnPage0);
 	m_refGlade->get_widget("startGameBtnID", pStartGameBtn);
 	m_refGlade->get_widget("exitBtnStack2", pExitBtnStack2);
 	m_refGlade->get_widget("boardGameID", pBoardGame);
@@ -36,6 +36,16 @@ m_refGlade(refGlade){
 	m_refGlade-> get_widget( "dialogRookBtn", pRookBtnDialogConvertPawn);
 	m_refGlade-> get_widget( "doualMoveBtn", pDoualMoveBtn);
 	m_refGlade-> get_widget( "undoBtn", pUndoBtn);
+	m_refGlade-> get_widget( "languageComboBox", pLanguageComboBox);
+	m_refGlade-> get_widget( "backBtnPage3", pBackBtnPage3);
+	m_refGlade-> get_widget( "titleLabelPage0", pTitleLabelPage0);
+	m_refGlade-> get_widget( "exitBtnPage0", pExitBtnPage0);
+	m_refGlade-> get_widget( "gameNameLabelPage1", pGameNameLabelPage1);
+	m_refGlade-> get_widget( "player1NameLabelPage1", pPlayer1NameLabelPage1);
+	m_refGlade-> get_widget( "player2NameLabelPage1", pPlayer2NameLabelPage1);
+	m_refGlade-> get_widget( "gameNameLabelPage2", pGameNameLabelPage2);
+	m_refGlade-> get_widget( "scoresLabelPage2", pScoresLabelPage2);
+	m_refGlade-> get_widget( "settingBtnPage2", pSettingBtnPage2);
 
 	nameOfPieces[0] = "wrl";
  	nameOfPieces[1] = "wnl";
@@ -78,14 +88,12 @@ m_refGlade(refGlade){
 
 	pGameBoardOverlay->add_overlay(*pBoardGame);
 
-  pGameBtn->signal_clicked().connect(sigc::bind(sigc::mem_fun(*this, &StackPage::set_visible_child), "start_game_page", Gtk::STACK_TRANSITION_TYPE_NONE));
+	  pGameBtn->signal_clicked().connect(sigc::bind(sigc::mem_fun(*this, &StackPage::set_visible_child), "start_game_page", Gtk::STACK_TRANSITION_TYPE_NONE));
+
 	
 	pStartGameBtn->signal_clicked().connect(sigc::mem_fun(*this,&StackPage::startGameBtn_clicked));
 
 	pExitBtnStack2-> signal_clicked() .connect( sigc::mem_fun( *this, &StackPage::exitBtnStack2_clicked));
-
-	m_refGlade->get_widget( "reloadBtnStack2", pReloadBtnStack2);
-	pReloadBtnStack2-> signal_clicked() .connect( sigc::mem_fun( *this, &StackPage::reloadBtnStack2_clicked));
 
 	//	connect images blank squars on UI file to program code and set target to drag&drop.
 	std::vector<Gtk::TargetEntry>	target;
@@ -101,6 +109,12 @@ m_refGlade(refGlade){
 		pieces[i]->drag_source_set(target);
 		pieces[i]->drag_dest_set(target);
 	}
+
+	//	combo box for change language of GUI
+	pSettingBtnPage0-> signal_clicked().connect( sigc::bind( sigc::mem_fun( *this, &StackPage::set_visible_child), "settingPage", Gtk::STACK_TRANSITION_TYPE_NONE));
+	pLanguageComboBox-> signal_changed() .connect( sigc::mem_fun( *this, &StackPage::on_languageComboBox_changed));
+	//	back button on setting page
+	pBackBtnPage3-> signal_clicked() .connect( sigc::bind( sigc::mem_fun( *this, &StackPage::set_visible_child), "wellcome_page", Gtk::STACK_TRANSITION_TYPE_NONE));
 
 }
 
@@ -153,24 +167,40 @@ void StackPage::startGameBtn_clicked(){
 	std::string str = "امتیاز ";
 	str += (handler-> player1.Name);
 	str += ":";
+	if( language == Language::English){
+		str = (handler-> player1.Name);
+		str += " score:";
+	}
 	pFirstPLNameScoreLabel-> set_label(str);
 	pScoreFirstPL-> set_label( std::to_string( handler-> player1.Score));
 	
 	str = "امتیاز منفی ";
 	str += handler-> player1.Name;
 	str += ":";
+	if( language == Language::English){
+		str = (handler-> player1.Name);
+		str += " negativ score:";
+	}
 	pFirstPLNameNegativScoreLabel-> set_label(str);
 	pNegativScoreFirstPL-> set_label( std::to_string( handler-> player1.NegativScore));
 
 	str = "امتیاز ";
 	str += handler-> player2.Name;
 	str += ":";
+	if( language == Language::English){
+		str = (handler-> player2.Name);
+		str += " score:";
+	}
 	pSecondPLNameScoreLabel-> set_label(str);
 	pScoreSecondPL-> set_label( std::to_string( handler-> player2.Score));
 
 	str = "امتیاز منفی ";
 	str += handler-> player2.Name;
 	str += ":";
+	if( language == Language::English){
+		str = (handler-> player2.Name);
+		str += " negativ score:";
+	}
 	pSecondPLNameNegativScoreLabel-> set_label(str);
 	pNegativScoreSecondPL-> set_label( std::to_string( handler-> player2.NegativScore));
 
@@ -402,20 +432,31 @@ bool StackPage::motionVerification(){
 	std::cout << "move code : " << moveCode << std::endl;
 
 	if( cellIsEmpty( positionOfPieces, cellDestination) == -1/*cell destination is cell destination =))*/){
+		if( language == Language::English){
+			Gtk::MessageDialog dialog( "Chessman touch!!", false, Gtk::MESSAGE_WARNING, Gtk::BUTTONS_CLOSE);
+			std::string message = "you touch ";
+			message += chessman;
+			message += " but did not make any move, and for the first time in this round you will receive a negative score.\nMove the nut once more.";
+			dialog. set_secondary_text( message);
+			dialog. run();
+		}
+
+		if( language == Language::Persian){
 			Gtk::MessageDialog dialog( "دست به مهره!!", false, Gtk::MESSAGE_WARNING, Gtk::BUTTONS_CLOSE);
 			std::string message = "شما مهره ";
 			message += chessman;
 			message += " را برداشتید ولی هیچ حرکتی انجام ندادید و برای اولین بار در این نوبت امتیاز منفی کسب میکنید.\nیکبار دیگر مهره ای را جابجا کن.";
 			dialog. set_secondary_text( message);
 			dialog. run();
+		}
 
-			if( !handler-> dastBeMohre){
-				handler-> get_round_player()-> NegativScore += 1;
-				handler-> dastBeMohre = true;
-			}
+		if( !handler-> dastBeMohre){
+			handler-> get_round_player()-> NegativScore += 1;
+			handler-> dastBeMohre = true;
+		}
 
-			updateScoreBoard();
-			return false;
+		updateScoreBoard();
+		return false;
 	}
 
 	if( handler-> pChessboard-> verifyMove( moveCode)){
@@ -475,29 +516,41 @@ bool StackPage::motionVerification(){
 		return true;
 	}
 	else{
-		Gtk::MessageDialog dialog( "Motion warning!", false, Gtk::MESSAGE_WARNING, Gtk::BUTTONS_CLOSE);
-		std::string messageDetail = "Move ";
-		messageDetail += moveCode[0];
-		messageDetail += std::string(" from ") + cellOrigin + " to " + cellDestination + " are invalid!";
-		dialog. set_secondary_text( messageDetail);
-		dialog. run();
+		if( language == Language::English){
+			Gtk::MessageDialog dialog( "Motion warning!", false, Gtk::MESSAGE_WARNING, Gtk::BUTTONS_CLOSE);
+			std::string messageDetail = "Move ";
+			messageDetail += moveCode[0];
+			messageDetail += std::string(" from ") + cellOrigin + " to " + cellDestination + " are invalid!";
+			messageDetail += "\nYou can move this chessman to: ";
+			
+			auto movements = handler-> pChessboard-> GetFreeMovements( positionExtraction( cellOrigin));
+			for( int i = 0; i < movements.size(); i++){
+				messageDetail += generateLocationOfChessBoard( movements.at(i).first, movements.at(i).second);
+				messageDetail += " ";
+			}
+
+			dialog. set_secondary_text( messageDetail);
+			dialog. run();
+		}
+		if( language == Language::Persian){
+			Gtk::MessageDialog dialog( "حرکت اشتباه!!", false, Gtk::MESSAGE_WARNING, Gtk::BUTTONS_CLOSE);
+			std::string messageDetail = "حرکت ";
+			messageDetail += moveCode[0];
+			messageDetail += std::string(" از ") + cellOrigin + " به " + cellDestination + " اشتباه است!!";
+			messageDetail += "\nشما میتوانید برای این مهره به مقصد های روبرو بروید: ";
+			
+			auto movements = handler-> pChessboard-> GetFreeMovements( positionExtraction( cellOrigin));
+			for( int i = 0; i < movements.size(); i++){
+				messageDetail += generateLocationOfChessBoard( movements.at(i).first, movements.at(i).second);
+				messageDetail += " ";
+			}
+
+			dialog. set_secondary_text( messageDetail);
+			dialog. run();
+		}
 	
 		return false;
 	}
-}
-
-void StackPage::reloadBtnStack2_clicked(){
-	
-	std::cout << "\npositionOfPieces :" << std::endl;
-	for(int i = 0; i < nameOfPieces.size(); i++){
-		std::cout << '\t' << nameOfPieces.at(i) << '\t' << positionOfPieces[nameOfPieces.at(i)] << std::endl;
-	}
-
-	std::cout << "positionOfBlankSquars :" << std::endl;
-	for( int i = 1; i < positionOfBlankSquars.size(); i++){
-		std::cout << "\t" << i << "\t" << positionOfBlankSquars[i] << std::endl;
-	}
-
 }
 
 void StackPage::on_queenBtnDialog(){ convertPawn( "qNew");}
@@ -797,4 +850,48 @@ void StackPage::check_15_NegativScore(){
 		on_i_cell_drag_data_recieved( numberOfDest);
 	}
 
+}
+
+void StackPage::on_languageComboBox_changed(){
+	Glib::ustring text = pLanguageComboBox-> get_active_text();
+
+	if( !(text.empty())){
+		std::cout << "\n>>>>> on_languageComboBox_changed()" << std::endl;
+		if(text == "فارسی"){
+			std::cout << "\tGUI language change to persian" << std::endl;
+			language = Language::Persian;
+
+			pBackBtnPage3-> set_label("بازگشت");
+			pTitleLabelPage0-> set_label("شطرنج پیشرفته");
+			pGameBtn-> set_label("شروع");
+			pSettingBtnPage0-> set_label("تنظیمات");
+			pExitBtnPage0-> set_label("خروج");
+			pGameNameLabelPage1-> set_label("اسم بازی");
+			pPlayer1NameLabelPage1-> set_label("بازیکن اول");
+			pPlayer2NameLabelPage1-> set_label("بازیکن دوم");
+			pGameNameLabelPage2-> set_label(":اسم بازی");
+			pScoresLabelPage2-> set_label("امتیاز ها");
+			pDoualMoveBtn-> set_label("دو حرکت");
+			pSettingBtnPage2-> set_label("تنظیمات");
+			pExitBtnStack2-> set_label("خروج");
+		}
+		if(text == "English"){
+			std::cout << "\tGUI language change to english" << std::endl;
+			language = Language::English;
+			pBackBtnPage3-> set_label("back");
+			pTitleLabelPage0-> set_label("Advance Chess");
+			pGameBtn-> set_label("Start");
+			pSettingBtnPage0-> set_label("Setting");
+			pExitBtnPage0-> set_label("Exit");
+			pGameNameLabelPage1-> set_label(":Game name");
+			pPlayer1NameLabelPage1-> set_label("Player one");
+			pPlayer2NameLabelPage1-> set_label("Player two");
+			pGameNameLabelPage2-> set_label("Game Name:");
+			pScoresLabelPage2-> set_label("Scores");
+			pDoualMoveBtn-> set_label("Double Move");
+			pSettingBtnPage2-> set_label("Setting");
+			pExitBtnStack2-> set_label("Exit");
+		}
+
+	}
 }
