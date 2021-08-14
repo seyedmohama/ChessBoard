@@ -9,7 +9,7 @@ class Cell
 public:
   Chessman *ptr = nullptr;
 
-  void SetPawn(Chessman* manptr);
+  void SetPawn(Chessman *manptr);
 
   bool IsEmpty();
 };
