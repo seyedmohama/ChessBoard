@@ -40,18 +40,30 @@ std::vector<std::pair<int, int>> King::GetMovements(Cell** Board)
   if (Y < 7 && Board[X][Y + 1].IsEmpty())
     movements.push_back({ X, Y + 1 });
 
-/*  if (X > 0 && Y > 0 && Board[X - 1][Y - 1].IsEmpty())
+  if (X > 0 && Y > 0 && !Board[X - 1][Y - 1].IsEmpty() && (Board[X - 1][Y - 1].ptr-> Color != Board[X][Y].ptr-> Color)){
+    movements.push_back({ X - 1, Y - 1});
+	}
+  if (X > 0 && Y > 0 && Board[X - 1][Y - 1].IsEmpty())
     movements.push_back({ X - 1, Y - 1});
 
+  if (X > 0 && Y < 7 && !Board[X - 1][Y + 1].IsEmpty() && (Board[X - 1][Y + 1].ptr-> Color != Board[X][Y].ptr-> Color)){
+    movements.push_back({ X - 1, Y + 1});
+	}
   if (X > 0 && Y < 7 && Board[X - 1][Y + 1].IsEmpty())
     movements.push_back({ X - 1, Y + 1});
 
+  if (X < 7 && Y < 0 && !Board[X + 1][Y + 1].IsEmpty() && (Board[X + 1][Y + 1].ptr-> Color != Board[X][Y].ptr-> Color)){
+    movements.push_back({ X + 1, Y + 1});
+	}
   if (X < 7 && Y < 7 && Board[X + 1][Y + 1].IsEmpty())
     movements.push_back({ X + 1, Y + 1});
 
+  if (X < 7 && Y > 0 && !Board[X + 1][Y - 1].IsEmpty() && (Board[X + 1][Y - 1].ptr-> Color != Board[X][Y].ptr-> Color)){
+    movements.push_back({ X + 1, Y - 1});
+	}
   if (X < 7 && Y > 0 && Board[X + 1][Y - 1].IsEmpty())
     movements.push_back({ X + 1, Y - 1});
-*/
+
 
   return movements;
 }
