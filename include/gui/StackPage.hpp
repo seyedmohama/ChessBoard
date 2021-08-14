@@ -43,7 +43,7 @@ private:
 	Gtk::Grid *pBoardGame, *pRemovedPiecesGrid;
 	Gtk::Overlay *pGameBoardOverlay;
 	Gtk::Image *pGameBoardImage, *pWNLImg, *pBRLImg, *pImageTemp;
-	Gtk::Label *pGameNameLabel, *pFirstPLNameScoreLabel, *pSecondPLNameScoreLabel, *pFirstPLNameNegativScoreLabel, *pSecondPLNameNegativScoreLabel, *pScoreFirstPL, *pNegativScoreFirstPL, *pScoreSecondPL, *pNegativScoreSecondPL, *pTitleLabelPage0, *pGameNameLabelPage1, *pPlayer1NameLabelPage1, *pPlayer2NameLabelPage1, *pGameNameLabelPage2, *pScoresLabelPage2;
+	Gtk::Label *pGameNameLabel, *pFirstPLNameScoreLabel, *pSecondPLNameScoreLabel, *pFirstPLNameNegativScoreLabel, *pSecondPLNameNegativScoreLabel, *pScoreFirstPL, *pNegativScoreFirstPL, *pScoreSecondPL, *pNegativScoreSecondPL, *pTitleLabelPage0, *pGameNameLabelPage1, *pPlayer1NameLabelPage1, *pPlayer2NameLabelPage1, *pGameNameLabelPage2, *pScoresLabelPage2, *pMessageLabelDialogConvertPawn;
 	Gtk::Separator *pSeparators[10];
 
 	Language language;

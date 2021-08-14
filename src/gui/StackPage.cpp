@@ -46,6 +46,7 @@ StackPage::StackPage(BaseObjectType *cobject, const Glib::RefPtr<Gtk::Builder> &
 	m_refGlade->get_widget("gameNameLabelPage2", pGameNameLabelPage2);
 	m_refGlade->get_widget("scoresLabelPage2", pScoresLabelPage2);
 	m_refGlade->get_widget("settingBtnPage2", pSettingBtnPage2);
+	m_refGlade->get_widget("messageLabelDialogConvertPawn", pMessageLabelDialogConvertPawn);
 
 	nameOfPieces[0] = "wrl";
 	nameOfPieces[1] = "wnl";
@@ -947,6 +948,7 @@ void StackPage::on_languageComboBox_changed()
 			pDoualMoveBtn->set_label("دو حرکت");
 			pSettingBtnPage2->set_label("تنظیمات");
 			pExitBtnStack2->set_label("خروج");
+			pMessageLabelDialogConvertPawn-> set_label("تبریک، شما موفق شدید سربازتان را به اخرین خانه برسانید\nحالا از بین گزینه های زیر یکی را برای جایگزینی سربازت انتخاب کن");
 		}
 		if (text == "English")
 		{
@@ -965,6 +967,7 @@ void StackPage::on_languageComboBox_changed()
 			pDoualMoveBtn->set_label("Double Move");
 			pSettingBtnPage2->set_label("Setting");
 			pExitBtnStack2->set_label("Exit");
+			pMessageLabelDialogConvertPawn-> set_label("Congratulations, you have managed to get your pawn to the last cell\nNow choose one of the following options to replace your pawn");
 		}
 	}
 }
