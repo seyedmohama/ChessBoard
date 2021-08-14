@@ -195,38 +195,48 @@ void ChessBoard::UndoScoring(struct Player *p)//کسر امتیاز وقتی ک�
 
 std::pair< std::pair<int, int>, std::pair< int, int>> ChessBoard::RandomMove(struct Player *p) // حرکت رندوم که یک پوینتر از بازیکن میگیرد
 {
-  std::cout << "198 on RandomMove" << std::endl;
+  std::cout << "\n>>>>>>start ChessBoard::RandomMove(struct Player*);" << std::endl;
 
   srand(time(0));
- /* int i = (rand()) % 8;
+  int i = (rand()) % 8;
   int j = (rand()) % 8;
 
-  std::cout << "204 on RandomMove first i,j : " << i << ',' << j << std::endl;
+  std::cout << "\t|-first i,j : " << i << ',' << j << std::endl;
   int asd = 0;
-  while (Board[i][j].ptr == nullptr || Board[i][j].ptr -> Color != p -> ColorOfPlayer)
-  {
-    std::cout << "asd : " << asd << std::endl;
+  while (true){
+    asd++;
+    std::cout << "\t\tcounter While : " << asd << std::endl;
+    //  if cell [i][j] is empty of is inverse color of chessman again create random number for i,j
+    std::cout << "\t\t|- Board[i][j].ptr : " << Board[i][j].ptr << std::endl;
+    if(Board[i][j].ptr != nullptr){
+      break;
+    }
+    std::cout << "\t\t|- Board[i][j].ptr -> Color : " << (int)(Board[i][j].ptr -> Color) << "\tp -> ColorOfPlayer: " << (int)(p -> ColorOfPlayer) << std::endl;
+    if((int)(Board[i][j].ptr -> Color) == (int)(p -> ColorOfPlayer)){
+      break;
+    }
+    std::cout << "\t|-debug 216" << std::endl;
+    std::cout << "\t|-Board[i][j].ptr-> Color: " << (int)(Board[i][j].ptr -> Color) << "\tp-> ColorOfPlayer: " << (int)(p -> ColorOfPlayer)  << std::endl;
     i = (rand()) % 8;
     j = (rand()) % 8;
-    std::cout << "RandomMove last i,j : " << i << ',' << j << std::endl;
-    asd++;
+    std::cout << "\t\tRandomMove last i,j : " << i << ',' << j << std::endl;
   }
-*/
-  int i = 2;
-  int j = 1;
-  std::cout << "210 on RandomMove final i,j : " << i << ',' << j << std::endl;
+
+  std::cout << "\t|-final i,j : " << i << ',' << j << std::endl;
 //  vector<pair<int, int>> cell = GetFreeMovements({i , j});
   std::vector< std::pair< int, int>> movements;
 
-  std::cout << "\t***\tbefore pChessman = Board[i][j].ptr\t***" << std::endl;
+  std::cout << "\t|-***\tbefore pChessman = Board[i][j].ptr\t***" << std::endl;
   Chessman *pChessman = Board[i][j].ptr;
-
-  std::cout << "chessType : " << (int)(pChessman-> Type) << "\tColor: " << (int)(pChessman-> Color) << std::endl;
-  if( pChessman -> Type == ChessType::Pawn){
-    std::cout << "That Pawn" << std::endl;
-		if( p-> ColorOfPlayer == PlayersColor::White){
+  Pawn *pPawn = dynamic_cast<Pawn*>(pChessman);
+  
+  std::cout << "\t|-chessType : " << (int)(Board[i][j].ptr-> Type) << "\tColor: " << (int)(Board[i][j].ptr-> Color) << std::endl;
+  if( (int)(pChessman -> Type) == 3){
+    std::cout << "\t|-That Pawn " ;
+    std::cout << "p-> ColorOfPlayer: " << (int)(p-> ColorOfPlayer) << std::endl;
+		if( (int)(p-> ColorOfPlayer) == 0){
       std::cout << "White" << std::endl;
-	    if( pChessman -> FirstMove){
+	    if( pPawn-> FirstMove){
   	    movements.push_back({ i, j + 2});
    		}
     	if( j != 7){
@@ -234,9 +244,9 @@ std::pair< std::pair<int, int>, std::pair< int, int>> ChessBoard::RandomMove(str
     	}
 		}
 
-		else if( p-> ColorOfPlayer == PlayersColor::Black){
+		if( (int)(p-> ColorOfPlayer) == 1){
       std::cout << "Black" << std::endl;
-	    if( pChessman -> FirstMove){
+	    if( pPawn-> FirstMove){
   	    movements.push_back({ i, j - 2});
    		}
     	if( j != 0){
@@ -353,14 +363,14 @@ std::pair< std::pair<int, int>, std::pair< int, int>> ChessBoard::RandomMove(str
 		}
 	}
 
-  std::cout << "movements can select" << std::endl;
+  std::cout << "\t|-movements can select" << std::endl;
   for(int i = 0; i < movements.size(); i++){
-    std::cout << movements.at(i).first << ',' << movements.at(i).second << std::endl;
+    std::cout << "\t\t"<< movements.at(i).first << ',' << movements.at(i).second << std::endl;
   }
 	int randomNumber = (rand()) % (int)(movements.size());
 
-  std::cout << "randomeNumber finall : " << randomNumber << std::endl;
-  std::cout << "movements[randomNumber] = " << movements[randomNumber].first << ',' << movements[randomNumber].second << std::endl;
+  std::cout << "\t|-randomeNumber finall : " << randomNumber << std::endl;
+  std::cout << "\t|-movements[randomNumber] = " << movements[randomNumber].first << ',' << movements[randomNumber].second << std::endl;
 	auto correctMovements = GetFreeMovements({ i, j});
 	for( auto it = correctMovements.cbegin(); it != correctMovements.cend(); it++){
 		if( *it == movements.at( randomNumber) ){

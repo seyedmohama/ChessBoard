@@ -717,11 +717,12 @@ void StackPage::undoBtn_clicked(){
 		//	move chessman to before location (in Logic)
 		handler-> pChessboard-> Move( positionExtraction( cellDestination), positionExtraction( cellOrigin));
 
-		//	move chessman to before locain (in GUI)
 		if( piece[1] == 'p'){
 			Cell **Board = handler-> pChessboard-> GetBoard();
-			Board[ positionExtraction( cellOrigin).first][ positionExtraction( cellOrigin).second].ptr-> FirstMove = true;
+			Pawn *ptr = dynamic_cast<Pawn*>(Board[ positionExtraction( cellOrigin).first][ positionExtraction( cellOrigin).second].ptr);
+			ptr-> FirstMove = true;
 		}
+		//	move chessman to before locain (in GUI)
 		pBoardGame-> remove( *pointerPiece);
 		for(auto positionOfBlankCellIt = positionOfBlankSquars.cbegin(); positionOfBlankCellIt != positionOfBlankSquars.cend(); positionOfBlankCellIt++){
 			if((*positionOfBlankCellIt).second == cellOrigin){
@@ -751,18 +752,23 @@ void StackPage::updateScoreBoard(){
 }
 
 void StackPage::check_15_NegativScore(){
-	std::cout << "\nNegativScore " << (int)(handler-> get_round_player()-> ColorOfPlayer) << " : " << handler-> get_round_player()-> NegativScore << std::endl;
-	if( handler-> get_round_player()-> NegativScore < 2){
-		std::cout << "NegativScore < 2" << std::endl;
+	std::cout << "\n\non check_15_NegativScore\n\t|NegativScore " << (int)(handler-> get_round_player()-> ColorOfPlayer) << " : " << handler-> get_round_player()-> NegativScore << std::endl;
+	if( handler-> get_round_player()-> NegativScore < 15){
+		std::cout << "NegativScore < 15" << std::endl;
 		return;
 	}
+	std::cout << "\t**\tNegativScore for player front equal zero\t" << (int)(handler-> get_round_player()-> ColorOfPlayer) << std::endl;
+	handler-> get_round_player()-> NegativScore = 0;
+	updateScoreBoard();
+
+
 	std::cout << "\n>>>>>>>>>>>>>>>>>>\tcheck_15_NegativScore start" << std::endl;
 	std::cout << "NegativScore >= 2" << std::endl;
 	
 	std::pair< std::pair< int, int>, std::pair< int, int>> randomPosition = handler-> pChessboard-> RandomMove( handler-> get_round_player());
 
 	std::pair< std::pair< int, int>, std::pair< int, int>> tempPair = { { 8, 8}, { 8, 8}};
-	if( randomPosition == tempPair){
+	if( randomPosition == tempPair){//	if movements can't run randomPosition return {{8,8},{8,8}}
 		return;
 	}
 	
@@ -791,5 +797,4 @@ void StackPage::check_15_NegativScore(){
 		on_i_cell_drag_data_recieved( numberOfDest);
 	}
 
-	handler-> get_round_player()-> NegativScore = 0;
 }

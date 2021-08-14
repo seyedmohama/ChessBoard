@@ -6,6 +6,7 @@
 #include <algorithm>
 
 void StackPage::on_i_drag_data_get( int i, Gtk::SelectionData& selection_data){
+	std::cout << "\n>>>>>>>Start StackPage::on_i_drag_data_get( int, Gtk::SelectionData&)" << std::endl;
 //	Check periority round. White or Black??
 	if( 15 >= i /*White chessman*/ && handler->get_round() != PlayersColor::White ){
 		Gtk::MessageDialog dialog( "نوبت تو نیست!!", false, Gtk::MESSAGE_WARNING, Gtk::BUTTONS_CLOSE);
@@ -24,11 +25,11 @@ void StackPage::on_i_drag_data_get( int i, Gtk::SelectionData& selection_data){
 	pointerPiece = pieces[i];
 	cellOrigin = positionOfPieces[piece];
 
-	std::cout << "on_i_drag_data_get  27" << std::endl;
 	selection_data.set( selection_data.get_target(), "I'm Dataaaaa");
-	std::cout << "drag data get" << std::endl;
+	std::cout << "\t|-Exit from StackPage::on_i_drag_data_get( int, Gtk::SelectionData&)" << std::endl;
 }
 void StackPage::on_i_drag_data_get( int i){
+	std::cout << "\n>>>>>>>Start StackPage::on_i_drag_data_get( int);" << std::endl;
 //	Check periority round. White or Black??
 	if( 15 >= i /*White chessman*/ && handler->get_round() != PlayersColor::White ){
 		Gtk::MessageDialog dialog( "نوبت تو نیست!!", false, Gtk::MESSAGE_WARNING, Gtk::BUTTONS_CLOSE);
@@ -47,10 +48,12 @@ void StackPage::on_i_drag_data_get( int i){
 	pointerPiece = pieces[i];
 	cellOrigin = positionOfPieces[piece];
 
-	std::cout << "drag data get" << std::endl;
+	std::cout << "\t|-Exit from StackPage::on_i_drag_data_get( int, Gtk::SelectionData&)" << std::endl;
 }
 
 void StackPage::on_i_chessman_drag_data_recieved( int i){
+	std::cout << "\n>>>>>>>Start StackPage::on_i_chessman_drag_data_recieved( int);" << std::endl;
+//	Check periority round. White or Black??
 	std::string pieceNameDest = nameOfPieces[i];
 	cellDestination = positionOfPieces[pieceNameDest];
 	if(motionVerification()){
@@ -67,7 +70,7 @@ void StackPage::on_i_chessman_drag_data_recieved( int i){
 			pWidget = pRemovedPiecesGrid-> get_child_at( numberWhitePiecesRemoved, 0);
 	
 			if(pWidget == nullptr){
-				std::cerr << "Can't connect to widget on removedPiecesGrid [" << numberBlackPiecesRemoved << ",2]" << std::endl;
+				std::cerr << "\t|-Can't connect to widget on removedPiecesGrid [" << numberBlackPiecesRemoved << ",2]" << std::endl;
 				return;
 			}
 			pRemovedPiecesGrid-> remove( *pWidget);
@@ -82,7 +85,7 @@ void StackPage::on_i_chessman_drag_data_recieved( int i){
 			pWidget = pRemovedPiecesGrid-> get_child_at( numberBlackPiecesRemoved, 2);
 
 			if(pWidget == nullptr){
-				std::cerr << "Can't connect to widget on removedPiecesGrid [" << numberBlackPiecesRemoved << ",2]" << std::endl;
+				std::cerr << "\t|-Can't connect to widget on removedPiecesGrid [" << numberBlackPiecesRemoved << ",2]" << std::endl;
 				return;
 			}
 			pRemovedPiecesGrid-> remove( *pWidget);
@@ -133,8 +136,11 @@ void StackPage::on_i_chessman_drag_data_recieved( int i){
 
 		updateScoreBoard();
 	}
+	std::cout << "\t|-Exit from StackPage::on_i_chessman_drag_data_recieved( int);" << std::endl;
 }
+
 void StackPage::on_i_chessman_drag_data_recieved( int i, const Glib::RefPtr<Gdk::DragContext>& context, guint time){
+	std::cout << "\n>>>>>>>Start StackPage::on_i_chessman_drag_data_recieved( int, const Glib::RefPtr<Gdk::DragContext>& context, guint time);" << std::endl;
 	std::string pieceNameDest = nameOfPieces[i];
 	cellDestination = positionOfPieces[pieceNameDest];
 	if(motionVerification()){
@@ -151,7 +157,7 @@ void StackPage::on_i_chessman_drag_data_recieved( int i, const Glib::RefPtr<Gdk:
 			pWidget = pRemovedPiecesGrid-> get_child_at( numberWhitePiecesRemoved, 0);
 	
 			if(pWidget == nullptr){
-				std::cerr << "Can't connect to widget on removedPiecesGrid [" << numberBlackPiecesRemoved << ",2]" << std::endl;
+				std::cerr << "\t|-Can't connect to widget on removedPiecesGrid [" << numberBlackPiecesRemoved << ",2]" << std::endl;
 				return;
 			}
 			pRemovedPiecesGrid-> remove( *pWidget);
@@ -166,7 +172,7 @@ void StackPage::on_i_chessman_drag_data_recieved( int i, const Glib::RefPtr<Gdk:
 			pWidget = pRemovedPiecesGrid-> get_child_at( numberBlackPiecesRemoved, 2);
 
 			if(pWidget == nullptr){
-				std::cerr << "Can't connect to widget on removedPiecesGrid [" << numberBlackPiecesRemoved << ",2]" << std::endl;
+				std::cerr << "\t|-Can't connect to widget on removedPiecesGrid [" << numberBlackPiecesRemoved << ",2]" << std::endl;
 				return;
 			}
 			pRemovedPiecesGrid-> remove( *pWidget);
@@ -218,12 +224,13 @@ void StackPage::on_i_chessman_drag_data_recieved( int i, const Glib::RefPtr<Gdk:
 		updateScoreBoard();
 	}
 	context->drag_finish(false, false, time);
+	std::cout << "\t|-Exit from StackPage::on_i_chessman_drag_data_recieved();" << std::endl;
 }
 
 void StackPage::on_i_cell_drag_data_recieved(int i, const Glib::RefPtr<Gdk::DragContext>& context, guint time){
-	std::cout << "\n////\ton_i_cell_drag_data_recieved start" << std::endl;
+	std::cout << "\n>>>>>>>Start StackPage::on_i_cell_drag_data_recieved( int, const Glib::RefPtr<Gdk::DragContext>& context, guint time);" << std::endl;
 	cellDestination = positionOfBlankSquars[i];
-	std::cout << "cell destination : " << cellDestination << std::endl;
+	std::cout << "\t|-cell destination : " << cellDestination << std::endl;
 	if(motionVerification()){
 		pBoardGame->remove(*pointerPiece);
 		pBoardGame->remove(*(blankSquars[i]));
@@ -267,13 +274,14 @@ void StackPage::on_i_cell_drag_data_recieved(int i, const Glib::RefPtr<Gdk::Drag
 	context->drag_finish(false, false, time);
 
 	check_15_NegativScore();
+	std::cout << "\t|-Exit from StackPage::on_i_cell_drag_data_recieved();" << std::endl;
 }
 
 
 void StackPage::on_i_cell_drag_data_recieved(int i){
-		std::cout << "\n////\ton_i_cell_drag_data_recieved start" << std::endl;
+	std::cout << "\n>>>>>>>Start StackPage::on_i_cell_drag_data_recieved( int);" << std::endl;
 	cellDestination = positionOfBlankSquars[i];
-	std::cout << "cell destination : " << cellDestination << std::endl;
+	std::cout << "\t|-cell destination : " << cellDestination << std::endl;
 	if(motionVerification()){
 		pBoardGame->remove(*pointerPiece);
 		pBoardGame->remove(*(blankSquars[i]));
@@ -315,6 +323,7 @@ void StackPage::on_i_cell_drag_data_recieved(int i){
 		updateScoreBoard();
 	}
 
+	std::cout << "\t|-Exit from StackPage::on_i_cell_drag_data_recieved( int);" << std::endl;
 }
 
 void StackPage::on_0_drag_data_get(const Glib::RefPtr<Gdk::DragContext>& context, Gtk::SelectionData& selection_data, guint info, guint time){

@@ -220,8 +220,8 @@ class StackPage : public Gtk::Stack{
 		void on_i_cell_drag_data_recieved( int, const Glib::RefPtr<Gdk::DragContext>& , guint);
 		void on_i_chessman_drag_data_recieved( int, const Glib::RefPtr<Gdk::DragContext>& , guint);
 
-		void on_i_cell_drag_data_recieved( int)
-		void on_i_chessman_drag_data_recieved( int)
+		void on_i_cell_drag_data_recieved( int);
+		void on_i_chessman_drag_data_recieved( int);
 		void on_i_drag_data_get( int);
 };
 
