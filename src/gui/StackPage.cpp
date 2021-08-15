@@ -91,6 +91,8 @@ StackPage::StackPage(BaseObjectType *cobject, const Glib::RefPtr<Gtk::Builder> &
 	pGameBoardOverlay->add_overlay(*pBoardGame);
 
 	pGameBtn->signal_clicked().connect(sigc::bind(sigc::mem_fun(*this, &StackPage::set_visible_child), "start_game_page", Gtk::STACK_TRANSITION_TYPE_NONE));
+	
+	pSettingBtnPage2->signal_clicked().connect(sigc::bind(sigc::mem_fun(*this, &StackPage::set_visible_child), "settingPage", Gtk::STACK_TRANSITION_TYPE_NONE));
 
 	pStartGameBtn->signal_clicked().connect(sigc::mem_fun(*this, &StackPage::startGameBtn_clicked));
 

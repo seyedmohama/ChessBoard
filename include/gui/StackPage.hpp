@@ -91,6 +91,8 @@ private:
 
 	void updateScoreBoard();
 
+	void on_settingBtnPage2();
+
 	void check_15_NegativScore();
 
 	void on_0_drag_data_get(const Glib::RefPtr<Gdk::DragContext> &context, Gtk::SelectionData &selection_data, guint info, guint time);
