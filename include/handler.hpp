@@ -25,8 +25,6 @@ public:
 
 	virtual ~Handler();
 
-	int get_numberOfWhiteConvertPawn();
-	int get_numberOfBlackConvertPawn();
 	int numberOfWhiteConvertPawn;
 	int numberOfBlackConvertPawn;
 
@@ -37,13 +35,7 @@ public:
 	bool dastBeMohre = false;
 
 private:
-	std::string playerFirstName;
-	std::string playerSecondName;
 	std::string gameName;
-	int firstPlayerScore;
-	int secondPlayerScore;
-	int firstPlayerNegativScore;
-	int secondPlayerNegativScore;
 	PlayersColor round;
 
 	StackPage *pStack;

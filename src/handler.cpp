@@ -57,13 +57,6 @@ PlayersColor Handler::get_round(){
 	return round;
 }
 
-int Handler::get_numberOfWhiteConvertPawn(){
-	return numberOfWhiteConvertPawn;
-}
-int Handler::get_numberOfBlackConvertPawn(){
-	return numberOfBlackConvertPawn;
-}
-
 Player* Handler::get_round_player(){
 	if( get_round() == PlayersColor::White ){
 		return &player1;

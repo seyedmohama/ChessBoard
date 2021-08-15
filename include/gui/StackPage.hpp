@@ -84,7 +84,6 @@ private:
 
 	void startGameBtn_clicked();
 	void exitBtnStack2_clicked();
-	void reloadBtnStack2_clicked();
 
 	void doualMoveBtn_clicked();
 	void undoBtn_clicked();
