@@ -15,6 +15,7 @@
 #include <gtkmm/messagedialog.h>
 #include <gtkmm/comboboxtext.h>
 #include <map>
+#include <fstream>
 #include <utility>
 
 class Handler;
@@ -45,6 +46,7 @@ private:
 	Gtk::Image *pGameBoardImage, *pWNLImg, *pBRLImg, *pImageTemp;
 	Gtk::Label *pGameNameLabel, *pFirstPLNameScoreLabel, *pSecondPLNameScoreLabel, *pFirstPLNameNegativScoreLabel, *pSecondPLNameNegativScoreLabel, *pScoreFirstPL, *pNegativScoreFirstPL, *pScoreSecondPL, *pNegativScoreSecondPL, *pTitleLabelPage0, *pGameNameLabelPage1, *pPlayer1NameLabelPage1, *pPlayer2NameLabelPage1, *pGameNameLabelPage2, *pScoresLabelPage2, *pMessageLabelDialogConvertPawn;
 	Gtk::Separator *pSeparators[10];
+	Gtk::Window *pWindow;
 
 	Language language;
 	Gtk::ComboBoxText *pLanguageComboBox;
@@ -63,6 +65,8 @@ private:
 	std::vector<std::string> listOfMoves;
 
 	Gtk::Widget *pointerPiece;
+
+	std::fstream file;
 
 	Gtk::Dialog *pDialogConvertPawn;
 	Gtk::Button *pQueenBtnDialogConvertPawn, *pKnightBtnDialogConvertPawn, *pBishopBtnDialogConvertPawn, *pRookBtnDialogConvertPawn;

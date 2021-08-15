@@ -1,3 +1,5 @@
+#include <sys/stat.h>//	for search a file exist or no (this library is so fast) => https://stackoverflow.com/questions/12774207/fastest-way-to-check-if-a-file-exist-using-standard-c-c11-c
+#include <fstream>
 #include "StackPage.hpp"
 #include "Cell.h"
 #include "utility.hpp"
@@ -47,6 +49,7 @@ StackPage::StackPage(BaseObjectType *cobject, const Glib::RefPtr<Gtk::Builder> &
 	m_refGlade->get_widget("scoresLabelPage2", pScoresLabelPage2);
 	m_refGlade->get_widget("settingBtnPage2", pSettingBtnPage2);
 	m_refGlade->get_widget("messageLabelDialogConvertPawn", pMessageLabelDialogConvertPawn);
+	m_refGlade-> get_widget( "mainWindow", pWindow);
 
 	nameOfPieces[0] = "wrl";
 	nameOfPieces[1] = "wnl";
@@ -99,8 +102,12 @@ StackPage::StackPage(BaseObjectType *cobject, const Glib::RefPtr<Gtk::Builder> &
 		this-> listOfNavigateBetweenPages.push_back( get_visible_child_name());
 	});
 
-	pStartGameBtn->signal_clicked().connect(sigc::mem_fun(*this, &StackPage::startGameBtn_clicked));
-
+	try{
+		pStartGameBtn->signal_clicked().connect(sigc::mem_fun(*this, &StackPage::startGameBtn_clicked));
+	}
+	catch(int error){
+		std::cout << "ASdfasdfASdfasdf " << error << std::endl;
+	}
 	pExitBtnStack2->signal_clicked().connect(sigc::mem_fun(*this, &StackPage::exitBtnStack2_clicked));
 
 	//	connect images blank squars on UI file to program code and set target to drag&drop.
@@ -142,12 +149,13 @@ StackPage::~StackPage()
 
 void StackPage::exitBtnStack2_clicked()
 {
-	set_visible_child("wellcome_page", Gtk::STACK_TRANSITION_TYPE_NONE);
-	delete (handler);
+	file.close();
+	pWindow-> close();
 }
 
 void StackPage::startGameBtn_clicked()
 {
+
 	//	Show the startGame Page
 	set_visible_child("game_page", Gtk::STACK_TRANSITION_TYPE_NONE);
 
@@ -291,6 +299,39 @@ void StackPage::startGameBtn_clicked()
 	for (size_t i = 1; i <= 32; i++)
 	{
 		pBoardGame->attach(*(blankSquars[i]), gridPositionExtraction(positionOfBlankSquars[i]).first, gridPositionExtraction(positionOfBlankSquars[i]).second);
+	}
+
+	//	check for exist file or no
+	std::string fileName = handler-> player1.Name;
+	fileName += "-" + handler-> player2.Name + "-" + handler-> get_gameName() + ".acd";
+	std::cout << "fileName : " << fileName << std::endl;
+	struct stat buffer;
+	if( stat ( fileName.c_str(), &buffer) == 0){
+		int response;
+		if(language == Language::Persian){
+			Gtk::MessageDialog alertDialog( "فایل تکراری!", false, Gtk::MESSAGE_WARNING, Gtk::BUTTONS_YES_NO);
+			std::string detailMessage = "قبلا بازی با همین بازیکن ها و همین اسم بازی انجام دادی\nالان اگر ادامه بدی فایل اون یکی بازی پاک میشه.\nاشکال نداره؟";
+			alertDialog.set_secondary_text( detailMessage);
+			response = alertDialog.run();
+		}
+		if(language == Language::English){
+			Gtk::MessageDialog alertDialog( "Duplicate file!", false, Gtk::MESSAGE_WARNING, Gtk::BUTTONS_YES_NO);
+			std::string detailMessage = "You have played with the same players and the same game name before\nNow if you continue, the file of that one game will be deleted.\nbe done?";
+			alertDialog.set_secondary_text( detailMessage);
+			response = alertDialog.run();
+		}
+
+		switch(response){
+			case -8://	if "Yes" button clicked
+				file.open( fileName);
+				break;
+			case -9://	if "No" button clicked
+				pWindow-> close();
+				break;
+		}
+	}
+	else{
+		file.open( fileName);
 	}
 
 	pieces[0]->signal_drag_data_get().connect(sigc::mem_fun(*this, &StackPage::on_0_drag_data_get));
@@ -498,6 +539,9 @@ bool StackPage::motionVerification()
 	if (handler->pChessboard->verifyMove(moveCode))
 	{
 
+		//	print moveCode to the file for save moves
+		file << moveCode << "\n";
+
 		if (cellIsEmpty(positionOfPieces, cellDestination) == 0 /*cell destination isn't empty*/)
 		{
 			moveCode = "";
@@ -653,11 +697,21 @@ void StackPage::doualMoveBtn_clicked()
 
 	handler->changeRound();
 
-	Gtk::MessageDialog dialog("دو حرکت در یک نوبت.", false, Gtk::MESSAGE_QUESTION, Gtk::BUTTONS_YES_NO);
-	std::string message = handler->get_round_player()->Name;
-	message += " شما میتوانید یک حرکت دیگر انجام دهید\n و به ازای ان ۳۰ امتیاز از دست بدهید.";
-	dialog.set_secondary_text(message);
-	int response = dialog.run();
+	int response;
+	if( language == Language::Persian){
+		Gtk::MessageDialog dialog("دو حرکت در یک نوبت.", false, Gtk::MESSAGE_QUESTION, Gtk::BUTTONS_YES_NO);
+		std::string message = handler->get_round_player()->Name;
+		message += " شما میتوانید یک حرکت دیگر انجام دهید\n و به ازای ان ۳۰ امتیاز از دست بدهید.";
+		dialog.set_secondary_text(message);
+		response = dialog.run();
+	}
+	if( language == Language::English){
+		Gtk::MessageDialog dialog("Double move in once round.", false, Gtk::MESSAGE_QUESTION, Gtk::BUTTONS_YES_NO);
+		std::string message = handler->get_round_player()->Name;
+		message += "You can make another moveand lose 30 points in return.\n";
+		dialog.set_secondary_text(message);
+		response = dialog.run();
+	}
 
 	switch (response)
 	{
@@ -966,6 +1020,30 @@ void StackPage::on_languageComboBox_changed()
 			pSettingBtnPage2->set_label("تنظیمات");
 			pExitBtnStack2->set_label("خروج");
 			pMessageLabelDialogConvertPawn-> set_label("تبریک، شما موفق شدید سربازتان را به اخرین خانه برسانید\nحالا از بین گزینه های زیر یکی را برای جایگزینی سربازت انتخاب کن");
+
+			std::string str = "امتیاز ";
+			str += (handler->player1.Name);
+			str += ":";
+			pFirstPLNameScoreLabel->set_label(str);
+			pScoreFirstPL->set_label(std::to_string(handler->player1.Score));
+		
+			str = "امتیاز منفی ";
+			str += handler->player1.Name;
+			str += ":";
+			pFirstPLNameNegativScoreLabel->set_label(str);
+			pNegativScoreFirstPL->set_label(std::to_string(handler->player1.NegativScore));
+		
+			str = "امتیاز ";
+			str += handler->player2.Name;
+			str += ":";
+			pSecondPLNameScoreLabel->set_label(str);
+			pScoreSecondPL->set_label(std::to_string(handler->player2.Score));
+		
+			str = "امتیاز منفی ";
+			str += handler->player2.Name;
+			str += ":";
+			pSecondPLNameNegativScoreLabel->set_label(str);
+			pNegativScoreSecondPL->set_label(std::to_string(handler->player2.NegativScore));
 		}
 		if (text == "English")
 		{
@@ -984,7 +1062,27 @@ void StackPage::on_languageComboBox_changed()
 			pDoualMoveBtn->set_label("Double Move");
 			pSettingBtnPage2->set_label("Setting");
 			pExitBtnStack2->set_label("Exit");
-			pMessageLabelDialogConvertPawn-> set_label("Congratulations, you have managed to get your pawn to the last cell\nNow choose one of the following options to replace your pawn");
+	
+			std::string str;
+			str = (handler->player1.Name);
+			str += " score :";
+			pFirstPLNameScoreLabel->set_label(str);
+			pScoreFirstPL->set_label(std::to_string(handler->player1.Score));
+		
+			str = handler->player1.Name;
+			str += " negativ score:";
+			pFirstPLNameNegativScoreLabel->set_label(str);
+			pNegativScoreFirstPL->set_label(std::to_string(handler->player1.NegativScore));
+		
+			str = handler->player2.Name;
+			str += " score:";
+			pSecondPLNameScoreLabel->set_label(str);
+			pScoreSecondPL->set_label(std::to_string(handler->player2.Score));
+		
+			str = handler->player2.Name;
+			str += " negativ score:";
+			pSecondPLNameNegativScoreLabel->set_label(str);
+			pNegativScoreSecondPL->set_label(std::to_string(handler->player2.NegativScore));		pMessageLabelDialogConvertPawn-> set_label("Congratulations, you have managed to get your pawn to the last cell\nNow choose one of the following options to replace your pawn");
 		}
 	}
 }
