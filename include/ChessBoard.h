@@ -1,5 +1,10 @@
 #pragma once
+#ifndef CHESSBOARD
+#define CHESSBOARD
+
 #include <iostream>
+#include <time.h>
+#include <random>
 
 #include "Player.h"
 #include "Cell.h"
@@ -28,17 +33,20 @@ public:
   ChessBoard();
 	ChessBoard( Player*, Player*, StackPage*);
 
+  pair< pair<int, int>, pair< int, int>> RandomMove(struct Player *p); // حرکت رندوم که یک پوینتر از بازیکن میگیرد
   void HitScoring(struct Player *p , pair<int, int> position);
   void ThreatScoring(struct Player *p , pair<int, int> position);
   void initBoard();
   void UndoScoring(struct Player *p);
 
-  bool IsMated(ChessColor color);
-  bool IsChecked(ChessColor color);
-  bool IsCheckMated(ChessColor color);
-  pair<int, int> FindKing(ChessColor color);
+  bool IsMated(PlayersColor color);
+  bool IsChecked(PlayersColor color);
+  bool IsCheckMated(PlayersColor color);
+  pair<int, int> FindKing(PlayersColor color);
   vector<pair<int, int>> Threat(pair<int, int> cell);
+  void ThreatPlus();
   vector<pair<int, int>> GetFreeMovements(pair<int, int> cell);
   virtual void Move(pair<int, int> position, pair<int, int> toPosition);
 	bool verifyMove( std::string move);
 };
+ #endif

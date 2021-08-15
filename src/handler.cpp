@@ -1,5 +1,4 @@
 #include "../include/handler.hpp"
-#include "Player.h"
 
 Handler::Handler(std::string gn, std::string pfn, std::string psn, StackPage* pStack){
 	gameName = gn;
@@ -50,17 +49,12 @@ void Handler::changeRound(){
 	else{
 		round = PlayersColor::White;
 	}
+
+	dastBeMohre = false;
 }
 
 PlayersColor Handler::get_round(){
 	return round;
-}
-
-int Handler::get_numberOfWhiteConvertPawn(){
-	return numberOfWhiteConvertPawn;
-}
-int Handler::get_numberOfBlackConvertPawn(){
-	return numberOfBlackConvertPawn;
 }
 
 Player* Handler::get_round_player(){

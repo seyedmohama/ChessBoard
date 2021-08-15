@@ -1,5 +1,10 @@
 #pragma once
+#ifndef QUEEN
+#define QUEEN
+
 #include "Chessman.h"
+
+enum class PlayersColor;
 
 class Queen : public Chessman
 {
@@ -7,6 +12,8 @@ class Queen : public Chessman
   vector<pair<int, int>> GetPlusMovements(Cell** Board);
 
 public:
-  Queen(int, int, ChessColor);
+  Queen(int, int, PlayersColor);
   virtual std::vector<std::pair<int, int>> GetMovements(Cell** Board);
 };
+
+#endif

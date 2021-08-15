@@ -13,10 +13,15 @@ int main(){
 
   builder->get_widget_derived("mainWindow", mainWindow);
 
-  if(mainWindow){
-    app->run(*mainWindow);
+  try{
+    if(mainWindow){
+     app->run(*mainWindow);
+    }
+    delete mainWindow;
   }
-  delete mainWindow;
-
+  catch(...){
+    mainWindow-> close();
+    std::cout << "errrrrrr" << std::endl;
+  }
   return 0;
 }

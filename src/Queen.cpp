@@ -1,6 +1,8 @@
 #include "../include/Queen.h"
+#include "Player.h"
 #include <iostream>
-Queen::Queen(int x, int y, ChessColor color)
+
+Queen::Queen(int x, int y, PlayersColor color)
 {
   X = x;
   Y = y;
@@ -14,35 +16,51 @@ std::vector<std::pair<int, int>> Queen::GetPlusMovements(Cell** Board)
 {
   std::vector<pair<int, int>> movements;
 
+  //Going buttom
+  for (int i = Y - 1; i >= 0; i--)
+  {
+		if ( !Board[X][i].IsEmpty() && (Board[X][i].ptr-> Color != Board[X][Y].ptr-> Color)){
+    	movements.push_back({X, i});
+			break;
+		}
+    if (!Board[X][i].IsEmpty())
+      break;
+    movements.push_back({X, i});
+  }
+
   //Going top
-  for (int i = Y; i > 0; i--)
+  for (int i = Y + 1; i <= 7; i++)
   {
-    if (!Board[X][i].IsEmpty() && i != Y)
+		if ( !Board[X][i].IsEmpty() && (Board[X][i].ptr-> Color != Board[X][Y].ptr-> Color)){
+    	movements.push_back({X, i});
+			break;
+		}
+    if (!Board[X][i].IsEmpty())
       break;
     movements.push_back({X, i});
   }
 
-  //Going Bottom
-  for (int i = Y; i < 8; i++)
-  {
-    if (!Board[X][i].IsEmpty() && i != Y)
-      break;
-    movements.push_back({X, i});
-  }
 
-
-  //Going Right
-  for (int i = X; i > 0; i--)
+  //Going left
+  for (int i = X - 1; i >= 0; i--)
   {
-    if (!Board[i][Y].IsEmpty() && i != X)
+		if ( !Board[i][Y].IsEmpty() && (Board[i][Y].ptr-> Color != Board[X][Y].ptr-> Color)){
+    	movements.push_back({i, Y});
+			break;
+		}
+    if (!Board[i][Y].IsEmpty())
       break;
     movements.push_back({i, Y});
   }
 
   //Going Right
-  for (int i = X; i < 8; i++)
+  for (int i = X + 1; i <= 7; i++)
   {
-    if (!Board[i][Y].IsEmpty() && i != X)
+		if ( !Board[i][Y].IsEmpty() && (Board[i][Y].ptr-> Color != Board[X][Y].ptr-> Color)){
+    	movements.push_back({i, Y});
+			break;
+		}
+    if (!Board[i][Y].IsEmpty())
       break;
     movements.push_back({i, Y});
   }
@@ -58,6 +76,10 @@ vector<pair<int, int>> Queen::GetXMovements(Cell** Board)
 
   while (currx++ < 7 && curry++ < 7)
   {
+		if ( !Board[currx][curry].IsEmpty() && (Board[currx][curry].ptr-> Color != Board[X][Y].ptr-> Color)){
+    	movements.push_back({currx, curry});
+			break;
+		}
     if (!Board[currx][curry].IsEmpty())
         break;
     movements.push_back({currx, curry});
@@ -67,6 +89,10 @@ vector<pair<int, int>> Queen::GetXMovements(Cell** Board)
   curry = Y;
   while (currx-- > 0 && curry-- > 0)
   {
+		if ( !Board[currx][curry].IsEmpty() && (Board[currx][curry].ptr-> Color != Board[X][Y].ptr-> Color)){
+    	movements.push_back({currx, curry});
+			break;
+		}
     if (!Board[currx][curry].IsEmpty())
         break;
     movements.push_back({currx, curry});
@@ -76,6 +102,10 @@ vector<pair<int, int>> Queen::GetXMovements(Cell** Board)
   curry = Y;
   while (currx-- > 0 && curry++ < 7)
   {
+		if ( !Board[currx][curry].IsEmpty() && (Board[currx][curry].ptr-> Color != Board[X][Y].ptr-> Color)){
+    	movements.push_back({currx, curry});
+			break;
+		}
     if (!Board[currx][curry].IsEmpty())
         break;
     movements.push_back({currx, curry});
@@ -86,6 +116,10 @@ vector<pair<int, int>> Queen::GetXMovements(Cell** Board)
   curry = Y;
   while (currx++ < 7 && curry-- > 0)
   {
+		if ( !Board[currx][curry].IsEmpty() && (Board[currx][curry].ptr-> Color != Board[X][Y].ptr-> Color)){
+    	movements.push_back({currx, curry});
+			break;
+		}
     if (!Board[currx][curry].IsEmpty())
         break;
     movements.push_back({currx, curry});

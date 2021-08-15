@@ -26,6 +26,7 @@ pStartGameBtn(nullptr){
 	if(pStartGameBtn){
 		pStartGameBtn->signal_clicked().connect(sigc::bind(sigc::mem_fun(*this, &MainWindow::set_size_request),1000,650));
 	}
+
 }
 
 MainWindow::~MainWindow(){

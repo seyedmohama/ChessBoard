@@ -1,5 +1,6 @@
 #include "../include/Chessman.h"
-Chessman::Chessman(int x, int y, ChessColor color)
+#include "Player.h"
+Chessman::Chessman(int x, int y, PlayersColor color)
 {
   X = x;
   Y = y;
