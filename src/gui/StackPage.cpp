@@ -81,6 +81,8 @@ StackPage::StackPage(BaseObjectType *cobject, const Glib::RefPtr<Gtk::Builder> &
 	nameOfPieces[30] = "bp7";
 	nameOfPieces[31] = "bp8";
 
+	listOfNavigateBetweenPages.push_back( get_visible_child_name());
+
 	std::string name;
 	for (int i = 0; i <= 31; i++)
 	{
@@ -92,7 +94,10 @@ StackPage::StackPage(BaseObjectType *cobject, const Glib::RefPtr<Gtk::Builder> &
 
 	pGameBtn->signal_clicked().connect(sigc::bind(sigc::mem_fun(*this, &StackPage::set_visible_child), "start_game_page", Gtk::STACK_TRANSITION_TYPE_NONE));
 	
-	pSettingBtnPage2->signal_clicked().connect(sigc::bind(sigc::mem_fun(*this, &StackPage::set_visible_child), "settingPage", Gtk::STACK_TRANSITION_TYPE_NONE));
+	pSettingBtnPage2->signal_clicked().connect([this]{
+		this-> set_visible_child( "settingPage", Gtk::STACK_TRANSITION_TYPE_NONE);
+		this-> listOfNavigateBetweenPages.push_back( get_visible_child_name());
+	});
 
 	pStartGameBtn->signal_clicked().connect(sigc::mem_fun(*this, &StackPage::startGameBtn_clicked));
 
@@ -116,10 +121,19 @@ StackPage::StackPage(BaseObjectType *cobject, const Glib::RefPtr<Gtk::Builder> &
 	}
 
 	//	combo box for change language of GUI
-	pSettingBtnPage0->signal_clicked().connect(sigc::bind(sigc::mem_fun(*this, &StackPage::set_visible_child), "settingPage", Gtk::STACK_TRANSITION_TYPE_NONE));
+	pSettingBtnPage0->signal_clicked().connect([this]{
+		this-> set_visible_child( "settingPage", Gtk::STACK_TRANSITION_TYPE_NONE);
+		this-> listOfNavigateBetweenPages.push_back( get_visible_child_name());
+		});
 	pLanguageComboBox->signal_changed().connect(sigc::mem_fun(*this, &StackPage::on_languageComboBox_changed));
 	//	back button on setting page
-	pBackBtnPage3->signal_clicked().connect(sigc::bind(sigc::mem_fun(*this, &StackPage::set_visible_child), "wellcome_page", Gtk::STACK_TRANSITION_TYPE_NONE));
+	pBackBtnPage3->signal_clicked().connect([this]{
+		for(auto &it: listOfNavigateBetweenPages){
+			std::cout << "\t<><><>\tlistOfNavigateBetweenPages >\t" << it << std::endl;
+		}
+		this-> set_visible_child( listOfNavigateBetweenPages.at( listOfNavigateBetweenPages.size() - 2), Gtk::STACK_TRANSITION_TYPE_NONE);
+		listOfNavigateBetweenPages.push_back( get_visible_child_name());
+	});
 }
 
 StackPage::~StackPage()
@@ -134,6 +148,10 @@ void StackPage::exitBtnStack2_clicked()
 
 void StackPage::startGameBtn_clicked()
 {
+	//	Show the startGame Page
+	set_visible_child("game_page", Gtk::STACK_TRANSITION_TYPE_NONE);
+
+	listOfNavigateBetweenPages.push_back( get_visible_child_name());
 
 	//	setup separators on page stack2 game
 	m_refGlade->get_widget("separator0Stack2", pSeparators[0]);
@@ -212,9 +230,6 @@ void StackPage::startGameBtn_clicked()
 
 	//	set game name on page Stack2
 	pGameNameLabel->set_label(handler->get_gameName());
-
-	//	Show the startGame Page
-	set_visible_child("game_page", Gtk::STACK_TRANSITION_TYPE_NONE);
 
 	//	set positions of pieces
 	//	initial white pieces location
