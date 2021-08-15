@@ -587,6 +587,23 @@ bool StackPage::motionVerification()
 		{
 			handler->get_round_player()->Score += 50;
 			std::cout << "IsCheckMated" << std::endl;
+
+			if(language == Language::Persian){
+				Gtk::MessageDialog dialog("تمام!", false, Gtk::MESSAGE_INFO, Gtk::BUTTONS_OK);
+				std::string message = "خب ";
+				handler->changeRound();
+				message += handler->  get_round_player()-> Name + "کیش و مات شد. 😂";
+				dialog.set_secondary_text(message);
+				dialog.run();
+			}
+			if(language == Language::English){
+				Gtk::MessageDialog dialog("Finish!", false, Gtk::MESSAGE_INFO, Gtk::BUTTONS_OK);
+				std::string message = handler->  get_round_player()-> Name ;
+				handler->changeRound();
+				message += "is ckeckmated 😂";
+				dialog.set_secondary_text(message);
+				dialog.run();
+			}
 		}
 		else if (handler->pChessboard->IsChecked(inverseColor))
 		{
