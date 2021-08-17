@@ -21,3 +21,5 @@ $ ./ChessAP
 you can also see persian details of coding this repository in follow document:
 
 https://docs.google.com/document/d/1Zs9lblVAralvgB18gGBq8tshjUVgr7yMolv_XBSwxxM/edit?usp=sharing
+
+Project description > Project_description.pdf
