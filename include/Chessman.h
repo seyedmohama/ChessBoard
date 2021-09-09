@@ -34,6 +34,8 @@ public:
   char TypeString();
   virtual std::vector<std::pair<int, int>> GetMovements(Cell** Board) = 0;
   virtual void Move(pair<int, int> position);
+
+	virtual ~Chessman() = default;
 };
 
 #endif

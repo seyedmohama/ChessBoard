@@ -13,5 +13,7 @@ public:
   Pawn(int, int, PlayersColor);
   virtual std::vector<std::pair<int, int>> GetMovements(Cell** Board);
   virtual void Move(std::pair<int, int>);
+
+	~Pawn() = default;
 };
 #endif
