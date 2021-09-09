@@ -56,7 +56,7 @@ void checkPawnInFrontHalfScore( StackPage *pStack){
 
 		if( ( pStack->piece[0] == 'w') && ( positionExtraction( pStack-> cellDestination).second > 3)){
 
-			for (int i = 0; i < (pStack-> whitePawnsInFrontHalf.size()) ;i++){
+			for (int i = 0; i < static_cast<int>(pStack-> whitePawnsInFrontHalf.size()) ;i++){
 				if( pStack-> whitePawnsInFrontHalf.at(i) == n){
 					return;
 				}
@@ -66,7 +66,7 @@ void checkPawnInFrontHalfScore( StackPage *pStack){
 			std::cout << pStack-> handler-> get_round_player()-> Name << " get 3 points" << std::endl;
 		}
 		if(pStack->piece[0] == 'b' && positionExtraction( pStack-> cellDestination).second <= 3){
-			for (int i = 0; i < (pStack-> whitePawnsInFrontHalf.size()) ;i++){
+			for (int i = 0; i < static_cast<int>(pStack-> whitePawnsInFrontHalf.size()) ;i++){
 				if( pStack-> whitePawnsInFrontHalf.at(i) == n){
 					return;
 				}
@@ -92,17 +92,19 @@ void removeWidgetFromGrid( Gtk::Grid *grid, int x, int y){
 }
 
 int numberValueInArray(std::array<std::string, 32> array, std::string value){
-	for(int i = 0; i < array.size(); i++){
+	for(int i = 0; i < static_cast<int>(array.size()); i++){
 		if(array[i] == value){
 			return i;
 		}
 	}
+	return -1;
 }
 
 int numberPositionOfBlankCell( std::map< int, std::string> map, std::string value){
-	for(int i = 0; i < map.size(); i++){
+	for(int i = 0; i < static_cast<int>(map.size()); i++){
 		if(map[i] == value){
 			return i;
 		}
 	}
+	return -1;
 }

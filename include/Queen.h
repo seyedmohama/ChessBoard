@@ -14,6 +14,7 @@ class Queen : public Chessman
 public:
   Queen(int, int, PlayersColor);
   virtual std::vector<std::pair<int, int>> GetMovements(Cell** Board);
+	~Queen() = default;
 };
 
 #endif

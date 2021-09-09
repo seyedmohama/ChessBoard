@@ -8,4 +8,5 @@ class Knight : public Chessman
 public:
   Knight(int, int, PlayersColor);
   virtual std::vector<std::pair<int, int>> GetMovements(Cell** Board);//
+	~Knight() = default;
 };

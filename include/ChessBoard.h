@@ -48,5 +48,7 @@ public:
   vector<pair<int, int>> GetFreeMovements(pair<int, int> cell);
   virtual void Move(pair<int, int> position, pair<int, int> toPosition);
 	bool verifyMove( std::string move);
+
+	virtual ~ChessBoard() = default;
 };
  #endif

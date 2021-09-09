@@ -1018,24 +1018,23 @@ void StackPage::on_languageComboBox_changed()
 	if (!(text.empty()))
 	{
 		std::cout << "\n>>>>> on_languageComboBox_changed()" << std::endl;
+		language =  text == "english" ? Language::English : Language::Persian;
+		pBackBtnPage3->set_label( text == "English" ? "Back" : "بازگشت" );
+		pTitleLabelPage0->set_label( text == "English" ? "Advance Chess" : "شطرنج پیشرفته");
+		pGameBtn->set_label( text == "English" ? "Start" : "شروع");
+		pSettingBtnPage0->set_label( text == "English" ? "Setting" : "تنظیمات");
+		pExitBtnPage0->set_label( text == "English" ? "Exit" : "خروج");
+		pGameNameLabelPage1->set_label( text == "English" ? ":Game name" : "اسم بازی:");
+		pPlayer1NameLabelPage1->set_label( text == "English" ? "Player one" : "بازیکن اول");
+		pPlayer2NameLabelPage1->set_label( text == "English" ? "Player two" : "بازیکن دوم");
+		pGameNameLabelPage2->set_label( text == "English" ? "Game Name:" : "اسم بازی:");
+		pScoresLabelPage2->set_label( text == "English" ? "Scores" : "امتیازات");
+		pDoualMoveBtn->set_label( text == "English" ? "Double Move" : "دو حرکت");
+		pSettingBtnPage2->set_label( text == "English" ? "Setting" : "تنظیمات");
+		pExitBtnStack2->set_label( text == "English" ? "Exit" : "خروج");
+		
 		if (text == "فارسی")
 		{
-			std::cout << "\tGUI language change to persian" << std::endl;
-			language = Language::Persian;
-
-			pBackBtnPage3->set_label("بازگشت");
-			pTitleLabelPage0->set_label("شطرنج پیشرفته");
-			pGameBtn->set_label("شروع");
-			pSettingBtnPage0->set_label("تنظیمات");
-			pExitBtnPage0->set_label("خروج");
-			pGameNameLabelPage1->set_label("اسم بازی");
-			pPlayer1NameLabelPage1->set_label("بازیکن اول");
-			pPlayer2NameLabelPage1->set_label("بازیکن دوم");
-			pGameNameLabelPage2->set_label(":اسم بازی");
-			pScoresLabelPage2->set_label("امتیاز ها");
-			pDoualMoveBtn->set_label("دو حرکت");
-			pSettingBtnPage2->set_label("تنظیمات");
-			pExitBtnStack2->set_label("خروج");
 			pMessageLabelDialogConvertPawn-> set_label("تبریک، شما موفق شدید سربازتان را به اخرین خانه برسانید\nحالا از بین گزینه های زیر یکی را برای جایگزینی سربازت انتخاب کن");
 
 			std::string str = "امتیاز ";
@@ -1066,19 +1065,6 @@ void StackPage::on_languageComboBox_changed()
 		{
 			std::cout << "\tGUI language change to english" << std::endl;
 			language = Language::English;
-			pBackBtnPage3->set_label("back");
-			pTitleLabelPage0->set_label("Advance Chess");
-			pGameBtn->set_label("Start");
-			pSettingBtnPage0->set_label("Setting");
-			pExitBtnPage0->set_label("Exit");
-			pGameNameLabelPage1->set_label(":Game name");
-			pPlayer1NameLabelPage1->set_label("Player one");
-			pPlayer2NameLabelPage1->set_label("Player two");
-			pGameNameLabelPage2->set_label("Game Name:");
-			pScoresLabelPage2->set_label("Scores");
-			pDoualMoveBtn->set_label("Double Move");
-			pSettingBtnPage2->set_label("Setting");
-			pExitBtnStack2->set_label("Exit");
 	
 			std::string str;
 			str = (handler->player1.Name);
@@ -1099,7 +1085,8 @@ void StackPage::on_languageComboBox_changed()
 			str = handler->player2.Name;
 			str += " negativ score:";
 			pSecondPLNameNegativScoreLabel->set_label(str);
-			pNegativScoreSecondPL->set_label(std::to_string(handler->player2.NegativScore));		pMessageLabelDialogConvertPawn-> set_label("Congratulations, you have managed to get your pawn to the last cell\nNow choose one of the following options to replace your pawn");
+			pNegativScoreSecondPL->set_label(std::to_string(handler->player2.NegativScore));
+			pMessageLabelDialogConvertPawn-> set_label("Congratulations, you have managed to get your pawn to the last cell\nNow choose one of the following options to replace your pawn");
 		}
 	}
 }
